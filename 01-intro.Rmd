@@ -1,3 +1,5 @@
+\usepackage{biblatex}
+
 # Introdução
 
 Estudos recentes indicam que ações envolvendo o direito do consumidor têm grande influência no volume de processos no Poder Judiciário. Somente em 2014, foram mais de dois milhões de casos novos envolvendo responsabilidade do fornecedor ou indenização por dano moral, situando esse assunto como o terceiro mais demandado de todos os tribunais, com pelo menos 4\% de todas as novas demandas de 2014 \citep{CNJ2015}. 
