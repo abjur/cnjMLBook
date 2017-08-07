@@ -1,0 +1,113 @@
+# Introdução
+
+Estudos recentes indicam que ações envolvendo o direito do consumidor têm grande influência no volume de processos no Poder Judiciário. Somente em 2014, foram mais de dois milhões de casos novos envolvendo responsabilidade do fornecedor ou indenização por dano moral, situando esse assunto como o terceiro mais demandado de todos os tribunais, com pelo menos 4\% de todas as novas demandas de 2014 \citep{CNJ2015}. 
+
+Diante deste cenário, compreender volume e perfil dos processos que envolvem direito do consumidor é condição necessária para uma boa administração da Justiça. Em relação ao volume, para a mensuração do impacto desses processos na taxa de congestionamento dos tribunais, é preciso levantar não só os casos novos mas também o estoque e tempo de duração médio dos processos. Já em relação ao perfil, precisamos entender como se distribuem os processos no tempo e no espaço, quem são os maiores responsáveis pela litigiosidade e quais as principais características dos processos. Somente com essas informações é possível planejar e implementar políticas públicas e mudanças legislativas de qualidade.
+
+Ainda sobre o perfil dos processos, uma hipótese recorrente no direito do consumidor é que um pequeno grupo de litigantes são réus na maior parte dos processos judiciais. O estudo "100 maiores litigantes"~\citep{CNJ2012} mostra, por exemplo, que na 1ª instância da Justiça Estadual, os cem maiores litigantes figuram como uma das partes em 36\% dos processos. Na justiça consumerista, espera-se que essa proporção seja ainda maior.
+
+Supondo que a hipótese dos maiores litigantes seja válida, podemos reduzir o universo de investigação somente para os processos envolvendo estes litigantes. Essa simplificação é coerente por dois motivos. Primeiramente, se compreendermos e solucionarmos os problemas envolvendo os maiores litigantes, teremos atingido uma parte considerável do volume total de processos, o que já é suficiente para o desenvolvimento e implementação de políticas públicas. Além disso, ao estudar somente os processos envolvendo um conjunto fixado de litigantes, controlamos a incerteza e possibilitamos estudos mais aprofundados do tema, aumentando as chances de se obter resultados úteis e propositivos.
+
+A presente pesquisa possui como hipótese primordial a de que trinta litigantes estão envolvidos como réus em uma proporção relevante das ações consumeristas em tramitação na justiça estadual. A hipótese será verificada a partir da extrações de dados dos tribunais, considerando diferentes cortes de tempo, região e perfil empresarial.
+
+Em seguida, partimos para uma investigação mais aprofundada e propositiva sobre seis temas específicos, cada um associado a uma faceta do problema e uma ou mais recomendações para sua solução. Os temas podem ser agrupados em duas perguntas principais: a) ``o que fazer com o estoque atual de processos?'' e b) ``como evitar a entrada de tantos processos?''.
+
+Nesse produto final, descrevemos a metodologia para obtenção dos maiores litigantes e mostramos os principais resultados da pesquisa. No final, apresentamos um cardápio de sugestões para melhoria da administração judiciária.
+
+## Justificativa
+
+A justiça brasileira possui hoje substanciais repositórios de processos judiciais. Os montantes são do conhecimento do setor e dos diversos segmentos da sociedade, assim como os prazos decorridos até a decisão final tramitada em julgado. Esses volumes são significativos e ainda maiores são os valores envolvidos.
+
+De modo geral, a ausência de bancos de dados adequadamente projetados, sem redundâncias ou inconsistências e de análises estatísticas robustas, parece levar a uma situação de grande dificuldade para a administração da justiça e, em consequência, a uma limitação dos recursos orçamentários disponíveis para custeio e investimento. 
+
+Nos últimos anos, o CNJ vem desenvolvendo um esforço hercúleo nesse sentido. Graças a iniciativas como o Justiça em Números e projetos de pesquisa aplicados a determinados segmentos da Justiça, já é possível obter visões gerais do funcionamento do Judiciário e identificar alguns de seus principais gargalos. No entanto, os trabalhos ainda estão adquirindo maturidade e, por isso, não proporcionam resultados claros frente a perguntas como "por quê temos tantos processos?", de modo que há dificuldades em elaborar políticas públicas adequadas para resolver problemas importantes como reduzir o volume de ações consumeristas.
+
+Nesse cenário surge a necessidade de desenvolvimento de um projeto que auxilie a equacionar uma das restrições colocadas: bases de dados e modelos estatísticos de análise de processos, com as respectivas métricas de resultados, possibilitando o melhor conhecimento das ações por setor litigante, partes envolvidas, pedidos e causas de pedir. O propósito é que os resultados obtidos nos estudos aumentem o conhecimento que o Poder Judiciário tem a respeito de novos litígios e sirva de fundamento para o desenvolvimento de ações pontuais estratégicas que permitam solucionar gargalos já existentes e prevenir um volume exagerado de novos litígios.
+
+O presente tema é uma oportunidade da ABJ de disseminar o conceito, as metodologias e as aplicações da Jurimetria, a fim de introduzir e disciplinar o rigor no planejamento, amostragem e análise estatística de dados jurídicos, o que traria como consequência um relatório verossímil e funcional para a utilização do CNJ para elaboração de políticas públicas.
+
+## Levantamento Bibliográfico
+
+O direito do consumidor é um tema de grande importância na administração judiciária, mas negligenciado na academia. Uma pesquisa rápida no repositório de teses da USP\footnote{Acesse o \href{http://www.teses.usp.br/}{teses USP neste link}.} mostra que, das mais de 1600 teses e dissertações da Faculdade de Direito (FDUSP), menos de 20 (1,3\%) têm como palavra-chave ``consumo'' ou `consumidor`.
+
+A seguir, verificamos a incidência dessas palavras nos processos, a partir de uma base de 621.871 acórdãos proferidos pelo TJSP no ano de 2014. Definimos que uma decisão trata do tema consumidor se a sua ementa contém ao menos uma das suas palavras-chave. Como resultado, o segundo tema mais frequente no TJSP é o da responsabilidade civil, presente em 30\% das ementas. Esse tema é constituído por palavras-chave como: consumidor, acidente de trabalho, seguros, imóvel e nexo causal. A alta incidência desse tema no Judiciário pode sinalizar, por exemplo, a necessidade de realização de mais estudos sobre assuntos relativos a responsabilidade civil por acidente de trabalho, danos ao consumidor (em especial danos morais) e responsabilidade de seguradoras.
+
+Essa discrepância entre volume processual e volume de pesquisas é ainda maior quando consideramos somente trabalhos que usam dados quantitativos para a elucidação dos fenômenos jurídicos. Nesse sentido, levantamos documentos que buscam apontar para algumas formas de obtenção de dados e o levantamento de estatísticas fundamentais para melhor compreender o sistema Judiciário e conhecer mais sobre as formas que se  relacionam os vários agentes envolvidos nesse fenômeno.
+
+O estudo ``100 maiores litigantes''~\citep{CNJ2012}, divulgado pelo Departamento de Pesquisas Judiciárias é o primeiro estudo sistemático realizado sobre maiores litigantes e teve impacto profundo na comunidade jurídica. O estudo indica que uma parcela considerável do volume processual pode ser atribuída aos 100 maiores litigantes. Por exemplo, na 1ª instância da Justiça Estadual, estes litigantes figuram como uma das partes em 36\% do volume processual.
+
+O estudo ``O uso da justiça e o litígio no Brasil''~\citep{AMB2015} sugere que a maior parte dos processos está associada aos setores financeiro e telefonia. O trabalho também defende a importância da realização de estudos aprofundados sobre litígios em massa e técnicas de solução de conflitos, como conciliação e mediação.
+
+Por conta da alta concentração do volume processual em um pequeno conjunto de réus, a atenção doutrinária voltou-se à litigância repetitiva \citep{Silva2012}. A motivação é a de que alterações nesta área podem trazer enormes ganhos à celeridade da Justiça.
+
+Um tipo de alteração envolve modificações que facilitem a formação de ações coletivas e litisconsórcios \citep{Mollica2010, Marquezini2013, Souza2014}. Agrupar sob uma única ação processos semelhantes pode levar a uma melhor divisão do trabalho entre magistrados, tornando mais célere a resolução do conflito. Tal agrupamento também pode permitir ao magistrado definir grupos de litigantes factualmente semelhantes e, assim, determinar compensações com base em amostragem estatística \citep{Weinstein1997}.
+
+Outro tipo de alteração envolve evitar que as causas ajuizadas contra os maiores litigantes cheguem à Justiça. Um dos meios propostos é o incentivo à resolução de conflitos por meio de arbitragem e mediação \citep{Asperti2014}. Outro meio proposto é a revogação de leis que obriguem o procurador público derrotado em primeira instância a recorrer da decisão, independentemente dos seus prospectos de sucesso.
+
+Uma terceira forma de abordar o tema da litigância repetitiva é através do \textit{Incidente de Resolução de Demandas Repetitivas} (IRDR), definido no novo Código Processual Civil (CPC), de 2015. O IRDR é cabível quando houver, simultaneamente, duas condições: i) efetiva repetição de processos que contenham controvérsia sobre a mesma questão unicamente de direito, tanto material quanto processual; e ii) risco de ofensa à isonomia e à segurança jurídica. No entanto, como a aplicação do IRDR ainda é limitada, não existem estudos aprofundados que investiguem quantitativamente o efeito do IRDR na taxa de congestionamento do judiciário, especialmente no que se refere ao direito do consumidor.
+
+Uma forma mais abstrata de investigar o tema envolve modificações na lei que visem criar incentivos econômicos para que as partes não ingressem com ações judiciais. Por um lado, estudos como \citet{Athos2015} estudam a possibilidade de existir uma ``indústria do dano moral'', com base na inexistência das custas processuais e sucumbência nos Juizados Especiais Cíveis (JEC). Por uma análise econômica, os autores concluem que a inexistência de custas nos JEC poderia incentivar as partes a sempre ingressarem com ações, mesmo quando a probabilidade de sucesso é baixa. 
+
+De perspectiva diferente, também pode-se estudar empresas como agentes maximizadores de lucro. Sob essa perspectiva, uma empresa escolheria desrespeitar a lei, quando esta escolha traz maiores prospectos de lucro. Esse tipo de análise traz à tona quais normas poderiam ser criadas pelo Estado ou agências reguladoras de tal forma a tornar a solução economicamente mais vantajosa para as empresas sem desrespeitar os direitos do consumidor.
+
+Os estudos evidenciam a existência de dois grandes focos de investigação. No primeiro, propomos mudanças administrativas e legislativas para redução eficaz do estoque atual de processos. Já no segundo, procuramos realizar ações preventivas e modificar incentivos para litigar, buscando reduzir o volume de casos novos.
+
+Dentro do primeiro foco, o tema mais discutido trata da composição amigável no processo através do incentivo à conciliação. O segundo tema mais desenvolvido é a litigância repetitiva, principalmente relacionando o tema com o novo CPC. Um terceiro tema que consideramos importante, mas que é pouco discutido são propostas de modificação na fila de trabalho dos cartórios, assunto que será mais desenvolvido nas próximas Seções.
+
+Já no segundo foco, as ideias são esparsas e é difícil elencar uma que se sobressai perante as demais. Podemos elencar como eixos mais importantes i) o estudo dos incentivos para litigar, tanto do ponto de vista do consumidor quanto da empresa; ii) mecanismos de composição extrajudicial de conflitos, como mediação e ferramentas de comunicação entre as partes (Reclame Aqui e Consumidor.gov.br, entre outros); e iii) meios de agrupamento de conflitos em ações coletivas e litisconsórcios.
+
+## Objetivos
+
+Os objetivos da presente pesquisa são:
+
+\begin{enumerate}
+
+\item Levantar os maiores litigantes em ações consumeristas na Justiça Estadual.
+\item Estudar as características dos litigantes e de seus litígios.
+\item Avaliar de que forma os maiores litigantes variam regionalmente.
+\item Estudar as características dos meios alternativos ao litígio.
+\item Investigar como as grandes empresas do setor privado veem o problema das ações consumeristas.
+\item Propor soluções administrativas para lidar com os casos pendentes e reduzir a entrada de novos casos no judiciário.
+
+\end{enumerate}
+
+## Hipóteses
+
+As hipóteses de pesquisa definem o conjunto mínimo de investigações a serem  realizadas para atendimento dos objetivos específicos. Nesse projeto, a principal hipótese a ser avaliada (e que será trabalhada no Capítulo \ref{metodologia}) é a de que os trinta maiores litigantes, em âmbito global, concentram uma proporção elevada do total de ações consumeristas na Justiça Estadual. Chamamos essa parte da pesquisa de \textit{exploratória}. A partir dela, emergem outras hipóteses e investigações.
+
+Com o intuito de sistematizar nosso estudo e deixá-lo mais próximo da elaboração de políticas públicas, também trabalhamos hipóteses relacionadas ao que chamamos de parte \textit{propositiva} da pesquisa:
+
+\begin{enumerate}
+\item O que pode ser feito para agilizar a tramitação dos processos consumeristas e reduzir o estoque de processos?
+
+\begin{enumerate}
+\item Qual é o impacto da utilização de estratégias de composição amigável?
+\item O uso dos incidentes de demandas repetitivas do novo Código do Processo Civil pode ser efetivo na redução do número de processo em curso?
+\item É possível tornar o trabalho de uma vara mais eficiente utilizando alguma estratégia de ordenação da sua fila de processos?
+\end{enumerate}
+
+\item O que pode diminuir o número de processos consumeristas que entram no judiciário?
+
+\begin{enumerate}
+\item O brasileiro costuma buscar meios alternativos para a solução de conflitos antes de entrar com ações judiciais? Estes meios são efetivos?
+\item Existem fatores que incentivam o cometimento de ilícitos por parte das empresas? (Vantagem monetária no cometimento de ilícitos, falta de regulamentação etc.)
+\item Existem fatores que incentivam a litigância excessiva dos consumidores? (indústria do Dano Moral, gratuidade judiciária etc.)
+\end{enumerate}
+
+\end{enumerate}
+
+Cada questão norteadora descrita acima dá origem a um eixo de investigação, subtópicos do tema principal da pesquisa relacionados à tramitação dos processos dos maiores litigantes da justiça consumerista. Os eixos de investigação foram discutidos em detalhe no Capítulo \ref{metodologia} e nos Apêndices.
+
+## Resultados Esperados
+
+Os resultados esperados dessa pesquisa são:
+
+\begin{enumerate}
+\item Tabelas e gráficos envolvendo os trinta maiores litigantes na Justiça Consumerista em sete Unidades Federativas (UFs).
+\item Avanços metodológicos quantitativos, reprodutíveis e de código aberto, para tratamento de assuntos processuais e nomes de empresas.
+\item Apresentação de uma lista sugestões para aprimoramento da administração do judiciário.
+\end{enumerate}
+
+## Organização do trabalho
+
+O produto final de pesquisa está organizado em três Capítulos, além desta introdução. O Capítulo \ref{metodologia} descreve a metodologia empregada na pesquisa. O Capítulo \ref{resultados} mostra os principais resultados. O Capítulo \ref{sugestoes-para-aprimoramento-do-sistema} lista sugestões para o aprimoramento do sistema.

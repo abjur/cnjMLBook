@@ -1,0 +1,516 @@
+# Sugestões para aprimoramento do sistema {#sugestoes-para-aprimoramento-do-sistema}
+
+Nesse capítulo, apresentamos uma lista de recomendações com o objetivo
+de aprimorar a administração judiciária. As sugestões envolvem mas não
+se limitam à justiça consumerista.
+
+Ressaltamos que as recomendações apresentadas não integram uma única
+política pública articulada. A grande maioria pode ser implementada de
+maneira isolada, sem depender da implementação das demais.
+
+Esclarecemos também que as medidas apresentadas nem sempre refletem
+sugestões efetivas de implementação por parte da ABJ e de seus
+associados. O propósito na elaboração da lista foi disponibilizar aos
+agentes de governo uma visão sobre diferentes soluções possíveis para o
+problema.
+
+Apresentamos um total de 8 sugestões. A maioria das propostas são
+aplicáveis no plano técnico e não temos nenhuma proposta consolidada de
+mudança legislativa. Entendemos que tais sugestões são capazes de
+provocar uma reflexão aprofundada sobre o problema e propiciar um melhor
+entendimento a respeito das soluções que seriam mais adequadas à nossa
+realidade.
+
+No final, também apresentamos três sugestões de novas pesquisas. O
+intuito é aprofundar os levantamentos realizados ou investigar outros
+temas importantes para o direito do consumidor.
+
+## Integração do judiciário com o consumidor.gov.br {#integracao-do-judiciario-com-o-consumidor.gov.br}
+
+A presente solução é a mais importante da pesquisa. Além de ser a solução com maior impacto esperado para
+evitar novos processos, é tecnicamente viável, de baixo custo e seu
+impacto é mensurável.
+
+As análises da base de dados do Consumidor.gov.br revelaram
+que as reclamações pré processuais, além de rápidas, são eficientes, com
+uma taxa de resolução de problemas de 80\% para problemas com telefonia
+e 56\% para problemas com bancos.
+
+Nossa proposta para desafogar os tribunais e evitar novos pleitos é
+criar um fluxo para direcionar as demandas ao consumidor.gov.br antes de
+levar o problema a juízo. Seguindo esse fluxo, garantimos que houve
+tentativa de comunicação entre as partes pelo consumidor.gov.br, sem
+gerar demandas adicionais para o judiciário e para o consumidor.
+
+A Figura \ref{fig:senacon} mostra o fluxo simplificado sugerido. Dado um
+conflito, o consumidor pode, entre outras alternativas, entrar com uma
+reclamação no consumidor.gov.br ou montar uma petição inicial
+eletrônica. No formulário de cadastro da petição inicial, será
+adicionado um campo para adicionar o código identificador de reclamações
+prévias do mesmo tema no consumidor.gov.br. Se o autor da ação deixar
+esse campo em branco, o peticionamento é temporariamente suspenso e a
+reclamação entra automaticamente no consumidor.gov.br para atendimento
+do problema. Se o conflito for resolvido pelo canal do
+consumidor.gov.br, o processo nem chega a ser distribuído. Se o conflito
+não for resolvido em um dado prazo, a ação é automaticamente distribuída
+e o processo corre normalmente.
+
+\begin{figure}
+\includegraphics[width=\linewidth]{senacon} \caption{Fluxo de integração genérico.}\label{fig:senacon}
+\end{figure}
+
+Essa solução possui as seguintes vantagens:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+  Obriga a empresa a atender o reclamante rapidamente.
+\item
+  Não atrasa o processo, visto que i) o prazo de atendimento no
+  consumidor.gov.br é curto e ii) os diálogos travados ou ausências de
+  diálogo no consumidor.gov.br auxiliam na tomada de decisão no processo
+  judicial, se este existir.
+\item
+  Evita a entrada de ações desnecessárias, que seriam resolvidas
+  extrajudicialmente.
+\item
+  Desincentiva a entrada de litigantes e advogados oportunistas, uma vez
+  que o consumidor.gov.br terá registro das discussões travadas entre
+  reclamante e empresa.
+\item
+  Auxilia na documentação das reclamações, uma vez que o
+  consumidor.gov.br possui modelos de dados mais adequados para
+  registrar informações sobre as reclamações do que os sistemas dos
+  tribunais.
+\item
+  Não afeta negativamente o acesso à justiça, já que a solução se aplica apenas ao peticionamento eletrônico.
+\end{enumerate}
+
+Uma possível desvantagem da solução é que para alguns ela pode burocratizar a abertura do processo judicial. Por exemplo, se uma
+pessoa buscou composição amigável via SAC ou ferramentas como o
+Reclame Aqui, ela ainda teria de entrar no consumidor.gov.br para entrar
+com a ação. Ainda assim, considerando a velocidade de atendimento do
+canal, essa barreira teria impacto negativo negligenciável frente às
+vantagens obtidas.
+
+A implementação não precisa ser feita em nível nacional na primeira
+versão. Inclusive, o ideal é que a solução seja implementada
+gradativamente e de forma planejada, garantindo i) o atendimento de um
+cronograma de implementação e ii) avaliação do impacto utilizando
+índices de atendimento da demanda.
+
+Existem duas formas principais de aplicar a solução proposta de forma
+gradativa.
+
+A primeira é selecionar algumas comarcas de interesse para adicionar o
+campo do formulário conecta com o consumidor.gov.br. A solução tem uma facilidade
+adicional, já que em casos consumeristas o endereço considerado pode ser
+o do autor do processo.
+
+A segunda estratégia é iniciar os testes com alguns dos maiores litigantes identificados na pesquisa. O argumento para isso é que, como o volume de conflitos é muito grande, algumas empresas podem não estar preparadas para atender a demanda imediata.
+
+O potencial dessa proposta para redução da litigiosidade é muito
+relevante, uma vez que afetaria todos os peticionamentos eletrônicos
+quando finalizada. Essa também é uma forma adequada de aumentar a
+eficiência do judiciário, uma vez que ela só seria usado quando
+necessário.
+
+## Criação de ferramentas de monitoramento {#criacao-de-ferramentas-de-monitoramento}
+
+A presente pesquisa auxiliou na identificação de eventos anômalos na
+litigiosidade. O maior exemplo disso foi o pico repentino na entrada de
+ações contra o Serasa no TJRS. Tais eventos podem acontecer de maneira
+localizada e nem sempre são perceptíveis nos grandes números.
+
+No entanto, relatórios técnicos são ineficazes para identificar e
+controlar eventos anômalos dinamicamente. A solução adequada nesse caso
+é a criação de \emph{dashboards} interativos e ferramentas de alerta.
+Idealmente, o CNJ e os Tribunal precisam ter uma ferramenta desse tipo
+nas Secretarias de Planejamento Estratégico (SEPLAN) e nas Corregedorias.
+
+Em uma de nossas reuniões, descrobrimos a existência do Núcleo de
+Monitoramento de Perfis de Demandas da Corregedoria Geral da Justiça
+de São Paulo (NUMOPEDE). Criado a partir do expediente CPA nº 2016/163905, tem como objetivo monitorar demandas que, pelas suas características, impactam de
+forma substancial na organização dos serviços judiciais. A análise das
+demandas a partir do seu perfil pode se justificar, entre outros casos,
+por picos de distribuição em curto espaço de tempo, pelas
+características do litígio ou dos litigantes.
+
+A proposta do grupo é racionalizar os trabalhos cartorários e coibir a
+utilização predatória da justiça. Para isso, monitoram a evolução de
+casos novos de forma contínua, segregando por i) classe e assunto; ii)
+comarca; iii) partes e advogados responsáveis. Dessa forma, é possível
+identificar picos temporais de distribuições de processos em
+determinadas localidades ou envolvendo empresas específicas, gerando
+alertas para agilizar na tomada de decisões estratégicas.
+
+A sugestão para o CNJ sobre esse tema é entrar em contato com a equipe
+responsável pelo NUMOPEDE e definir passos para a implementação de uma
+ferramenta de visualização nacional para identificação de eventos
+anômalos. A ferramenta pode funcionar como uma aba adicional do recente
+módulo de produtividade mensal do CNJ.
+
+## Metodologia de cálculo de volumes processuais por assunto {#metodologia-de-calculo-de-volumes-processuais-por-assunto}
+
+Compreender o perfil das demandas é indispensável para a gestão
+eficiente dos Tribunais. Uma forma natural de identificar esses perfis é
+classificando os casos em tipos, que são grupos de processos com
+características comuns.
+
+Atualmente, a forma mais direta de identificar tipos de processos
+judiciais é utilizando os chamados \emph{assuntos processuais}. Os
+assuntos relacionam-se com as matérias discutidas em cada caso. Por
+exemplo, um caso cível de indenização por dano moral poderia ter um
+assunto ``Indenização por dano moral'', enquanto um processo falimentar
+de uma empresa em Recuperação Judicial poderia ser classificado como
+``Convolação de Recuperação Judicial em Falência''.
+
+Nesse contexto, um importante passo foi dado com a Resolução 46/2007 do
+CNJ\footnote{\url{http://www.cnj.jus.br/images/stories/docs_cnj/resolucao/rescnj_46.pdf}.
+  Acesso em 26/06/2017.}, que criou as Tabelas Processuais Unificadas do
+CNJ (TPUs). As TPUs são uma documentação oficial de todas as classes,
+assuntos e movimentações dos processos. As TPUs foram implantada em
+todas as Justiças, o que facilita a realização de análises que
+comparam diferentes tribunais. Por esse motivo, as TPUs podem ser
+consideradas uma revolução na gestão judiciária.
+
+As TPUs são estruturadas em formato de árvore. Isso significa que temos
+assuntos genéricos e assuntos específicos, sendo que o assunto
+específico é um ``filho'' do assunto genérico. As TPUs podem ter até
+seis níveis hierárquicos de assuntos.
+
+O problema enfrentado atualmente é que, na prática, nem sempre os
+processos são classificados com assuntos específicos. Assim, podemos ter
+um caso que discute sobre ``Análise de Crédito'' classificado como
+``Responsabilidade do Fornecedor'', ou ainda ``Direito do Consumidor''.
+
+A possibilidade de subestimação do volume real de processos de um certo
+tipo configura o que chamamos de \textbf{cifra oculta}. Dado um assunto
+específico, esse número pode ser definido como a quantidade de processos
+com esse assunto, mas classificados em assuntos genéricos.
+
+A cifra oculta pode ser estimada usando técnicas estatísticas
+apropriadas. Para isso, no entanto, é necessário fazer algumas
+suposições ou utilizar conhecimentos a priori sobre o tema. Na metodologia apresentamos uma tecnologia reprodutível para resolver o
+problema.
+
+A solução apresentada depende de algumas suposições, mas poderia ser
+rapidamente implementada em sistemas e relatórios gerenciais. Um caso
+importante é o próprio Justiça em Números, que até o momento mostra o
+volume processual somente para os três níveis mais genéricos das TPUs.
+
+## Utilização da métrica IADN para avaliação de impactos {#utilizacao-da-metrica-iadn-para-avaliacao-de-impactos-das-medidas}
+
+Toda medida adotada para aprimoramento da administração judiciária
+precisa ser avaliada no plano prático, ainda que faça sentido
+teoricamente. Sem avaliação, não é possível aferir eficácia e, por
+conseguinte, é difícil propor melhorias.
+
+Na metodologia também apresentamos uma métrica chamada IADN:
+Índice de Atendimento à Demanda Normalizado, que acreditamos ser
+superior à taxa de congestionamento e ao Índice de Atendimento à Demanda
+(IAD) para estudar a litigiosidade de um tribunal.
+
+A proposta nesse caso é utilizar o IADN para avaliar o impacto de
+mudanças. 
+
+Caso a primeira proposta seja implementada,
+seria possível calcular a evolução mensal do IADN em processos
+consumeristas. Nesse caso, a implementação gradativa em diferentes
+comarcas/estados permitiria a comparação do IADN usando técnicas como
+\emph{differences in differences} \citep{bertrand2004much}, que usualmente resultam em estimativas confiáveis dos efeitos das medidas.
+
+## Utilização de modelos de classificação de partes {#utilizacao-de-modelos-de-classificacao-de-partes}
+
+Um dos maiores desafios metodológicos enfrentados pela presente pesquisa
+foi a limpeza e classificação das partes nos processos.
+
+Parte das bases vieram com nomes de empresas acompanhados dos documentos
+(CPF ou CNPJ). Em tese, a tarefa de contagem a partir dos CNPJs seria
+trivial. No entanto, os diversos problemas de documentação presentes
+nessas bases nos forçaram a utilizar os nomes das empresas como base em
+todos os casos.
+
+Classificar as empresas a partir dos nomes também não é trivial, pois os
+nomes podem aparecer de diversas formas distintas. Em alguns casos, nem
+seres humanos são capazes de distinguir, por exemplo, se uma parte é
+pessoa jurídica ou física, olhando apenas para o nome.
+
+No decorrer dos trabalhos, testamos vários modelos de classificação das
+partes. Os modelos partiram de expressões regulares e criação de
+\emph{white lists},\footnote{Uma \emph{white list} é uma lista de nomes
+  que certamente ou quase certamente indicam como classificar o nome da
+  parte. Essa lista inclui nomes de empresas conhecidas, como Bradesco,
+  Itaú etc.} que foram se tornando mais sofisticados com a aplicação de
+técnicas como regressão LASSO \citep{friedman2001elements} em \emph{sacolas de
+palavras}.\footnote{\emph{bag of words} ou sacola de palavras é uma
+  maneira de organizar textos a partir da contagem de palavras em
+  documentos. Uma característica importante da sacola de palavras é que
+  ela não considera a ordem em que as palavras aparecem. Assim, por
+  exemplo, Itaú Unibanco e Unibanco Itaú são equivalentes.} No final,
+acabamos considerando um conjunto de expressões regulares, pela
+simplicidade e estabilidade dos resultados.
+
+A grande vantagem do trabalho realizado é que a classificação é
+replicável. Isso significa que uma nova pesquisa na área de maiores
+litigantes poderia utilizar o mesmo código para realizar a classificação
+das empresas. Além disso, o código é aberto e pode ser testado e
+melhorado.
+
+A solução final foi implementada num pacote escrito em R chamado
+\texttt{tidyML}.\footnote{\url{https://github.com/abjur/tidyML}. No
+  momento de escrita desse texto, o tidyML ainda não estava finalizado.}.
+Nossa sugestão nesse caso é que o pacote seja testado e melhorado com
+sugestões de outros pesquisadores. Dessa forma, será possível
+reclassificar os nomes de empresas em todos os Tribunais de maneira
+unificada, facilitando muito na realização de levantamentos futuros.
+
+
+## Sistema de Classificação de Empresas e Incorporações {#sistema-de-classificacao-de-empresas-e-incorporacoes}
+
+Para realização desse projeto, foi necessário pesquisar o histórico das
+empresas e suas incorporações. Isso foi feito, dentre muitos outros
+casos, para Itaú e Unibanco, que nos dias de hoje são parte da mesma
+corporação.
+
+Um problema dessa tarefa é a necessidade de tomadas de decisão
+arbitrárias. Por exemplo, decidimos manter separadas as empresas Via
+Varejo e GPA, que até o momento dessa redação eram controladas pelo
+grupo Casino.
+
+Para o atendimento dos princípios da transparência e reprodutibilidade,
+é importante que uma tabela de-para oficial das empresas e suas
+incorporações seja disponibilizada publicamente. Essa tabela deve ser
+dinâmica pois as incorporações acontecem a todo momento.
+
+Nossa sugestão é que o Sistema de Classificação de Empresas e
+Incorporações (SCEI) seja uma ferramenta similar às Tabelas Processuais
+Unificadas do CNJ. As empresas devem ser classificadas em formato de
+árvore, acompanhadas de seus códigos, que nesse caso serão os CNPJs.
+Especialistas cadastrados no SCEI poderiam propor mudanças nessa
+classificação ao longo do tempo.
+
+Na ABJ sempre nos esforçamos para manter os códigos utilizados para
+realização das análises disponíveis. Caso a sugestão da tabela seja
+implementada, os códigos desenvolvidos para essa pesquisa podem auxiliar
+na criação da versão inicial das tabelas.
+
+## Experimento com semana da conciliação {#experimento-com-semana-da-conciliacao}
+
+O CNJ promove anualmente a Semana Nacional da Conciliação. Trata-se de
+uma campanha de mobilização na qual todos os Tribunais Brasileiros
+concentram seus esforços, durante uma semana, na obtenção do maior
+número possível de composições amigáveis.
+
+Além de ser uma forma de reduzir o volume processual, a semana da
+conciliação é uma oportunidade muito interessante para conduzir
+experimentos. Tais experimentos poderiam ser utilizados para mensurar o
+efeito do incentivo à conciliação, buscando estabelecer os limites desse
+efeito.
+
+Uma forma de conduzir o experimento é selecionando aleatoriamente
+processos elegíveis ou não na semana de conciliação. Dessa forma seria
+possível isolar o efeito do incentivo à conciliação, sem prejuízo ao
+curso natural do processo. Estudos recentes sugerem que é possível
+atingir o mesmo objetivo sem a aplicação completa de aleatorização:
+\citep{Fossaluza2015} discute o tema da alocação intencional na condução
+de experimentos. Com a técnica de alocação sequencial, é possível testar
+hipóteses com amostras menores.
+
+Um resultado interessante desses experimentos é a possibilidade de
+testar a hipótese de que adicionar cláusulas para incentivar conciliação
+é efetivo. Em estudos observacionais, essa inferência causal não seria
+possível, pois o efeito estaria confundido \citep{pearl2009causality}.
+
+## API pública para extração de processos {#api-publica-para-extracao-de-processos}
+
+Existem inúmeras ferramentas públicas e privadas para busca e
+recuperação de processos. Os sistemas são eficazes, mas são todos
+voltados para a busca de informações individuais. Se uma pessoa tiver o
+número identificador, ela achará informações do processo. Se precisar
+uma lista de processos, poderá utilizar ferramentas de busca.
+
+Cientistas de dados, no entanto, precisam ter a possibilidade de
+exportar os dados completos ou algum recorte da população para
+planilhas. Existem muitos exemplos de páginas úteis para cientistas de
+dados, como IpeaData, Datasus, IBGE, entre outros.
+
+Também é possível utilizar APIs (Application Programming Interfaces)
+para obter dados de \emph{tweets}, publicações no Facebook, entre
+outros. O importante é notar que os sistemas voltados para análise de
+dados são em sua maioria voltados para extração de informações de muitos
+indivíduos. Os dados são organizados para análise e não para consulta
+individual. Muitas vezes é necessário limpar a base, mas isso faz parte
+do fluxo da ciência de dados (\citet{wickham2016r}).
+
+Na área do direito, o pesquisador fica numa situação complicada. Precisa
+de dados da população toda (ou pelo menos de uma amostra), com linhas e
+colunas, numa planilha padronizada. Mas tudo o que consegue encontrar
+são documentos individuais, listagens de processos, páginas web e
+arquivos PDF.
+
+Muitas vezes os dados estão em páginas web, disponíveis, mas é muito
+demorado buscar todos os casos que precisamos manualmente ou através de
+ofícios. Por isso, construímos \emph{web scrapers}, que são robôs que
+baixam as páginas automaticamente e depois as tranformam em dados
+estruturados.
+
+Na jurimetria é essencial saber utilizar web scrapers, ou ao menos
+conhecer alguém que saiba usar. As pesquisas realizadas pela ABJ foram
+fortemente influenciadas por essas ferramentas. Sem elas, não teríamos
+metade dos dados e estudos que temos hoje.
+
+No entanto, são raros os profissionais que dominam esse conhecimento. A
+ABJ disponibiliza abertamente todo seu aparato técnico\footnote{Disponíveis
+  nos links: \url{https://github.com/abjur} (códigos genéricos da ABJ),
+  \url{https://github.com/courtsbr} (web scrapers), e
+  \url{https://github.com/decryptr} (ferramentas para quebrar CAPTCHAs).},
+mas as ferramentas não são capazes de resolver qualquer problema. E os
+sistemas dos Tribunais não ajudam: colocam impedimentos técnicos de
+acesso e captchas (aqueles textos que vêm em imagem para verificar se
+você não é um robô), que atrapalham e muito o trabalho.
+
+Existem muitos exemplos em que simplesmente não é possível obter as
+informações que precisamos. Isso é até irônico, já que (quase) todos os
+processos são públicos. Em muitos casos a única forma de driblar o
+problema é utilizar a Lei de Acesso à Informação, que é ótima mas nos
+torna agentes passivos nas pesquisas e congestiona os setores
+administrativos dos Tribunais.
+
+Mais interessante do que caçar e estruturar dados, seria resolver o
+problema na sua raiz. A solução envolve modificar os sites dos
+Tribunais, permitindo extrações de dados e disponibilizr APIs que
+permitam que pesquisadores busquem as informações públicas de maneira
+segura e organizada.
+
+Essas ferramentas são simples de construir para entidades como
+Tribunais, que têm grandes equipes de Tecnologia da Informação. Além
+disso, essas soluções não causariam impactos negativos nos sistemas dos
+tribunais. Pelo contrário: ao permitir que os dados sejam baixados dessa
+forma, é possível controlar o volume de dados transferido por unidade de
+tempo, evitando que os servidores fiquem sobrecarregados.
+
+A ABJ tem atuado com força na campanha de abertura de dados do
+judiciário, construindo ferramentas, organizando eventos, ministrando
+cursos e fazendo contatos políticos. Acreditamos que num futuro próximo
+o Brasil será referência mundial na abertura de dados do Judiciário.
+
+## Sugestões de novas pesquisas {#sugestoes-de-novas-pesquisas}
+
+É próprio e inclusive esperado da pesquisa apresentada que o
+levantamento de dados provoque novos questionamentos a respeito de
+problemas até então insuspeitos. Cada resposta traz consigo novas
+perguntas.
+
+Ao elaborar os relatórios procuramos incluir algumas questões não
+diretamente ligadas ao problema da justiça consumerista, mas que
+intuíamos àquela altura estarem ligadas a outras questões sensíveis ao
+tema.
+
+Os resultados apresentados, apesar de não serem conclusivos, são
+suficientemente significativos para que as autoridades responsáveis se
+preocupem em investigá- los com maior profundidade nas próximas
+pesquisas.
+
+A recomendação final é, portanto, a realização de novas pesquisas sobre
+pontos importantes que afetam a administração do judiciário. Sem
+prejuízo de outras temáticas, os quatro tópicos abaixo nos pareceram
+importantes.
+
+## Pesquisas realizadas localmente {#pesquisas-realizadas-localmente}
+
+Reduzir a cobertura nacional da pesquisa, e aumentar a quantidade de
+observações dentro de cada região. Em todas as pesquisas empíricas no
+direito, fica claro que locais com diferentes estruturas administrativas
+e diferentes culturas influenciam muito nas características dos
+processos (\citet{abj2015}). Uma alternativa para
+solucionar esse problema seria realizar uma amostra aleatória de varas e
+estudá-las de forma aprofundada, buscando conhecer e controlar a
+variabilidade. No entanto, é difícil controlar essa variabilidade a
+nível nacional, pois cada visita às varas pode incorrer em custos e
+tempo dispendido. Por esse motivo, uma sugestão é a realização de
+pesquisas locais, voltadas ao estudo das unidades federativas. Pesquisas
+como essa ainda seriam custosas pelo elevado número de comarcas, mas
+produziriam resultados mais consistentes.
+
+## Pesquisas envolvendo gratuidade judiciária {#pesquisas-envolvendo-gratuidade-judiciaria}
+
+Como observamos na presente pesquisa, um dos processos mais recorrentes
+do direito do consumidor são os casos que envolvem danos morais, um
+assunto processual que tem a intuição de estar associado a uma
+indústria. Por um lado, isso poderia ser explicado pela existência de
+juízes justiceiros, que arbitram valores de indenização altos o
+suficiente para convencer pessoas a litigar. Em outras ocasiões, é
+possível ajuizar litígios que desfavorecem a requerida em prol da
+requerente, além do simples intuito de indenizar um dano sofrido.
+
+Um tópico relevante nesse contexto é a gratuidade judiciária, que tem
+fundamento no princípio constitucional da inafastabilidade do poder
+judiciário (CF, art. 5º, XXXV). A gratuidade também se encontra guarida
+na oferta constitucional de assistência judiciária integral e gratuita
+àqueles que comprovarem insuficiência de recursos (CF, art. 5º, LXXIV).
+
+O objetivo geral dessa pesquisa é comparar os perfis de processos com e
+sem o benefício da justiça gratuita.
+
+As principais métricas de comparação inicialmente propostas foram
+listadas abaixo.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+  Tempo entre a distribuição e sentença ou arquivamento do processo.
+\item
+  Proporção de decisões favoráveis/parcialmente favoráveis.
+\item
+  Valor de indenização do processo e proporção de acordos.
+\item
+  Características socioeconômicas dos autores.
+\end{enumerate}
+
+Esse estudo pode ser usado para testar se realmente faz sentido manter
+as regras para concessão da gratuidade no formato atual.
+
+## Relação entre desenvolvimento e litigiosidade {#relacao-entre-desenvolvimento-e-litigiosidade}
+
+Em 2013 a ABJ organizou seu terceiro Seminário de Jurimetria, onde foi
+discutida a relação entre litigiosidade e desenvolvimento. Essa pesquisa
+teve como intuito alertar a sociedade de que a litigiosidade é
+positivamente associada ao crescimento da população e, por isso,
+poderíamos estar mensurando o efeito de ações para barrar a entrada
+massiva de novos casos de maneira ineficiente.
+
+A litigiosidade pode ser definida de forma como o número de casos novos
+por cem mil habitantes. Já o desenvolvimento pode ser representado por
+diversas variáveis, dentre elas o Índice de Desenvolvimento Humano
+(IDH). A Figura \ref{fig:litig} mostra um gráfico de dispersão entre
+essas duas quantidades, baseando-se nos dados do PNUD (Programa das
+Nações Unidas para o Desenvolvimento) para o IDH em 2010 e o RJN para o
+número de casos novos por cem mil habitantes em 2015. A correlação
+observada nesse caso é de 77\%.
+
+\begin{figure}
+\centering
+\includegraphics{07-conclusoes_files/figure-latex/litig-1.pdf}
+\caption{\label{fig:litig}Gráfico de dispersão do IDH-Médio estadual e
+quantidade de casos novos por cem mil habitantes.}
+\end{figure}
+
+No entanto, sabemos que correlação não implica em causalidade. Existem
+várias explicações possíveis para essas duas variáveis estarem
+associadas. Assim, pode ser que um estado receba um incremento na sua
+renda per capita sem necessariamente aumentar a litigiosidade.
+
+Por isso, seria interessante realizar uma investigação mais aprofundada
+do problema, buscando aferir uma relação causal entre desenvolvimento e
+litigiosidade. Uma alternativa para isso seria ligar bases de dados de
+processos com bases de dados de trabalhadores, como a RAIS (Relação
+Anual de Informações Sociais). Dessa forma, seria possível investigar se
+choques positivos na renda das pessoas aumentariam a probabilidade de
+entrada na justiça.
+
+Se verificada, a relação causal entre desenvolvimento e litigiosidade
+seria útil não só para predizer a demanda futura de processos, mas
+também a definir estratégias direcionadas para redução de litígios.
