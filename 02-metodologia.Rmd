@@ -1,39 +1,64 @@
 # Metodologia
 
+```{r knit, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE,
+                      fig.width = 9, fig.height = 4)
+```
+
+```{r}
+library(tidyverse)
+library(lubridate)
+library(stringr)
+library(forcats)
+library(glue)
+theme_cnj <- function() {
+  theme_bw(14)
+}
+fmt <- function(x) {
+  format(x, big.mark = '.', small.mark = ',',
+         decimal.mark = ',',
+         scientific = FALSE, trim = TRUE)
+}
+fmt_p <- function(x) {
+  if (length(x) == 0) return(character())
+    x <- plyr::round_any(x, scales:::precision(x) / 100)
+    x <- fmt(x * 100)
+    paste0(x, "%")
+}
+fct_lump2 <- function(f, reps) {
+  ord <- order(reps)
+  v <- rep(f, ord)
+  inds <- cumsum(ord)
+  forcats::fct_lump(v, n = 10, other_level = 'Outros')[inds]
+}
+```
+
 Nesse capítulo, descrevemos a metodologia utilizada para solucionar os problemas de cada parte. Na introdução vimos que a pesquisa apresenta uma parte *exploratória* e uma parte *propositiva*. A primeira envolve o levantamento dos maiores litigantes em ações consumeristas e a segunda envolve propor soluções para lidar com o estoque de processos atual e evitar novos casos. 
 
-A pesquisa tem base filosófica pragmática ([@hanson2005mixed]). Isso significa que o foco principal são resultados aplicáveis na sociedade. O rigor metodológico reside principalmente na parte exploratória, especificamente nos métodos estatísticos de análise e inferência.
+A pesquisa tem base filosófica pragmática [@hanson2005mixed]. Isso significa que o foco principal são resultados aplicáveis na sociedade. O rigor metodológico reside principalmente na parte exploratória, especificamente nos métodos estatísticos de análise e inferência.
 
-A pesquisa também busca atender o *princípio da reprodutibilidade* ([@gelman2014bayesian]). Com isso será possível utilizar o material desenvolvido em outros trabalhos, produzindo um efeito maior do que apenas a documentação de resultados.
+A pesquisa também busca atender o *princípio da reprodutibilidade* [@gelman2014bayesian]. Com isso será possível utilizar o material desenvolvido em outros trabalhos, produzindo um efeito maior do que apenas a documentação de resultados.
 
-A metodologia do estudo possui um desenho misto ([@hanson2005mixed], p. 116). Especificamente, utilizamos a técnica de métodos convergentes em paralelo (*convergent parallel methods design*). Nessa abordagem, coletamos e analisamos dados qualitativos e quantitativos em paralelo, confrontando os resultados para gerar interpretações e conclusões. A Figura \@ref(fig:desenho) mostra esquematicamente o desenho utilizado.
+A metodologia do estudo possui um desenho misto (@hanson2005mixed, p. 116). Especificamente, utilizamos a técnica de métodos convergentes em paralelo (*convergent parallel methods design*). Nessa abordagem, coletamos e analisamos dados qualitativos e quantitativos em paralelo, confrontando os resultados para gerar interpretações e conclusões. A Figura \@ref(fig:desenho) mostra esquematicamente o desenho utilizado.
 
-\begin{figure}
-\begin{centering}
-\includegraphics{creswell}
-\caption{Método misto em paralelo convergente (adaptado de \citep{creswell2013research}, p. 270).}
-\label{fig:desenho}
-\end{centering}
-\end{figure}
+```{r desenho, fig.cap="Método misto em paralelo convergente (adaptado de [@creswell2013research], p. 270)."}
+knitr::include_graphics('imgs/creswell.pdf')
+```
 
 A parte exploratória utiliza métodos quantitativos baseados em dados
-observacionais para elucidar o fenômeno de interesse ([@hanson2005mixed], p. 18). Nesse caso, iniciamos com a obtenção de dados para posterior análise e interpretação de resultados. A Figura \@ref(fig:quanti) mostra essa parte de forma esquemática.
+observacionais para elucidar o fenômeno de interesse (@hanson2005mixed, p. 18). Nesse caso, iniciamos com a obtenção de dados para posterior análise e interpretação de resultados. A Figura \@ref(fig:quanti) mostra essa parte de forma esquemática.
 
-\begin{figure}
-\begin{centering}
-\includegraphics[width=\linewidth]{quanti}
-\caption{Metodologia quantitativa. Adaptado de @wickham2016r.}
-\label{fig:quanti}
-\end{centering}
-\end{figure}
+```{r quanti, fig.cap="Metodologia quantitativa. Adaptado de @wickham2016r."}
+knitr::include_graphics('imgs/quanti.pdf')
+```
 
 Já a parte propositiva utiliza tanto métodos quantitativos não-experimentais quanto métodos qualitativos para gerar as proposições. Nesse caso, fizemos entrevistas, levantamentos bibliográficos e levantamento de dados para suportar as argumentações. 
 
-A convergência das duas partes da pesquisa se deu na forma usual, a partir do confrontamento dos resultados levantados ([@creswell2013research], p.118). Os resultados da parte exploratória são utilizados como *inputs* para tomadas de decisão na parte propositiva, com o intuito de i) descartar parte das proposições ou ii) indicar formas de execução das propostas focadas em grupos estratégicos identificados na parte exploratória (e.g. regiões ou tipos empresariais).
+A convergência das duas partes da pesquisa se deu na forma usual, a partir do confrontamento dos resultados levantados (@creswell2013research, p.118). Os resultados da parte exploratória são utilizados como *inputs* para tomadas de decisão na parte propositiva, com o intuito de i) descartar parte das proposições ou ii) indicar formas de execução das propostas focadas em grupos estratégicos identificados na parte exploratória (e.g. regiões ou tipos empresariais).
 
 A seguir, descrevemos a metodologia em maior detalhe. A Seção \@ref(parte-exploratoria) contempla os métodos de obtenção e análise dos dados. A Seção \ref(@parte-propositiva) descreve as atividades realizadas da parte propositiva.
 
-## Parte exploratória} {#parte-exploratoria}
+## Parte exploratória {#parte-exploratoria}
 
 Nessa parte da metodologia, utilizamos dados e informações de outras pesquisas para resolver algumas questões de escopo e direcionamento da pesquisa. Especificamente, trabalhamos i) a direção da pesquisa; ii) a situação atual; iii) a execução dos trabalhos; iv) a validação dos resultados.
 
@@ -55,234 +80,358 @@ O tema de interesse da pesquisa é a **administração judiciária**. Especifica
 1. Monitorar o índice de conciliação.
 
 Não há interesse em estudar a quantidade de casos novos por magistrado ou servidor. As contagens de magistrados e servidores foram fixadas para simplificar
-a análise. Também não monitoramos recorribilidade interna por simplicidade.
+a análise. Também por simplicidade não monitoramos recorribilidade interna.
 
 O índice de conciliação, por sua vez, está correlacionado a outros índices de interesse. Na pesquisa, não foi possível obter evidências para afirmar se há interesse em aumentar, reduzir ou manter os valores atuais dessa métrica.
 
 As ações estratégicas focaram nos maiores litigantes em casos consumeristas pois soluções para essa subpopulação implicam em efeitos significativos para toda a Justiça Brasiliera. Essa afirmação foi feita inicialmente sob a hipótese de que casos consumeristas representam uma quantidade relevante do total de casos. Essa hipótese foi validada após extração e levantamento dos dados.
 
-### Resumo da situação atual}{#resumo-da-situacao-atual}
+### Resumo da situação atual {#resumo-da-situacao-atual}
 
-Começamos o estudo com um levantamento baseado no Relatório Justiça em Números (RJN), ano base 2015, que utiliza dados enviados pelos tribunais referentes ao ano de 2015. Essa análise tem como objetivo dar uma visão geral do que estamos enfrentando e quais são os passos.
+Começamos o estudo com um levantamento baseado no Relatório Justiça em Números 2016 (RJN), que utiliza dados enviados pelos tribunais referentes ao ano de 2015. A presente análise tem como objetivo dar uma visão geral do que estamos enfrentando e quais são os passos.
 
-O presente estudo preliminar considerou somente as métricas de
-litigiosidade do RJN: os casos novos, os casos pendentes e a quantidade
-de processos baixados. Os casos pendentes refletem a situação atual do
-judiciário; os casos novos relacionam-se com a demanda futura e os
-processos baixados referem-se à eficácia.
+O estudo preliminar considerou somente as métricas de litigiosidade do RJN: os casos novos, os casos pendentes e a quantidade de processos baixados. Os casos pendentes refletem a situação atual do judiciário; os casos novos relacionam-se com a demanda futura e os processos baixados referem-se à eficácia.
 
-A Tabela \ref{tab:jntot} mostra a quantidade de casos novos e pendentes
-por ramo da Justiça. É possível observar que a Justiça Estadual foi
-responsável por quase 70\% dos casos novos e quase 80\% dos casos
-pendentes. Isso mostra que, para fins de administração do judiciário,
-faz sentido considerar a Justiça Estadual como foco.
+```{r dados}
+dados <- rjn::d_jn$dados[["JN_18-Out-2016.csv"]]
+```
 
-\begin{table}
+A Tabela \@ref(tab:jntot) mostra a quantidade de casos novos e pendentes por ramo da Justiça. É possível observar que a Justiça Estadual foi responsável por quase 70% dos casos novos e quase 80% dos casos pendentes. Isso mostra que, para fins de administração do judiciário, faz sentido considerar a Justiça Estadual como foco principal.
 
-\caption{\label{tab:jntot}Casos novos e casos pendentes por Justiça.}
-\centering
-\begin{tabular}[t]{lrr}
-\hline
-Justiça & Casos Novos & Casos Pendentes\\
-\hline
-Justiça Estadual & 18.911.657 (69,3\%) & 59.030.179 (79,8\%)\\
-Justiça do Trabalho & 4.058.477 (14,9\%) & 5.049.890 (6,8\%)\\
-Justiça Federal & 3.662.876 (13,4\%) & 9.073.741 (12,3\%)\\
-Outros & 648.152 (2,4\%) & 783.485 (1,1\%)\\
-\hline
-Total & 27.281.162 (100,0\%) & 73.937.295 (100,0\%)\\
-\hline
-\end{tabular}
-\end{table}
+```{r jntot}
+dados %>% 
+  filter(ano == 2015, str_detect(dsc_tribunal, '^Just|Super')) %>% 
+  mutate_at(vars(cn, cp), funs(as.numeric)) %>% 
+  select(dsc_tribunal, cn, cp) %>%
+  mutate(dsc_tribunal = fct_other(dsc_tribunal,
+                                  keep = c('Justiça Estadual', 
+                                           'Justiça do Trabalho',
+                                           'Justiça Federal'),
+                                  other_level = 'Outros')) %>% 
+  group_by(dsc_tribunal) %>% 
+  summarise(total_n = sum(cn), total_p = sum(cp)) %>% 
+  arrange(desc(total_n)) %>% 
+  janitor::adorn_totals("row") %>% 
+  mutate(prop_n = total_n / sum(total_n) * 2,
+         prop_p = total_p / sum(total_p) * 2) %>% 
+  transmute(
+    Justiça = dsc_tribunal,
+    `Casos Novos` = sprintf("%s (%s)", fmt(total_n), fmt_p(prop_n)),
+    `Casos Pendentes` = sprintf("%s (%s)", fmt(total_p), fmt_p(prop_p))
+  ) %>% 
+  knitr::kable(align = 'lrr', caption = "Casos novos e casos pendentes por Justiça.")
+```
 
-A Tabela \ref{tab:inst} mostra o volume de casos novos e pendentes
-dentro da Justiça Estadual, por instância. Observe que o volume de casos
-pendentes no primeiro grau, somado ao volume nos Juizados Especiais,
-representam mais de 96\% do total. Logo, um segundo filtro adequado é o
-da instância.
+A Tabela \ref(tab:inst) mostra o volume de casos novos e pendentes dentro da Justiça Estadual, por instância. Observe que o volume de casos pendentes no primeiro grau, somado ao volume nos Juizados Especiais, representam mais de 96% do total. Logo, um segundo filtro adequado é o da instância.
 
-\begin{table}
+```{r inst}
+dados %>%
+  filter(justica == 'Estadual', sigla != 'TJ') %>% 
+  select(sigla, ano, cn1, cn2, cp1, cp2, cnje, cntr, cpje, cptr) %>%
+  mutate_at(vars(-sigla), funs(as.numeric)) %>% 
+  group_by(sigla) %>% 
+  # mutate_all(funs(if_else(is.na(.), round(mean(., na.rm = TRUE)), .))) %>% 
+  mutate_all(funs(if_else(is.na(.), 0, .))) %>% 
+  ungroup() %>% 
+  filter(ano == 2015) %>% 
+  select(-sigla, -ano) %>% 
+  summarise_all(sum) %>% 
+  gather() %>% 
+  separate(key, c('tipo', 'inst'), sep = 2) %>% 
+  mutate(tipo = case_when(
+    tipo == 'cn' ~ 'total_n',
+    tipo == 'cp' ~ 'total_p'
+  )) %>%
+  mutate(inst = case_when(
+    inst == '1' ~ 'Primeiro Grau',
+    inst == '2' ~ 'Segundo Grau',
+    inst == 'je' ~ 'Juizados Especiais',
+    inst == 'tr' ~ 'Turmas Recursais'
+  )) %>%
+  spread(tipo, value) %>% 
+  arrange(desc(total_p)) %>% 
+  janitor::adorn_totals("row") %>% 
+  mutate(prop_n = total_n / sum(total_n) * 2,
+         prop_p = total_p / sum(total_p) * 2) %>% 
+  transmute(
+    `Grau` = inst,
+    `Casos Novos` = sprintf("%s (%s)", fmt(total_n), fmt_p(prop_n)),
+    `Casos Pendentes` = sprintf("%s (%s)", fmt(total_p), fmt_p(prop_p))
+  ) %>% 
+  knitr::kable(align = 'lrr', caption = "Casos novos e casos pendentes por grau. TJAM não enviou dados da segunda instância no ano de 2015. Nesse caso, consideramos esse valor como zero.")
+```
 
-\caption{\label{tab:inst}Casos novos e casos pendentes por grau. O TJAM não enviou dados da segunda instância no ano de 2015. Nesse caso, consideramos esse valor como zero.}
-\centering
-\begin{tabular}[t]{lrr}
-\hline
-Grau & Casos Novos & Casos Pendentes\\
-\hline
-Primeiro Grau & 11.260.388 (59,5\%) & 50.758.784 (86,0\%)\\
-Juizados Especiais & 4.704.551 (24,9\%) & 6.050.859 (10,3\%)\\
-Segundo Grau & 2.313.907 (12,2\%) & 1.695.955 (2,9\%)\\
-Turmas Recursais & 632.811 (3,3\%) & 524.581 (0,9\%)\\
-\hline
-Total & 18.911.657 (100,0\%) & 59.030.179 (100,0\%)\\
-\hline
-\end{tabular}
-\end{table}
+O terceiro filtro aplicado relaciona-se com as áreas processuais criminal e não criminal. A Tabela \ref(tab:crim) mostra a quantidade de casos novos e pendentes no primeiro grau e nos Juizados especiais, comparando as duas áreas. A área não criminal é responsável por 88% dos casos pendentes. Mesmo com todos os filtros aplicados, ainda estamos com uma subpopulação de mais de 50 milhões de casos pendentes.
 
-O terceiro filtro aplicado relaciona-se com as áreas processuais cível
-ou criminal. A Tabela \ref{tab:crim} mostra a quantidade de casos novos
-e pendentes no primeiro grau e nos Juizados especiais, comparando as
-duas áreas. A área cível é responsável por 88\% dos casos pendentes.
-Mesmo com todos os filtros aplicados, ainda estamos com uma subpopulação
-de mais de 50 milhões de casos pendentes.
+```{r crim}
+dados %>% 
+  filter(justica == 'Estadual', sigla != 'TJ') %>% 
+  select(
+    sigla, ano,
+    # casos pendentes
+    ## nao criminais
+    cpcncrim1, cpcncrimje, 
+    cpext1, exejudpncrim1, cpextje, exejudpncrimje,
+    ## criminais
+    cpccrim1, cpccrimje, 
+    exejudpcrimpl1, exejudpcrimnpl1, exejudpcrimnplje,
+    # casos novos
+    ## nao criminais
+    cncncrim1, cncncrimje, 
+    cnext1, exejudncrim1, cnextje, exejudncrimje,
+    ## criminais
+    cnccrim1, cnccrimje, 
+    exejudcrimpl1, exejudcrimnpl1, exejudcrimnplje
+  ) %>% 
+  mutate_at(vars(-sigla), funs(as.numeric)) %>% 
+  group_by(sigla) %>% 
+  # mutate_all(funs(if_else(is.na(.), round(mean(., na.rm = TRUE)), .))) %>% 
+  mutate_all(funs(if_else(is.na(.), 0, .))) %>% 
+  ungroup() %>% 
+  filter(ano == 2015) %>% 
+  select(-sigla, -ano) %>% 
+  summarise_all(sum) %>%
+  mutate(
+    cpcrim = cpccrim1 + cpccrimje + 
+      exejudpcrimpl1 + exejudpcrimnpl1 + exejudpcrimnplje,
+    cncrim = cnccrim1 + cnccrimje + 
+      exejudcrimpl1 + exejudcrimnpl1 + exejudcrimnplje,
+    cpncrim = cpcncrim1 + cpcncrimje + 
+      cpext1 + exejudpncrim1 + cpextje + exejudpncrimje,
+    cnncrim = cncncrim1 + cncncrimje + 
+      cnext1 + exejudncrim1 + cnextje + exejudncrimje
+  ) %>% 
+  select(cpcrim, cncrim, cpncrim, cnncrim) %>% 
+  gather() %>% 
+  separate(key, c('tipo', 'inst'), sep = 2) %>% 
+  mutate(tipo = case_when(
+    tipo == 'cn' ~ 'total_n',
+    tipo == 'cp' ~ 'total_p'
+  )) %>%
+  mutate(inst = case_when(
+    inst == 'ncrim' ~ 'Não criminal',
+    inst == 'crim' ~ 'Criminal'  
+  )) %>%
+  spread(tipo, value) %>% 
+  arrange(desc(total_p)) %>% 
+  janitor::adorn_totals("row") %>% 
+  mutate(prop_n = total_n / sum(total_n) * 2,
+         prop_p = total_p / sum(total_p) * 2) %>% 
+  transmute(
+    `Área` = inst,
+    `Casos Novos` = sprintf("%s (%s)", fmt(total_n), fmt_p(prop_n)),
+    `Casos Pendentes` = sprintf("%s (%s)", fmt(total_p), fmt_p(prop_p))
+  ) %>% 
+  knitr::kable(align = 'lrr', caption = "Casos novos e casos pendentes por área, dentro do primeiro grau ou Juizado Especial. TJPI não enviou alguns dados de Juizados Especiais no ano de 2015. Nesse caso, consideramos esse valor como zero.")
+```
 
-\begin{table}
+O próximo filtro é baseado no problema da execução fiscal. Para fins de administração dos tribunais, existem dois tipos de processos principais: execução fiscal e outros. Esses casos são muito relevantes em volume processual, especialmente na Justiça Estadual.
 
-\caption{\label{tab:crim}Casos novos e casos pendentes por área, dentro do primeiro grau ou Juizado Especial. TJPI não enviou alguns dados de Juizados Especiais no ano de 2015. Nesse caso, consideramos esse valor como zero.}
-\centering
-\begin{tabular}[t]{lrr}
-\hline
-Área & Casos Novos & Casos Pendentes\\
-\hline
-Não criminal & 13.690.386 (85,8\%) & 50.055.413 (88,1\%)\\
-Criminal & 2.274.553 (14,2\%) & 6.754.230 (11,9\%)\\
-\hline
-Total & 15.964.939 (100,0\%) & 56.809.643 (100,0\%)\\
-\hline
-\end{tabular}
-\end{table}
+A Tabela \@ref(tab:fiscal) mostra a quantidade de casos novos e pendentes não criminais no primeiro grau e nos Juizados especiais, comparando execuções fiscais com todo o resto. Metade dos casos pendentes são de execução fiscal, enquanto que somente 16\% dos casos novos são de execução fiscal. Isso indica que, além de volumosos, os casos de execução fiscal apresentam alta taxa de congestionamento. Uma análise mais aprofundada do tema foi descrita no Relatório Justiça em Números.
 
-O próximo filtro é baseado no problema da execução fiscal. Para fins de
-administração dos tribunais brasileiros, existem dois tipos de processos
-principais: execução fiscal e outros. Esses casos são muito relevantes
-em volume processual, especialmente na Justiça Estadual.
+Nesse momento foi feita uma importante decisão de escopo: estudar apenas os casos não criminais e não relacionados à execução fiscal. Agora, nossa população de casos pendentes tem aproximadamente 25 milhões de processos.
 
-A Tabela \ref{tab:fiscal} mostra a quantidade de casos novos e pendentes
-cíveis no primeiro grau e nos Juizados especiais, comparando execuções
-fiscais com todo o resto. Metade dos casos pendentes são de execução
-fiscal, enquanto que somente 16\% dos casos novos são de execução
-fiscal. Isso indica que, além de volumosos, os casos de execução fiscal
-apresentam alta taxa de congestionamento. Uma análise mais aprofundada
-do tema foi descrita no Relatório Justiça em Números.
-
-Nesse momento foi feita uma importante decisão de escopo: estudar apenas
-os casos cíveis não relacionados à execução fiscal. Agora, nossa
-população de casos pendentes tem aproximadamente 25 milhões de
-processos.
-
-\begin{table}
-
-\caption{\label{tab:fiscal}Casos novos e casos pendentes cíveis por tipo de processo, dentro do primeiro grau ou Juizado Especial. TJPI não enviou alguns dados de Juizados Especiais no ano de 2015. Nesse caso, consideramos esse valor como zero.}
-\centering
-\begin{tabular}[t]{lrr}
-\hline
-Tipo de processo & Casos Novos & Casos Pendentes\\
-\hline
-Execução fiscal & 2.161.918 (15,8\%) & 25.009.802 (50,0\%)\\
-Conhecimento & 9.575.834 (69,9\%) & 19.493.666 (38,9\%)\\
-Execução judicial ou extrajud. não fiscal & 1.952.634 (14,3\%) & 5.551.945 (11,1\%)\\
-\hline
-Total & 13.690.386 (100,0\%) & 50.055.413 (100,0\%)\\
-\hline
-\end{tabular}
-\end{table}
+```{r fiscal}
+dados %>% 
+  filter(justica == 'Estadual', sigla != 'TJ') %>% 
+  select(
+    sigla, ano,
+    # casos pendentes
+    ## nao criminais
+    cpcncrim1, cpcncrimje, 
+    cpextfisc1, cpextnfisc1, exejudpncrim1, cpextje, exejudpncrimje,
+    ## criminais
+    cpccrim1, cpccrimje, 
+    exejudpcrimpl1, exejudpcrimnpl1, exejudpcrimnplje,
+    # casos novos
+    ## nao criminais
+    cncncrim1, cncncrimje, 
+    cnextfisc1, cnextnfisc1, exejudncrim1, cnextje, exejudncrimje,
+    ## criminais
+    cnccrim1, cnccrimje, 
+    exejudcrimpl1, exejudcrimnpl1, exejudcrimnplje
+  ) %>% 
+  mutate_at(vars(-sigla), funs(as.numeric)) %>% 
+  group_by(sigla) %>% 
+  # mutate_all(funs(if_else(is.na(.), round(mean(., na.rm = TRUE)), .))) %>% 
+  mutate_all(funs(if_else(is.na(.), 0, .))) %>% 
+  ungroup() %>% 
+  filter(ano == 2015) %>% 
+  select(-sigla, -ano) %>% 
+  summarise_all(sum) %>%
+  transmute(
+    cpfisc = cpextfisc1,
+    cnfisc = cnextfisc1,
+    cpjud = cpextnfisc1 + exejudpncrim1 + cpextje + exejudpncrimje,
+    cnjud = cnextnfisc1 + exejudncrim1 + cnextje + exejudncrimje,
+    cpcon = cpcncrim1 + cpcncrimje,
+    cncon = cncncrim1 + cncncrimje
+  ) %>% 
+  gather() %>% 
+  separate(key, c('tipo', 'inst'), sep = 2) %>% 
+  mutate(tipo = case_when(
+    tipo == 'cn' ~ 'total_n',
+    tipo == 'cp' ~ 'total_p'
+  )) %>%
+  mutate(inst = case_when(
+    inst == 'con' ~ 'Conhecimento',
+    inst == 'jud' ~ 'Execução judicial ou extrajudicial não fiscal',
+    inst == 'fisc' ~ 'Execução fiscal'  
+  )) %>%
+  spread(tipo, value) %>% 
+  arrange(desc(total_p)) %>% 
+  janitor::adorn_totals("row") %>% 
+  mutate(prop_n = total_n / sum(total_n) * 2,
+         prop_p = total_p / sum(total_p) * 2) %>% 
+  transmute(
+    `Tipo de processo` = inst,
+    `Casos Novos` = sprintf("%s (%s)", fmt(total_n), fmt_p(prop_n)),
+    `Casos Pendentes` = sprintf("%s (%s)", fmt(total_p), fmt_p(prop_p))
+  ) %>% 
+  knitr::kable(align = 'lrr', caption = "Casos novos e casos pendentes não criminais por tipo de processo, dentro do primeiro grau ou Juizado Especial. TJPI não enviou alguns dados de Juizados Especiais no ano de 2015. Nesse caso, consideramos esse valor como zero.")
+```
 
 Nesse cenário, surgem as perguntas:
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
+1. Qual o perfil dos casos pendentes?
+1. Que estratégias podem ser adotadas para encerrar esses casos?
+1. Como evitar a entrada de casos desnecessários dentro dos quase 10 milhões anuais?
 
-\item
-  Qual o perfil dos casos pendentes?
-\item
-  Que estratégias podem ser adotadas para encerrar esses casos?
-\item
-  Como evitar a entrada de casos desnecessários dentro desses quase 10
-  milhões anuais?
-\end{enumerate}
-
-Para isso, vamos realizar novos filtros e considerar o conteúdo dos
-processos, não somente o volume. Nosso objetivo é identificar os tipos
-processuais mais frequentes.
+Para investigar as dúvidas de forma efetiva, seria necessário estudar os assuntos dos processos e as partes envolvidas. Infelizmente até hoje não existem bases públicas com esses dados e, por isso, consideramos novos filtros. Como tais filtros envolvem extração e arrumação de dados, é necessário definir uma estratégia adequada para sua obtenção. Em seguida, descrevemos em detalhes a estratégia adotada na presente pesquisa.
 
 ### Execução dos trabalhos {#execucao-dos-trabalhos}
 
-O próximo filtro aplicado considera algumas UFs
-de interesse. Esse filtro não está relacionado com a população-alvo da
-pesquisa, pois as conclusões e propostas devem ser aplicáveis a todos os
-tribunais estaduais. No entanto, um corte no escopo foi feito para
-garantir que a pesquisa seria exequível.
+O próximo filtro aplicado considera algumas UFs de interesse. Esse filtro não está relacionado com a população-alvo da pesquisa, pois as conclusões e propostas devem ser aplicáveis a todos os tribunais estaduais. No entanto, um corte no escopo foi feito para garantir que a pesquisa seria exequível.
 
-Outro detalhe importante é que esse corte em especial não foi pensado
-unicamente pelo volume processual. Nesse caso, consideramos também a
-necessidade de incluir pelo menos uma UF por região brasilera, além de
-considerar tribunais de todos os portes.
+Outro detalhe importante é que o corte regional não foi pensado unicamente pelo volume processual. Nesse caso, consideramos também a necessidade de incluir pelo menos uma UF por região brasilera, além de considerar tribunais de todos os portes.
 
-A escolha dos Tribunais Estaduais foi baseada em três critérios: i) a
-abrangência geográfica; ii) a necessidade de escolha de dois Tribunais
-de cada porte; e iii) a possibilidade de contemplar estados responsáveis
-por considerável proporção dos litígios em cada região.
+A escolha dos Tribunais Estaduais foi baseada em três critérios: i) a abrangência geográfica; ii) a necessidade de escolha de dois Tribunais de cada porte; e iii) a possibilidade de contemplar UFs responsáveis por considerável proporção dos litígios em cada região.
 
-Para proporcionar um estudo adequado, foi necessário incluir sete
-Unidades Federativas para execução da pesquisa: São Paulo, Rio de
-Janeiro, Rio Grande do Sul, Bahia, Distrito Federal, Mato Grosso do Sul
-e Amazonas. Isso aconteceu pois, como existem cinco regiões e um mínimo
-de seis Unidades Federativas para avaliação, tem-se somente um grau de
-liberdade para escolha de estados. No entanto, é de extrema importância
-considerar o Tribunal do Distrito Federal e Territórios como parte do
-estudo, pelas suas peculiaridades, além de um outro Tribunal da região
-Centro-oeste. Por outro lado, é sabido que a região Sudeste é
-responsável por grande parte dos litígios em ações consumeristas, e
-poderia ser ruim considerar apenas uma Unidade Federativa nesta região.
-Por isso, foi necessário considerar o TJDFT e dois tribunais do Sudeste,
-além de um Tribunal para cada região do Brasil.
+Para proporcionar um estudo adequado, foi necessário incluir sete Unidades Federativas para execução da pesquisa: São Paulo, Rio de Janeiro, Rio Grande do Sul, Bahia, Distrito Federal, Mato Grosso do Sul e Amazonas. Isso aconteceu pois, como existem cinco regiões e um mínimo de seis Unidades Federativas para avaliação, tem-se somente um grau de liberdade para escolha de UFs. No entanto, é de extrema importância considerar o Tribunal do Distrito Federal e Territórios como parte do estudo, pelas suas peculiaridades, além de um outro Tribunal da região Centro-oeste. Por outro lado, é sabido que a região Sudeste é responsável por grande parte dos litígios em ações consumeristas, e seria ruim considerar apenas uma UF nesta região. Por isso, foi necessário considerar o TJDFT e dois tribunais do Sudeste, além de um Tribunal para cada região do Brasil.
 
-Durante a primeira fase do projeto, produzimos um ofício com pedidos de
-listagens de processos, contendo diversas variáveis e especificações. Os
-resultados das extrações foram descritos em Subseções próprias.
+Durante a primeira fase do projeto, produzimos um ofício com pedidos de listagens de processos, contendo diversas variáveis e especificações. Os resultados das extrações foram descritos em subseções próprias. No final, acabamos considerando o TJMT no lugar do TJMS por conta da disponibilidade dos dados. Dessa forma, a pesquisa ficou com um tribunal de pequeno porte, três de médio porte e três de grande porte.
 
-No final, acabamos considerando o TJMT no lugar do TJMS por conta da disponibilidade dos dados. Dessa forma, a pesquisa ficou apenas com um tribunal de pequeno porte, três de médio porte e três de grande porte.
+A Tabela \@ref(tab:tabuf) mostra a quantidade de casos novos e pendentes não criminais de conhecimento no primeiro grau para cada Tribunal escolhido. Já a Figura \@ref(fig:tempo) mostra o volume de casos novos e pendentes ao longo dos anos. Observa-se que as quantidades não são estáveis, mesmo considerando Tribunais de grande porte.
 
-A Tabela \ref{tab:tabuf} mostra a quantidade de casos novos e pendentes
-cíveis de conhecimento no primeiro grau para cada Tribunal escolhido. Já
-a Figura \ref{fig:tempo} mostra o volume de casos novos e pendentes ao
-longo dos anos. Observa-se que as quantidades não são estáveis, mesmo
-considerando Tribunais de grande porte.
+```{r tabuf}
+data(cadmun, package = 'abjData')
+cadmun <- distinct(cadmun, uf, regiao)
+dados %>% 
+  filter(justica == 'Estadual', sigla != 'TJ') %>% 
+  mutate(uf = str_sub(sigla, 3, 4)) %>% 
+  inner_join(cadmun, 'uf') %>% 
+  select(
+    sigla, ano, regiao, porte,
+    # casos pendentes
+    ## nao criminais
+    cpcncrim1, cpcncrimje, 
+    cpextfisc1, cpextnfisc1, exejudpncrim1, cpextje, exejudpncrimje,
+    # casos novos
+    ## nao criminais
+    cncncrim1, cncncrimje, 
+    cnextfisc1, cnextnfisc1, exejudncrim1, cnextje, exejudncrimje
+  ) %>% 
+  mutate_at(vars(-sigla, -regiao, -porte), funs(as.numeric)) %>% 
+  group_by(sigla) %>% 
+  # mutate_all(funs(if_else(is.na(.), round(mean(., na.rm = TRUE)), .))) %>% 
+  mutate_if(is.numeric, funs(if_else(is.na(.), 0, .))) %>% 
+  ungroup() %>% 
+  filter(ano == 2015) %>% 
+  select(-ano) %>% 
+  transmute(
+    inst = sigla, 
+    regiao = regiao,
+    porte = porte,
+    total_p = cpcncrim1 + cpcncrimje +
+      cpextnfisc1 + exejudpncrim1 + cpextje + exejudpncrimje,
+    total_n = cncncrim1 + cncncrimje +
+      cnextnfisc1 + exejudncrim1 + cnextje+ exejudncrimje
+  ) %>% 
+  arrange(desc(total_p)) %>% 
+  unite(janitor, inst, regiao, porte) %>% 
+  janitor::adorn_totals("row") %>%
+  separate(janitor, c('inst', 'regiao', 'porte'), sep = '_') %>% 
+  mutate(soma_n = sum(total_n) / 2, soma_p = sum(total_p) / 2) %>% 
+  mutate(prop_n = total_n / soma_n,
+         prop_p = total_p / soma_p) %>% 
+  filter(inst %in% c('TJSP', 'TJMT', 'TJRS', 'TJRJ', 'TJDFT',
+                     'TJAM', 'TJBA')) %>% 
+  unite(janitor, inst, regiao, porte) %>% 
+  janitor::adorn_totals("row") %>%
+  separate(janitor, c('inst', 'regiao', 'porte'), sep = '_') %>%
+  transmute(
+    `Tribunal` = inst,
+    `Região` = regiao,
+    `Porte` = porte,
+    `Casos Novos` = sprintf("%s (%s)", fmt(total_n), fmt_p(prop_n)),
+    `Casos Pendentes` = sprintf("%s (%s)", fmt(total_p), fmt_p(prop_p))
+  ) %>% 
+  knitr::kable(align = 'lllrr', 
+               caption = "Casos novos e casos pendentes cíveis por tribunal. Os porcentuais foram calculados em relação ao total de casos considerando todos os Tribunais.")
+```
 
-\begin{table}
+```{r tempo, fig.height=5, fig.cap="Volume de casos novos e pendentes ao longo do tempo nos tribunais de interesse."}
+data(cadmun, package = 'abjData')
+cadmun <- distinct(cadmun, uf, regiao)
+dados %>% 
+  filter(justica == 'Estadual', sigla != 'TJ') %>% 
+  mutate(uf = str_sub(sigla, 3, 4)) %>% 
+  inner_join(cadmun, 'uf') %>% 
+  select(
+    sigla, ano, regiao, porte,
+    # casos pendentes
+    ## nao criminais
+    cpcncrim1, cpcncrimje, 
+    cpextfisc1, cpextnfisc1, exejudpncrim1, cpextje, exejudpncrimje,
+    # casos novos
+    ## nao criminais
+    cncncrim1, cncncrimje, 
+    cnextfisc1, cnextnfisc1, exejudncrim1, cnextje, exejudncrimje
+  ) %>% 
+  mutate_at(vars(-sigla, -regiao, -porte), funs(as.numeric)) %>% 
+  group_by(sigla) %>% 
+  # mutate_all(funs(if_else(is.na(.), round(mean(., na.rm = TRUE)), .))) %>% 
+  mutate_if(is.numeric, funs(if_else(is.na(.), 0, .))) %>% 
+  ungroup() %>% 
+  transmute(
+    inst = sigla, 
+    regiao = regiao,
+    ano = ano,
+    porte = porte,
+    total_p = cpcncrim1 + cpcncrimje +
+      cpextnfisc1 + exejudpncrim1 + cpextje + exejudpncrimje,
+    total_n = cncncrim1 + cncncrimje +
+      cnextnfisc1 + exejudncrim1 + cnextje+ exejudncrimje
+  ) %>% 
+  filter(inst %in% c('TJSP', 'TJMT', 'TJRS', 'TJRJ', 
+                     'TJDFT', 'TJAM', 'TJBA')) %>% 
+  gather(tipo, total, total_p, total_n) %>% 
+  mutate(tipo = case_when(
+    tipo == 'total_p' ~ 'Casos Pendentes', TRUE ~ 'Casos Novos'
+  )) %>% {(aux <<- .)} %>% 
+  ggplot(aes(x = ano, y = total/1e3, linetype = porte, group = inst)) +
+  geom_line() +
+  geom_text(aes(label = inst), data = filter(aux, ano == 2009),
+            nudge_x = .3, vjust = -.6, size = 3) +
+  facet_wrap(~ tipo + porte, scales = 'free_y', 
+             labeller = function(x) label_value(x, multi_line = FALSE)) +
+  scale_x_continuous(breaks = 2000:2020) +
+  labs(x = '', y = 'Quantidade (milhares)', colour = 'Tribunal') +
+  theme_minimal(16) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        axis.title.x = element_blank(),
+        legend.position = 'bottom')
+```
 
-\caption{\label{tab:tabuf}Casos novos e casos pendentes cíveis por tribunal. Os porcentuais foram calculados em relação ao total de casos considerando todos os Tribunais.}
-\centering
-\begin{tabular}[t]{lllrr}
-\hline
-Tribunal & Região & Porte & Casos Novos & Casos Pendentes\\
-\hline
-TJSP & Sudeste & Grande & 2.627.933 (22,8\%) & 5.598.215 (22,4\%)\\
-TJRJ & Sudeste & Grande & 1.421.339 (12,3\%) & 3.668.819 (14,6\%)\\
-TJRS & Sul & Grande & 897.469 (7,8\%) & 1.663.453 (6,6\%)\\
-TJBA & Nordeste & Médio & 404.084 (3,5\%) & 1.044.163 (4,2\%)\\
-TJMT & Centro-Oeste & Médio & 265.614 (2,3\%) & 574.210 (2,3\%) \\ 
-TJDFT & Centro-Oeste & Médio & 218.231 (1,9\%) & 220.486 (0,9\%)\\
-TJAM & Norte & Pequeno & 37.761 (0,3\%) & 142.336 (0,6\%)\\
-\hline
-Total &  &  & 5.872.431 (50,9\%) & 12.911.682 (51,6\%) \\ 
-\hline
-\end{tabular}
-\end{table}
+<!-- No RJN, é possível observar que assuntos envolvendo o direito do consumidor aparecem dentre os assuntos mais frequentes, especialmente nas turmas recursais e juizados especiais. No entanto, o próprio relatório enfatiza que a análise não é completamente confiável. Nosso intuito é avançar nesse sentido, produzindo estimativas mais confiáveis. -->
 
-\begin{figure}
-\centering
-\includegraphics[width=\linewidth]{08-metodologia_files/figure-latex/tempo-1.pdf}
-\caption{\label{fig:tempo}Volume de casos novos e pendentes ao longo do
-tempo nos tribunais de interesse.}
-\end{figure}
+<!-- -> ADICIONAR ANALISE DAS CLASSES E ASSUNTOS AQUI -->
 
-No Relatório Justiça em Números, é possível observar que assuntos
-envolvendo o direito do consumidor aparecem dentre os assuntos mais
-frequentes, especialmente nas turmas recursais e juizados especiais. No
-entanto, o próprio relatório enfatiza que a análise não é completamente
-confiável. Nosso intuito é avançar nesse sentido, produzindo estimativas
-mais confiáveis.
+<!-- Cada tribunal exigiu metodologias distintas para separação dos casos consumeristas. A Subseção \@ref(extracao) trata desse tema. -->
 
-Cada tribunal exigiu metodologias distinta para separação dos casos consumeristas. A Subseção \ref{extracao} trata desse tema.
+### Extração {#extracao}
 
-### Extração}{#extracao}
-
-As tarefas de extração e arrumação dos dados de processos digitais
-passam por três fases: i) listagem dos processos, ii) download dos
-arquivos de acompanhamento processual e autos do processo, iii)
-transformação dos dados brutos em bases de dados analíticas. Em seguida,
-descrevemos cada fase em detalhe.
+As tarefas de extração e arrumação dos dados de processos digitais passam por três fases: i) listagem dos processos, ii) download dos arquivos de acompanhamento processual e autos do processo, iii) transformação dos dados brutos em bases de dados analíticas. Em seguida, descrevemos cada fase em detalhe.
 
 Atualmente, existem três formas diferentes de listar processos judiciais
 em estudos prospectivos. O primeiro envolve a composição de ofícios para
