@@ -1,29 +1,12 @@
 # Metodologia
 
-Na introdução vimos que a pesquisa apresenta uma parte
-\emph{exploratória} e uma parte \emph{propositiva}. A primeira envolve o
-levantamento dos maiores litigantes em ações consumeristas e a segunda
-envolve propor soluções para lidar com o estoque de processos atual e
-evitar novos casos. Nesse capítulo, descreveremos a
-metodologia utilizada para solucionar os problemas de cada parte.
+Nesse capítulo, descrevemos a metodologia utilizada para solucionar os problemas de cada parte. Na introdução vimos que a pesquisa apresenta uma parte *exploratória* e uma parte *propositiva*. A primeira envolve o levantamento dos maiores litigantes em ações consumeristas e a segunda envolve propor soluções para lidar com o estoque de processos atual e evitar novos casos. 
 
-Vale ressaltar que essa pesquisa tem base filosófica pragmática (\citep{hanson2005mixed}). Isso significa que o foco principal são resultados aplicáveis
-na sociedade. O rigor metodológico reside principalmente na parte
-exploratória, especificamente nos métodos estatísticos de análise e
-inferência.
+A pesquisa tem base filosófica pragmática ([@hanson2005mixed]). Isso significa que o foco principal são resultados aplicáveis na sociedade. O rigor metodológico reside principalmente na parte exploratória, especificamente nos métodos estatísticos de análise e inferência.
 
-A pesquisa também busca atender o \emph{princípio da reprodutibilidade} (\citep{gelman2014bayesian}). 
-Com isso será possível utilizar os avanços
-descritos para aplicar em outros trabalhos, garantindo um efeito
-maior do que apenas a documentação de resultados.
+A pesquisa também busca atender o *princípio da reprodutibilidade* ([@gelman2014bayesian]). Com isso será possível utilizar o material desenvolvido em outros trabalhos, produzindo um efeito maior do que apenas a documentação de resultados.
 
-A metodologia do estudo possui um desenho misto (\citep{hanson2005mixed}, p.~116).
-Especificamente, utilizamos a técnica de métodos convergentes em
-paralelo (\emph{convergent parallel methods design}). 
-Nessa abordagem, coletamos e analisamos dados
-qualitativos e quantitativos em paralelo, confrontando os resultados
-para gerar interpretações e conclusões. A Figura \ref{fig:desenho} mostra
-esquematicamente o desenho utilizado.
+A metodologia do estudo possui um desenho misto ([@hanson2005mixed], p. 116). Especificamente, utilizamos a técnica de métodos convergentes em paralelo (*convergent parallel methods design*). Nessa abordagem, coletamos e analisamos dados qualitativos e quantitativos em paralelo, confrontando os resultados para gerar interpretações e conclusões. A Figura \@ref(fig:desenho) mostra esquematicamente o desenho utilizado.
 
 \begin{figure}
 \begin{centering}
@@ -34,125 +17,53 @@ esquematicamente o desenho utilizado.
 \end{figure}
 
 A parte exploratória utiliza métodos quantitativos baseados em dados
-observacionais para elucidar o fenômeno de interesse (\citep{hanson2005mixed}, p.~18). Nesse caso,
-iniciamos com a obtenção de dados para posterior análise e interpretação
-de resultados. A Figura \ref{fig:quanti} mostra essa parte de forma esquemática.
+observacionais para elucidar o fenômeno de interesse ([@hanson2005mixed], p. 18). Nesse caso, iniciamos com a obtenção de dados para posterior análise e interpretação de resultados. A Figura \@ref(fig:quanti) mostra essa parte de forma esquemática.
 
 \begin{figure}
 \begin{centering}
 \includegraphics[width=\linewidth]{quanti}
-\caption{Metodologia quantitativa. Adaptado de \citep{wickham2016r}.}
+\caption{Metodologia quantitativa. Adaptado de @wickham2016r.}
 \label{fig:quanti}
 \end{centering}
 \end{figure}
 
-Já a parte propositiva utiliza tanto métodos quantitativos
-não-experimentais quanto métodos qualitativos para gerar as proposições.
-Nesse caso, fizemos entrevistas, levantamentos bibliográficos e
-levantamento de dados para suportar as argumentações. 
+Já a parte propositiva utiliza tanto métodos quantitativos não-experimentais quanto métodos qualitativos para gerar as proposições. Nesse caso, fizemos entrevistas, levantamentos bibliográficos e levantamento de dados para suportar as argumentações. 
 
-A convergência das duas partes da pesquisa se deu na forma usual
-(\citep{creswell2013research}, p.118). Os resultados da parte exploratória são utilizados como
-\emph{inputs} para tomadas de decisão na parte propositiva, com o
-intuito de i) descartar parte das proposições ou ii) indicar formas de
-execução das propostas focadas em grupos estratégicos identificados na
-parte exploratória (e.g.~regiões ou tipos empresariais).
+A convergência das duas partes da pesquisa se deu na forma usual, a partir do confrontamento dos resultados levantados ([@creswell2013research], p.118). Os resultados da parte exploratória são utilizados como *inputs* para tomadas de decisão na parte propositiva, com o intuito de i) descartar parte das proposições ou ii) indicar formas de execução das propostas focadas em grupos estratégicos identificados na parte exploratória (e.g. regiões ou tipos empresariais).
 
-A seguir, descrevemos a metodologia em maior detalhe. A Seção \ref{parte-exploratoria}
-contempla os métodos de obtenção e análise dos dados. A Seção \ref{parte-propositiva}
-descreve as atividades realizadas da parte propositiva.
+A seguir, descrevemos a metodologia em maior detalhe. A Seção \@ref(parte-exploratoria) contempla os métodos de obtenção e análise dos dados. A Seção \ref(@parte-propositiva) descreve as atividades realizadas da parte propositiva.
 
 ## Parte exploratória} {#parte-exploratoria}
 
-A pesquisa dos maiores litigantes gerou produtos úteis
-para o estudo empírico em direito. Buscamos organizar esses avanços em
-pequenos artigos. Tais artigos foram contemplados na
-metodologia ou em apêndices do relatório.
+Nessa parte da metodologia, utilizamos dados e informações de outras pesquisas para resolver algumas questões de escopo e direcionamento da pesquisa. Especificamente, trabalhamos i) a direção da pesquisa; ii) a situação atual; iii) a execução dos trabalhos; iv) a validação dos resultados.
 
-Nessa parte da metodologia, utilizamos dados e informações de outras
-pesquisas para resolver algumas questões de escopo e direcionamento da
-pesquisa. Especificamente, trabalhamos i) a direção da pesquisa; ii) a
-situação atual; iii) a execução; iv) a validação dos resultados.
+Os resultados dessas investigações foram resumidos abaixo. Em seguida, apresentamos uma subseção de detalhamento para cada item.
 
-Os resultados dessas investigações foram resumidos abaixo.
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  Queremos propor soluções para melhorar índices de litigiosidade.
-\item
-  \begin{enumerate}
-  \def\labelenumii{\alph{enumii})}
-  
-  \item
-    Identificamos que processos cíveis do primeiro grau na Justiça
-    Estadual não fiscais e as execuções fiscais são os maiores
-    responsáveis pelo volume processual do país; b) não somos capazes de
-    avançar na identificação dos maiores responsáveis pela litigiosidade
-    sem realizar extrações de processos dos tribunais.
-  \end{enumerate}
-\item
-  \begin{enumerate}
-  \def\labelenumii{\alph{enumii})}
-  
-  \item
-    Recorte da pesquisa; b) extração de dados dos tribunais; c) criação
-    de método para contagem de processos consumeristas; d) criação de
-    técnicas para consolidação das partes dos processos.
-  \end{enumerate}
-\item
-  Utilização do IADN - Índice de Atendimento à Demanda Normalizado para
-  avaliar o efeito de soluções estratégicas.
-\end{enumerate}
-
-Cada item ganhou uma subseção especial de detalhamento, que completam a
-parte exploratória do nosso trabalho.
+1. A direção da pesquisa é a busca de soluções para melhorar índices de litigiosidade.
+1. a) Identificamos que processos não-criminais e não-fiscais do primeiro grau na Justiça Estadual e as execuções fiscais são os maiores responsáveis pelo volume processual do país; b) não é possível avançar na identificação dos maiores responsáveis pela litigiosidade sem realizar extrações de processos dos tribunais.
+1. a) Definição do recorte da pesquisa; b) extração de dados dos tribunais; c) criação de método para contagem de processos consumeristas; d) desenvolvimento de códigos para arrumar os nomes das partes dos processos.
+1. Utilização do IADN - Índice de Atendimento à Demanda Normalizado para avaliar o efeito de soluções estratégicas.
 
 ### Direção da pesquisa} {#direcao-da-pesquisa}
 
-O tema de interesse da pesquisa é a \textbf{administração judiciária}.
-Especificamente, queremos propor soluções estratégicas para
-\textbf{melhorar os índices de litigiosidade}. As direções de
-intervenção e os índices de interesse são:
+O tema de interesse da pesquisa é a **administração judiciária**. Especificamente, queremos propor soluções estratégicas para **melhorar os índices de litigiosidade**. As direções de intervenção e os índices de interesse são:
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
+1. Reduzir a quantidade de casos novos e pendentes.
+1. Reduzir a taxa de congestionamento.
+1. Aumentar o índice de atendimento à demanda.
+1. Monitorar a recorribilidade externa do primeiro grau.
+1. Monitorar o índice de conciliação.
 
-\item
-  Reduzir a quantidade de casos novos e pendentes.
-\item
-  Reduzir a taxa de congestionamento.
-\item
-  Aumentar o índice de atendimento à demanda.
-\item
-  Monitorar a recorribilidade externa do primeiro grau.
-\item
-  Monitorar o índice de conciliação.
-\end{enumerate}
+Não há interesse em estudar a quantidade de casos novos por magistrado ou servidor. As contagens de magistrados e servidores foram fixadas para simplificar
+a análise. Também não monitoramos recorribilidade interna por simplicidade.
 
-Não temos interesse em estudar a quantidade de casos novos por
-magistrado ou servidor. Essas quantidades serão fixadas para simplificar
-a análise. Também por simplicidade, não temos interesse em monitorar ou
-alterar recorribilidade interna.
+O índice de conciliação, por sua vez, está correlacionado a outros índices de interesse. Na pesquisa, não foi possível obter evidências para afirmar se há interesse em aumentar, reduzir ou manter os valores atuais dessa métrica.
 
-O índice de conciliação, por sua vez, está correlacionado a outros
-índices de interesse. Na pesquisa, não foi possível obter evidências
-para afirmar se há interesse em aumentar, reduzir ou manter os valores
-dessa métrica.
-
-As ações estratégicas serão focadas nos maiores litigantes em casos
-consumeristas. Espera-se que soluções para essa subpopulação surtam
-efeitos significativos e perenes na Justiça Brasiliera. Essa afirmação
-foi feita inicialmente sob a hipótese de que casos consumeristas
-representam uma quantidade relevante do total de casos. Essa hipótese
-foi validada após extração e levantamento dos dados.
+As ações estratégicas focaram nos maiores litigantes em casos consumeristas pois soluções para essa subpopulação implicam em efeitos significativos para toda a Justiça Brasiliera. Essa afirmação foi feita inicialmente sob a hipótese de que casos consumeristas representam uma quantidade relevante do total de casos. Essa hipótese foi validada após extração e levantamento dos dados.
 
 ### Resumo da situação atual}{#resumo-da-situacao-atual}
 
-Começamos o estudo um levantamento baseado no Relatório Justiça em
-Números (RJN), ano base 2016, que utiliza dados enviados pelos tribunais
-referentes ao ano de 2015. Essa análise tem como objetivo dar uma visão
-geral do que estamos enfrentando e quais são os passos.
+Começamos o estudo com um levantamento baseado no Relatório Justiça em Números (RJN), ano base 2015, que utiliza dados enviados pelos tribunais referentes ao ano de 2015. Essa análise tem como objetivo dar uma visão geral do que estamos enfrentando e quais são os passos.
 
 O presente estudo preliminar considerou somente as métricas de
 litigiosidade do RJN: os casos novos, os casos pendentes e a quantidade
