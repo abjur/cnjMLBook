@@ -114,5 +114,3 @@ knit_print.data.frame = function(x, ...) {
       knitr::asis_output()
 }
 ```
-
-# Teste
