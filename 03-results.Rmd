@@ -5,7 +5,40 @@ if("data-raw" %in% dir(getwd())){
   knitr::opts_chunk$set(echo = F, eval = T)
 } else {
   knitr::opts_chunk$set(echo = T, eval = F)
+  
+  maiores_litigantes_tjrs <- list(p = "NÃO CALCULAREI")
+  maiores_litigantes_tjsp <- list(p = "NÃO CALCULAREI")
+  maiores_litigantes_tjrj <- list(p = "NÃO CALCULAREI")
+  maiores_litigantes_tjmt <- list(p = "NÃO CALCULAREI")
+  maiores_litigantes_tjdft <- list(p = "NÃO CALCULAREI")
+  maiores_litigantes_tjam <- list(p = "NÃO CALCULAREI")
+  maiores_litigantes_tjba <- list(p = "NÃO CALCULAREI")
+
+  maiores_setores_tjrs <- list(p = "NÃO CALCULAREI")
+  maiores_setores_tjsp <- list(p = "NÃO CALCULAREI")
+  maiores_setores_tjrj <- list(p = "NÃO CALCULAREI")
+  maiores_setores_tjmt <- list(p = "NÃO CALCULAREI")
+  maiores_setores_tjdft <- list(p = "NÃO CALCULAREI")
+  maiores_setores_tjam <- list(p = "NÃO CALCULAREI")
+  maiores_setores_tjba <- list(p = "NÃO CALCULAREI")
+
+  media_sem_2013 <- "NÃO CALCULAREI"
+  media_com_2013 <- "NÃO CALCULAREI"
+  processos_em_2013 <- "NÃO CALCULAREI"
+
+  assuntos_bancos <- list(p = "NADA")
+
+  telecomunicaoes <- list(p = "NADA")
+  telecomunicacoes <- list(p = "NADA")
+  litigantes_banco_de_dados <- list(p = "NADA")
+  maiores_assuntos_banco_de_dados <- list(p = "NADA")
+  assuntos_telecom <- list(p = "NADA")
+  assuntos_energia <- list(p = "NADA")
+  maiores_litigantes_energia <- list(p = "NADA")
+  seguros <- list(p = "NADA")
+  energia <- list(p = "NADA")
 }
+
 ```
 
 ```{r}
@@ -575,14 +608,6 @@ d_tjrs_2 %>%
 # mapa_4 <- monta_mapa(d4, titulo = "CORSAN")
 ```
 
-
-
-
-
-
-## TJRJ
-
-
 ```{r}
 library(tidyverse)
 
@@ -775,4 +800,922 @@ O agravante dos processos desse setor no tribunal fluminense está na polarizaç
 maiores_litigantes_energia %>%
   head(4)
 ```
+
+```{r}
+library(tidyverse)
+
+control_table <- tpur::control_table
+tpu <- readRDS("data-raw/tpu.rds")
+l_tpu <- readRDS("data-raw/l_tpu.rds")
+
+assuntos_consumeristas_tpu <- readRDS("data-raw/assuntos_consumeristas_tpu.rds")
+
+codigos_consumeristas_puros <- assuntos_consumeristas_tpu$codigo
+
+  #especifico tjrs
+  {especifico_tjrs <- c("Abatimento proporcional do preço",
+                              "Cadastro de Análise de Crédito",
+                              "Cobrança indevida de ligações ",
+                              "Cobrança Indevida de Serviços",
+                              "Comercialização de dados cadastrais de consumidores",
+                              "Contratos de Participacao Financeira",
+                              "Medicamento / Tratamento / Cirurgia de Eficácia não comprovada",
+                              "Metodologia de Reajuste de Tarifa - IRT",
+                              "Notificação",
+                              "Registro em Cadastro de Análise de Crédito",
+                              "Registro em Cadastro",
+                              "Registro em Cadastro de Inadimplentes",
+                              "Registro para comercialização de dados cadastrais de consumidores",
+                              "Reparação de Danos")}
+
+assuntos_consumeristas_puros <- l_tpu %>%
+  dplyr::filter(codigo %in% codigos_consumeristas_puros) %>%
+  with(assunto) %>%
+  c(especifico_tjrs) %>%
+  unique
+```
+
+```{r}
+ d_tjsp <- read_rds('data-raw/base_filtrada_consumeristas_sp.rds') %>% 
+     mutate(nome2 = aggregate_major_companies(fix_nomes(reu)),
+     area = market_segments(nome2))
+# 
+# d_tjsp_2 <- d_tjsp %>% 
+#   mutate(mes = lubridate::floor_date(dt_dist, 'months'),
+#     ano = lubridate::year(dt_dist),
+#     area = market_segments(nome2)) %>% 
+#   filter(stringr::str_trim(assunto) %in% stringr::str_trim(assuntos_consumeristas_puros)) %>% 
+#   filter(dt_dist >= as.Date('2010-01-01'),
+#          dt_dist < as.Date('2016-01-01'))
+
+d_tjsp_2 <- readRDS("data-raw/d_tjsp_2.rds")
+```
+
+## TJSP
+
+Conforme mencionado na seção de metodologia, o Tribunal de Justiça de São Paulo forneceu os dados de todos os processos cíveis distribuídos entre 2009 e 2016. Nesta seção vamos descrever os resultados obtidos nesse estado.
+
+### Os maiores litigantes de São Paulo
+
+```{r, echo = F}
+maiores_litigantes_tjsp <- d_tjsp_2 %>% 
+  count(nome2) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = scales::percent(n/sum(n)),
+    p_acum = scales::percent(cumsum(n)/sum(n)))
+```
+
+Destoando do que foi identificado nos demais estados, o grupo de empresas ligadas ao Banco Itaú teve o maior número de processos em São Paulo, com `r maiores_litigantes_tjsp$p[1]` dos litígios. No geral, as intituições bancárias são bastante frequentes na lista de maiores litigantes de São Paulo, mas a segunda posição do ranking fica com a empresa de telefonia Tim, com `r maiores_litigantes_tjsp$p[2]` dos processos.
+
+```{r}
+head(maiores_litigantes_tjsp, 30)
+```
+
+Também distante do que foi encontrado nos demais estados, a Oi não figura na lista dos maiores litigantes, deixando bastante espaço para instituições financeiras, embora outras empras de telefonia também sejam responsáveis por uma boa quantidade dos processos consumeristas do estado. Dentre as instituições financeiras, os maiores litigantes são os bancos Itaú, Bradesco, Votorantim, Santander e Banco do Brasil, enquanto as maiores operadoras de telefonia são Tim, Vivo e Claro.
+
+A partir da nona posição destacam-se novos setores da economia. A partir desse ponto, passam a figuras na lista de maiores litigantes algumas empresas admnistradoras de seguros e planos de saúde, como Unimed, Amil e Sulamérica. Além dessas empresas, também começam a aparecer outras instituições financeiras, como Panamericano, HSBC e FINASA.
+
+```{r}
+maiores_setores_tjsp <- d_tjsp_2 %>% 
+  count(area) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = scales::percent(n/sum(n)),
+    p_acum = scales::percent(cumsum(n)/sum(n)))
+```
+
+Os 30 maiores litigantes acumulam `r maiores_litigantes_tjsp$p_acum[30]`, mas podemos compreender melhor a origem dos demais litígios se agruparmos os processos por setor da economia das demandadas. Analisando dessa forma, conclui-se que `r maiores_setores_tjsp$p_acum[3]` dos processos concentram-se no setores financeiro, telecomunicações e seguros. As três primeiras classes possuem proporções acima de 10% dos processos e caracterizam um ponto de corte na distribuição de processos por empresa: a partir delas, a fatia consumida por cada instituição orbita os 1%. Nessa nova classe de processos, cujas demandadas concentram menos de 10% do total, destacam-se as concessionárias de serviços básicos, como energia, gás, água e esgoto, e empresas de varejo, com 1,7% e 1,1% dos processos, respectivamente.
+
+```{r}
+maiores_setores_tjsp %>% 
+  head(10)
+```
+
+Considerando-se o interesse em qualificar certas instituições como demandadas em massa pelos litigantes, partiremos agora a uma análise que busca averiguar a existência de padrões temporais que expliquem o volume de casos de um certo grande litigante levantado nas tabelas anteriores. Analisando o volume mensal de distribuições de cada tipo de processo, é possível identificar padrões temporais.
+
+As curvas de volume processual mensal do Tribunal de Justiça de São Paulo destacam-se por padrões sazonais claros e aumentos contínuos nos volumes processuais. Na verdade, essa distinção é tão clara que é possível separar as séries do volume processual de cada setor econômico em duas classes, aqueles volumes que estão crescendo e aqueles volumes que estão se estabilizando. 
+
+```{r}
+d_tjsp_2 %>% 
+  count(mes, area) %>% 
+  filter(area %in% head(maiores_setores_tjsp,10)$area) %>% 
+  ggplot(aes(x = mes, y = n)) +
+  geom_line() +
+  facet_wrap(~area, ncol = 4, nrow = 3, scale = 'free') +
+  theme_bw()
+```
+
+Dentre 10 áreas com maior volume processual no TJSP, os processos contra admnistradoras de planos de saúde, empresas de seguros, varejo e telecomunicações estão crescendo. Entretanto, em alguns casos é possível notar que o crescimento é governado por apenas algumas das instituições daquele setor. No caso dos planos de saúde, por exempl, nota-se que o crescimento dos processos contra a Unimed é maior do que o crescimento dos processos contra a Amil. De maneira análoga, pode-se conlcluir que os processos contra a Sulamerica crescem muito mais rapidamente do que os processos contra a ACE, e o mesmo vale para os processos contra a Via Varejo e Magazine Luiza. Para as empresas de telecomunicação, entretanto, nenhum efeito desse tipo é detectado. O volume processual das três empresas principais cresce similarmente.
+
+```{r}
+d_tjsp_2 %>% 
+  filter(area %in% c("telecomunicacoes","varejo","planos_de_saude","seguros")) %>% 
+  count(mes, area, nome2) %>% 
+  filter(area %in% head(maiores_setores_tjsp,10)$area,
+         nome2 %in% head(maiores_litigantes_tjsp,40)$nome2) %>% 
+  ggplot(aes(x = mes, y = n, color = nome2)) +
+  geom_line() +
+  facet_wrap(~area, ncol = 2, nrow = 2, scale = 'free') +
+  theme_bw() +
+  theme(legend.position = 'bottom')
+```
+
+Passando agora para os processos com curvas de volume processual estáveis, tem-se que o comportamento de todas as empresas dentro das áreas com curvas estáveis também são estáveis. Mesmo no caso das companhias de transporte Aéreo, o aumento do volume processual com relação a 2010 acontece apenas até 2014, quando as curvas se estabilizam.
+
+```{r}
+d_tjsp_2 %>% 
+  filter(area %in% c("energia_gas_agua_esgoto","fabricantes_electronicos","supermercados","recuperacao_credito","transporte_aereo")) %>% 
+  count(mes, area, nome2) %>% 
+  filter(area %in% head(maiores_setores_tjsp,10)$area,
+         nome2 %in% head(maiores_litigantes_tjsp,40)$nome2) %>% 
+  ggplot(aes(x = mes, y = n, color = nome2)) +
+  geom_line() +
+  facet_wrap(~area, ncol = 3, nrow = 3, scale = 'free') +
+  theme_bw() +
+  theme(legend.position = 'bottom')
+```
+
+### Causas de pedir
+
+Nesta seção vamos estudar as causas de pedir mais frequentes com aos maiores litigantes separando-os de acordo com a área em que atuam.
+
+#### Bancos e Instituições Financeiras
+
+```{r}
+assuntos_bancos <- d_tjsp_2 %>% 
+  filter(area == "bancos_cartoes_financeiras") %>% 
+  count(assunto) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = n/sum(n),
+         p_acum = scales::percent(cumsum(p)),
+         p = scales::percent(p))
+
+maiores_litigantes_bancos <- d_tjsp_2 %>% 
+  filter(area == "bancos_cartoes_financeiras") %>% 
+  count(nome2) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = n/sum(n),
+         p_acum = scales::percent(cumsum(p)),
+         p = scales::percent(p))
+```
+
+No TJSP, 6 assuntos da TPU contemplam `r assuntos_bancos$p_acum[6]` do total de processos contra bancos e instituições financeiras.
+
+O assunto mais discutido nos tribunais, com `r assuntos_bancos$p[1]` dos processos, diz respeito à "Interpretação / Revisão de Contrato". Logo em seguida, tem-se a classificação genérica "Bancários", com `r assuntos_bancos$p[2]` dos processos, que, segundo a TPU, podem tratar-se de "Empréstimos consignados", "Expurgos Inflacionários / Planos Econômicos" e "Tarifas".
+
+Na terceira posição, aparece a "Inclusão Indevida em Cadastro de Inadimplentes", com `r assuntos_bancos$p[3]` dos processos. Logo a seguir, mas não sem relação, tem-se os processos que pedem indenizações por danos morais, com `r assuntos_bancos$p[4]` dos casos. 
+
+Neste ponto já acumula-se 85% de todos os processos consumeristas contra instituições bancárias, mas dois assuntos processuais ainda destacam-se, considerando que o resto da lista lida com temas repetidos ou aninhados dentro de classificações mais gerais como "Bancários". Os dois temas que se destacam são Planos de Saúde, com  `r assuntos_bancos$p[5]` dos processos, e Financiamento de Produto, com `r assuntos_bancos$p[6]` dos processos.
+
+Entretanto, embora os 6 primeiros assuntos processuais mais frequentes sejam expressivos, o volume processual de um deles concentrou-se em um certo período do tempo. Processos classificados como "Financiamento de Produtos" apresentaram um decaimento constante a partir de 2012, de tal forma que processo desse assunto só foram distribuídos entre 2012 e 2014.
+
+```{r}
+d_tjsp_2 %>% 
+  filter(area == "bancos_cartoes_financeiras") %>% 
+  filter(assunto %in% assuntos_bancos$assunto[1:6]) %>% 
+  count(mes, assunto) %>% 
+  ggplot(aes(x = mes, y = n, color = assunto)) +
+  geom_line() + theme_bw() + theme(strip.background = element_blank(), strip.placement = 'outside', strip.text = element_blank())
+```
+
+#### Empresas de telecomunicações
+
+```{r}
+telecomunicaoes <- d_tjsp_2 %>% 
+  filter(area == "telecomunicacoes") %>% 
+  count(assunto) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = n/sum(n),
+         p_acum = scales::percent(cumsum(p)),
+         p = scales::percent(p))
+
+maiores_telecomunicacoes <- d_tjsp_2 %>% 
+  filter(area == "telecomunicacoes") %>% 
+  count(nome2) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = n/sum(n),
+         p_acum = scales::percent(cumsum(p)),
+         p = scales::percent(p))
+```
+
+`r telecomunicaoes$p[1]` de todos os processos contra empresas de telecomunicações têm como assunto "Telefonia", e esse é o assunto mais frequente. Segundo a TPU, essa é uma classificação geral que pode possuir três ramificações: processos relacionados à assinatura básica mensal, cobrança indevida de ligações e pulsos excedentes.
+
+O segundo assunto mais comum contra processos de telefonia no TJSP são processos por inclusão indevida em cadastro de inadimplentes, com  `r telecomunicaoes$p[2]` dos processos. Não sem relação, o terceiro tipo de processos mais demandado contra empresas de telefonia são processos de indenização por Dao Moral, com `r telecomunicaoes$p[3]` dos litígios. 
+
+Após os processos de danos morais, o próximo tópico mais frequente nos tribunais é reinterpretação ou revisão de contratos de contatros, com `r telecomunicaoes$p[4]` dos casos, seguida de rescição e devolução de dinheiro em `r telecomunicaoes$p[5]` dos casos. 
+
+#### Empresas de seguros
+
+```{r}
+seguros <- d_tjsp_2 %>% 
+  filter(area == "seguros") %>% 
+  count(assunto) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = n/sum(n),
+         p_acum = scales::percent(cumsum(p)),
+         p = scales::percent(p))
+
+maiores_seguros <- d_tjsp_2 %>% 
+  filter(area == "seguros") %>% 
+  count(nome2) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = n/sum(n),
+         p_acum = scales::percent(cumsum(p)),
+         p = scales::percent(p))
+```
+
+Com relação às causas de pedir, a maior parte dos processos contra seguradoras foi classificada segundo o assunto "Planos de Saúde", com `r seguros$p[1]` dos casos. Logo em seguida, com `r seguros$p[2]` dos processos, vêm os casos classificados como "Seguro".
+
+Apenas na terceira posição a classificação mais comum da justiça consumerista, indenização por danos morais, aparece na lista das maiores causas de pedir à empresas consumeristas, com `r seguros$p[3]`. Se somarmos a porporção de casos na quinta posição, `r seguros$p[5]` processo de indenização por danos materiais, concluiremos que o total de processos relacionados a indenização de danos chega a 13,6% do total de casos. 
+
+Os demais processos, com exceção dos processos com assunto "Inclusão Indevida em Cadastro de Inadimplentes", versam sobre os serviços prestados pelas seguradoras, e, quando levados em conta, somam mais de 95% do total de casos contra seguradoras.
+
+## TJMT
+
+```{r, echo = F, message = F}
+knitr::opts_chunk$set(echo = F, message = F, comment = F, warning = F)
+options(OutDec = ',')
+options(knitr.table.format = 'markdown')
+```
+
+```{r}
+library(tidyverse)
+
+control_table <- tpur::control_table
+tpu <- readRDS("data-raw/tpu.rds")
+l_tpu <- readRDS("data-raw/l_tpu.rds")
+
+assuntos_consumeristas_tpu <- readRDS("data-raw/assuntos_consumeristas_tpu.rds")
+
+codigos_consumeristas_puros <- assuntos_consumeristas_tpu$codigo
+
+  #especifico tjrs
+  {especifico_tjrs <- c("Abatimento proporcional do preço",
+                              "Cadastro de Análise de Crédito",
+                              "Cobrança indevida de ligações ",
+                              "Cobrança Indevida de Serviços",
+                              "Comercialização de dados cadastrais de consumidores",
+                              "Contratos de Participacao Financeira",
+                              "Medicamento / Tratamento / Cirurgia de Eficácia não comprovada",
+                              "Metodologia de Reajuste de Tarifa - IRT",
+                              "Notificação",
+                              "Registro em Cadastro de Análise de Crédito",
+                              "Registro em Cadastro",
+                              "Registro em Cadastro de Inadimplentes",
+                              "Registro para comercialização de dados cadastrais de consumidores",
+                              "Reparação de Danos")}
+
+assuntos_consumeristas_puros <- l_tpu %>%
+  dplyr::filter(codigo %in% codigos_consumeristas_puros) %>%
+  with(assunto) %>%
+  c(especifico_tjrs) %>%
+  unique
+```
+
+```{r}
+# d_tjmt <- readRDS("data-raw/base_filtrada_apenas_consumeristas_tjmt.rds") %>% 
+#   filter(assunto_nome %in% assuntos_consumeristas_puros) %>% 
+#   mutate(nome2 = aggregate_major_companies(fix_nomes(selo_pessoa)),
+#          area = market_segments(nome2)) 
+# 
+# d_tjmt_2 <- d_tjmt %>% 
+#   filter(selo_pessoa_tipo == "JURIDICA",
+#          str_detect(selo_nome_orgao_julgador, 
+#                     regex("Vara Especializada em Direito Banc[aá]rio|Vara Especializada Direito Banc[aá]rio|Vara C[íi]vel|Vara [Úu]nica|Juizado Especial C[íi]vel|Vara Criminal e C[íi]vel|Vara$|Vara Especializada Ação Civil Pública e Ação Popular|VARA ESP. AÇÃO CIVIL PÚBLICA E AÇÃO POPULAR|Juizado Especial($| [(]Projudi[)] )|Vara Especializada dos Juizados Especiais", ignore_case = T)),
+#          selo_pessoa_polo == "PA") %>% 
+#   mutate(data_dist = as.Date(
+#     as.numeric(selo_data_de_ajuizamento), origin = '1899-12-30'),
+#          mes = lubridate::floor_date(data_dist, 'months'),
+#          ano = lubridate::year(data_dist))
+
+d_tjmt_2 <- readRDS("data-raw/d_tjmt_2.rds")
+```
+
+## TJMT
+
+Conforme mencionado na seção de metodologia, o Tribunal de Justiça do Mato Grosso forneceu os dados referentes ao Selo Justiça em Números. Nesta seção vamos descrever os resultados obtidos nesse estado.
+
+### Os maiores litigantes do Mato Grosso
+
+```{r, echo = F}
+maiores_litigantes_tjmt <- d_tjmt_2 %>% 
+  count(nome2) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = scales::percent(n/sum(n)),
+    p_acum = scales::percent(cumsum(n)/sum(n)))
+
+maiores_setores_tjmt <- d_tjmt_2 %>% 
+  count(area) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = scales::percent(n/sum(n)),
+    p_acum = scales::percent(cumsum(n)/sum(n)))
+```
+
+Diferente do identificado nos demais estados, a empresa com maior número de processos no Mato Grosso foi o grupo de empresas relacionado ao Banco Bradesco, com `r maiores_litigantes_tjmt$p[1]` dos litígios. Logo em seguida vem a companhia de seguros Porto Seguro, com `r maiores_litigantes_tjmt$p[2]`. Apenas a partir da terceira posição aparecem as companhias de telefonia, com um total de 14,66% dos processos.
+
+Ainda nos 10 primeiros maiores litigantes, destaca-se a presenta da segura Líder, admnistradora do seguro DPVAT, como 3,50% dos litígios, o que não foi identificado em nenhum outro tribunal. Além disso, a ausência de empresas admnistradoras de cadastro de inadimplentes nas 30 maiores também destoa do observado em outros tribunais.
+
+```{r}
+head(maiores_litigantes_tjmt, 30)
+```
+
+Os 30 maiores litigantes acumulam `r maiores_litigantes_tjmt$p_acum[30]`, mas podemos compreender melhor a origem dos demais litígios se agruparmos os processos por setor da economia das demandadas. Analisando dessa forma, conclui-se que `r maiores_setores_tjmt$p_acum[4]` dos processos concentram-se no setores financeiro, telecomunicações, seguros e transportes aéreos. As três primeiras classes possuem proporções acima de 10% dos processos e caracterizam um ponto de corte na distribuição de processos por empresa: a partir delas, a fatia consumida por cada instituição orbita os 1%. Nessa nova classe de processos, cujas demandadas concentram menos de 10% do total, destacam-se as concessionárias de serviços básicos, como energia, gás, água e esgoto, e transporte aéreo, com 4,6% e 2,0% dos processos, respectivamente.
+
+Considerando-se o interesse em qualificar certas instituições como demandadas em massa pelos litigantes, idealmente partiríamos a uma análise que busca averiguar a existência de padrões temporais que expliquem o volume de casos de um certo grande litigante levantado nas tabelas anteriores. Entretanto, o mecanismo de obtenção dos dados não permite que essas perguntas sejam respondidas, pois o número esperado de processos é inversamente proporcional à sua idade, já que o CNJ recebeu apenas aqueles processos que ainda estavam ativos, de tal forma que processos mais velhos vão custar mais a aparecer.
+
+```{r}
+d_tjmt_2 %>% 
+  filter(data_dist > as.Date('2009-01-01')) %>% 
+  count(mes, area) %>% 
+  filter(area %in% head(maiores_setores_tjmt,10)$area) %>% 
+  ggplot(aes(x = mes, y = n)) +
+  geom_line() +
+  facet_wrap(~area, ncol = 4, nrow = 3, scale = 'free') +
+  theme_bw()
+```
+
+De toda forma, os gráficos encontrados não sugerem que algum setor específico da economia esteja sendo representados por processos relacionados a algum período específico.
+
+### Causas de pedir
+
+Nesta seção vamos estudar as causas de pedir mais frequentes dos maiores litigantes do TJMT, separando-os de acordo com a área em que atuam.
+
+#### Bancos e Instituições Financeiras
+
+```{r}
+assuntos_bancos <- d_tjmt_2 %>% 
+  filter(area == "bancos_cartoes_financeiras") %>% 
+  count(assunto_nome) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = n/sum(n),
+         p_acum = scales::percent(cumsum(p)),
+         p = scales::percent(p))
+
+maiores_bancos <- d_tjmt_2 %>% 
+  filter(area == "bancos_cartoes_financeiras",
+         assunto_nome %in% assuntos_bancos$assunto_nome[1:10]) %>% 
+  count(nome2) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = n/sum(n),
+         p_acum = scales::percent(cumsum(p)),
+         p = scales::percent(p))
+```
+
+Com relação às causas de pedir, a maior parte dos processos contra instituições financeiras tratam de indenizações por danos morais, com `r assuntos_bancos$p[1]` dos processos.  Essa é uma classificação geral e, segundo a TPU, ela admite duas ramificações: "Inclusão Indevida em Cadastro de Inadimplentes" e "Protesto Indevido de Título". É razoável observar que o erro de classificação pode ou não considerar a hierarquia da Tabela para ocorrer, mas é razoável imaginar que processos por danos morais à uma instituição bancária na justiça civil estejam relacionados a cadastros indevidos em bases de inadimplentes.
+
+De fato, os processo referentes a inclusões indevidas no cadastro de inadimplentes aparecem como a terceira causa mais frequente dos processos contra instituições bancárias, com `r assuntos_bancos$p[3]` dos processos. Essa classifação é precedida pelo assunto "Intepretação / Revisão de Contrato", com `r assuntos_bancos$p[2]` dos litígios, que está relacionado a prestação de serviço dos bancos.
+
+Condizente com o fato das empresas de seguros serem litigantes relevantes na justiça estadual do Mato Grosso, a quarta causa mais frequente dos processos contra instituições bancárias é "Seguros", com `r assuntos_bancos$p[4]` dos processos. Segundo a TPU, processos com essa classificação só poderiam ser ajuizados contra seguradoras, mas é comum que grandes conglomerados financeiros também forneçam esse tipo de serviço.
+
+A quinta causa de pedir mais comum contra instituições bancárias envolve Indenizações por Danos Materiais, com `r assuntos_bancos$p[5]` dos litígios. Segundo a TPU, esse assunto é uma especialização da classificação geral "Responsabilidade do Fornecedor", que carece de uma aplicabilidade mais direta no caso financeiro e figura como a sétima posição no rankeamento dos assuntos mais comuns, com `r assuntos_bancos$p[7]` dos processos.
+
+A sexta causa mais frequente dos processos contra instituições bancárias é a classificação geral "Bancários", com `r assuntos_bancos$p[6]` dos casos. Segundo a Tabela Processual Unificada, esse vértice deriva três outros assuntos possíveis "Empréstimo Consignado","Expurgos Inflacionários ou Planos Econômicos" e "Tarifas", mas o erro de classificação pode ou não considerar essa estrutura. 
+
+Juntas, as sete maiores causas de pedir contra instituições financeiras abarcam mais de 90% dos litígios.
+
+#### Empresas de telecomunicações
+
+```{r}
+telecomunicaoes <- d_tjmt_2 %>% 
+  filter(area == "telecomunicacoes") %>% 
+  count(assunto_nome) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = n/sum(n),
+         p_acum = scales::percent(cumsum(p)),
+         p = scales::percent(p))
+
+maiores_telecomunicacoes <- d_tjmt_2 %>% 
+  filter(area == "telecomunicacoes") %>% 
+  count(nome2) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = n/sum(n),
+         p_acum = scales::percent(cumsum(p)),
+         p = scales::percent(p))
+```
+
+No segmento das telecomonucações, 4 empresas concentram mais de 90% dos processos. Se considerarmos ainda as operadoras de televisão, esse número sobe para 97,9%.
+
+```{r}
+maiores_telecomunicacoes %>% 
+  head(6)
+```
+
+Os processos mais frequentes contra empresas de telefonia pedem indenizações por danos morais, representando `r telecomunicaoes$p[1]` dos litígios. Logo em seguida, mas não sem relação, vêm os casos relacionados a inclusão indevida em cadastro de inadimplentes, com `r telecomunicaoes$p[2]` dos casos. Conclui-se dessas duas observações que no mínimo 73,1% dos processos contra empresas de telefonia estão relacionados a inclusão indevida em cadastro de inadimplentes, mas ainda pode-se contabilizar os casos de "Responsabilidade do Fornecedor" e "Indenização por Dano Material" sobe este mesmo tópico, situação na qual a proporção de casos sobre para 85,7% do total.
+
+Uma parte minoritária dos processos contra empresas de telefonia no Mato Grosso está relacionado a problema com o serviço. Esses casos somam menos de 15% do total, e estão distribuídos majoritariamente nos assuntos Telefonia, uma classificação geral da TPU com `r telecomunicaoes$p[5]` casos, Contratos de Consumo, com `r telecomunicaoes$p[6]` dos casos, Interpretação e Revisão de Contrato, com `r telecomunicaoes$p[7]`, e Cobrança indevida de ligações, com `r telecomunicaoes$p[8]`.
+
+#### Empresas de seguros
+
+```{r}
+seguros <- d_tjmt_2 %>% 
+  filter(area == "seguros") %>% 
+  count(assunto_nome) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = n/sum(n),
+         p_acum = scales::percent(cumsum(p)),
+         p = scales::percent(p))
+
+maiores_seguros <- d_tjmt_2 %>% 
+  filter(area == "seguros") %>% 
+  count(nome2) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = n/sum(n),
+         p_acum = scales::percent(cumsum(p)),
+         p = scales::percent(p))
+```
+
+Os processos contra empresas de seguros são polarizados, as duas maiores demandadas são a Porto Seguro e a seguradora Líder, com 50% e 28,4% dos litígios respectivamente, mas desconsiderando essas intituições observa-se uma pulverização dos processos nas demais seguradoras.
+
+Com relação aos assuntos, por outro lado, não há pulverização. 83,2% dos cassos são processos denominados "Seguro", enquanto 16% dos processos discutem indenizações por danos morais e materiais, totalizando assim 98,2% dos processos.
+
+O que observa-se, no entanto, é uma variação nas proporções de cada assunto de acordo com cada litigante. Enquanto os litígios contra a Porto Seguro e a admnistradora Líder possuem processos no assunto "Seguros" em quantidade muito maior do que os demais, a situação não se repete nos processos contra a Mapfre e a Ace. Nos processos contra a ACE, inclusive, a maior parte dos processos discute indenizações por danos morais.
+
+```{r}
+d_tjmt_2 %>% 
+  filter(area == "seguros",
+         assunto_nome %in% seguros$assunto_nome[1:3],
+         nome2 %in% maiores_seguros$nome2[1:4]) %>% 
+  ggplot(aes(x = assunto_nome)) + 
+  geom_bar() +
+  facet_wrap(~nome2, nrow = 2, ncol = 2) +
+  theme_bw() + 
+  coord_flip()
+```
+
+## TJDFT
+
+```{r}
+library(tidyverse)
+
+control_table <- tpur::control_table
+tpu <- readRDS("data-raw/tpu.rds")
+l_tpu <- readRDS("data-raw/l_tpu.rds")
+
+assuntos_consumeristas_tpu <- readRDS("data-raw/assuntos_consumeristas_tpu.rds")
+
+codigos_consumeristas_puros <- assuntos_consumeristas_tpu$codigo
+
+  #especifico tjrs
+  {especifico_tjrs <- c("Abatimento proporcional do preço",
+                              "Cadastro de Análise de Crédito",
+                              "Cobrança indevida de ligações ",
+                              "Cobrança Indevida de Serviços",
+                              "Comercialização de dados cadastrais de consumidores",
+                              "Contratos de Participacao Financeira",
+                              "Medicamento / Tratamento / Cirurgia de Eficácia não comprovada",
+                              "Metodologia de Reajuste de Tarifa - IRT",
+                              "Notificação",
+                              "Registro em Cadastro de Análise de Crédito",
+                              "Registro em Cadastro",
+                              "Registro em Cadastro de Inadimplentes",
+                              "Registro para comercialização de dados cadastrais de consumidores",
+                              "Reparação de Danos")}
+
+assuntos_consumeristas_puros <- l_tpu %>%
+  dplyr::filter(codigo %in% codigos_consumeristas_puros) %>%
+  with(assunto) %>%
+  c(especifico_tjrs) %>%
+  unique
+```
+
+
+```{r}
+# d_tjdft <- readRDS("data-raw/base_filtrada_apenas_consumeristas_tjdft.rds") %>%
+#   filter(assunto_nome %in% assuntos_consumeristas_puros) %>%
+#   mutate(nome2 = aggregate_major_companies(fix_nomes(selo_pessoa)),
+#          area = market_segments(nome2))
+# 
+# d_tjdft_2 <- d_tjdft %>%
+#   filter(selo_pessoa_tipo == "JURIDICA",
+#          str_detect(selo_nome_orgao_julgador,
+#                     regex("Vara Especializada em Direito Banc[aá]rio|Vara Especializada Direito Banc[aá]rio|Vara C[íi]vel|Vara [Úu]nica|Juizado Especial C[íi]vel|Vara Criminal e C[íi]vel|Vara$|Vara Especializada Ação Civil Pública e Ação Popular|VARA ESP. AÇÃO CIVIL PÚBLICA E AÇÃO POPULAR|Juizado Especial($| [(]Projudi[)] )|Vara Especializada dos Juizados Especiais", ignore_case = T)),
+#          selo_pessoa_polo == "PA") %>%
+#   mutate(data_dist = as.Date(
+#     as.numeric(stringr::str_sub(selo_data_de_ajuizamento, 1,5)), origin = '1899-12-30'),
+#          mes = lubridate::floor_date(data_dist, 'months'),
+#          ano = lubridate::year(data_dist))
+
+d_tjdft_2 <- readRDS("data-raw/d_tjdft_2.rds")
+```
+
+Conforme mencionado na seção de metodologia, o Tribunal de Justiça do Mato Grosso forneceu os dados referentes ao Selo Justiça em Números. Nesta seção vamos descrever os resultados obtidos nesse estado.
+
+### Os maiores litigantes do Mato Grosso
+
+```{r, echo = F}
+maiores_litigantes_tjdft <- d_tjdft_2 %>% 
+  count(nome2) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = scales::percent(n/sum(n)),
+    p_acum = scales::percent(cumsum(n)/sum(n)))
+
+maiores_setores_tjdft <- d_tjdft_2 %>% 
+  count(area) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = scales::percent(n/sum(n)),
+    p_acum = scales::percent(cumsum(n)/sum(n)))
+```
+
+Assim como identificado nos demais estados, a empresa com maior número de processos no Distrito Federal foi uma empresa de telefonia, a companhia Claro, com `r maiores_litigantes_tjdft$p[1]` dos litígios. Nas duas próximas posições, seguem Tim e Oi, com `r maiores_litigantes_tjdft$p[2]` e `r maiores_litigantes_tjdft$p[3]` dos litígios, respectivamente. Apenas a partir da quarta posição aparece uma instituição bancária: o Banco Bradesco, com um total de `r maiores_litigantes_tjdft$p[4]` dos processos.
+
+Ainda nos 10 primeiros maiores litigantes, destaca-se a presença de companhias aéreas, como a Gol e a Tam com `r maiores_litigantes_tjdft$p[7]` e `r maiores_litigantes_tjdft$p[8]` dos processos, o que não foi identificado em nenhum outro tribunal. Além disso, a ausência de empresas admnistradoras de cadastro de inadimplentes nas 30 maiores também destoa do observado em outros tribunais.
+
+```{r}
+head(maiores_litigantes_tjdft, 30)
+```
+
+Os 30 maiores litigantes acumulam `r maiores_litigantes_tjdft$p_acum[30]`, mas podemos compreender melhor a origem dos demais litígios se agruparmos os processos por setor da economia das demandadas. Analisando dessa forma, conclui-se que `r maiores_setores_tjdft$p_acum[7]` dos processos concentram-se no setores financeiro, telecomunicações, seguros, transportes aéreos, planos de saúde, fabricantes eletrônicos e varejistas. As duas primeiras classes possuem proporções acima de 10% dos processos e caracterizam um ponto de corte na distribuição de processos por empresa: a partir delas, a fatia consumida por cada instituição orbita os 1%. Nessa nova classe de processos, cujas demandadas concentram menos de 10% do total, destacam-se as companhias aéreas, as empresas de seguro e as admnistradoras de plano de saúde, com 5,3%, 3,6% e 2,7% dos processos, respectivamente.
+
+```{r}
+maiores_setores_tjmt <- d_tjdft_2 %>% 
+  count(area) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = scales::percent(n/sum(n)),
+    p_acum = scales::percent(cumsum(n)/sum(n)))
+```
+
+Considerando-se o interesse em qualificar certas instituições como demandadas em massa pelos litigantes, idealmente partiríamos a uma análise que busca averiguar a existência de padrões temporais que expliquem o volume de casos de um certo grande litigante levantado nas tabelas anteriores. Entretanto, o mecanismo de obtenção dos dados não permite que essas perguntas sejam respondidas, pois o número esperado de processos é inversamente proporcional à sua idade, já que o CNJ recebeu apenas aqueles processos que ainda estavam ativos, de tal forma que processos mais velhos vão custar mais a aparecer.
+
+```{r}
+d_tjdft_2 %>% 
+  #filter(data_dist > as.Date('2009-01-01')) %>% 
+  count(mes, area) %>% 
+  filter(area %in% head(maiores_setores_tjdft,10)$area) %>% 
+  ggplot(aes(x = mes, y = n)) +
+  geom_line() +
+  facet_wrap(~area, ncol = 4, nrow = 3, scale = 'free') +
+  theme_bw()
+```
+
+De toda forma, os gráficos encontrados sugerem a existência de uma uma anomaria nos processos contra agências de viagem no final de 2015, enquanto as demais séries não permitem nenhuma afirmação contundente por conta do viés de seleção da base.
+
+### Causas de pedir
+
+Nesta seção vamos estudar as causas de pedir mais frequentes dos maiores litigantes do TJDFT, separando-os de acordo com a área em que atuam.
+
+#### Bancos e Instituições Financeiras
+
+```{r}
+assuntos_bancos <- d_tjdft_2 %>% 
+  filter(area == "bancos_cartoes_financeiras") %>% 
+  count(assunto_nome) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = n/sum(n),
+         p_acum = scales::percent(cumsum(p)),
+         p = scales::percent(p))
+
+maiores_bancos <- d_tjdft_2 %>% 
+  filter(area == "bancos_cartoes_financeiras",
+         assunto_nome %in% assuntos_bancos$assunto_nome[1:10]) %>% 
+  count(nome2) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = n/sum(n),
+         p_acum = scales::percent(cumsum(p)),
+         p = scales::percent(p))
+```
+
+Com relação às causas de pedir, a maior parte dos processos contra instituições financeiras tratam de indenizações por danos morais, com `r assuntos_bancos$p[1]` dos processos.  Essa é uma classificação geral e, segundo a TPU, ela admite duas ramificações: "Inclusão Indevida em Cadastro de Inadimplentes" e "Protesto Indevido de Título". É razoável observar que o erro de classificação pode ou não considerar a hierarquia da Tabela para ocorrer, mas é razoável imaginar que processos por danos morais à uma instituição bancária na justiça civil estejam relacionados a cadastros indevidos em bases de inadimplentes.
+
+De fato, os processo referentes a inclusões indevidas no cadastro de inadimplentes aparecem como a terceira causa mais frequente dos processos contra instituições bancárias, com `r assuntos_bancos$p[3]` dos processos. Essa classifação é precedida pela classificação geral "Bancários", com `r assuntos_bancos$p[2]` dos casos. Segundo a Tabela Processual Unificada, esse vértice deriva três outros assuntos possíveis "Empréstimo Consignado","Expurgos Inflacionários ou Planos Econômicos" e "Tarifas", mas o erro de classificação pode ou não considerar essa estrutura. 
+
+A quarta causa de pedir mais comum contra instituições bancárias envolve Indenizações por Danos Materiais, com `r assuntos_bancos$p[4]` dos litígios, possivelmente relacionada à cadastro ilícitos em cadastros de inadimplentes. Com aproximadamente a mesma proporção do total de processos, segue a classificação "Cartão de Crédito, com `r assuntos_bancos$p[5]`. Essa é uma das classificações ambíguas da TPU, que aparece como folha de duas ramificações, Direito do Consumidor e Direito Civil, mas em ambos os casos os dispositivos legais que justificam a sua existência incluem o Código de Defesa do Consumidor.
+
+A sexta causa mais frequente dos processos contra instituições bancárias é a classficação "Abatimento proporcional do preço", com `r assuntos_bancos$p[6]` dos casos. Essa posição do ranking delimita uma mudança na distribuição dos processos: a partir deste assunto, as próximas causas de pedir concentram-se em torno de 2%.
+
+As próximas 4 causas mais frequentes discutem eventuais ilícitos relativos aos serviços prestados pelas instituições financeiras: empréstimos consignados, práticas abusivas, contratos e seguros .Juntas, as dez maiores causas de pedir contra instituições financeiras abarcam mais de 90% dos litígios contra bancos e instituições finceiras.
+
+#### Empresas de telecomunicação
+
+```{r}
+telecomunicaoes <- d_tjdft_2 %>% 
+  filter(area == "telecomunicacoes") %>% 
+  count(assunto_nome) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = n/sum(n),
+         p_acum = scales::percent(cumsum(p)),
+         p = scales::percent(p))
+
+maiores_telecomunicacoes <- d_tjdft_2 %>% 
+  filter(area == "telecomunicacoes") %>% 
+  count(nome2) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = n/sum(n),
+         p_acum = scales::percent(cumsum(p)),
+         p = scales::percent(p))
+```
+
+No segmento das telecomonucações, 4 empresas concentram mais de 85% dos processos. Se considerarmos ainda as operadoras de televisão, esse número sobe para 95,9%.
+
+```{r}
+maiores_telecomunicacoes %>% 
+  head(6)
+```
+
+Os processos mais frequentes contra empresas de telefonia pedem indenizações por danos morais, representando `r telecomunicaoes$p[1]` dos litígios. Em seguida, mas não sem relação, na terceira posição vêm os casos relacionados a inclusão indevida em cadastro de inadimplentes, representando `r telecomunicaoes$p[3]` dos processos. Conclui-se dessas duas observações que no mínimo 46% dos processos contra empresas de telefonia estão relacionados a inclusão indevida em cadastro de inadimplentes, mas ainda pode-se contabilizar os casos de "Indenização por Dano Material" sobe este mesmo tópico, situação na qual a proporção de casos sobre para 54,4% do total.
+
+A parte dos casos em que se trata de condenações por cadastros indevidos, uma grande parcela dos processos tratam de problemas nos serviços de telefonia. Esses casos somam aproximadamente 45% dos processos, e estão distribuídos majoritariamente nos assuntos Telefonia, uma classificação geral da TPU com `r telecomunicaoes$p[2]` casos, Rescisão de contrato e devolição de dinheiro, com `r telecomunicaoes$p[5]` dos casos, cobranças indevidas de ligações, com `r telecomunicaoes$p[6]` dos processos, e práticas abusivas e assinatura básica mensal, que juntas somam com 5% dos casos.
+
+#### Companhias de Transporte Aéreo
+
+```{r}
+transporte_aereo <- d_tjdft_2 %>% 
+  filter(area == "transporte_aereo") %>% 
+  count(assunto_nome) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = n/sum(n),
+         p_acum = scales::percent(cumsum(p)),
+         p = scales::percent(p))
+
+maiores_transporte_aereo <- d_tjdft_2 %>% 
+  filter(area == "transporte_aereo") %>% 
+  count(nome2) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = n/sum(n),
+         p_acum = scales::percent(cumsum(p)),
+         p = scales::percent(p))
+```
+
+Os processos contra companhias aéres no distrito federal concentram-se basicamente em duas instituições: Gol Linhas Aéres e Tam concentram 96% dos processos. Além disso, só existem outras duas companhias aéreas com percentual processual acima de 1%, e elas são as companhias estrangeiras Golden Cross e Lufthansa.
+
+Embora um pouco mais pulverizada, a distribuição de assuntos dos processos contra companhias aéreas dividem-se em dois grupos majoritários: indenizações por danos morais ou materiais, com 51,1% dos casos, e processos que versam especificamente sobre o serviço prestado, que somam 40,3% dos processos.
+
+No grupo de processos específicos sobre os serviçõs prestados, 16,3% deles foram classificados no assunto "Transporte Aéreo", uma classificação genéria das TPU's, que abarcam processos sobre acidentes aéreos, atrasos de voos, cancelamentos de voos, extravios de bagagem e overbooking. Essa classificações mais específicas aparecem nas posições seguintes no raking, sendo cancelamentos de voos as causas de pedir mais frequentes, com 6,1% dos casos. Logo em seguida tem-se o estravio de bagaem, com 5,1% dos casos, seguido de perto pelos atrasos de voo, com 4,8% dos processos, e acidentes aéreos com 3,6%.
+
+Se consideramos ainda a categoria "abatimento proporcional do preço", com 4,4% dos processos, temos que o total de processos que versam sobre indenizações ou problemas na prestação de serviços é de 91,4%.
+
+```{r}
+library(tidyverse)
+# 
+# d_tjba <- read_rds('data-raw/d_tjba.rds') %>%
+#     mutate(nome2 = aggregate_major_companies(fix_nomes(reu)),
+#     area = market_segments(nome2))
+# 
+# d_tjba_2 <- d_tjba %>%
+#   mutate(mes = lubridate::floor_date(dt_dist, 'months'),
+#     ano = lubridate::year(dt_dist),
+#     area = market_segments(nome2)) %>%
+#   filter(stringr::str_trim(assunto) %in% stringr::str_trim(assuntos_consumeristas_puros)) %>%
+#   filter(dt_dist >= as.Date('2010-01-01'),
+#          dt_dist < as.Date('2015-11-01'))
+# 
+d_tjba_2 <- readRDS('data-raw/d_tjba_2.rds') %>% 
+  filter(!is.na(area))
+```
+
+## TJBA
+
+Conforme mencionado na seção de metodologia, não foi possível obter dados do Tribunal de Justiça da Bahia entrando em contato direto com o Tribunal. Por isso, os dados desta seção foram obtidos utilizando ferramentas de extração automática de informações do site do tribunal. 
+
+### Os maiores litigantes do tribunal da Bahia
+
+```{r, echo = F}
+maiores_litigantes_tjba <- d_tjba_2 %>% 
+  count(nome2) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = scales::percent(n/sum(n)),
+    p_acum = scales::percent(cumsum(n)/sum(n)))
+
+maiores_setores_tjba <- d_tjba_2 %>% 
+  count(area) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = scales::percent(n/sum(n)),
+    p_acum = scales::percent(cumsum(n)/sum(n)))
+```
+
+Destoando do que foi identificado nos demais estados, nenhuama empresa de telefonia figura na lista dos 10 maiores litigantes da justiça consumerista baiana. Por outro lado, como é comum, as instituições financeiras compõem a maior parte dessa parte do ranking: o primeiro lugar é do grupo empresarial do Banco Bradesco, com `r maiores_litigantes_tjba$p[1]` dos processos, e o segundo maior litigante é o grupo de empresas ligadas ao Banco Itaú, com `r maiores_litigantes_tjba$p[1]` dos litígios.
+
+```{r}
+maiores_litigantes_tjba %>% 
+  head(30)
+```
+
+
+No Tribunal de Justiça da Bahia, os 30 maiores litigantes acumulam `r maiores_litigantes_tjba$p_acum[30]`, mas podemos compreender melhor a origem dos demais litígios se agruparmos os processos por setor da economia das demandadas. Analisando dessa forma, conclui-se que `r maiores_setores_tjba$p_acum[5]` dos processos concentram-se no setores financeiro, seguros, telecomunicações, fornecimento de energia e água, e, em quinto lugar, o governo do estado da Bahia. Os dois primeiros setores econômicos dominam os demais, tomando 67% do total dos casos, mas o que efetivamente chama a atenção são os casos contra o governo do estado.
+
+```{r}
+maiores_setores_tjba %>% 
+  head(10)
+```
+
+Investigando esse caso específico, conclui-se que os processos contra o governo do estado não aconteceram isolados em um certo período, mas sim com regularidade ao longo dos anos. Realizando a mesma análise para os demais setores, conclui-se que a estabilidade é um traço comum das curvas de columas processuais dos maiores litigantes da Bahia. A única exceção à regra está nos processos contra bancos e demais instituições financeiras, que apresentam um declinío na média mensal de processos entre 2013 e 2015.
+
+```{r}
+d_tjba_2 %>% 
+    count(mes, area) %>% 
+    filter(area %in% head(maiores_setores_tjba,4)$area) %>% 
+    ggplot(aes(x = mes, y = n)) +
+    geom_line() +
+    facet_wrap(~area, ncol = 2, nrow = 2, scale = 'free') +
+    theme_bw()
+```
+
+### Causas de pedir
+
+Nesta seção vamos estudar as causas de pedir mais frequentes com aos maiores litigantes separando-os de acordo com a área em que atuam.
+
+#### Bancos e Instituições Financeiras
+
+```{r}
+assuntos_bancos <- d_tjba_2 %>% 
+  filter(area == "bancos_cartoes_financeiras") %>% 
+  count(assunto) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = n/sum(n),
+         p_acum = scales::percent(cumsum(p)),
+         p = scales::percent(p))
+
+maiores_litigantes_bancos <- d_tjba_2 %>% 
+  filter(area == "bancos_cartoes_financeiras") %>% 
+  count(nome2) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = n/sum(n),
+         p_acum = scales::percent(cumsum(p)),
+         p = scales::percent(p))
+```
+
+Na primeira instância estadual do Tribunal de Justiça da Bahia apenas 5 assuntos processuais concentram 90% de todos os processos: Interpretação / Revisão de Contrato, Inclusão Indevida em Cafastro de Inadimplentes, Expurgos Inflacionários / Planos Econômicos, Financiamento de Produto e Indenização por Dano Moral.
+
+```{r}
+head(assuntos_bancos, 5)
+```
+
+```{r}
+library(tidyverse)
+# 
+# d_tjam <- read_rds('data-raw/d_tjam.rds') %>% 
+#     mutate(nome2 = aggregate_major_companies(fix_nomes(reu)),
+#     area = market_segments(nome2))
+# 
+# d_tjam_2 <- d_tjam %>% 
+#   mutate(mes = lubridate::floor_date(dt_dist, 'months'),
+#     ano = lubridate::year(dt_dist),
+#     area = market_segments(nome2)) %>% 
+#   filter(stringr::str_trim(assunto) %in% stringr::str_trim(assuntos_consumeristas_puros)) %>% 
+#   filter(dt_dist >= as.Date('2010-01-01'),
+#          dt_dist < as.Date('2015-11-01'))
+
+d_tjam_2 <- readRDS("data-raw/d_tjam_2.rds")
+```
+
+## TJAM
+
+Conforme mencionado na seção de metodologia, não foi possivel obter dados do Tribunal de Justiça do Amazonas entrando em contato direto com o Tribunal. Por isso, os dados desta seção foram obtidos utilizando ferramentas de extração automatica de informações do site do tribunal. 
+
+### Os maiores litigantes do tribunal do Amazonas
+
+```{r, echo = F}
+maiores_litigantes_tjam <- d_tjam_2 %>% 
+  count(nome2) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = scales::percent(n/sum(n)),
+    p_acum = scales::percent(cumsum(n)/sum(n)))
+
+maiores_setores_tjam <- d_tjam_2 %>% 
+  count(area) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = scales::percent(n/sum(n)),
+    p_acum = scales::percent(cumsum(n)/sum(n)))
+```
+  
+Ao contrário de todos os tribunais deste estudo, a empresa com maior quantidade de processos consumeristas no estado do Amazonas foi uma empresa de fornecimento de água, a Manaus Ambiental, com `r maiores_litigantes_tjam$p[1]` dos processos. As posições seguintes são mais condizentes com o identificado nos outros tribunais, sendo duas delas instituições bancárias que contemplam 14,7% dos casos e uma delas a seguradora lider, administradora do seguro DPVAT, com `r maiores_litigantes_tjam$p[3]` dos litígios. 
+
+```{r}
+head(maiores_litigantes_tjam, 30)
+```
+
+A quinta posição volta a surpreender, pois trata-se de uma empresa de fornecimento de energia subsidiária da Eletrobrás, a Amazonas Energia, com `r maiores_litigantes_tjam$p[4]` dos processos. As demandadas mais usuais do direito consumerista brasileiro, as empresas de telefonia, só começam a aparecer na sexta posição. O grupo empresarial da Oi concentra `r maiores_litigantes_tjam$p[6]` dos processos, na sexta posição, o grupo empresarial da Vivo concentra `r maiores_litigantes_tjam$p[7]` dos processos, na sétima posição, e o grupo de empresas da Claro concentra `r maiores_litigantes_tjam$p[8]` dos processos. 
+
+Os 30 maiores litigantes acumulam `r maiores_litigantes_tjam$p_acum[30]`, mas podemos compreender melhor a origem dos demais litígios se agruparmos os processos por setor da economia das demandadas. Analisando dessa forma, conclui-se que `r maiores_setores_tjam$p_acum[5]` dos processos concentram-se no setores financeiro, fornecimento de energia e água, telecomunicações, seguros e transporte aéreo. As três primeiras classes possuem proporções acima de 8% dos processos e caracterizam um ponto de corte na distribuição de processos por empresa: a partir delas, a fatia consumida por cada instituição orbita os 1%. Nessa nova classe de processos, cujas demandadas concentram menos de 8% do total, destaca-se o fundo Itapeva, que realiza cobranças de crédito.
+
+```{r}
+maiores_setores_tjam %>% 
+  head(10)
+```
+
+Considerando-se o interesse em qualificar certas instituições como demandadas em massa pelos litigantes, partiremos agora a uma análise que busca averiguar a existência de padrões temporais que expliquem o volume de casos de um certo grande litigante levantado nas tabelas anteriores. 
+
+Analisando o volume mensal de distribuições de cada tipo de processo, é possível identificar padrões temporais. Percebe-se uma tendência de crescimento dos processos contra as empresas de fornecimento de água e esgoto e uma no volume processual das empresas de telefonia no ano de 2015. Nas empresas de seguros e instituições financeiras, por outro lado, percebe-se exatamente o contrário. O volume processual concentrado nessas instituições encontra-se em declínio.
+
+```{r}
+d_tjam_2 %>% 
+    count(mes, area) %>% 
+    filter(area %in% head(maiores_setores_tjam,4)$area) %>% 
+    ggplot(aes(x = mes, y = n)) +
+    geom_line() +
+    facet_wrap(~area, ncol = 2, nrow = 2, scale = 'free') +
+    theme_bw()
+```
+
+### Causas de pedir
+
+Nesta seção vamos estudar as causas de pedir mais frequentes com aos maiores litigantes separando-os de acordo com a área em que atuam.
+
+#### Bancos e Instituições Financeiras
+
+```{r}
+assuntos_bancos <- d_tjam_2 %>% 
+  filter(area == "bancos_cartoes_financeiras") %>% 
+  count(assunto) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = n/sum(n),
+         p_acum = scales::percent(cumsum(p)),
+         p = scales::percent(p))
+
+maiores_litigantes_bancos <- d_tjam_2 %>% 
+  filter(area == "bancos_cartoes_financeiras") %>% 
+  count(nome2) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = n/sum(n),
+         p_acum = scales::percent(cumsum(p)),
+         p = scales::percent(p))
+```
+
+No TJAM, 5 assuntos da TPU contemplam `r assuntos_bancos$p_acum[5]` do total de processos consumeristas contra bancos e instituições financeiras.
+
+Com relação às empresas financeiras, o assunto mais frequente, com `r assuntos_bancos$p[1]` dos processos, diz respeito à "Interpretação / Revisão de Contrato". Em seguida, tem-se a classificação genérica "Indenização por Dano Moral", com `r assuntos_bancos$p[2]` dos processos, seguir por processos de "Indenização por Dano Material", com `r assuntos_bancos$p[3]` dos processos.
+
+Na quarta posição, aparece a "Inclusão Indevida em Cadastro de Inadimplentes", com `r assuntos_bancos$p[4]` dos processos, que relaciona-se intimamente com os dois últimos assuntos listados. A quinta posição diz respeito a processos relativos ao uso de cartões de crédito, e concentra `r assuntos_bancos$p[5]`
+
+Neste ponto já acumula-se 80% de todos os processos consumeristas contra instituições bancárias, mas dois assuntos processuais ainda destacam-se, considerando que o resto da lista lida com temas repetidos ou aninhados dentro de classificações mais gerais como "Bancários".
+
+Entretanto, embora os 6 primeiros assuntos processuais mais frequentes sejam expressivos, o volume processual de um deles concentrou-se em um certo período do tempo. Processos classificados como "Interpretação / Revisão de Contrato" apresentaram um decaimento constante a partir de 2014, de tal forma que processo desse assunto só foram distribuídos entre 2012 e 2014. Processos de danos morais e classificados como "Bancários" também foram distribuídos com menor frequência a partir de 2014, mas indenizações por danos materiais, processos relacionados a cartões de crédito e inclusões indevidas em cadastros de inadimplentes aumentaram.
+
+```{r}
+d_tjam_2 %>% 
+  filter(area == "bancos_cartoes_financeiras") %>% 
+  filter(assunto %in% assuntos_bancos$assunto[1:6]) %>% 
+  count(mes, assunto) %>% 
+  ggplot(aes(x = mes, y = n, color = assunto)) +
+  geom_line() + theme_bw() + theme(strip.background = element_blank(), strip.placement = 'outside', strip.text = element_blank())
+```
+
+#### Empresas de telecomunicação
+
+```{r}
+telecomunicaoes <- d_tjam_2 %>% 
+  filter(area == "telecomunicacoes") %>% 
+  count(assunto) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = n/sum(n),
+         p_acum = scales::percent(cumsum(p)),
+         p = scales::percent(p))
+
+maiores_telecomunicacoes <- d_tjam_2 %>% 
+  filter(area == "telecomunicacoes") %>% 
+  count(nome2) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = n/sum(n),
+         p_acum = scales::percent(cumsum(p)),
+         p = scales::percent(p))
+```
+
+O tópico mais discutido em processos consumeristas contra companhias telefonicas é a inclusão indevida em cadastro de inadimplentes, com 
+`r telecomunicaoes$p[1]` dos processos. Logo em seguida, mas não sem relação, encontram-se os processos que pedem indenizações por danos morais, representando `r telecomunicaoes$p[2]` dos processos.
+
+Fora da seara das indenizações, a partir da terceira posição começam a aparecer processos efetivamente sobre a prestação de serviços das operadoras de telefonia. Os mais frequentes desses processos são aqueles que discutem cobranças indevidas de ligações, com `r telecomunicaoes$p[3]` dos casos. Na quarta posição, relacionado com os casos de de danos morais e inclusões indevidas em cadastro de inadimplentes, estão os processos que pedem indenizações por danos mareiais, representando `r telecomunicaoes$p[4]` dos casos.
+
+Na quinta posição voltam a aparecer processos relacionados a prestação de serviços, com processos que têm a classificação genérica "Telefonia", que segundo a TPU deveriam ser classificados como "Assinatura Básica Mensal", "Cobrança Indevida de Ligações" ou "Pulsos Excedentes". Na sequência, aparece uma dessas classificações específicas: processos do assunto "Assinatura Básica Mensal" representam `r telecomunicaoes$p[6]` dos casos.
+
+#### Empresas de fornecimento gás e água
+
+```{r}
+energia <- d_tjam_2 %>% 
+  filter(area == "energia_gas_agua_esgoto") %>% 
+  count(assunto) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = n/sum(n),
+         p_acum = scales::percent(cumsum(p)),
+         p = scales::percent(p))
+
+maiores_energia <- d_tjam_2 %>% 
+  filter(area == "energia_gas_agua_esgoto") %>% 
+  count(nome2) %>% 
+  arrange(desc(n)) %>% 
+  mutate(p = n/sum(n),
+         p_acum = scales::percent(cumsum(p)),
+         p = scales::percent(p))
+```
+
+Nesse setor, existem apenas duas empresas com volume processual expressivo: as companhias Amazonas Energia e Manaus Ambiental. Por esse motivo, apenas 5 assuntos processuais concentram `r energia$p_acum[5]` dos processos: Fornecimento de Água, Fornecimento de Energia Elétrica, Inclusão Indevida em Cadastro de Inadimplentes e Indenização por Dano Moral e Indenização por Dano Material.
+
+```{r}
+head(energia, 5)
+```
+
+Por conta das diferenças nos serviços fornecidos por cada empresa, identifica-se entre elas uma distribuição desigual dos processos.
+
+```{r}
+d_tjam_2 %>% 
+  filter(area == "energia_gas_agua_esgoto",
+         assunto %in% energia$assunto[1:5],
+         nome2 %in% maiores_energia$nome2[1:2]) %>% 
+  mutate(nome2 = stringr::str_wrap(nome2, width = 3),
+         assunto = stringr::str_wrap(assunto, width = 20)) %>% 
+  ggplot(aes(x = assunto)) + 
+  geom_bar() +
+  facet_wrap(~nome2, nrow = 2, ncol = 2, scale = 'free') +
+  theme_bw() + 
+  coord_flip()
+```
+
+
 
