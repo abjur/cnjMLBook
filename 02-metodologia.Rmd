@@ -704,7 +704,7 @@ diretamente para o cálculo dos volumes processuais.
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth]{08-metodologia_files/figure-latex/rb-1.pdf}
+\includegraphics[width=\linewidth]{imgs/08-metodologia_files/figure-latex/rb-1.pdf}
 \caption{\label{fig:rb}Rede Bayesiana representando a hierarquia dos níveis
 das TPUs.}
 \end{figure}
@@ -722,7 +722,7 @@ um modelo mais completo.
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth]{08-metodologia_files/figure-latex/rb2-1.pdf}
+\includegraphics[width=\linewidth]{imgs/08-metodologia_files/figure-latex/rb2-1.pdf}
 \caption{\label{fig:rb2}Rede Bayesiana representando a hierarquia dos níveis
 das TPUs, considerando também a vara.}
 \end{figure}
@@ -831,7 +831,7 @@ encontramos o valor de 103,5\%.
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth]{08-metodologia_files/figure-latex/comparacao-1.pdf}
+\includegraphics[width=\linewidth]{imgs/08-metodologia_files/figure-latex/comparacao-1.pdf}
 \caption{\label{fig:comparacao}Comparação da quantidade de casos pendentes
 observada e calculada pela fórmula aproximada, considerando apenas casos
 de conhecimento de primeiro grau.}
@@ -900,7 +900,7 @@ TJDFT & Centro-Oeste & Médio & 138.5\% & 68.1\% & 218.231 & 302.322 & 225.703\\
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth]{08-metodologia_files/figure-latex/iadn2-1.pdf}
+\includegraphics[width=\linewidth]{imgs/08-metodologia_files/figure-latex/iadn2-1.pdf}
 \caption{\label{fig:iadn2}IADN ao longo dos anos para os tipos processuais e
 tribunais de interesse.}
 \end{figure}
