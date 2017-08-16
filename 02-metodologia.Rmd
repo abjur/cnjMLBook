@@ -33,7 +33,7 @@ fct_lump2 <- function(f, reps) {
 }
 ```
 
-Nesse capítulo, descrevemos a metodologia utilizada para solucionar os problemas de cada parte. Na introdução vimos que a pesquisa apresenta uma parte *exploratória* e uma parte *propositiva*. A primeira envolve o levantamento dos maiores litigantes em ações consumeristas e a segunda envolve propor soluções para lidar com o estoque de processos atual e evitar novos casos. 
+Nesse capítulo, descrevemos a metodologia utilizada para solucionar os problemas de cada parte. Na introdução vimos que a pesquisa apresenta uma parte *exploratória* e uma parte *propositiva*. A primeira envolve o levantamento dos maiores litigantes em ações consumeristas e a segunda envolve propor soluções para lidar com o estoque de processos atual e evitar novos casos.
 
 A pesquisa tem base filosófica pragmática [@hanson2005mixed]. Isso significa que o foco principal são resultados aplicáveis na sociedade. O rigor metodológico reside principalmente na parte exploratória, especificamente nos métodos estatísticos de análise e inferência.
 
@@ -41,18 +41,23 @@ A pesquisa também busca atender o *princípio da reprodutibilidade* [@gelman201
 
 A metodologia do estudo possui um desenho misto (@hanson2005mixed, p. 116). Especificamente, utilizamos a técnica de métodos convergentes em paralelo (*convergent parallel methods design*). Nessa abordagem, coletamos e analisamos dados qualitativos e quantitativos em paralelo, confrontando os resultados para gerar interpretações e conclusões. A Figura \@ref(fig:desenho) mostra esquematicamente o desenho utilizado.
 
-```{r desenho, fig.cap="Método misto em paralelo convergente (adaptado de [@creswell2013research], p. 270)."}
-knitr::include_graphics('imgs/creswell.pdf')
-```
+<!-- ```{r desenho, fig.cap="Método misto em paralelo convergente (adaptado de [@creswell2013research], p. 270)."} -->
+<!-- knitr::include_graphics('imgs/creswell.png') -->
+<!-- ``` -->
+
+![Método misto em paralelo convergente (adaptado de [@creswell2013research], p. 270).](imgs/creswell.png){#fig:desenho}
 
 A parte exploratória utiliza métodos quantitativos baseados em dados
 observacionais para elucidar o fenômeno de interesse (@hanson2005mixed, p. 18). Nesse caso, iniciamos com a obtenção de dados para posterior análise e interpretação de resultados. A Figura \@ref(fig:quanti) mostra essa parte de forma esquemática.
 
-```{r quanti, fig.cap="Metodologia quantitativa. Adaptado de @wickham2016r."}
-knitr::include_graphics('imgs/quanti.pdf')
-```
+<!-- ```{r quanti, fig.cap="Metodologia quantitativa. Adaptado de @wickham2016r."} -->
+<!-- knitr::include_graphics('imgs/quanti.png') -->
+<!-- ``` -->
 
-Já a parte propositiva utiliza tanto métodos quantitativos não-experimentais quanto métodos qualitativos para gerar as proposições. Nesse caso, fizemos entrevistas, levantamentos bibliográficos e levantamento de dados para suportar as argumentações. 
+![Metodologia quantitativa. Adaptado de @wickham2016r.](imgs/quanti.png){#fig:quanti}
+
+
+Já a parte propositiva utiliza tanto métodos quantitativos não-experimentais quanto métodos qualitativos para gerar as proposições. Nesse caso, fizemos entrevistas, levantamentos bibliográficos e levantamento de dados para suportar as argumentações.
 
 A convergência das duas partes da pesquisa se deu na forma usual, a partir do confrontamento dos resultados levantados (@creswell2013research, p.118). Os resultados da parte exploratória são utilizados como *inputs* para tomadas de decisão na parte propositiva, com o intuito de i) descartar parte das proposições ou ii) indicar formas de execução das propostas focadas em grupos estratégicos identificados na parte exploratória (e.g. regiões ou tipos empresariais).
 
@@ -69,7 +74,7 @@ Os resultados dessas investigações foram resumidos abaixo. Em seguida, apresen
 1. a) Definição do recorte da pesquisa; b) extração de dados dos tribunais; c) criação de método para contagem de processos consumeristas; d) desenvolvimento de códigos para arrumar os nomes das partes dos processos.
 1. Utilização do IADN - Índice de Atendimento à Demanda Normalizado para avaliar o efeito de soluções estratégicas.
 
-### Direção da pesquisa} {#direcao-da-pesquisa}
+### Direção da pesquisa {#direcao-da-pesquisa}
 
 O tema de interesse da pesquisa é a **administração judiciária**. Especificamente, queremos propor soluções estratégicas para **melhorar os índices de litigiosidade**. As direções de intervenção e os índices de interesse são:
 
@@ -79,8 +84,7 @@ O tema de interesse da pesquisa é a **administração judiciária**. Especifica
 1. Monitorar a recorribilidade externa do primeiro grau.
 1. Monitorar o índice de conciliação.
 
-Não há interesse em estudar a quantidade de casos novos por magistrado ou servidor. As contagens de magistrados e servidores foram fixadas para simplificar
-a análise. Também por simplicidade não monitoramos recorribilidade interna.
+Não há interesse em estudar a quantidade de casos novos por magistrado ou servidor. As contagens de magistrados e servidores foram fixadas para simplificar a análise. Também por simplicidade não monitoramos recorribilidade interna.
 
 O índice de conciliação, por sua vez, está correlacionado a outros índices de interesse. Na pesquisa, não foi possível obter evidências para afirmar se há interesse em aumentar, reduzir ou manter os valores atuais dessa métrica.
 
@@ -98,46 +102,46 @@ dados <- rjn::d_jn$dados[["JN_18-Out-2016.csv"]]
 
 A Tabela \@ref(tab:jntot) mostra a quantidade de casos novos e pendentes por ramo da Justiça. É possível observar que a Justiça Estadual foi responsável por quase 70% dos casos novos e quase 80% dos casos pendentes. Isso mostra que, para fins de administração do judiciário, faz sentido considerar a Justiça Estadual como foco principal.
 
-```{r jntot}
-dados %>% 
-  filter(ano == 2015, str_detect(dsc_tribunal, '^Just|Super')) %>% 
-  mutate_at(vars(cn, cp), funs(as.numeric)) %>% 
+```{r tab:jntot, results='asis'}
+dados %>%
+  filter(ano == 2015, str_detect(dsc_tribunal, '^Just|Super')) %>%
+  mutate_at(vars(cn, cp), funs(as.numeric)) %>%
   select(dsc_tribunal, cn, cp) %>%
   mutate(dsc_tribunal = fct_other(dsc_tribunal,
-                                  keep = c('Justiça Estadual', 
+                                  keep = c('Justiça Estadual',
                                            'Justiça do Trabalho',
                                            'Justiça Federal'),
-                                  other_level = 'Outros')) %>% 
-  group_by(dsc_tribunal) %>% 
-  summarise(total_n = sum(cn), total_p = sum(cp)) %>% 
-  arrange(desc(total_n)) %>% 
-  janitor::adorn_totals("row") %>% 
+                                  other_level = 'Outros')) %>%
+  group_by(dsc_tribunal) %>%
+  summarise(total_n = sum(cn), total_p = sum(cp)) %>%
+  arrange(desc(total_n)) %>%
+  janitor::adorn_totals("row") %>%
   mutate(prop_n = total_n / sum(total_n) * 2,
-         prop_p = total_p / sum(total_p) * 2) %>% 
+         prop_p = total_p / sum(total_p) * 2) %>%
   transmute(
     Justiça = dsc_tribunal,
     `Casos Novos` = sprintf("%s (%s)", fmt(total_n), fmt_p(prop_n)),
     `Casos Pendentes` = sprintf("%s (%s)", fmt(total_p), fmt_p(prop_p))
-  ) %>% 
-  knitr::kable(align = 'lrr', caption = "Casos novos e casos pendentes por Justiça.")
+  ) %>%
+  include_table(align = 'llrr', caption = "Casos novos e casos pendentes por Justiça.")
 ```
 
 A Tabela \ref(tab:inst) mostra o volume de casos novos e pendentes dentro da Justiça Estadual, por instância. Observe que o volume de casos pendentes no primeiro grau, somado ao volume nos Juizados Especiais, representam mais de 96% do total. Logo, um segundo filtro adequado é o da instância.
 
-```{r inst}
+```{r tab:nst}
 dados %>%
-  filter(justica == 'Estadual', sigla != 'TJ') %>% 
+  filter(justica == 'Estadual', sigla != 'TJ') %>%
   select(sigla, ano, cn1, cn2, cp1, cp2, cnje, cntr, cpje, cptr) %>%
-  mutate_at(vars(-sigla), funs(as.numeric)) %>% 
-  group_by(sigla) %>% 
-  # mutate_all(funs(if_else(is.na(.), round(mean(., na.rm = TRUE)), .))) %>% 
-  mutate_all(funs(if_else(is.na(.), 0, .))) %>% 
-  ungroup() %>% 
-  filter(ano == 2015) %>% 
-  select(-sigla, -ano) %>% 
-  summarise_all(sum) %>% 
-  gather() %>% 
-  separate(key, c('tipo', 'inst'), sep = 2) %>% 
+  mutate_at(vars(-sigla), funs(as.numeric)) %>%
+  group_by(sigla) %>%
+  # mutate_all(funs(if_else(is.na(.), round(mean(., na.rm = TRUE)), .))) %>%
+  mutate_all(funs(if_else(is.na(.), 0, .))) %>%
+  ungroup() %>%
+  filter(ano == 2015) %>%
+  select(-sigla, -ano) %>%
+  summarise_all(sum) %>%
+  gather() %>%
+  separate(key, c('tipo', 'inst'), sep = 2) %>%
   mutate(tipo = case_when(
     tipo == 'cn' ~ 'total_n',
     tipo == 'cp' ~ 'total_p'
@@ -148,81 +152,81 @@ dados %>%
     inst == 'je' ~ 'Juizados Especiais',
     inst == 'tr' ~ 'Turmas Recursais'
   )) %>%
-  spread(tipo, value) %>% 
-  arrange(desc(total_p)) %>% 
-  janitor::adorn_totals("row") %>% 
+  spread(tipo, value) %>%
+  arrange(desc(total_p)) %>%
+  janitor::adorn_totals("row") %>%
   mutate(prop_n = total_n / sum(total_n) * 2,
-         prop_p = total_p / sum(total_p) * 2) %>% 
+         prop_p = total_p / sum(total_p) * 2) %>%
   transmute(
     `Grau` = inst,
     `Casos Novos` = sprintf("%s (%s)", fmt(total_n), fmt_p(prop_n)),
     `Casos Pendentes` = sprintf("%s (%s)", fmt(total_p), fmt_p(prop_p))
-  ) %>% 
-  knitr::kable(align = 'lrr', caption = "Casos novos e casos pendentes por grau. TJAM não enviou dados da segunda instância no ano de 2015. Nesse caso, consideramos esse valor como zero.")
+  ) %>%
+  include_table(align = 'llrr', caption = "Casos novos e casos pendentes por grau. TJAM não enviou dados da segunda instância no ano de 2015. Nesse caso, consideramos esse valor como zero.")
 ```
 
 O terceiro filtro aplicado relaciona-se com as áreas processuais criminal e não criminal. A Tabela \ref(tab:crim) mostra a quantidade de casos novos e pendentes no primeiro grau e nos Juizados especiais, comparando as duas áreas. A área não criminal é responsável por 88% dos casos pendentes. Mesmo com todos os filtros aplicados, ainda estamos com uma subpopulação de mais de 50 milhões de casos pendentes.
 
-```{r crim}
-dados %>% 
-  filter(justica == 'Estadual', sigla != 'TJ') %>% 
+```{r tab:crim}
+dados %>%
+  filter(justica == 'Estadual', sigla != 'TJ') %>%
   select(
     sigla, ano,
     # casos pendentes
     ## nao criminais
-    cpcncrim1, cpcncrimje, 
+    cpcncrim1, cpcncrimje,
     cpext1, exejudpncrim1, cpextje, exejudpncrimje,
     ## criminais
-    cpccrim1, cpccrimje, 
+    cpccrim1, cpccrimje,
     exejudpcrimpl1, exejudpcrimnpl1, exejudpcrimnplje,
     # casos novos
     ## nao criminais
-    cncncrim1, cncncrimje, 
+    cncncrim1, cncncrimje,
     cnext1, exejudncrim1, cnextje, exejudncrimje,
     ## criminais
-    cnccrim1, cnccrimje, 
+    cnccrim1, cnccrimje,
     exejudcrimpl1, exejudcrimnpl1, exejudcrimnplje
-  ) %>% 
-  mutate_at(vars(-sigla), funs(as.numeric)) %>% 
-  group_by(sigla) %>% 
-  # mutate_all(funs(if_else(is.na(.), round(mean(., na.rm = TRUE)), .))) %>% 
-  mutate_all(funs(if_else(is.na(.), 0, .))) %>% 
-  ungroup() %>% 
-  filter(ano == 2015) %>% 
-  select(-sigla, -ano) %>% 
+  ) %>%
+  mutate_at(vars(-sigla), funs(as.numeric)) %>%
+  group_by(sigla) %>%
+  # mutate_all(funs(if_else(is.na(.), round(mean(., na.rm = TRUE)), .))) %>%
+  mutate_all(funs(if_else(is.na(.), 0, .))) %>%
+  ungroup() %>%
+  filter(ano == 2015) %>%
+  select(-sigla, -ano) %>%
   summarise_all(sum) %>%
   mutate(
-    cpcrim = cpccrim1 + cpccrimje + 
+    cpcrim = cpccrim1 + cpccrimje +
       exejudpcrimpl1 + exejudpcrimnpl1 + exejudpcrimnplje,
-    cncrim = cnccrim1 + cnccrimje + 
+    cncrim = cnccrim1 + cnccrimje +
       exejudcrimpl1 + exejudcrimnpl1 + exejudcrimnplje,
-    cpncrim = cpcncrim1 + cpcncrimje + 
+    cpncrim = cpcncrim1 + cpcncrimje +
       cpext1 + exejudpncrim1 + cpextje + exejudpncrimje,
-    cnncrim = cncncrim1 + cncncrimje + 
+    cnncrim = cncncrim1 + cncncrimje +
       cnext1 + exejudncrim1 + cnextje + exejudncrimje
-  ) %>% 
-  select(cpcrim, cncrim, cpncrim, cnncrim) %>% 
-  gather() %>% 
-  separate(key, c('tipo', 'inst'), sep = 2) %>% 
+  ) %>%
+  select(cpcrim, cncrim, cpncrim, cnncrim) %>%
+  gather() %>%
+  separate(key, c('tipo', 'inst'), sep = 2) %>%
   mutate(tipo = case_when(
     tipo == 'cn' ~ 'total_n',
     tipo == 'cp' ~ 'total_p'
   )) %>%
   mutate(inst = case_when(
     inst == 'ncrim' ~ 'Não criminal',
-    inst == 'crim' ~ 'Criminal'  
+    inst == 'crim' ~ 'Criminal'
   )) %>%
-  spread(tipo, value) %>% 
-  arrange(desc(total_p)) %>% 
-  janitor::adorn_totals("row") %>% 
+  spread(tipo, value) %>%
+  arrange(desc(total_p)) %>%
+  janitor::adorn_totals("row") %>%
   mutate(prop_n = total_n / sum(total_n) * 2,
-         prop_p = total_p / sum(total_p) * 2) %>% 
+         prop_p = total_p / sum(total_p) * 2) %>%
   transmute(
     `Área` = inst,
     `Casos Novos` = sprintf("%s (%s)", fmt(total_n), fmt_p(prop_n)),
     `Casos Pendentes` = sprintf("%s (%s)", fmt(total_p), fmt_p(prop_p))
-  ) %>% 
-  knitr::kable(align = 'lrr', caption = "Casos novos e casos pendentes por área, dentro do primeiro grau ou Juizado Especial. TJPI não enviou alguns dados de Juizados Especiais no ano de 2015. Nesse caso, consideramos esse valor como zero.")
+  ) %>%
+  include_table(align = 'llrr', caption = "Casos novos e casos pendentes por área, dentro do primeiro grau ou Juizado Especial. TJPI não enviou alguns dados de Juizados Especiais no ano de 2015. Nesse caso, consideramos esse valor como zero.")
 ```
 
 O próximo filtro é baseado no problema da execução fiscal. Para fins de administração dos tribunais, existem dois tipos de processos principais: execução fiscal e outros. Esses casos são muito relevantes em volume processual, especialmente na Justiça Estadual.
@@ -231,33 +235,33 @@ A Tabela \@ref(tab:fiscal) mostra a quantidade de casos novos e pendentes não c
 
 Nesse momento foi feita uma importante decisão de escopo: estudar apenas os casos não criminais e não relacionados à execução fiscal. Agora, nossa população de casos pendentes tem aproximadamente 25 milhões de processos.
 
-```{r fiscal}
-dados %>% 
-  filter(justica == 'Estadual', sigla != 'TJ') %>% 
+```{r tab:fiscal}
+dados %>%
+  filter(justica == 'Estadual', sigla != 'TJ') %>%
   select(
     sigla, ano,
     # casos pendentes
     ## nao criminais
-    cpcncrim1, cpcncrimje, 
+    cpcncrim1, cpcncrimje,
     cpextfisc1, cpextnfisc1, exejudpncrim1, cpextje, exejudpncrimje,
     ## criminais
-    cpccrim1, cpccrimje, 
+    cpccrim1, cpccrimje,
     exejudpcrimpl1, exejudpcrimnpl1, exejudpcrimnplje,
     # casos novos
     ## nao criminais
-    cncncrim1, cncncrimje, 
+    cncncrim1, cncncrimje,
     cnextfisc1, cnextnfisc1, exejudncrim1, cnextje, exejudncrimje,
     ## criminais
-    cnccrim1, cnccrimje, 
+    cnccrim1, cnccrimje,
     exejudcrimpl1, exejudcrimnpl1, exejudcrimnplje
-  ) %>% 
-  mutate_at(vars(-sigla), funs(as.numeric)) %>% 
-  group_by(sigla) %>% 
-  # mutate_all(funs(if_else(is.na(.), round(mean(., na.rm = TRUE)), .))) %>% 
-  mutate_all(funs(if_else(is.na(.), 0, .))) %>% 
-  ungroup() %>% 
-  filter(ano == 2015) %>% 
-  select(-sigla, -ano) %>% 
+  ) %>%
+  mutate_at(vars(-sigla), funs(as.numeric)) %>%
+  group_by(sigla) %>%
+  # mutate_all(funs(if_else(is.na(.), round(mean(., na.rm = TRUE)), .))) %>%
+  mutate_all(funs(if_else(is.na(.), 0, .))) %>%
+  ungroup() %>%
+  filter(ano == 2015) %>%
+  select(-sigla, -ano) %>%
   summarise_all(sum) %>%
   transmute(
     cpfisc = cpextfisc1,
@@ -266,9 +270,9 @@ dados %>%
     cnjud = cnextnfisc1 + exejudncrim1 + cnextje + exejudncrimje,
     cpcon = cpcncrim1 + cpcncrimje,
     cncon = cncncrim1 + cncncrimje
-  ) %>% 
-  gather() %>% 
-  separate(key, c('tipo', 'inst'), sep = 2) %>% 
+  ) %>%
+  gather() %>%
+  separate(key, c('tipo', 'inst'), sep = 2) %>%
   mutate(tipo = case_when(
     tipo == 'cn' ~ 'total_n',
     tipo == 'cp' ~ 'total_p'
@@ -276,18 +280,18 @@ dados %>%
   mutate(inst = case_when(
     inst == 'con' ~ 'Conhecimento',
     inst == 'jud' ~ 'Execução judicial ou extrajudicial não fiscal',
-    inst == 'fisc' ~ 'Execução fiscal'  
+    inst == 'fisc' ~ 'Execução fiscal'
   )) %>%
-  spread(tipo, value) %>% 
-  arrange(desc(total_p)) %>% 
-  janitor::adorn_totals("row") %>% 
+  spread(tipo, value) %>%
+  arrange(desc(total_p)) %>%
+  janitor::adorn_totals("row") %>%
   mutate(prop_n = total_n / sum(total_n) * 2,
-         prop_p = total_p / sum(total_p) * 2) %>% 
+         prop_p = total_p / sum(total_p) * 2) %>%
   transmute(
     `Tipo de processo` = inst,
     `Casos Novos` = sprintf("%s (%s)", fmt(total_n), fmt_p(prop_n)),
     `Casos Pendentes` = sprintf("%s (%s)", fmt(total_p), fmt_p(prop_p))
-  ) %>% 
+  ) %>%
   knitr::kable(align = 'lrr', caption = "Casos novos e casos pendentes não criminais por tipo de processo, dentro do primeiro grau ou Juizado Especial. TJPI não enviou alguns dados de Juizados Especiais no ano de 2015. Nesse caso, consideramos esse valor como zero.")
 ```
 
@@ -313,50 +317,50 @@ Durante a primeira fase do projeto, produzimos um ofício com pedidos de listage
 
 A Tabela \@ref(tab:tabuf) mostra a quantidade de casos novos e pendentes não criminais de conhecimento no primeiro grau para cada Tribunal escolhido. Já a Figura \@ref(fig:tempo) mostra o volume de casos novos e pendentes ao longo dos anos. Observa-se que as quantidades não são estáveis, mesmo considerando Tribunais de grande porte.
 
-```{r tabuf}
+```{r tab:tabuf}
 data(cadmun, package = 'abjData')
 cadmun <- distinct(cadmun, uf, regiao)
-dados %>% 
-  filter(justica == 'Estadual', sigla != 'TJ') %>% 
-  mutate(uf = str_sub(sigla, 3, 4)) %>% 
-  inner_join(cadmun, 'uf') %>% 
+dados %>%
+  filter(justica == 'Estadual', sigla != 'TJ') %>%
+  mutate(uf = str_sub(sigla, 3, 4)) %>%
+  inner_join(cadmun, 'uf') %>%
   select(
     sigla, ano, regiao, porte,
     # casos pendentes
     ## nao criminais
-    cpcncrim1, cpcncrimje, 
+    cpcncrim1, cpcncrimje,
     cpextfisc1, cpextnfisc1, exejudpncrim1, cpextje, exejudpncrimje,
     # casos novos
     ## nao criminais
-    cncncrim1, cncncrimje, 
+    cncncrim1, cncncrimje,
     cnextfisc1, cnextnfisc1, exejudncrim1, cnextje, exejudncrimje
-  ) %>% 
-  mutate_at(vars(-sigla, -regiao, -porte), funs(as.numeric)) %>% 
-  group_by(sigla) %>% 
-  # mutate_all(funs(if_else(is.na(.), round(mean(., na.rm = TRUE)), .))) %>% 
-  mutate_if(is.numeric, funs(if_else(is.na(.), 0, .))) %>% 
-  ungroup() %>% 
-  filter(ano == 2015) %>% 
-  select(-ano) %>% 
+  ) %>%
+  mutate_at(vars(-sigla, -regiao, -porte), funs(as.numeric)) %>%
+  group_by(sigla) %>%
+  # mutate_all(funs(if_else(is.na(.), round(mean(., na.rm = TRUE)), .))) %>%
+  mutate_if(is.numeric, funs(if_else(is.na(.), 0, .))) %>%
+  ungroup() %>%
+  filter(ano == 2015) %>%
+  select(-ano) %>%
   transmute(
-    inst = sigla, 
+    inst = sigla,
     regiao = regiao,
     porte = porte,
     total_p = cpcncrim1 + cpcncrimje +
       cpextnfisc1 + exejudpncrim1 + cpextje + exejudpncrimje,
     total_n = cncncrim1 + cncncrimje +
       cnextnfisc1 + exejudncrim1 + cnextje+ exejudncrimje
-  ) %>% 
-  arrange(desc(total_p)) %>% 
-  unite(janitor, inst, regiao, porte) %>% 
+  ) %>%
+  arrange(desc(total_p)) %>%
+  unite(janitor, inst, regiao, porte) %>%
   janitor::adorn_totals("row") %>%
-  separate(janitor, c('inst', 'regiao', 'porte'), sep = '_') %>% 
-  mutate(soma_n = sum(total_n) / 2, soma_p = sum(total_p) / 2) %>% 
+  separate(janitor, c('inst', 'regiao', 'porte'), sep = '_') %>%
+  mutate(soma_n = sum(total_n) / 2, soma_p = sum(total_p) / 2) %>%
   mutate(prop_n = total_n / soma_n,
-         prop_p = total_p / soma_p) %>% 
+         prop_p = total_p / soma_p) %>%
   filter(inst %in% c('TJSP', 'TJMT', 'TJRS', 'TJRJ', 'TJDFT',
-                     'TJAM', 'TJBA')) %>% 
-  unite(janitor, inst, regiao, porte) %>% 
+                     'TJAM', 'TJBA')) %>%
+  unite(janitor, inst, regiao, porte) %>%
   janitor::adorn_totals("row") %>%
   separate(janitor, c('inst', 'regiao', 'porte'), sep = '_') %>%
   transmute(
@@ -365,36 +369,36 @@ dados %>%
     `Porte` = porte,
     `Casos Novos` = sprintf("%s (%s)", fmt(total_n), fmt_p(prop_n)),
     `Casos Pendentes` = sprintf("%s (%s)", fmt(total_p), fmt_p(prop_p))
-  ) %>% 
-  knitr::kable(align = 'lllrr', 
+  ) %>%
+  include_table(align = 'llllrr',
                caption = "Casos novos e casos pendentes cíveis por tribunal. Os porcentuais foram calculados em relação ao total de casos considerando todos os Tribunais.")
 ```
 
 ```{r tempo, fig.height=5, fig.cap="Volume de casos novos e pendentes ao longo do tempo nos tribunais de interesse."}
 data(cadmun, package = 'abjData')
 cadmun <- distinct(cadmun, uf, regiao)
-dados %>% 
-  filter(justica == 'Estadual', sigla != 'TJ') %>% 
-  mutate(uf = str_sub(sigla, 3, 4)) %>% 
-  inner_join(cadmun, 'uf') %>% 
+dados %>%
+  filter(justica == 'Estadual', sigla != 'TJ') %>%
+  mutate(uf = str_sub(sigla, 3, 4)) %>%
+  inner_join(cadmun, 'uf') %>%
   select(
     sigla, ano, regiao, porte,
     # casos pendentes
     ## nao criminais
-    cpcncrim1, cpcncrimje, 
+    cpcncrim1, cpcncrimje,
     cpextfisc1, cpextnfisc1, exejudpncrim1, cpextje, exejudpncrimje,
     # casos novos
     ## nao criminais
-    cncncrim1, cncncrimje, 
+    cncncrim1, cncncrimje,
     cnextfisc1, cnextnfisc1, exejudncrim1, cnextje, exejudncrimje
-  ) %>% 
-  mutate_at(vars(-sigla, -regiao, -porte), funs(as.numeric)) %>% 
-  group_by(sigla) %>% 
-  # mutate_all(funs(if_else(is.na(.), round(mean(., na.rm = TRUE)), .))) %>% 
-  mutate_if(is.numeric, funs(if_else(is.na(.), 0, .))) %>% 
-  ungroup() %>% 
+  ) %>%
+  mutate_at(vars(-sigla, -regiao, -porte), funs(as.numeric)) %>%
+  group_by(sigla) %>%
+  # mutate_all(funs(if_else(is.na(.), round(mean(., na.rm = TRUE)), .))) %>%
+  mutate_if(is.numeric, funs(if_else(is.na(.), 0, .))) %>%
+  ungroup() %>%
   transmute(
-    inst = sigla, 
+    inst = sigla,
     regiao = regiao,
     ano = ano,
     porte = porte,
@@ -402,18 +406,18 @@ dados %>%
       cpextnfisc1 + exejudpncrim1 + cpextje + exejudpncrimje,
     total_n = cncncrim1 + cncncrimje +
       cnextnfisc1 + exejudncrim1 + cnextje+ exejudncrimje
-  ) %>% 
-  filter(inst %in% c('TJSP', 'TJMT', 'TJRS', 'TJRJ', 
-                     'TJDFT', 'TJAM', 'TJBA')) %>% 
-  gather(tipo, total, total_p, total_n) %>% 
+  ) %>%
+  filter(inst %in% c('TJSP', 'TJMT', 'TJRS', 'TJRJ',
+                     'TJDFT', 'TJAM', 'TJBA')) %>%
+  gather(tipo, total, total_p, total_n) %>%
   mutate(tipo = case_when(
     tipo == 'total_p' ~ 'Casos Pendentes', TRUE ~ 'Casos Novos'
-  )) %>% {(aux <<- .)} %>% 
+  )) %>% {(aux <<- .)} %>%
   ggplot(aes(x = ano, y = total/1e3, linetype = porte, group = inst)) +
   geom_line() +
   geom_text(aes(label = inst), data = filter(aux, ano == 2009),
             nudge_x = .3, vjust = -.6, size = 3) +
-  facet_wrap(~ tipo + porte, scales = 'free_y', 
+  facet_wrap(~ tipo + porte, scales = 'free_y',
              labeller = function(x) label_value(x, multi_line = FALSE)) +
   scale_x_continuous(breaks = 2000:2020) +
   labs(x = '', y = 'Quantidade (milhares)', colour = 'Tribunal') +
@@ -423,11 +427,11 @@ dados %>%
         legend.position = 'bottom')
 ```
 
-<!-- No RJN, é possível observar que assuntos envolvendo o direito do consumidor aparecem dentre os assuntos mais frequentes, especialmente nas turmas recursais e juizados especiais. No entanto, o próprio relatório enfatiza que a análise não é completamente confiável. Nosso intuito é avançar nesse sentido, produzindo estimativas mais confiáveis. -->
+No RJN, é possível observar que assuntos envolvendo o direito do consumidor aparecem dentre os assuntos mais frequentes, especialmente nas turmas recursais e juizados especiais. No entanto, o próprio relatório enfatiza que a análise não é completamente confiável. Nosso intuito é avançar nesse sentido, produzindo estimativas mais confiáveis.
 
-<!-- -> ADICIONAR ANALISE DAS CLASSES E ASSUNTOS AQUI -->
+ADICIONAR ANALISE DAS CLASSES E ASSUNTOS AQUI
 
-<!-- Cada tribunal exigiu metodologias distintas para separação dos casos consumeristas. A Subseção \@ref(extracao) trata desse tema. -->
+Cada tribunal exigiu metodologias distintas para separação dos casos consumeristas. A Subseção \@ref(extracao) trata desse tema.
 
 ### Extração {#extracao}
 
@@ -449,7 +453,6 @@ passíveis de análise estatística. Os arquivos HTML, após processados,
 apresentam informações de acompanhamento processual, como:
 
 \begin{itemize}
-
 \item
   Informações básicas: classe/assunto (Res. 46 CNJ), vara, comarca,
   status, indicador de processo digital, local físico, entre outras.
@@ -468,19 +471,14 @@ O fluxo para leitura, limpeza e arrumação dos dados brutos foi descrito na Fig
 \begin{figure}
 \begin{centering}
 \label{fig:arrumacao}
-\includegraphics[width=\linewidth]{classificacao}
+\includegraphics[width=\linewidth]{imgs/classificacao.png}
 \caption{Fluxo de leitura, limpeza e arrumação dos dados.}
 \end{centering}
 \end{figure}
 
 Em seguida, descrevemos as atividades realizadas para extração dos dados em cada tribunal.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\paragraph{Contatos com os tribunais}\label{contatos-tribunais}
-
+#### Contatos com os tribunais}{#contatos-tribunais}
 
 Após diversos contatos com a estatística, Tecnologia da Informação e presidência do TJAM, fomos encaminhados para um contato do juiz de uma das varas cíveis de Manaus. Isso nos deixou inseguros com relação à qualidade
 dos dados. Por isso, decidimos adotar uma estratégia de baixar os dados via web scraping e amostragem.
@@ -512,7 +510,7 @@ dois motivos: a ABJ já realizou projetos com a Secretaria de
 Planejamento Estratégico (SEPLAN) no passado e está fisicamente próxima
 do tribunal.
 
-\paragraph{Resumo}\label{resumo-tribunais}
+#### Resumo{#resumo-tribunais}
 
 No final, fomos capazes de obter pelo menos uma base de dados por tribunal. As bases de dados não são ideais, mas foram suficientes para levantamento dos maiores litigantes.
 
@@ -533,19 +531,15 @@ TJSP & Ofício & Prospectivo & 1.005.485 & Não & Consum. & Populacional\\
 \hline
 \end{longtable}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 ### Arrumação {#arrumacao}
 
-\paragraph{Assuntos - consumeristas}\label{assuntos}
+#### Assuntos - consumeristas}{#assuntos}
 
 Atualmente, existem duas formas de classificar um processo como consumerista através de seu assunto. A primeira forma é chamada de \textbf{clássica} e a segunda é chamada de \textbf{estatística}. Essas definições foram criadas pela ABJ e podem ser vistas como mais um avanço metodológico da pesquisa.
 
 A forma clássica utiliza como base as Tabelas Processuais Unificadas (TPUs) do CNJ, a partir de uma classificação manual dos assuntos que são relacionados à direito do consumidor ou não. É possível resolver o problema utilizando a TPU de assunto, disponibilizada pelo CNJ, mas a principal dúvida é se existem muitos processos de direito do consumidor que não respeitam a classificação sugerida.
 
-A forma estatística lista os assuntos processuais associados ao tema "direito do consumidor" usando como base os processos judiciais disponíveis na ferramenta de pesquisa \textit{Consulta de Julgados de Primeiro Grau} do TJSP. 
+A forma estatística lista os assuntos processuais associados ao tema "direito do consumidor" usando como base os processos judiciais disponíveis na ferramenta de pesquisa \textit{Consulta de Julgados de Primeiro Grau} do TJSP.
 
 Para isso, fizemos o levantamento de listas de sentenças do TJSP por assunto e por ano, com base em todos assuntos descritos na TPUs. Em cada uma dessas listas, detectamos a presença de um conjunto de palavras-chave que estão associadas à justiça consumerista. Quando a busca de termos retornou algum conteúdo, utilizamos o resultado para classificar um assunto como "potencialmente consumerista".
 
@@ -576,7 +570,7 @@ Constam apenas 73 assuntos processuais na lista clássica, enquanto a lista esta
 
 Para o relatório final, utilizamos somente o critério \textit{clássico} para filtrar os tipos processuais. A escolha foi feita por motivos de estabilidade nos resultados. No entanto, sugerimos que o critério \textit{estatístico} seja utilizado para reproduzir a pesquisa e comparar os resultados. Os códigos utilizados para definição desse critério estão disponíveis publicamente.\footnote{\url{https://github.com/abjur/whitelistTJSP}}.
 
-\paragraph{Assuntos - cifra oculta}\label{assuntos}
+#### Assuntos - cifra oculta}{#assuntos}
 
 Atualmente, a forma mais direta de identificar tipos de processos
 judiciais é utilizando os chamados \emph{assuntos processuais}. Os
@@ -607,7 +601,7 @@ em Cadastro de Inadimplentes'' é um filho de ``Indenização por Dano
 Moral'', que por sua vez é filho de ``Responsabilidade do Fornecedor''.
 
 \begin{figure}
-\includegraphics[width=0.5\linewidth]{tpu} \caption{Árvore de assuntos relacionada ao Direito do Consumidor (parcial). Último acesso em 27/06/2017.}\label{fig:tpu}
+\includegraphics[width=0.5\linewidth]{imgs/tpu.png} \caption{Árvore de assuntos relacionada ao Direito do Consumidor (parcial). Último acesso em 27/06/2017.}\label{fig:tpu}
 \end{figure}
 
 O problema enfrentado atualmente é que, na prática, nem sempre os
@@ -751,37 +745,29 @@ Para o presente trabalho, tentamos aplicar a metodologia da cifra oculta, mas
 acreditamos que a técnica ainda está instável para apresentação no
 relatório final. Por isso incluímos a aplicação dessa tecnologia como sugestão para aprimoramento do sistema.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#### Empresas - filtro{#empresas1}
 
-\paragraph{Empresas - filtro}\label{empresas1}
-
-A classificação das empresas foi feita em duas partes. A primeira parte refere-se à aplicação de filtros para separação de pessoas jurídicas e físicas. 
+A classificação das empresas foi feita em duas partes. A primeira parte refere-se à aplicação de filtros para separação de pessoas jurídicas e físicas.
 
 A aplicação dos filtros de pessoa física e jurídica é importante para determinar qual a proporção de casos dos maiores litigantes em relação ao total de casos envolvendo pessoas físicas no polo ativo e pessoas jurídicas no polo passivo. Sem esse filtro, contaríamos vários casos de execuções extrajudiciais de empresas contra pessoas, que não é nosso interesse nesse caso específico.
 
-Os filtros foram realizados a partir de aplicação de expressões regulares aos nomes das partes. Por exemplo, um nome que termina com ``LTDA'' é certamente um caso de pessoa jurídica. 
+Os filtros foram realizados a partir de aplicação de expressões regulares aos nomes das partes. Por exemplo, um nome que termina com ``LTDA'' é certamente um caso de pessoa jurídica.
 
-O problema da aplicação das expressões é que existem muitos casos ambíguos: por exemplo, um nome que acaba com ``SA'' não é necessariamente uma sociedade anônima, pois pode ser um nome finalizando com essas letras, como ``Heloísa''. 
+O problema da aplicação das expressões é que existem muitos casos ambíguos: por exemplo, um nome que acaba com ``SA'' não é necessariamente uma sociedade anônima, pois pode ser um nome finalizando com essas letras, como ``Heloísa''.
 
 Por isso, foi necessário criar 32 expressões para organizar todas as situações observadas nos dados. Além disso, criamos uma \textit{whitelist}, que é uma lista de nomes sabidamente relacionados a empresas, como Itaú, Bradesco etc.
 
 O algoritmo utilizado para filtragem dos processos pelas partes foi escrito com a linguagem de programação R e está descrito no Apêndice \ref{codpfpj}
 
-\paragraph{Empresas - limpeza incorporações}\label{empresas2}
+#### Empresas - limpeza incorporações{#empresas2}
 
-Um segundo problema relativo ao levantamento de maiores litigantes é a necessidade de lidar com vários nomes de empresas que se referem à mesma empresa. As diferenças nos nomes podem aparecer por i) erros de escrita ou ii) incorporações de empresas. Por exemplo, Telefonica hoje deve ser considerada como Vivo ou Brasil Telecom, que é considerada Oi. 
+Um segundo problema relativo ao levantamento de maiores litigantes é a necessidade de lidar com vários nomes de empresas que se referem à mesma empresa. As diferenças nos nomes podem aparecer por i) erros de escrita ou ii) incorporações de empresas. Por exemplo, Telefonica hoje deve ser considerada como Vivo ou Brasil Telecom, que é considerada Oi.
 
-Ao todo, criamos mais de cem regras, considerando expressões regulares utilizadas para identificar empresas e regras do tipo \textit{de-para} para realizar as reclassificações relativas às incorporações. As regras foram criadas a partir de pesquisas de notícias na internet para encontrar atualizações sobre incorporações das empresas. Essas regras foram importantes para identificar os maiores litigantes de forma acurada. 
- 
+Ao todo, criamos mais de cem regras, considerando expressões regulares utilizadas para identificar empresas e regras do tipo \textit{de-para} para realizar as reclassificações relativas às incorporações. As regras foram criadas a partir de pesquisas de notícias na internet para encontrar atualizações sobre incorporações das empresas. Essas regras foram importantes para identificar os maiores litigantes de forma acurada.
+
 No entanto, pode ser que algumas incorporações não tenham sido consideradas. Isso pode ter ocorrido por dois motivos: i) insuficiência de informações disponíveis na internet ou ii) possível arbitrariedade na identificação das incorporações. O segundo problema é grave, pois, dependendo do critério de classificação, como participação societária de uma empresa em outra, ou grupo controlador, ou mesmo empresas de mesmo segmento, a classificação pode mudar.
 
 Um grande avanço metodológico da presente pesquisa está no fato desses códigos de classificação serem replicáveis. Isso significa que o mesmo código pode ser utilizado para reclassificar empresas em pesquisas futuras. O algoritmo utilizado para classificação dos nomes das empresas foi escrito com a linguagem de programação R e está descrito no Apêndice \ref{codpj}. Convidamos o leitor a criticar os critérios utilizados e propor sugestões de mudanças.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ### Métricas de avaliação {#metricas-de-avaliacao}
 
@@ -925,11 +911,7 @@ aproximadamente metade desses casos estão nos tribunais considerados
 na análise. Temos também o indicador IADN para avaliar o impacto de
 possíveis ações.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-## Parte propositiva} {#parte-propositiva}
+## Parte propositiva {#parte-propositiva}
 
 Como mencionado na introdução, com o intuito de sistematizar nosso estudo e deixá-lo mais próximo da
 elaboração de políticas públicas, obtivemos nossas hipóteses de
@@ -946,7 +928,7 @@ principais:
 
 Os seis eixos de investigação foram elaborados procurando dividir as
 conclusões de pesquisa em subtópicos diretamente relacionados à
-elaboração de alguma política pública. 
+elaboração de alguma política pública.
 
 As entrevistas tiveram o objetivo de alinhar as hipóteses da pesquisa e
 dividir experiências. Uma entrevista geralmente tem como retorno a visão
@@ -997,10 +979,9 @@ pesquisa em subtópicos diretamente relacionados à elaboração de alguma
 política pública.
 
 Ao final da primeira fase do projeto, os eixos de
-investigação foram ordenados de acordo com uma lista de prioridade, com auxílio do Departamento de Pesquisas Judiciárias - DPJ-CNJ. Na segunda fase, fizemos um corte de escopo para focar no levantamento dos maiores litigantes. 
-O único eixo de investigação completamente desenvolvido na pesquisa foram os canais de composição extrajudicial. Em seguida, apresentamos uma descrição mais aprofundada sobre esse tema. 
+investigação foram ordenados de acordo com uma lista de prioridade, com auxílio do Departamento de Pesquisas Judiciárias - DPJ-CNJ. Na segunda fase, fizemos um corte de escopo para focar no levantamento dos maiores litigantes.
+O único eixo de investigação completamente desenvolvido na pesquisa foram os canais de composição extrajudicial. Em seguida, apresentamos uma descrição mais aprofundada sobre esse tema.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \paragraph{Canais de composição
 extrajudicial}\label{canais-de-composicao-extrajudicial}
