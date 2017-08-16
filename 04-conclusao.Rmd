@@ -1,3 +1,7 @@
+```{r}
+knitr::opts_chunk$set(echo = F, eval = T)
+```
+
 # Sugestões para aprimoramento do sistema {#sugestoes-para-aprimoramento-do-sistema}
 
 Nesse capítulo, apresentamos uma lista de recomendações com o objetivo
