@@ -3,7 +3,7 @@ title: "Os Maiores Litigantes da Justiça Consumerista: Mapemanto e Proposiçõe
 author: "Associação Brasileira de Jurimetria"
 date: "`r format(Sys.Date(), '%d de %B de %Y')`"
 documentclass: report
-bibliography: [book.bib]
+bibliography: bibliography.bib
 biblio-style: apalike
 link-citations: yes
 colorlinks: yes
@@ -115,3 +115,4 @@ knit_print.data.frame = function(x, ...) {
 }
 ```
 
+# Teste
