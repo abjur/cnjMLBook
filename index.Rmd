@@ -40,7 +40,7 @@ regex2coolname <- function(rgx){
     stringr::str_to_title()
 }
 
-fix_labels <- function(nome2){
+fix_labels_2 <- function(nome2){
   case_when(
     nome2 == "regex_oi" ~ "Oi Telecomunicações",
     nome2 == "regex_serasa" ~ "Serasa Experian",
@@ -75,7 +75,11 @@ fix_labels <- function(nome2){
     nome2 == "recuperacao_credito" ~ "Companhias de recuperação de crédito",
     nome2 == "fabricantes_linha_branca" ~ "Fabricantes de eletrodomésticos da linha branca",
     TRUE ~ regex2coolname(nome2)
-  ) %>% 
+  )
+}
+
+fix_labels <- function(nome2){
+  fix_labels_2(nome2) %>% 
   stringr::str_wrap(width = 15)
 }
 
