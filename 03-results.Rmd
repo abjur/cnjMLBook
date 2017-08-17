@@ -1,8 +1,6 @@
 # Resultados
 
-## Estratégia de análise
-
-Considerando o objetivo de pesquisa, todas as análises desta seção seguiram um roteiro de perguntas. Em cada um dos tribunais analisados, conduzimos as investigações respondendo às questões abaixo, na ordem em que o encadeamento das respostas foi mais natural. 
+As análises do capítulo de resultados seguiram um roteiro de perguntas, considerando o objetivo principal da pesquisa. Em cada tribunal analisado, conduzimos as investigações respondendo às questões abaixo, na ordem em que o encadeamento das respostas foi mais natural. 
 
 1. Quem são os maiores litigantes?
 1. Os 30 maiores litigantes concentram qual percentual do total de processos?
@@ -681,6 +679,7 @@ numero_de_processos <- unique(d_tjrj$numero) %>% length
 ### Os maiores litigantes do Rio de Janeiro
 
 ```{r, echo = F}
+
 maiores_litigantes_tjrj <- d_tjrj %>%
   count(nome2) %>%
   arrange(desc(n)) %>%
