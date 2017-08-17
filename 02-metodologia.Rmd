@@ -123,12 +123,12 @@ dados %>%
     `Casos Novos` = sprintf("%s (%s)", fmt(total_n), fmt_p(prop_n)),
     `Casos Pendentes` = sprintf("%s (%s)", fmt(total_p), fmt_p(prop_p))
   ) %>%
-  include_table(align = 'llrr', caption = "Casos novos e casos pendentes por Justiça.")
+  knitr::knit_print(align = 'llrr', caption = "Casos novos e casos pendentes por Justiça.")
 ```
 
 A Tabela \ref(tab:inst) mostra o volume de casos novos e pendentes dentro da Justiça Estadual, por instância. Observe que o volume de casos pendentes no primeiro grau, somado ao volume nos Juizados Especiais, representam mais de 96% do total. Logo, um segundo filtro adequado é o da instância.
 
-```{r tab:nst}
+```{r tab:inst}
 dados %>%
   filter(justica == 'Estadual', sigla != 'TJ') %>%
   select(sigla, ano, cn1, cn2, cp1, cp2, cnje, cntr, cpje, cptr) %>%
@@ -162,7 +162,7 @@ dados %>%
     `Casos Novos` = sprintf("%s (%s)", fmt(total_n), fmt_p(prop_n)),
     `Casos Pendentes` = sprintf("%s (%s)", fmt(total_p), fmt_p(prop_p))
   ) %>%
-  include_table(align = 'llrr', caption = "Casos novos e casos pendentes por grau. TJAM não enviou dados da segunda instância no ano de 2015. Nesse caso, consideramos esse valor como zero.")
+  knitr::knit_print(align = 'llrr', caption = "Casos novos e casos pendentes por grau. TJAM não enviou dados da segunda instância no ano de 2015. Nesse caso, consideramos esse valor como zero.")
 ```
 
 O terceiro filtro aplicado relaciona-se com as áreas processuais criminal e não criminal. A Tabela \ref(tab:crim) mostra a quantidade de casos novos e pendentes no primeiro grau e nos Juizados especiais, comparando as duas áreas. A área não criminal é responsável por 88% dos casos pendentes. Mesmo com todos os filtros aplicados, ainda estamos com uma subpopulação de mais de 50 milhões de casos pendentes.
@@ -226,7 +226,7 @@ dados %>%
     `Casos Novos` = sprintf("%s (%s)", fmt(total_n), fmt_p(prop_n)),
     `Casos Pendentes` = sprintf("%s (%s)", fmt(total_p), fmt_p(prop_p))
   ) %>%
-  include_table(align = 'llrr', caption = "Casos novos e casos pendentes por área, dentro do primeiro grau ou Juizado Especial. TJPI não enviou alguns dados de Juizados Especiais no ano de 2015. Nesse caso, consideramos esse valor como zero.")
+  knitr::knit_print(align = 'llrr', caption = "Casos novos e casos pendentes por área, dentro do primeiro grau ou Juizado Especial. TJPI não enviou alguns dados de Juizados Especiais no ano de 2015. Nesse caso, consideramos esse valor como zero.")
 ```
 
 O próximo filtro é baseado no problema da execução fiscal. Para fins de administração dos tribunais, existem dois tipos de processos principais: execução fiscal e outros. Esses casos são muito relevantes em volume processual, especialmente na Justiça Estadual.
@@ -235,7 +235,7 @@ A Tabela \@ref(tab:fiscal) mostra a quantidade de casos novos e pendentes não c
 
 Nesse momento foi feita uma importante decisão de escopo: estudar apenas os casos não criminais e não relacionados à execução fiscal. Agora, nossa população de casos pendentes tem aproximadamente 25 milhões de processos.
 
-```{r tab:fiscal}
+```{r tab:fiscal, results = 'asis'}
 dados %>%
   filter(justica == 'Estadual', sigla != 'TJ') %>%
   select(
@@ -292,7 +292,7 @@ dados %>%
     `Casos Novos` = sprintf("%s (%s)", fmt(total_n), fmt_p(prop_n)),
     `Casos Pendentes` = sprintf("%s (%s)", fmt(total_p), fmt_p(prop_p))
   ) %>%
-  knitr::kable(align = 'lrr', caption = "Casos novos e casos pendentes não criminais por tipo de processo, dentro do primeiro grau ou Juizado Especial. TJPI não enviou alguns dados de Juizados Especiais no ano de 2015. Nesse caso, consideramos esse valor como zero.")
+  knitr::knit_print(align = 'llrr', caption = "Casos novos e casos pendentes não criminais por tipo de processo, dentro do primeiro grau ou Juizado Especial. TJPI não enviou alguns dados de Juizados Especiais no ano de 2015. Nesse caso, consideramos esse valor como zero.")
 ```
 
 Nesse cenário, surgem as perguntas:
@@ -317,7 +317,7 @@ Durante a primeira fase do projeto, produzimos um ofício com pedidos de listage
 
 A Tabela \@ref(tab:tabuf) mostra a quantidade de casos novos e pendentes não criminais de conhecimento no primeiro grau para cada Tribunal escolhido. Já a Figura \@ref(fig:tempo) mostra o volume de casos novos e pendentes ao longo dos anos. Observa-se que as quantidades não são estáveis, mesmo considerando Tribunais de grande porte.
 
-```{r tab:tabuf}
+```{r tab:tabuf, results = 'asis'}
 data(cadmun, package = 'abjData')
 cadmun <- distinct(cadmun, uf, regiao)
 dados %>%
@@ -370,7 +370,7 @@ dados %>%
     `Casos Novos` = sprintf("%s (%s)", fmt(total_n), fmt_p(prop_n)),
     `Casos Pendentes` = sprintf("%s (%s)", fmt(total_p), fmt_p(prop_p))
   ) %>%
-  include_table(align = 'llllrr',
+  knitr::knit_print(align = 'llllrr',
                caption = "Casos novos e casos pendentes cíveis por tribunal. Os porcentuais foram calculados em relação ao total de casos considerando todos os Tribunais.")
 ```
 
