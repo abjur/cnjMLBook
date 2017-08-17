@@ -2,7 +2,7 @@
 
 ## Estratégia de análise
 
-Considerando o objetivo de pesquisa, todas as análises desta seção seguiram um roteiro de perguntas. Em cada um dos tribunais analisados, conduzimos as investigações respondendo às questões abaixo, na ordem em que o encadeamento das respostas foi mais natural. 
+As análises do capítulo de resultados seguiram um roteiro de perguntas, considerando o objetivo principal da pesquisa. Em cada tribunal analisado, conduzimos as investigações respondendo às questões abaixo, na ordem em que o encadeamento das respostas foi mais natural. 
 
 1. Quem são os maiores litigantes?
 1. Os 30 maiores litigantes concentram qual percentual do total de processos?
@@ -11,7 +11,7 @@ Considerando o objetivo de pesquisa, todas as análises desta seção seguiram u
     - Quais são os 10 assuntos processuais mais comuns em cada setor?
     - Os volumes processuais apresentam algum tipo de padrão temporal?
 
-O roteiro limita-se às cifras mencionadas acima (5 setores, 10 assuntos processuais e 30 litigantes) apenas para tornar a exposição mais clara. Conforme verifica-se a seguir, esses números foram capazes de descrever o comportamento de grande quantidade dos processos. Mesmo assim, caso haja interesse nos casos não comentados neste capítulo, o apêndice contém versões menos resumidas das tabelas.
+O roteiro limitou-se às cifras mencionadas acima (5 setores, 10 assuntos processuais e 30 litigantes) apenas para tornar a exposição mais clara. Conforme verifica-se a seguir, esses números foram capazes de descrever o comportamento de grande quantidade dos processos. Mesmo assim, para os casos não comentados neste capítulo, o apêndice contém versões menos resumidas das tabelas.
 
 Em alguns tribunais, os mecanismos de seleção impossibilitam análises temporais. Isso acontece porque os dados utilizados na premiação do Selo Justiça em Números não representam adequadamente os processos distribuídos em um ano. Os dados obtidos na ocasião desse prêmio representam adequadamente os processos que receberam carga e aqueles processos que estavam em aberto no momento da coleta. Por conta disso, análises temporais serão conduzidas apenas onde conduzimos estudos prospectivos, nos estados de São Paulo, Rio Grande do Sul, Amazonas e Bahia.
 
@@ -139,7 +139,7 @@ mapa_rs <- readRDS("data-raw/mapa_rs.rds")
 
 ## TJRS
 
-Conforme mencionado na seção de metodologia, o Tribunal de Justiça do Rio Grande do Sul forneceu os dados de todos os processos cíveis distribuídos entre 2009 e 2016. Nesta subseção vamos descrever os resultados obtidos nesse estado.
+Conforme mencionado na seção de metodologia, o Tribunal de Justiça do Rio Grande do Sul forneceu os dados de todos os processos cíveis distribuídos entre 2009 e 2016. Nesta subseção, vamos descrever os resultados obtidos nesse estado.
 
 ### Os maiores litigantes do Rio Grande do Sul
 
@@ -158,9 +158,9 @@ head(maiores_litigantes_tjrs, 30) %>%
  knitr::knit_print(caption = "30 maiores litigantes da Justiça Estadual do Rio Grande do Sul.")
 ```
 
-A lista dos maiores litigantes é composta apenas por bancos, empresas de telefonia e administradores de cadastro de inadimplentes até a posição de número 12. Nessas categorias, os maiores litigantes são os bancos Itaú, Banco do Brasil, Bradesco, Santander, Votorantim e Banrisul, as empresas de telefonia são apenas Tim, Vivo, Claro e Oi e as administradoras de cadastro são a Boa Vista e a Serasa.
+A lista dos maiores litigantes é composta apenas por bancos, empresas de telefonia e administradores de cadastro de inadimplentes até a posição de número 12. Nessas categorias, os maiores litigantes são os bancos Itaú, Banco do Brasil, Bradesco, Santander, Votorantim e Banrisul, as empresas de telefonia são a Tim, Vivo, Claro e Oi e as administradoras de cadastro são a Boa Vista e a Serasa.
 
-A partir da décima segunda posição, destacam-se novos setores da economia. Na décima terceira posição vêm a seguradora Líder, administradora do seguro DPVAT, com `r maiores_litigantes_tjrs$p[3]` dos processos, e a partir dessa marca começam a aparecer empresas de energia, luz e água, como a Rio Grande Energia, AES Sul, CEEE e Corsan. Além dessas empresas, novos bancos, como Pan-americano, BOSCH, BMG e FINA-A.
+A partir da décima segunda posição, destacam-se novos setores da economia. Na décima terceira posição vêm a seguradora Líder, administradora do seguro DPVAT, com `r maiores_litigantes_tjrs$p[3]` dos processos, e a partir dessa marca começam a aparecer empresas de energia, luz e água, como a Rio Grande Energia, AES Sul, CEEE e Corsan. Além dessas empresas, novos bancos, como o Banco PAN (antigo Banco Panamericano), BOSCH, BMG e FINASA.
 
 ```{r}
 maiores_setores_tjrs <- d_tjrs_2 %>%
@@ -170,7 +170,7 @@ maiores_setores_tjrs <- d_tjrs_2 %>%
     p_acum = scales::percent(cumsum(n)/sum(n)))
 ```
 
-Os 30 maiores litigantes acumulam `r maiores_litigantes_tjrs$p_acum[30]`, mas podemos compreender melhor a origem dos demais litígios se agruparmos os processos por setor da economia das demandadas. Analisando dessa forma, conclui-se que `r maiores_setores_tjrs$p_acum[3]` dos processos concentram-se no setores financeiro, telecomunicações e administradoras de cadastro de inadimplentes. As três primeiras classes possuem proporções acima de 10% dos processos e caracterizam um ponto de corte na distribuição de processos por empresa: a partir delas, a fatia consumida por cada instituição orbita os 1%. Nessa nova classe de processos, cujas demandadas concentram menos de 10% do total, destacam-se as concessionárias de serviços básicos, como energia, gás, água e esgoto, e empresas de seguros, com 4,5% e 3,9% dos processos, respectivamente.
+Os 30 maiores litigantes acumulam `r maiores_litigantes_tjrs$p_acum[30]`, mas podemos compreender melhor a origem dos demais litígios se agruparmos os processos por setor da economia das demandadas. Analisando dessa forma, conclui-se que `r maiores_setores_tjrs$p_acum[3]` dos processos concentram-se no setores financeiro, telecomunicações e administradoras de cadastro de inadimplentes. Os três primeiros setores possuem proporções acima de 10% dos processos e caracterizam um ponto de corte na distribuição de processos por empresa: a partir delas, a fatia consumida por cada instituição orbita em 1%. Nas esferas restantes, cujas demandadas concentram menos de 10% do total, destacam-se as concessionárias de serviços básicos, como energia, gás, água e esgoto, e empresas de seguros, com 4,5% e 3,9% dos processos, respectivamente.
 
 ```{r, results = 'asis'}
 maiores_setores_tjrs %>%
@@ -178,7 +178,7 @@ maiores_setores_tjrs %>%
   knitr::knit_print(caption = "5 maiores passivos consumeristas na justiça estadual do Rio Grande do Sul.")
 ```
 
-Considerando-se o interesse em qualificar certas instituições como demandadas em massa pelos litigantes, partiremos agora a uma análise que busca averiguar a existência de padrões temporais que expliquem o volume de casos de um certo grande litigante levantado nas tabelas anteriores. Analisando o volume mensal de distribuições de cada tipo de processo, é possível identificar padrões temporais.
+Considerando o interesse em qualificar certas instituições como demandadas em massa pelos litigantes, partimos para uma análise que buscou averiguar a existência de padrões temporais que expliquem o volume de casos de um certo grande litigante levantado nas tabelas anteriores. Analisando o volume mensal de distribuições de cada tipo de processo, foi possível identificar padrões temporais.
 
 ```{r f1, fig.cap = "Volume processual consumerista no Rio Grande do Sul ao longo do tempo e separado por setor econômico."}
 d_tjrs_2 %>%
@@ -208,7 +208,7 @@ processos_em_2013 <- total_anual %>%
   with(mean(n))
 ```
 
-O padrão mais claro e gritante aparece nos processos relacionados à empresas administradoras de banco de dados. No ano de 2013 essas empresas experienciaram uma litigância em massa nunca antes identificada. Enquanto a média de processos por ano, desconsiderando 2013, foi de `r format(media_sem_2013, digits = '2')` processos, em 2013 foram distribuídos `r format(processos_em_2013, digits = '2')` processos. Nessa época, algumas instituições associaram esse aumento repentino à litigância incentivada pelos escritórios de advocacia, contudo é um fato que a quantidade de processos de diminuiu com o tempo, indicando que a massa de questões foi causada por alguma característica particular da época.
+O padrão mais claro e gritante revelou-se nos processos relacionados à empresas administradoras de banco de dados. No ano de 2013 essas empresas experienciaram uma litigância em massa nunca antes identificada. Enquanto a média de processos por ano, desconsiderando 2013, foi de `r format(media_sem_2013, digits = '2')` processos, em 2013 foram distribuídos `r format(processos_em_2013, digits = '2')` processos. Nessa época, algumas instituições associaram esse aumento repentino à litigância incentivada pelos escritórios de advocacia, contudo é um fato que a quantidade de processos diminuiu com o tempo, indicando que a massa de questões foi causada por alguma característica particular da época.
 
 ```{r f3, fig.cap = "Volume processual ao longo do tempo no Rio Grande do Sul contra empresas administradoras de cadastro de inadimplentes."}
 d_tjrs_2 %>%
@@ -225,7 +225,7 @@ d_tjrs_2 %>%
   scale_color_hue(name = 'Empresa')
 ```
 
-Outros padrões temporais destacam-se, mas, diferente do observado nas administradoras de cadastro de inadimplentes, nenhuma série sugere que as questões tratadas nos processos contra à instituição em questão já foi superada. No caso dos fabricantes de produtos eletrônicos e transporte aéreo, por exemplo, o que ocorre é exatamente o contrário: os processos contra essas empresas estão em ascensão. No caso das empresas aéreas, o aumento deve-se principalmente à Gol, cujo número de litígios vêm numa tendência de subida desde 2012, mas também é influenciada pelo aumento de processos da TAM de 2010 para 2012.
+Outros padrões temporais destacam-se, mas, diferentemente do observado nas administradoras de cadastro de inadimplentes, nenhuma série sugere que as questões tratadas nos processos contra a instituição em questão já foi superada. No caso dos fabricantes de produtos eletrônicos e transporte aéreo, por exemplo, o que ocorre é exatamente o contrário: os processos contra essas empresas estão em ascensão. Em relação às empresas aéreas, o aumento deve-se principalmente à Gol, cujo número de litígios vêm numa tendência de subida desde 2012, mas também é influenciada pelo aumento de processos da TAM de 2010 para 2012.
 
 ```{r f4, fig.cap = "Volume processual ao longo do tempo no Rio Grande do Sul contra companhias aéreas."}
 totais <- d_tjrs_2 %>%
@@ -270,7 +270,7 @@ fabricantes_eletronicos <- d_tjrs_2 %>%
 gridExtra::grid.arrange(totais, gridExtra::arrangeGrob(transporte_aereo, fabricantes_eletronicos, ncol = 2))
 ```
 
-Um outro padrão detectado nos gráficos de volume processual contra o tempo diz respeito aos setores com uma quantidade aproximadamente constante de processos por mês. Isso acontece com os processos contra administradoras de planos de Saúde, concessionárias de Energia, Gás e Esgoto, empresas de Telecomunicação e empresas de Seguros. Esses quatro setores, embora tenham experienciado crescimentos desde 2010, apresentam séries estáveis de processos por mês, pelo menos a partir de algum ponto. Dentre os aumentos identificados, destaca-se o patamar atingido pelas empresas de telecomunicação: são registrados aproximadamente 5500 novos casos por mês.
+Um outro padrão detectado nos gráficos de volume processual contra o tempo diz respeito aos setores com uma quantidade aproximadamente constante de processos por mês. Isso acontece com os processos contra administradoras de planos de Saúde, concessionárias de Energia, Gás e Esgoto, empresas de Telecomunicação e empresas de Seguros. Essas quatro esferas, embora tenham experienciado crescimentos desde 2010, apresentam séries estáveis de processos por mês, pelo menos a partir de algum ponto. Dentre os aumentos identificados, destaca-se o patamar atingido pelas empresas de telecomunicação: são registrados aproximadamente 5.500 novos casos por mês.
 
 ```{r f5, fig.cap = "Volume processual ao longo do tempo no Rio Grande do Sul das áreas em que identifica-se um aumento (telecomunicações, concessionárias de serviços básicos, planos de saúde e seguros)."}
  d_tjrs_2 %>%
@@ -286,7 +286,7 @@ Um outro padrão detectado nos gráficos de volume processual contra o tempo diz
   labs(y = 'Número de processos', x = 'Mês de distribuição')
 ```
 
-O último grupo de padrões temporais identificados diz respeito aos processos que experienciaram um aumento que já foi superado durante o período de estudo. Pertencem à esse grupo as instituições financeiras, as empresas relacionadas à recuperação de crédito e os supermercados.
+O último grupo de padrões temporais identificados diz respeito aos processos que experienciaram um aumento o qual já foi revertido durante o período de estudo. Pertencem à esse grupo as instituições financeiras, empresas relacionadas à recuperação de crédito e supermercados.
 
 ```{r f6, fig.cap = "Volume processual ao longo do tempo no Rio Grande do Sul nas áreas em que identifica-se estabilidade (instituições financeiras, supermercados e companhias de recuperação de crédito)."}
  d_tjrs_2 %>%
@@ -372,7 +372,7 @@ maiores_bancos <- d_tjrs_2 %>%
   arrange(desc(n))
 ```
 
-Com relação às instituições demandadas, nota-se uma diferença significativa entre a distribuição dos assuntos do banco BV e a distribuição dos assuntos nas outras instituições bancárias. Nessa instituição, a maior parte dos processos corresponde ao assunto "Interpretação / Revisão de Contrato". De fato, existem instituições com padrões similares, como o Banco Itaú, o Banco Finasa e o Banco Pan-americano, mas nenhuma é tão díspar quanto o Banco Votorantim.
+Com relação às instituições demandadas, nota-se uma diferença significativa entre a distribuição dos assuntos do banco BV e a distribuição dos assuntos nas outras instituições bancárias. Nessa instituição, a maior parte dos processos corresponde ao assunto "Interpretação / Revisão de Contrato". De fato, existem instituições com padrões similares, como o Banco Itaú, o Banco Finasa e o Banco PAN, mas nenhuma é tão díspar quanto o Banco Votorantim.
 
 ```{r f8, fig.cap = "Distribuições das causas de pedir dos processos contra instituições financeiras do Rio Grande do Sul, separadas por empresa."}
 d_tjrs_2 %>%
@@ -877,7 +877,7 @@ head(maiores_litigantes_tjsp, 30) %>%
 
 Também distante do que foi encontrado nos demais estados, a Oi não figura na lista dos maiores litigantes, deixando bastante espaço para instituições financeiras, embora outras empresas de telefonia também sejam responsáveis por uma boa quantidade dos processos consumeristas do estado. Dentre as instituições financeiras, os maiores litigantes são os bancos Itaú, Bradesco, Votorantim, Santander e Banco do Brasil, enquanto as maiores operadoras de telefonia são Tim, Vivo e Claro.
 
-A partir da nona posição destacam-se novos setores da economia. A partir desse ponto, passam a figuras na lista de maiores litigantes algumas empresas administradoras de seguros e planos de saúde, como Unimed, Amil e Sulamérica. Além dessas empresas, também começam a aparecer outras instituições financeiras, como Pan-americano, BOSCH e FINA-A.
+A partir da nona posição destacam-se novos setores da economia. A partir desse ponto, passam a figuras na lista de maiores litigantes algumas empresas administradoras de seguros e planos de saúde, como Unimed, Amil e Sulamérica. Além dessas empresas, também começam a aparecer outras instituições financeiras, como o Banco PAN, BOSCH e FINASA.
 
 ```{r}
 maiores_setores_tjsp <- d_tjsp_2 %>% 
