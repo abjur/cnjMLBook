@@ -18,28 +18,99 @@ No final, apresentamos três sugestões de novas pesquisas. O intuito das sugest
 
 ## Resumo dos principais resultados da pesquisa.
 
-**Os maiores litigantes em ações consumeristas na Justiça Estadual**. A Tabela \@ref(tab:resultAll)
-mostra os 5 maiores litigantes em cada Tribunal da pesquisa, acompanhados da estimativa da participação das empresas dentro do total de processos consumeristas de cada Tribunal.
+**Os maiores litigantes em ações consumeristas na Justiça Estadual**. A Tabela \@ref(tab:resultAll) mostra os 5 maiores litigantes em cada Tribunal da pesquisa, acompanhados da estimativa da participação das empresas dentro do total de processos consumeristas de cada Tribunal. Bradesco é a única empresa que figura dentre os cinco maiores litigantes em todos os estados analisados. Outros bancos e empresas de telecomunicações também aparecem no topo dos maiores litigantes com frequência.
+
+```{r tab:resultAll, results='asis'}
+pega_n <- function(x, nn = 5) {
+  nm <- deparse(substitute(x)) 
+  nm <- nm %>% 
+    stringr::str_match('_([a-z]+)$') %>% 
+    magrittr::extract(TRUE, 2) %>% 
+    toupper()
+  head(x, nn) %>% mutate(tribunal = nm)
+}
+nn <- 30
+# todos_maiores_nn <- list(
+#   pega_n(maiores_litigantes_tjam, nn),
+#   pega_n(maiores_litigantes_tjba, nn),
+#   pega_n(maiores_litigantes_tjdft, nn),
+#   pega_n(maiores_litigantes_tjmt, nn),
+#   pega_n(maiores_litigantes_tjrj, nn),
+#   pega_n(maiores_litigantes_tjrs, nn),
+#   pega_n(maiores_litigantes_tjsp, nn)
+# ) %>% 
+#   bind_rows() %>% 
+#   select(Tribunal = tribunal, everything())
+# saveRDS(todos_maiores_nn, 'data-raw/todos_maiores_nn.rds')
+
+todos_maiores_nn <- readRDS("data-raw/todos_maiores_nn.rds")
+todos_maiores_nn %>% 
+  group_by(Tribunal) %>% 
+  slice(1:5) %>% 
+  ungroup() %>% 
+  knitr::knit_print(caption = "Maiores litigantes em ações consumeristas",
+                    align = 'llrrrr')
+```
+
+A Figura \@ref(fig:acu) mostra a proporção acumulada de processos dos 30 maiores litigantes relativa à totalidade de processos consumeristas. O gráfico verifica a hipótese inicial da pesquisa de que os trinta maiores litigantes concentram pelo menos 50% dos processos. De fato, quatro dos sete tribunais analisados apresentam proporções acumuladas maiores que 70%, e cinco tribunais concentram aproximadamente 50% dos processos apenas com os 10 maiores litigantes. O tribunal com menor concentração dos maiores litigantes é o 
+
+```{r fig:acu, fig.cap="Proporção acumulada de processos consumeristas dos 30 maiores litigantes em cada estado."}
+p1 <- todos_maiores_nn %>% 
+  group_by(Tribunal) %>% 
+  mutate(pp = parse_number(p, locale = locale(decimal_mark = ',')) / 100,
+         pp_acu = parse_number(p_acum, locale = locale(decimal_mark = ',')) / 100,
+         id = 1:length(pp)) %>%
+  ggplot(aes(x = id, y = pp_acu, colour = Tribunal)) +
+  geom_line() +
+  theme_minimal(16) +
+  geom_hline(yintercept = 0.5, linetype = 2) +
+  scale_y_continuous(labels = scales::percent, breaks = 0:10/10) +
+  labs(x = 'Quantidade de empresas', y = 'Proporção acumulada')
+p1
+```
+
+**Características dos litigantes e de seus litígios**. A Tabela \@ref(tab:setoresAll) mostra os três setores com maior concentração de casos em cada Tribunal. Em relação ao perfil dos litigantes, ficou clara a concentração do setor bancário e setor de telecomunicações. Em relação ao perfil dos litígios, observamos uma grande concentração de casos de dano moral e contratos, mas com significativas variações de acordo com setor e região.
+
+```{r}
+# nn <- 30
+# todos_maiores_setores_nn <- list(
+#   pega_n(maiores_setores_tjam, nn),
+#   pega_n(maiores_setores_tjba, nn),
+#   pega_n(maiores_setores_tjdft, nn),
+#   pega_n(maiores_setores_tjmt, nn),
+#   pega_n(maiores_setores_tjrj, nn),
+#   pega_n(maiores_setores_tjrs, nn),
+#   pega_n(maiores_setores_tjsp, nn)
+# ) %>%
+#   bind_rows() %>%
+#   select(Tribunal = tribunal, everything())
+
+todos_maiores_setores_nn <- readRDS("data-raw/todos_maiores_setores_nn.rds")
+todos_maiores_setores_nn %>% 
+  group_by(Tribunal) %>% 
+  slice(1:3) %>% 
+  ungroup() %>% 
+  knitr::knit_print(caption = "Setores dos litigantes em ações consumeristas.",
+                    align = 'llrrrr')
+
+```
 
 
+**De que forma os maiores litigantes variam regionalmente**. A partir da Tabela \@ref(tab:resultAll) e as tabelas completas de maiores litigantes nas respectivas Seções do capítulo de resultados, é interessante notar que os maiores litigantes mudam de perfil em cada região. No TJSP e no TJBA, os bancos Itaú e Bradesco aparecem antes das empresas de telecomunicação. No TJRJ e TJDFT, as empresas Oi, Vivo e Claro aparecem com destaque. No TJMT e no TJAM, além das empresas de telecomunicação e bancos, observamos empresas de energia ou seguros DPVAT. No TJRS, observamos um resultado diferenciado, por conta da presença de administradoras de cadastros de inadimplentes, como explicado na Seção de resultados. 
 
+Os resultados indicam que existe uma relação entre os tipos de empresas que aparecem como maiores litigantes e o desenvolvimento econômico da região. Assim, áreas mais desenvolvidas tendem a concentrar mais casos envolvendo bancos e, enquanto áreas menos desenvolvidas tendem a concentrar casos envolvendo fornecedores de serviços essenciais. Para verificar essa hipótese de maneira aprofundada, sugerimos realizar estudos locais, como descrito na Seção \@ref(pesquisas-realizadas-localmente)
 
+**Características dos meios alternativos ao litígio**. Nessa pesquisa, o principal meio alternativo ao litígio estudado teve como base os dados fornecidos em formato aberto pela Senacon, contendo informações detalhadas do sistema consumidor.gov.br. Os resultados são positivamente surpreendentes. Por exemplo, identificamos uma taxa de resolução de conflitos média de 76% na área de telecomunicações. Além disso, o tempo médio global de resolução de conflitos é de uma semana.
 
-**Características dos litigantes e de seus litígios**.
+**Como as grandes empresas do setor privado veem o problema das ações consumeristas**. Com base nas entrevistas, pode-se afirmar que as empresas têm grandes preocupações com ações consumeristas e acreditam que buscar soluções alternativas ao litígio é a melhor forma de solucionar o problema. As empresas também apresentaram preocupações com relação a possível existência de advogados oportunistas e indústrias da gratuidade e do dano moral. No entanto, nenhum desses resultados foi testado empiricamente e continuam como hipóteses para futuras pesquisas.
 
-**De que forma os maiores litigantes variam regionalmente**.
-
-**Características dos meios alternativos ao litígio**.
-
-**Investigar como as grandes empresas do setor privado veem o problema das ações consumeristas**.
-
-**Soluções administrativas para lidar com os casos pendentes e reduzir a entrada de novos casos no judiciário**.
+**Soluções administrativas para lidar com os casos pendentes e reduzir a entrada de novos casos no judiciário**. A partir das reuniões realizadas no decorrer da pesquisa, acredita-se que aumentar incentivos ao acordo no judiciário não terá efeitos significativos sobre os casos já pendentes. No entanto isso não passa de uma hipótese e, por isso, sugerimos a realização de uma pesquisa aprofundada sobre a Semana da Conciliação na Seção \@ref(experimento-com-semana-da-conciliação) testar esse efeito. Para reduzir a entrada de novos casos, a solução principal foi proposta na próxima Seção. 
 
 ## Integração do judiciário com o consumidor.gov.br {#integracao-do-judiciario-com-o-consumidor.gov.br}
 
 A presente solução é a mais importante da pesquisa. Além de ser a solução com maior impacto esperado para evitar novos processos, é tecnicamente viável, de baixo custo e seu impacto é mensurável.
 
-As análises da base de dados do consumidor.gov.br revelaram que as reclamações pré processuais, além de rápidas são eficientes, com uma taxa de resolução de problemas de 80\% para problemas com telefonia e 56\% para problemas com bancos.
+As análises da base de dados do consumidor.gov.br revelaram que as reclamações pré processuais, além de rápidas são eficientes, com uma taxa de resolução de problemas de quase 80% na área de telecomunicações e de mais de 50% para problemas com bancos.
 
 Nossa proposta para desafogar os tribunais e evitar novos pleitos é criar um fluxo para direcionar as demandas ao consumidor.gov.br antes de levar o problema a juízo. Seguindo esse trânsito, garantimos que houve uma tentativa de comunicação entre as partes através do consumidor.gov.br, sem gerar demandas adicionais ao judiciário e ao consumidor.
 
