@@ -26,12 +26,12 @@ library(tidyverse)
 
 theme_set(theme(text = element_text(family = "sf")))
 
-include_table <- function(data_set, ...){
-  data_set %>%
-  xtable::xtable(...) %>%
-  print(tabular.environment = 'longtable', comment = F,
-          floating = FALSE, include.rownames = F)
-}
+# include_table <- function(data_set, ...){
+#   data_set %>%
+#   xtable::xtable(...) %>%
+#   print(tabular.environment = 'longtable', comment = F,
+#           floating = FALSE, include.rownames = F)
+# }
 
 regex2coolname <- function(rgx){
   rgx %>% 
