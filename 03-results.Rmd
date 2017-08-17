@@ -103,8 +103,8 @@ d_tjrs_2 <- read_rds('data-raw/d_tjrs_2.rds') %>%
   mutate(nome2 = fix_labels_2(nome2),
          area = fix_labels_2(area))
 
-match_comarca_municipio_tjrs <- readRDS("data-raw/tjrs_comarca_municipio.rds") %>%
-  bind_rows(data_frame(comarca = "Não-Me-Toque", municipio = "Não-Me-Toque"))
+# match_comarca_municipio_tjrs <- readRDS("data-raw/tjrs_comarca_municipio.rds") %>%
+  # bind_rows(data_frame(comarca = "Não-Me-Toque", municipio = "Não-Me-Toque"))
 
 # mapa_rs <- readRDS("data-raw/GADM_2.8_BRA_adm2.rds")
 # mapa_rs <- mapa_rs[mapa_rs$NAME_1=="Rio Grande do Sul",]
@@ -132,7 +132,7 @@ match_comarca_municipio_tjrs <- readRDS("data-raw/tjrs_comarca_municipio.rds") %
 #   mapa_rs$NAME_2 == "Vitória das Misses" ~ "Vitória das Missões",
 #   T ~ mapa_rs$NAME_2)
 
-mapa_rs <- readRDS("data-raw/mapa_rs.rds")
+# mapa_rs <- readRDS("data-raw/mapa_rs.rds")
 ```
 
 ## TJRS
@@ -1432,7 +1432,7 @@ A parte dos casos em que se trata de condenações por cadastros indevidos, uma 
 ```{r}
 telecomunicaoes %>% 
   head(10) %>% 
-  knitr::knit_print(caption = "10 causas de pedi consumeristas contra empresas de telefonia mais frequentes no Distrito Federal.")
+  knitr::knit_print(caption = "10 causas de pedir consumeristas contra empresas de telefonia mais frequentes no Distrito Federal.")
 ```
 
 #### Companhias de Transporte Aéreo
