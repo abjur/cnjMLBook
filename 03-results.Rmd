@@ -1,5 +1,20 @@
 # Resultados
 
+## Estratégia de análise
+
+Considerando o objetivo de pesquisa, todas as análises desta seção seguiram um roteiro de perguntas. Em cada um dos tribunais analisados, conduzimos as investigações respondendo às questões abaixo, na ordem em que o encadeamento das respostas foi mais natural. 
+
+1. Quem são os maiores litigantes?
+1. Os 30 maiores litigantes concentram qual percentual do total de processos?
+1. Sobre características dos maiores litigantes:
+    - Quais são os 5 setores com maior quantidade de processos?
+    - Quais são os 10 assuntos processuais mais comuns em cada setor?
+    - Os volumes processuais apresentam algum tipo de padrão temporal?
+
+O roteiro limita-se às cifras mencionadas acima (5 setores, 10 assuntos processuais e 30 litigantes) apenas para tornar a exposição mais clara. Conforme verifica-se a seguir, esses números foram capazes de descrever o comportamento de grande quantidade dos processos. Mesmo assim, caso haja interesse nos casos não comentados neste capítulo, o apêndice contém versões menos resumidas das tabelas.
+
+Em alguns tribunais, os mecanismos de seleção impossibilitam análises temporais. Isso acontece porque os dados utilizados na premiação do Selo Justiça em Números não representam adequadamente os processos distribuídos em um ano. Os dados obtidos na ocasião desse prêmio representam adequadamente os processos que receberam carga e aqueles processos que estavam em aberto no momento da coleta. Por conta disso, análises temporais serão conduzidas apenas onde conduzimos estudos prospectivos, nos estados de São Paulo, Rio Grande do Sul, Amazonas e Bahia.
+
 ```{r}
 if("data-raw" %in% dir(getwd())){
   knitr::opts_chunk$set(echo = F, eval = T)
@@ -651,7 +666,7 @@ A qualidade da administração dos dados do TJRJ foi mensurada utilizando três 
 1. processos baixados entre 01/01/2015 e 31/07/2016.
 2. processos em tramitação no dia 31/07/2016.
 3. processos com alguma movimentação ou utilização no mês de agosto de 2016.
-
+  
 ```{r}
 library(tidyverse)
 
@@ -659,61 +674,69 @@ d_tjrj <- readRDS("data-raw/d_tjrj_final_diminuto.rds") %>%
   set_names(c("numero","nome","nome2","descricao","area","arquivo")) %>%
   filter(stringr::str_trim(descricao) %in% stringr::str_trim(assuntos_consumeristas_puros)) %>%
   distinct(numero, nome2, .keep_all = T)
+
+numero_de_processos <- unique(d_tjrj$numero) %>% length
 ```
 
-## Os maiores litigantes do Rio de Janeiro
+### Os maiores litigantes do Rio de Janeiro
 
 ```{r, echo = F}
 maiores_litigantes_tjrj <- d_tjrj %>%
   count(nome2) %>%
   arrange(desc(n)) %>%
-  mutate(p = scales::percent(n/sum(n)),
-    p_acum = scales::percent(cumsum(n)/sum(n)))
+  mutate(p = scales::percent(n/numero_de_processos),
+    p_acum = scales::percent(cumsum(n)/numero_de_processos))
 
 maiores_setores_tjrj <- d_tjrj %>%
   count(area) %>%
   arrange(desc(n)) %>%
-  mutate(p = scales::percent(n/sum(n)),
-    p_acum = scales::percent(cumsum(n)/sum(n)))
+  mutate(p = scales::percent(n/numero_de_processos),
+    p_acum = scales::percent(cumsum(n)/numero_de_processos))
 ```
 
-Similar ao identificado em outros estados, o maior litigante no estado do Rio de Janeiro pertence ao setor das telecomunicações. O grupo de empresas ligadas à Oi Telefonia concentra 8,84% de todos os processos consumeristas do estado. Nas primeiras posições, destacam-se também as instituições bancárias, sendo mais expressivos os grupos empresariais ligados ao Banco Itaú e ao Banco Bradesco, com 6,57% e 4,14% dos processos, respectivamente.
+Similar ao identificado em outros estados, o maior litigante no estado do Rio de Janeiro pertence ao setor das telecomunicações. O grupo de empresas ligadas à Oi Telefonia concentra `r maiores_litigantes_tjrj$p[1]` de todos os processos consumeristas do estado. Nas primeiras posições, destacam-se também as instituições bancárias, sendo mais expressivos os grupos empresariais ligados ao Banco Itaú e ao Banco Bradesco, com `r maiores_litigantes_tjrj$p[2]` e `r maiores_litigantes_tjrj$p[4]` dos processos, respectivamente.
 
 ```{r}
 maiores_litigantes_tjrj %>%
-  head(30)
+  head(30) %>% 
+  knitr_print(caption = "30 maiores litigantes da justiça consumerista no estado do Rio de janeiro.")
 ```
 
-A principal particularidade do estado do Rio encontra-se na quinta posiçao: a Light, distribuidora de energia, concentra `r maiores_litigantes_tjrj$p[5]` dos processos consumeristas do estado, abaixo apenas de instituições bancárias e empresas de telefonia. A parte disso, também destaca-se o fato do grupo Via Varejo, uma empresa varejista, aparecer na lista das 10 maiores litigantes consumeristas.
+A principal particularidade do estado do Rio encontra-se na quinta posiçao: a Light, distribuidora de energia, concentra `r maiores_litigantes_tjrj$p[5]` dos processos consumeristas do estado, abaixo apenas das maiores instituições bancárias e empresas de telefonia. Além disso, também destaca-se o fato do grupo Via Varejo, uma empresa varejista, aparecer na lista das 10 maiores litigantes consumeristas, fato não identificado em nenhum outro estado.
 
-Os 30 maiores litigantes acumulam `r maiores_litigantes_tjrj$p_acum[30]`, mas podemos compreender melhor a origem dos demais litígios se agruparmos os processos por setor da economia das demandadas. Analisando dessa forma, conclui-se que `r maiores_setores_tjrj$p_acum[5]` dos processos concentram-se no setores financeiro, fornecimento de energia e água, telecomunicações, seguros e varejo. As três primeiras classes possuem proporções acima de 5% dos processos e caracterizam um ponto de corte na distribuição de processos por empresa: a partir delas, a fatia consumida por cada instituição orbita os 1%. Nessa nova classe de processos, cujas demandadas concentram menos de 5% do total, destacam-se as empresas de varejo e seguros, com 4,5% e 2,5% do total de processos.
+Os 30 maiores litigantes acumulam aproximadamente `r maiores_litigantes_tjrj$p_acum[30]`, mas podemos compreender melhor a origem dos demais litígios se agruparmos os processos por setor da economia das demandadas. Analisando dessa forma, conclui-se que `r maiores_setores_tjrj$p_acum[5]` dos processos concentram-se no setores financeiro, fornecimento de energia e água, telecomunicações, seguros e varejo. As quatro primeiras classes possuem proporções acima de 5% dos processos e caracterizam um ponto de corte na distribuição de processos por empresa: abaixo dos 5%, a fatia consumida por cada instituição orbita os 1%. Nessa nova classe de processos, cujas demandadas concentram menos de 5% do total, destacam-se as empresas de varejo e seguros, com `r maiores_setores_tjrj$p[4]` e `r maiores_setores_tjrj$p[5]` do total de processos.
 
 ```{r}
 maiores_setores_tjrj %>%
-  head(10)
+  head(5) %>% 
+  knit_print(caption = "5 setores econômicos com maior quantidade de processos consumeristas no estado do Rio de Janeiro.")
 ```
 
-## Causas de pedir
+### Causas de pedir
 
-Globalmente, as causas dez maiores causas de de pedir às empresas do TJRJ distribuem-se de acordo com a tabela abaixo.
+<!-- Globalmente, as causas dez maiores causas de de pedir às empresas do TJRJ distribuem-se de acordo com a tabela abaixo. -->
 
-```{r}
-d_tjrj %>%
-  count(descricao) %>%
-  arrange(desc(n)) %>%
-  mutate(p = n/sum(n),
-         p_acum = cumsum(p),
-         p = scales::percent(p),
-         p_acum = scales::percent(p_acum))
-```
+<!-- ```{r} -->
+<!-- d_tjrj %>% -->
+<!--   distinct(numero, .keep_all = T) %>%  -->
+<!--   count(descricao) %>% -->
+<!--   arrange(desc(n)) %>% -->
+<!--   mutate(p = n/sum(n), -->
+<!--          p_acum = cumsum(p), -->
+<!--          p = scales::percent(p), -->
+<!--          p_acum = scales::percent(p_acum)) %>%  -->
+<!--   head(10) %>%  -->
+<!--   knit_print(caption = "10 causas de pedir consumeristas mais frequentes no estado do Rio de Janeiro.") -->
+<!-- ``` -->
 
 Nesta seção vamos estudar as causas de pedir mais frequentes com aos maiores litigantes separando-os de acordo com a área em que atuam.
 
-### Bancos e Instituições Financeiras
+#### Bancos e Instituições Financeiras
 
 ```{r}
 assuntos_bancos <- d_tjrj %>%
   filter(area == "bancos_cartoes_financeiras") %>%
+  distinct(numero, .keep_all = T) %>% 
   count(descricao) %>%
   arrange(desc(n)) %>%
   mutate(p = n/sum(n),
@@ -722,6 +745,7 @@ assuntos_bancos <- d_tjrj %>%
 
 maiores_litigantes_bancos <- d_tjrj %>%
   filter(area == "bancos_cartoes_financeiras") %>%
+  distinct(numero, .keep_all = T) %>% 
   count(nome2) %>%
   arrange(desc(n)) %>%
   mutate(p = n/sum(n),
@@ -732,18 +756,21 @@ maiores_litigantes_bancos <- d_tjrj %>%
 No TJRJ, 3 assuntos da TPU contemplam `r assuntos_bancos$p_acum[3]` do total de processos consumeristas contra bancos e instituições financeiras.
 
 ```{r}
-assuntos_bancos
+assuntos_bancos %>% 
+  head(10) %>% 
+  knit_print(caption = "10 causas de pedir consumeristas mais frequentes conta instituições financeiras no estado do Rio de Janeiro.")
 ```
 
-O assunto mais frequente, com `r assuntos_bancos$p[1]` dos processos, diz respeito à indenizações por danos morais. Em seguida, tem-se a classificação genérica "Responsabilidade do Fornecedor", com `r assuntos_bancos$p[2]` dos processos, que é uma classificação genérica que, segundo a TPU, pode particularizar-se em  "Indenização por Dano Moral".
+O assunto mais frequente, com `r assuntos_bancos$p[1]` dos processos, diz respeito à indenizações por danos morais. Em seguida, tem-se a classificação genérica "Responsabilidade do Fornecedor", com `r assuntos_bancos$p[2]` dos processos, que é uma classificação genérica que pode particularizar-se em  "Indenização por Dano Moral".
 
 Apenas a partir do terceiro assunto mais frequente passam a aparecer questões relativas especificamente a prestação de serviços bancários. A classificação genérica "Bancários", que aparece em `r assuntos_bancos$p[3]` dos processos, segundo a TPU é uma classificação relacionada a empréstimos consignados, expurgos inflacionários e tarifas. Logo em seguida, o quarto assunto mais frequente mantém-se no mesmo sentido: "Contratos de Consumo" é uma classificação acima de "Bancários" e que abarca outros serviços prestados por instituições financeiras, como financiamentos, cartões de crédito e consórcios.
 
-### Telecomunicações
+#### Telecomunicações
 
 ```{r}
 assuntos_telecom <- d_tjrj %>%
   filter(area == "telecomunicacoes") %>%
+  distinct(numero, .keep_all = T) %>% 
   count(descricao) %>%
   arrange(desc(n)) %>%
   mutate(p = n/sum(n),
@@ -752,6 +779,7 @@ assuntos_telecom <- d_tjrj %>%
 
 maiores_litigantes_telecom <- d_tjrj %>%
   filter(area == "telecomunicacoes") %>%
+  distinct(numero, .keep_all = T) %>% 
   count(nome2) %>%
   arrange(desc(n)) %>%
   mutate(p = n/sum(n),
@@ -759,19 +787,22 @@ maiores_litigantes_telecom <- d_tjrj %>%
          p = scales::percent(p))
 ```
 
-Similar ao identificado nos processos consumeristas, as causas de pedir contra empresas de telefonia também são bastante polarizadas: `r assuntos_telecom$p[3]` dos processos estão concentrados em três assuntos. Esses três assuntos, inclusive, guardam relações com os três assuntos mais frequentes no setor bancário.
+Similar ao identificado nos processos contra instituições bancárias, as causas de pedir contra empresas de telefonia também são bastante polarizadas: `r assuntos_telecom$p_acum[3]` dos processos estão concentrados em três assuntos. Esses assuntos, inclusive, são similares aos assuntos mais frequentes do setor bancário.
 
 `r assuntos_telecom$p_acum[2]` dos processos consumeristas versam, direta ou indiretamente, sobre indenizações por danos morais, sendo esta exatamente a classificação mais frequente e "Responsabilidade do Fornecedor", uma de suas versões mais genéricas, a segunda mais frequente.
 
 ```{r}
-assuntos_telecom
+assuntos_telecom %>% 
+  head(10) %>% 
+  knit_print(caption = "10 assuntos consumeristas mais frequentes contra empresas de telecomunicação no estado do Rio de Janeiro.")
 ```
 
-### Empresas de energia, gás, água e esgoto
+#### Empresas de energia, gás, água e esgoto
 
 ```{r}
 assuntos_energia <- d_tjrj %>%
   filter(area == "energia_gas_agua_esgoto") %>%
+  distinct(numero, .keep_all = T) %>% 
   count(descricao) %>%
   arrange(desc(n)) %>%
   mutate(p = n/sum(n),
@@ -780,6 +811,7 @@ assuntos_energia <- d_tjrj %>%
 
 maiores_litigantes_energia <- d_tjrj %>%
   filter(area == "energia_gas_agua_esgoto") %>%
+  distinct(numero, .keep_all = T) %>% 
   count(nome2) %>%
   arrange(desc(n)) %>%
   mutate(p = n/sum(n),
@@ -787,58 +819,28 @@ maiores_litigantes_energia <- d_tjrj %>%
          p = scales::percent(p))
 ```
 
-Seguindo o padrão dos setores analisados até então, nas empresas distribuidoras de água, gás e energia também idenfica-se uma grande polarização dos assuntos. Os três primeiros assuntos concentram `r assuntos_energia$p[3]` dos processos, e novamente são em grande parte processos de indenização por danos morais.
+Seguindo o padrão dos setores analisados até então, nas empresas distribuidoras de água, gás e energia também idenfica-se uma grande polarização dos assuntos. Os três primeiros assuntos concentram `r assuntos_energia$p_acum[3]` dos processos, e novamente são em grande parte processos de indenização por danos morais.
 
 ```{r}
 assuntos_energia %>%
-  head(4)
+  head(10) %>% 
+  knit_print(caption = "10 assuntos consumeristas mais frequentes contra empresas de concessionárias de serviçoes básicos no estado do Rio de Janeiro.")
 ```
 
 O agravante dos processos desse setor no tribunal fluminense está na polarização também das companhias processadas. Nesse setor, 4 companhias concentram `r maiores_litigantes_energia$p_acum[4]` dos processos.
 
 ```{r}
 maiores_litigantes_energia %>%
-  head(4)
+  head(4) %>% 
+  knit_print(caption = "4 primeiras companhias concessionárias de serviços básicos com maior quantidade de processos consumeristas no estado do Rio de Janeiro.")
 ```
 
-```{r}
-library(tidyverse)
-
-control_table <- tpur::control_table
-tpu <- readRDS("data-raw/tpu.rds")
-l_tpu <- readRDS("data-raw/l_tpu.rds")
-
-assuntos_consumeristas_tpu <- readRDS("data-raw/assuntos_consumeristas_tpu.rds")
-
-codigos_consumeristas_puros <- assuntos_consumeristas_tpu$codigo
-
-  #especifico tjrs
-  {especifico_tjrs <- c("Abatimento proporcional do preço",
-                              "Cadastro de Análise de Crédito",
-                              "Cobrança indevida de ligações ",
-                              "Cobrança Indevida de Serviços",
-                              "Comercialização de dados cadastrais de consumidores",
-                              "Contratos de Participacao Financeira",
-                              "Medicamento / Tratamento / Cirurgia de Eficácia não comprovada",
-                              "Metodologia de Reajuste de Tarifa - IRT",
-                              "Notificação",
-                              "Registro em Cadastro de Análise de Crédito",
-                              "Registro em Cadastro",
-                              "Registro em Cadastro de Inadimplentes",
-                              "Registro para comercialização de dados cadastrais de consumidores",
-                              "Reparação de Danos")}
-
-assuntos_consumeristas_puros <- l_tpu %>%
-  dplyr::filter(codigo %in% codigos_consumeristas_puros) %>%
-  with(assunto) %>%
-  c(especifico_tjrs) %>%
-  unique
-```
+## TJSP
 
 ```{r}
- d_tjsp <- read_rds('data-raw/base_filtrada_consumeristas_sp.rds') %>% 
-     mutate(nome2 = aggregate_major_companies(fix_nomes(reu)),
-     area = market_segments(nome2))
+# d_tjsp <- read_rds('data-raw/base_filtrada_consumeristas_sp.rds') %>% 
+#     mutate(nome2 = aggregate_major_companies(fix_nomes(reu)),
+#     area = market_segments(nome2))
 # 
 # d_tjsp_2 <- d_tjsp %>% 
 #   mutate(mes = lubridate::floor_date(dt_dist, 'months'),
@@ -849,9 +851,9 @@ assuntos_consumeristas_puros <- l_tpu %>%
 #          dt_dist < as.Date('2016-01-01'))
 
 d_tjsp_2 <- readRDS("data-raw/d_tjsp_2.rds")
-```
 
-## TJSP
+numero_de_processos <- d_tjsp_2$n_processo %>% unique %>% length
+```
 
 Conforme mencionado na seção de metodologia, o Tribunal de Justiça de São Paulo forneceu os dados de todos os processos cíveis distribuídos entre 2009 e 2016. Nesta seção vamos descrever os resultados obtidos nesse estado.
 
@@ -861,50 +863,57 @@ Conforme mencionado na seção de metodologia, o Tribunal de Justiça de São Pa
 maiores_litigantes_tjsp <- d_tjsp_2 %>% 
   count(nome2) %>% 
   arrange(desc(n)) %>% 
-  mutate(p = scales::percent(n/sum(n)),
-    p_acum = scales::percent(cumsum(n)/sum(n)))
+  mutate(p = scales::percent(n/numero_de_processos),
+    p_acum = scales::percent(cumsum(n)/numero_de_processos))
 ```
 
-Destoando do que foi identificado nos demais estados, o grupo de empresas ligadas ao Banco Itaú teve o maior número de processos em São Paulo, com `r maiores_litigantes_tjsp$p[1]` dos litígios. No geral, as intituições bancárias são bastante frequentes na lista de maiores litigantes de São Paulo, mas a segunda posição do ranking fica com a empresa de telefonia Tim, com `r maiores_litigantes_tjsp$p[2]` dos processos.
+Destoando do que foi identificado nos demais estados, o grupo de empresas ligadas ao Banco Itaú teve o maior número de processos em São Paulo, com `r maiores_litigantes_tjsp$p[1]` dos litígios. Ao contrário dos demais estados, uma empresa de telecomunicação, a Tim, aparece apenas na oitava posição, com `r maiores_litigantes_tjsp$p[2]` dos processos.
 
 ```{r}
-head(maiores_litigantes_tjsp, 30)
+head(maiores_litigantes_tjsp, 30) %>% 
+  knit_print(caption = "30 maiores litigantes da justiça consumerista no estado de São Paulo.")
 ```
 
-Também distante do que foi encontrado nos demais estados, a Oi não figura na lista dos maiores litigantes, deixando bastante espaço para instituições financeiras, embora outras empras de telefonia também sejam responsáveis por uma boa quantidade dos processos consumeristas do estado. Dentre as instituições financeiras, os maiores litigantes são os bancos Itaú, Bradesco, Votorantim, Santander e Banco do Brasil, enquanto as maiores operadoras de telefonia são Tim, Vivo e Claro.
+Também distante do que foi encontrado nos demais estados, a Oi não figura na lista dos maiores litigantes, deixando bastante espaço para instituições financeiras, embora outras empresas de telefonia também sejam responsáveis por uma boa quantidade dos processos consumeristas do estado. Dentre as instituições financeiras, os maiores litigantes são os bancos Itaú, Bradesco, Votorantim, Santander e Banco do Brasil, enquanto as maiores operadoras de telefonia são Tim, Vivo e Claro.
 
 A partir da nona posição destacam-se novos setores da economia. A partir desse ponto, passam a figuras na lista de maiores litigantes algumas empresas admnistradoras de seguros e planos de saúde, como Unimed, Amil e Sulamérica. Além dessas empresas, também começam a aparecer outras instituições financeiras, como Panamericano, HSBC e FINASA.
 
 ```{r}
 maiores_setores_tjsp <- d_tjsp_2 %>% 
   count(area) %>% 
+  distinct(n_processo, .keep_all = T) %>% 
   arrange(desc(n)) %>% 
   mutate(p = scales::percent(n/sum(n)),
     p_acum = scales::percent(cumsum(n)/sum(n)))
 ```
 
-Os 30 maiores litigantes acumulam `r maiores_litigantes_tjsp$p_acum[30]`, mas podemos compreender melhor a origem dos demais litígios se agruparmos os processos por setor da economia das demandadas. Analisando dessa forma, conclui-se que `r maiores_setores_tjsp$p_acum[3]` dos processos concentram-se no setores financeiro, telecomunicações e seguros. As três primeiras classes possuem proporções acima de 10% dos processos e caracterizam um ponto de corte na distribuição de processos por empresa: a partir delas, a fatia consumida por cada instituição orbita os 1%. Nessa nova classe de processos, cujas demandadas concentram menos de 10% do total, destacam-se as concessionárias de serviços básicos, como energia, gás, água e esgoto, e empresas de varejo, com 1,7% e 1,1% dos processos, respectivamente.
+Os 30 maiores litigantes acumulam `r maiores_litigantes_tjsp$p_acum[30]`, mas podemos compreender melhor a origem dos demais litígios se agruparmos os processos por setor da economia das demandadas. Analisando dessa forma, conclui-se que `r maiores_setores_tjsp$p_acum[5]` dos processos concentram-se no setores financeiro, telecomunicações, seguros, planos de saúde e concessionárias de serviços básicos. As três primeiras classes possuem proporções acima de 10% dos processos e caracterizam um ponto de corte na distribuição de processos por empresa: a partir delas, a fatia consumida por cada instituição orbita os 1%. Nessa nova classe de processos, cujas demandadas concentram menos de 10% do total, destacam-se as concessionárias de serviços básicos, como energia, gás, água e esgoto, empresas de varejo, e transporte aéreo, com 1,7%, 1.7% e 1,6% dos processos, respectivamente.
 
 ```{r}
 maiores_setores_tjsp %>% 
-  head(10)
+  head(5) %>% 
+  knit_print(caption = "5 setores da economia mais demandados na justiça consumerista do estado de São Paulo.")
 ```
 
-Considerando-se o interesse em qualificar certas instituições como demandadas em massa pelos litigantes, partiremos agora a uma análise que busca averiguar a existência de padrões temporais que expliquem o volume de casos de um certo grande litigante levantado nas tabelas anteriores. Analisando o volume mensal de distribuições de cada tipo de processo, é possível identificar padrões temporais.
+Partiremos agora a uma análise que busca averiguar a existência de padrões temporais que expliquem o volume de casos de um certo grande litigante levantado nas tabelas anteriores. Analisando o volume mensal de distribuições de cada tipo de processo, é possível identificar padrões temporais.
 
 As curvas de volume processual mensal do Tribunal de Justiça de São Paulo destacam-se por padrões sazonais claros e aumentos contínuos nos volumes processuais. Na verdade, essa distinção é tão clara que é possível separar as séries do volume processual de cada setor econômico em duas classes, aqueles volumes que estão crescendo e aqueles volumes que estão se estabilizando. 
 
-```{r}
+```{r, fig.cap = "Número de processos consumeristas distribídos no estado de São Paulo ao longo do tempo separado por setor econômico da demandada."}
 d_tjsp_2 %>% 
   count(mes, area) %>% 
   filter(area %in% head(maiores_setores_tjsp,10)$area) %>% 
+  mutate(area = fix_labels(area)) %>% 
   ggplot(aes(x = mes, y = n)) +
   geom_line() +
-  facet_wrap(~area, ncol = 4, nrow = 3, scale = 'free') +
-  theme_bw()
+  facet_wrap(~area, ncol = 3, nrow = 4, scale = 'free') +
+  theme_minimal() +
+  labs(x = "Mês de distribuição", y = "Número de processos distribuídos")
 ```
 
-Dentre 10 áreas com maior volume processual no TJSP, os processos contra admnistradoras de planos de saúde, empresas de seguros, varejo e telecomunicações estão crescendo. Entretanto, em alguns casos é possível notar que o crescimento é governado por apenas algumas das instituições daquele setor. No caso dos planos de saúde, por exempl, nota-se que o crescimento dos processos contra a Unimed é maior do que o crescimento dos processos contra a Amil. De maneira análoga, pode-se conlcluir que os processos contra a Sulamerica crescem muito mais rapidamente do que os processos contra a ACE, e o mesmo vale para os processos contra a Via Varejo e Magazine Luiza. Para as empresas de telecomunicação, entretanto, nenhum efeito desse tipo é detectado. O volume processual das três empresas principais cresce similarmente.
+Dentre 10 áreas com maior volume processual no TJSP, os processos contra admnistradoras de planos de saúde, empresas de seguros, varejo e telecomunicações estão crescendo. Entretanto, em alguns casos é possível notar que o crescimento é governado por apenas algumas das instituições daquele setor.
+
+No caso dos planos de saúde, por exemplo, nota-se que o crescimento dos processos contra a Unimed é maior do que o crescimento dos processos contra a Amil. De maneira análoga, pode-se conlcluir que os processos contra a Sulamerica crescem muito mais rapidamente do que os processos contra a ACE, e o mesmo vale para os processos contra a Via Varejo e Magazine Luiza. Para as empresas de telecomunicação, entretanto, nenhum efeito desse tipo é detectado. O volume processual das três empresas principais cresce similarmente.
 
 ```{r}
 d_tjsp_2 %>% 
@@ -912,14 +921,18 @@ d_tjsp_2 %>%
   count(mes, area, nome2) %>% 
   filter(area %in% head(maiores_setores_tjsp,10)$area,
          nome2 %in% head(maiores_litigantes_tjsp,40)$nome2) %>% 
+  mutate(area = fix_labels(area),
+         nome2 = fix_labels(nome2)) %>% 
   ggplot(aes(x = mes, y = n, color = nome2)) +
   geom_line() +
   facet_wrap(~area, ncol = 2, nrow = 2, scale = 'free') +
-  theme_bw() +
-  theme(legend.position = 'bottom')
+  theme_minimal() +
+  theme(legend.position = 'bottom') +
+  labs(x = 'Mês de distribuição', y = "Número de processos distribuídos") +
+  scale_color_hue(name = "Empresa")
 ```
 
-Passando agora para os processos com curvas de volume processual estáveis, tem-se que o comportamento de todas as empresas dentro das áreas com curvas estáveis também são estáveis. Mesmo no caso das companhias de transporte Aéreo, o aumento do volume processual com relação a 2010 acontece apenas até 2014, quando as curvas se estabilizam.
+Passando agora para os processos com curvas de volume processual estáveis, não se identifica diferença no comportamento de todas as empresas dentro de cada área. Todos os volumes processuais são estáveis. Mesmo no caso das companhias de transporte Aéreo, o aumento do volume processual com relação a 2010 acontece apenas até 2014, quando as curvas se estabilizam.
 
 ```{r}
 d_tjsp_2 %>% 
@@ -927,11 +940,15 @@ d_tjsp_2 %>%
   count(mes, area, nome2) %>% 
   filter(area %in% head(maiores_setores_tjsp,10)$area,
          nome2 %in% head(maiores_litigantes_tjsp,40)$nome2) %>% 
+  mutate(area = fix_labels(area),
+         nome2 = fix_labels(nome2)) %>% 
   ggplot(aes(x = mes, y = n, color = nome2)) +
   geom_line() +
-  facet_wrap(~area, ncol = 3, nrow = 3, scale = 'free') +
-  theme_bw() +
-  theme(legend.position = 'bottom')
+  facet_wrap(~area, ncol = 2, nrow = 2, scale = 'free') +
+  theme_minimal() +
+  theme(legend.position = 'bottom') +
+  labs(x = 'Mês de distribuição', y = "Número de processos distribuídos") + 
+  scale_color_hue(name = "Empresa")
 ```
 
 ### Causas de pedir
@@ -943,6 +960,7 @@ Nesta seção vamos estudar as causas de pedir mais frequentes com aos maiores l
 ```{r}
 assuntos_bancos <- d_tjsp_2 %>% 
   filter(area == "bancos_cartoes_financeiras") %>% 
+  distinct(n_processo, .keep_all = T) %>% 
   count(assunto) %>% 
   arrange(desc(n)) %>% 
   mutate(p = n/sum(n),
@@ -951,6 +969,7 @@ assuntos_bancos <- d_tjsp_2 %>%
 
 maiores_litigantes_bancos <- d_tjsp_2 %>% 
   filter(area == "bancos_cartoes_financeiras") %>% 
+  distinct(n_processo, .keep_all = T) %>% 
   count(nome2) %>% 
   arrange(desc(n)) %>% 
   mutate(p = n/sum(n),
@@ -962,19 +981,22 @@ No TJSP, 6 assuntos da TPU contemplam `r assuntos_bancos$p_acum[6]` do total de 
 
 O assunto mais discutido nos tribunais, com `r assuntos_bancos$p[1]` dos processos, diz respeito à "Interpretação / Revisão de Contrato". Logo em seguida, tem-se a classificação genérica "Bancários", com `r assuntos_bancos$p[2]` dos processos, que, segundo a TPU, podem tratar-se de "Empréstimos consignados", "Expurgos Inflacionários / Planos Econômicos" e "Tarifas".
 
-Na terceira posição, aparece a "Inclusão Indevida em Cadastro de Inadimplentes", com `r assuntos_bancos$p[3]` dos processos. Logo a seguir, mas não sem relação, tem-se os processos que pedem indenizações por danos morais, com `r assuntos_bancos$p[4]` dos casos. 
+Na terceira posição, aparece a "Inclusão Indevida em Cadastro de Inadimplentes", com `r assuntos_bancos$p[3]` dos processos. Logo a seguir, mas não sem relação, encontram-se os processos que pedem indenizações por danos morais, com `r assuntos_bancos$p[4]` dos casos. 
 
-Neste ponto já acumula-se 85% de todos os processos consumeristas contra instituições bancárias, mas dois assuntos processuais ainda destacam-se, considerando que o resto da lista lida com temas repetidos ou aninhados dentro de classificações mais gerais como "Bancários". Os dois temas que se destacam são Planos de Saúde, com  `r assuntos_bancos$p[5]` dos processos, e Financiamento de Produto, com `r assuntos_bancos$p[6]` dos processos.
+Esses primeiros 4 assuntos já acumulam 85% de todos os processos consumeristas contra instituições bancárias, mas dois assuntos processuais ainda se destacam, considerando que o resto da lista lida com temas repetidos ou aninhados dentro de classificações mais gerais como "Bancários". Os dois temas que se destacam são Planos de Saúde, com  `r assuntos_bancos$p[5]` dos processos, e Financiamento de Produto, com `r assuntos_bancos$p[6]` dos processos.
 
-Entretanto, embora os 6 primeiros assuntos processuais mais frequentes sejam expressivos, o volume processual de um deles concentrou-se em um certo período do tempo. Processos classificados como "Financiamento de Produtos" apresentaram um decaimento constante a partir de 2012, de tal forma que processo desse assunto só foram distribuídos entre 2012 e 2014.
+Embora os 6 primeiros assuntos processuais mais frequentes sejam expressivos, o volume processual de um deles concentrou-se em um certo período do tempo. Processos classificados como "Financiamento de Produtos" apresentaram um decaimento constante a partir de 2012, de tal forma que processo desse assunto só foram distribuídos entre 2012 e 2014. As indenizações por danos morais 
 
 ```{r}
 d_tjsp_2 %>% 
   filter(area == "bancos_cartoes_financeiras") %>% 
   filter(assunto %in% assuntos_bancos$assunto[1:6]) %>% 
-  count(mes, assunto) %>% 
+  count(mes, assunto) %>%
+  mutate(assunto = str_wrap(assunto, 15)) %>% 
   ggplot(aes(x = mes, y = n, color = assunto)) +
-  geom_line() + theme_bw() + theme(strip.background = element_blank(), strip.placement = 'outside', strip.text = element_blank())
+  geom_line() + theme_bw() + theme(strip.background = element_blank(), strip.placement = 'outside', strip.text = element_blank()) +
+  lab(x = "Mês de distribuição", y = "Número de procesos distribuídos") +
+  theme(legend.position = 'bottom')
 ```
 
 #### Empresas de telecomunicações
@@ -1090,7 +1112,6 @@ assuntos_consumeristas_puros <- l_tpu %>%
 d_tjmt_2 <- readRDS("data-raw/d_tjmt_2.rds")
 ```
 
-## TJMT
 
 Conforme mencionado na seção de metodologia, o Tribunal de Justiça do Mato Grosso forneceu os dados referentes ao Selo Justiça em Números. Nesta seção vamos descrever os resultados obtidos nesse estado.
 
