@@ -68,13 +68,11 @@ As hipóteses de pesquisa definem o conjunto mínimo de investigações a serem 
 Com o intuito de sistematizar o nosso estudo e deixá-lo mais próximo da elaboração de políticas públicas, também trabalhamos com hipóteses relacionadas ao que chamamos de parte *propositiva* da pesquisa:
 
 1. O que pode ser feito para agilizar a tramitação dos processos consumeristas e reduzir o estoque de processos?
-
     1. Qual é o impacto da utilização de estratégias de composição amigável?
     1. O uso dos incidentes de demandas repetitivas do novo Código do Processo Civil pode ser efetivo na redução do número de processo em curso?
     1. É possível tornar o trabalho de uma vara mais eficiente utilizando alguma estratégia de ordenação da sua fila de processos?
 
 1. O que pode diminuir o número de processos consumeristas que entram no judiciário?
-
     1. O brasileiro costuma buscar meios alternativos para a solução de conflitos antes de entrar com ações judiciais? Estes meios são efetivos?
     1. Existem fatores que incentivam o cometimento de ilícitos por parte das empresas? (Vantagem monetária no cometimento de ilícitos, falta de regulamentação etc.)
     1. Existem fatores que incentivam a litigância excessiva dos consumidores? (indústria do Dano Moral, gratuidade judiciária etc.)
