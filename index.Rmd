@@ -26,17 +26,17 @@ library(tidyverse)
 
 theme_set(theme(text = element_text(family = "sf")))
 
-include_table <- function(data_set, ...){
-  data_set %>%
-  xtable::xtable(...) %>%
-  print(tabular.environment = 'longtable', comment = F,
-          floating = FALSE, include.rownames = F)
-}
+# include_table <- function(data_set, ...){
+#   data_set %>%
+#   xtable::xtable(...) %>%
+#   print(tabular.environment = 'longtable', comment = F,
+#           floating = FALSE, include.rownames = F)
+# }
 
 regex2coolname <- function(rgx){
   rgx %>% 
     stringr::str_replace_all("regex_","") %>% 
-    stringr::str_replace_all("[:space:]+"," ") %>% 
+    stringr::str_replace_all("([:space:]|_)+"," ") %>% 
     stringr::str_to_title()
 }
 
@@ -61,6 +61,7 @@ fix_labels <- function(nome2){
     nome2 == "regex_tim" ~ "Tim",
     nome2 == "regex_unimed" ~ "Unimed",
     nome2 == "regex_banco_finasa" ~ "Banco Finasa",
+    nome2 == "regex_porto_seguro" ~ "Porto Seguro",
     nome2 == "bancos_cartoes_financeiras" ~ "Instituições Financeiras",
     nome2 == "telecomunicacoes" ~ "Telecomunicações",
     nome2 == "banco_de_dados" ~ "Administradoras de cadastro de inadimplentes",
@@ -107,7 +108,7 @@ knit_print.data.frame = function(x, ...) {
     )
   
     res <- capture.output(d %>% 
-          xtable::xtable(...) %>% 
+          xtable::xtable(..., label = knitr::opts_current$get("label")) %>% 
           print(tabular.environment = 'longtable', comment = F,
           floating = FALSE, include.rownames = F))
     
