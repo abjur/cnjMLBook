@@ -74,7 +74,8 @@ fix_labels <- function(nome2){
     nome2 == "recuperacao_credito" ~ "Companhias de recuperação de crédito",
     nome2 == "fabricantes_linha_branca" ~ "Fabricantes de eletrodomésticos da linha branca",
     TRUE ~ regex2coolname(nome2)
-  )
+  ) %>% 
+  stringr::str_wrap(width = 15)
 }
 
 knit_print.data.frame = function(x, ...) {
@@ -101,6 +102,7 @@ knit_print.data.frame = function(x, ...) {
       nomes == "p_acum" ~ "Percentual Acumulado",
       nomes == "nome2" ~ "Nome da Empresa ou Grupo",
       nomes == "assunto_final" ~ "Causa de pedir (Assunto)",
+      nomes == "descricao" ~ "Descrição",
       TRUE ~ stringr::str_to_title(nomes)
     )
   
