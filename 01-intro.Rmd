@@ -2,7 +2,7 @@
 
 Estudos recentes indicam que ações envolvendo o direito do consumidor têm grande influência no volume de processos no Poder Judiciário. Somente em 2014, foram mais de dois milhões de casos novos envolvendo responsabilidade do fornecedor ou indenização por dano moral, situando o assunto como o terceiro mais demandado de todos os tribunais, com pelo menos 4\% de todas as novas demandas do ano de 2014 [@CNJ2015]. 
 
-Diante deste cenário, compreender o volume e o perfil dos processos que envolvem direito do consumidor é condição necessária para uma boa administração da Justiça. Em relação ao volume, para a mensuração do impacto desses processos na taxa de congestionamento dos tribunais, é preciso levantar não só os casos novos mas também o estoque e o tempo de duração médio dos processos. Já em relação ao perfil, precisamos entender como se distribuem os processos no tempo e no espaço, quem são os maiores responsáveis pela litigiosidade e quais as principais características dos processos. Somente com essas informações é possível planejar e implementar políticas públicas e mudanças legislativas de qualidade.
+Diante desse cenário, compreender o volume e o perfil dos processos que envolvem direito do consumidor é condição necessária para uma boa administração da Justiça. Em relação ao volume, para a mensuração do impacto desses processos na taxa de congestionamento dos tribunais, é preciso levantar não só os casos novos mas também o estoque e o tempo de duração médio dos processos. Já em relação ao perfil, precisamos entender como se distribuem os processos no tempo e no espaço, quem são os maiores responsáveis pela litigiosidade e quais as principais características dos processos. Somente com essas informações é possível planejar e implementar políticas públicas e mudanças legislativas de qualidade.
 
 Ainda sobre o perfil dos processos, uma hipótese recorrente no direito do consumidor é de que um pequeno grupo de litigantes são réus na maior parte dos processos judiciais. O estudo "100 maiores litigantes" [@CNJ2012] mostra, por exemplo, que na 1ª instância da Justiça Estadual, os cem maiores litigantes figuram como uma das partes em 36\% dos processos. Na justiça consumerista, espera-se que essa proporção seja ainda maior.
 
@@ -12,7 +12,7 @@ A presente pesquisa teve como hipótese primordial a de que trinta litigantes es
 
 Em seguida, partimos para uma investigação mais aprofundada e propositiva sobre seis temas específicos, cada um associado a uma faceta do problema e uma ou mais recomendações para sua solução. Os temas foram agrupados em duas perguntas principais: a) "o que fazer com o estoque atual de processos?" e b) "como evitar a entrada de tantos processos?".
 
-Neste produto final, descrevemos a metodologia para obtenção dos maiores litigantes e mostramos os principais resultados da pesquisa. No final, apresentamos alguns caminhos para a melhoria da administração judiciária.
+Nesse produto final, descrevemos a metodologia para obtenção dos maiores litigantes e mostramos os principais resultados da pesquisa. No final, apresentamos alguns caminhos para a melhoria da administração judiciária.
 
 ## Justificativa
 
@@ -28,11 +28,11 @@ O presente tema é uma oportunidade da ABJ de disseminar o conceito, as metodolo
 
 ## Levantamento Bibliográfico
 
-O estudo "100 maiores litigantes" [@CNJ2012], divulgado pelo Departamento de Pesquisas Judiciárias é o primeiro estudo sistemático realizado sobre maiores litigantes e teve impacto profundo na comunidade jurídica. O estudo indica que uma parcela considerável do volume processual pode ser atribuída aos 100 maiores litigantes. Por exemplo, na 1ª instância da Justiça Estadual, estes litigantes figuram como uma das partes em 36\% do volume processual.
+O estudo "100 maiores litigantes" [@CNJ2012], divulgado pelo Departamento de Pesquisas Judiciárias é o primeiro estudo sistemático realizado sobre maiores litigantes e teve impacto profundo na comunidade jurídica. O estudo indica que uma parcela considerável do volume processual pode ser atribuída aos 100 maiores litigantes. Por exemplo, na 1ª instância da Justiça Estadual, esses litigantes figuram como uma das partes em 36\% do volume processual.
 
 O estudo "O uso da justiça e o litígio no Brasil" [@AMB2015] sugere que a maior parte dos processos está associada aos setores financeiro e de telefonia. O trabalho também defende a importância da realização de estudos aprofundados sobre litígios em massa e técnicas de solução de conflitos, como conciliação e mediação.
 
-Por conta da alta concentração do volume processual em um pequeno conjunto de réus, a atenção doutrinária voltou-se à litigância repetitiva [@Silva2012]. A motivação é a de que alterações nesta área podem trazer enormes ganhos à celeridade da Justiça.
+Por conta da alta concentração do volume processual em um pequeno conjunto de réus, a atenção doutrinária voltou-se à litigância repetitiva [@Silva2012]. A motivação é a de que alterações nessa área podem trazer enormes ganhos à celeridade da Justiça.
 
 Um tipo de alteração envolve modificações que facilitem a formação de ações coletivas e litisconsórcios [@Mollica2010, Marquezini2013, Souza2014]. Agrupar sob uma única ação processos semelhantes pode levar a uma melhor divisão do trabalho entre magistrados, tornando mais célere a resolução dos conflitos. Tal agrupamento também pode permitir ao magistrado definir grupos de litigantes factualmente semelhantes e, assim, determinar compensações com base em amostragem estatística [@Weinstein1997].
 
@@ -42,7 +42,7 @@ Uma terceira forma de abordar o tema da litigância repetitiva é através do *I
 
 Uma forma mais abstrata de investigar o tema envolve modificações na lei que visem criar incentivos econômicos para que as partes não ingressem com ações judiciais. Por um lado, estudos como [@Athos2015] investigam a possibilidade de existir uma "indústria do dano moral", com base na inexistência das custas processuais e sucumbência nos Juizados Especiais Cíveis (JEC). Por uma análise econômica, os autores concluem que a inexistência de custas nos JEC poderia incentivar as partes a sempre ingressarem com ações, mesmo quando a probabilidade de sucesso é baixa. 
 
-De perspectiva diferente, também pode-se estudar empresas como agentes maximizadores de lucro. Sob essa ótica, uma empresa escolheria desrespeitar a lei, quando esta escolha traz maiores prospectos de lucro. Esse tipo de análise traz à tona quais normas poderiam ser criadas pelo Estado ou agências reguladoras de tal forma a tornar a solução economicamente vantajosa para as empresas sem desrespeitar os direitos do consumidor.
+De perspectiva diferente, também pode-se estudar empresas como agentes maximizadores de lucro. Sob essa ótica, uma empresa escolheria desrespeitar a lei, quando essa escolha traz maiores prospectos de lucro. Esse tipo de análise traz à tona quais normas poderiam ser criadas pelo Estado ou agências reguladoras de tal forma a tornar a solução economicamente vantajosa para as empresas sem desrespeitar os direitos do consumidor.
 
 Os estudos evidenciam a existência de dois grandes focos de investigação. No primeiro, propomos mudanças administrativas e legislativas para redução eficaz do estoque atual de processos. Já no segundo, procuramos realizar ações preventivas e modificar incentivos para litigar, buscando reduzir o volume de casos novos.
 
@@ -75,7 +75,7 @@ Com o intuito de sistematizar o nosso estudo e deixá-lo mais próximo da elabor
 
 1. O que pode diminuir o número de processos consumeristas que entram no judiciário?
 
-    1. O brasileiro costuma buscar meios alternativos para a solução de conflitos antes de entrar com ações judiciais? Estes meios são efetivos?
+    1. O brasileiro costuma buscar meios alternativos para a solução de conflitos antes de entrar com ações judiciais? Tais meios são efetivos?
     1. Existem fatores que incentivam o cometimento de ilícitos por parte das empresas? (Vantagem monetária no cometimento de ilícitos, falta de regulamentação etc.)
     1. Existem fatores que incentivam a litigância excessiva dos consumidores? (indústria do Dano Moral, gratuidade judiciária etc.)
 
@@ -91,4 +91,4 @@ Os resultados esperados dessa pesquisa são:
 
 ## Organização do trabalho
 
-O produto final da pesquisa está organizado em três capítulos, além desta introdução. O capítulo [metodologia][metodologia] descreve a metodologia empregada na pesquisa. O capítulo [resultados][resultados] mostra os principais resultados. O capítulo [sugestoes-para-aprimoramento-do-sistema][sugestoes-para-aprimoramento-do-sistema] lista sugestões para o aprimoramento do sistema.
+O produto final da pesquisa está organizado em três capítulos, além dessa introdução. O capítulo [metodologia][metodologia] descreve a metodologia empregada na pesquisa. O capítulo [resultados][resultados] mostra os principais resultados. O capítulo [sugestoes-para-aprimoramento-do-sistema][sugestoes-para-aprimoramento-do-sistema] lista sugestões para o aprimoramento do sistema.
