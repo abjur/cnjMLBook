@@ -107,7 +107,7 @@ knit_print.data.frame = function(x, ...) {
     )
   
     res <- capture.output(d %>% 
-          xtable::xtable(...) %>% 
+          xtable::xtable(..., label = knitr::opts_current$get("label")) %>% 
           print(tabular.environment = 'longtable', comment = F,
           floating = FALSE, include.rownames = F))
     
