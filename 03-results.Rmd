@@ -103,8 +103,8 @@ if("data-raw" %in% dir(getwd())){
     mutate(nome2 = fix_labels_2(nome2),
            area = fix_labels_2(area))
 
-  match_comarca_municipio_tjrs <- readRDS("data-raw/tjrs_comarca_municipio.rds") %>%
-    bind_rows(data_frame(comarca = "Não-Me-Toque", municipio = "Não-Me-Toque"))
+  # match_comarca_municipio_tjrs <- readRDS("data-raw/tjrs_comarca_municipio.rds") %>%
+  #   bind_rows(data_frame(comarca = "Não-Me-Toque", municipio = "Não-Me-Toque"))
 
   # mapa_rs <- readRDS("data-raw/GADM_2.8_BRA_adm2.rds")
   # mapa_rs <- mapa_rs[mapa_rs$NAME_1=="Rio Grande do Sul",]
@@ -1878,7 +1878,7 @@ pnud_uf %<>% filter(ano == 2010) %>%
 #       mutate(nome_fantasia_2 = aggregate_major_companies(fix_nomes(nome_fantasia)),
 #        area = market_segments(nome_fantasia_2))
 
-d <- readRDS('data-raw2/d_senacon.rds')
+d <- readRDS('data-raw/d_senacon.rds')
 
 library(tidyverse)
 ```
