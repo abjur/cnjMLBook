@@ -12,7 +12,7 @@ As análises do capítulo de resultados seguiram um roteiro de perguntas, consid
 
 O roteiro limitou-se às cifras mencionadas acima (5 setores, 10 assuntos processuais e 30 litigantes) apenas para tornar a exposição mais clara. Conforme verificado a seguir, esses números foram capazes de descrever o comportamento de grande quantidade dos processos. Mesmo assim, para os casos não comentados nesse capítulo, o apêndice contém versões menos resumidas das tabelas.
 
-  Em alguns tribunais, os mecanismos de seleção impossibilitam análises temporais. Isso acontece porque os dados utilizados na premiação do Selo Justiça em Números não representam adequadamente os processos distribuídos em um ano. Os dados obtidos na ocasião desse prêmio representam adequadamente os processos que receberam carga e aqueles processos que estavam em aberto no momento da coleta. Por conta disso, análises temporais serão conduzidas apenas onde conduzimos estudos prospectivos, nos estados de São Paulo, Rio Grande do Sul, Amazonas e Bahia.
+  Em alguns tribunais, os mecanismos de seleção impossibilitam análises temporais. Isso acontece porque os dados utilizados na premiação do Selo Justiça em Números não representam adequadamente os processos distribuídos em um ano. Os dados obtidos na ocasião desse prêmio representam adequadamente os processos que receberam carga e aqueles processos que estavam em aberto no momento da coleta. Por conta disso, fizemos análises temporais apenas conduzimos estudos prospectivos, nos estados de São Paulo, Rio Grande do Sul, Amazonas e Bahia.
 
 ```{r}
 if("data-raw" %in% dir(getwd())){
@@ -194,7 +194,7 @@ d_tjrs_2 %>%
 
 ```{r f2}
 total_anual <- d_tjrs_2 %>%
-  filter(area == "banco_de_dados") %>%
+  filter(area == "Administradoras de cadastro de inadimplentes") %>%
   group_by(ano) %>%
   count()
 
@@ -391,7 +391,7 @@ A despeito dessa diferença nas proporções de assuntos entre os bancos, todos 
 ```{r f9, fig.cap = "Número de processos contra instituições financeiras que versam  sobre interpretação ou revisão de contratos, separado por data de distribuição e institução. Fonte: Tribunal de Justiça de Rio Grande do Sul."}
 d_tjrs_2 %>%
   filter(area == "Instituições Financeiras",
-         assunto_final == "Interpretação/ Revisão de Contrato",
+         assunto_final == "Interpretação / Revisão de Contrato",
          nome2 %in% maiores_bancos$nome2[1:10]) %>%
   count(mes, nome2) %>%
   ggplot(aes(x = mes, y = n, colour = nome2)) +
@@ -1201,7 +1201,7 @@ No segmento das telecomunicações, as 4 maiores companhias de telefonia do Bras
 
 ```{r}
 maiores_telecomunicacoes %>%
-  head(10) %>%
+  head(7) %>%
   knitr::knit_print(caption = "10 maiores litigantes consumeristas do setor das telecomunicações no estado do Mato Grosso. Fonte: Selo Justiça em Números.")
 ```
 
@@ -1967,7 +1967,7 @@ d %>%
   mutate(n = 10*n/pib) %>% 
   filter(id %in% c("AM","RO","PA","AP","RR","MS","AL")) %>% 
   select(id, n) %>% 
-  set_names(c("UF","Reclamacoes por 100mil reais do PIB")) %>% 
+  set_names(c("UF","Reclamações por 100mil reais do PIB")) %>% 
   knitr::knit_print(caption = "Reclamações por 100mil reais do PIB separadas por unidade da federação. Fonte: SENACON.")
 ```
 
@@ -1986,7 +1986,7 @@ d %>%
 
 Separando a sequência de consumos mensais por unidades da federação, a conclusão é a mesma, com poucas exceções. Apenas nos estados do Acre, Tocantins e Sergipe observa-se uma curva diferente das demais. Nesses estados o padrão observado está mais próximo de uma reta com picos, no começo de 2015 no Acre e final de 2016 em Sergipe e Tocantins.
 
-```{r fig.cap="Número de reclamações por mês em cada UF. Fonte: SENACON."}
+```{r fig.cap="Número de reclamações por mês em cada UF. Fonte: SENACON.", fig.height=7}
 d %>% 
   mutate(mes = lubridate::floor_date(data_finalizacao, "months")) %>% 
   group_by(uf, mes) %>% 
@@ -2165,7 +2165,7 @@ uniao_tjrs_senacon <- tjrs %>%
 uniao_tjrs_senacon %>% 
   filter(nome2 %in% c("regex_oi", "regex_vivo", "regex_claro", "regex_tim", "regex_bradesco", "regex_itau")) %>% 
   select(nome2, n.x, ef, p) %>% 
-  set_names("Empresa", "Número de processos", "Proporção de casos resolvidos", "Percentual máximo\n de litigantes que consultaram\no consumidor.gov") %>% 
+  set_names("Empresa", "Número de processos", "Proporção de casos resolvidos", "% que consultou o site") %>% 
   knitr::knit_print(caption = "Proporção de casos resolvidos e percentual máximo de litigantes que consultaram o consumidor.gov para 6 empresas. Fonte: SENACON e Tribunal de Justiça do Rio Grande do Sul.")
 ```
 
@@ -2193,11 +2193,10 @@ uniao_tjrs_senacon %>%
          ganho_cenario_medio = (1-p)*ef*0.5,
          ganho_melhor_cenario = (1-p)*ef) %>% 
   select(nome2, n.x, ef, p, ganho_pior_cenario, ganho_cenario_medio, ganho_melhor_cenario) %>% 
-  set_names("Empresa", "Número de processos", "Proporção de casos resolvidos", "Percentual máximo\n de litigantes que consultaram\no consumidor.gov", "Redução no número\nde processos (pior cenário)",
-            "Redução no número\nde processos (cenário médio)",
-            "Redução no número\nde processos (melhor cenário)") %>%
-    knitr::knit_print(caption = "Proporção de casos resolvidos e percentual máximo de litigantes que consultarma o consumidor.gov para 6 empresas, com estimativas de ganho no cenário contrafactual. Fonte: SENACON e Tribunal de Justiça do Rio Grande do Sul.")
-
+  set_names("Empresa", "Número de processos", "Proporção de casos resolvidos", "% que consultou o site", "Redução % (pior cenário)",
+            "Redução % (cenário médio)",
+            "Redução % (melhor cenário)") %>%
+    knitr::knit_print(caption = "Proporção de casos resolvidos e percentual máximo de litigantes que consultarma o consumidor.gov para 6 empresas, com estimativas de ganho no cenário contrafactual.")
 ```
 
 ### Tempos
