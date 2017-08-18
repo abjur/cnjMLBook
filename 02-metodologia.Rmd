@@ -60,7 +60,7 @@ Já a parte propositiva utilizou tanto métodos quantitativos não-experimentais
 
 A convergência das duas partes da pesquisa se deu a partir do confrontamento dos resultados levantados (@creswell2013research, p.118). Os resultados da parte exploratória são utilizados como *inputs* para tomadas de decisão na parte propositiva, com o intuito de i) descartar parte das proposições ou ii) indicar formas de execução das propostas focadas em grupos estratégicos identificados na parte exploratória (e.g. regiões ou tipos empresariais).
 
-A seguir, descrevemos a metodologia em maior detalhe. A Seção \@ref(parte-exploratoria) contempla os métodos de obtenção e análise dos dados. A Seção \ref(@parte-propositiva) descreve as atividades realizadas da parte propositiva.
+A seguir, descrevemos a metodologia em maior detalhe. A Seção \@ref(parte-exploratoria) contempla os métodos de obtenção e análise dos dados. A Seção \@ref(parte-propositiva) descreve as atividades realizadas da parte propositiva.
 
 ## Parte exploratória {#parte-exploratoria}
 
@@ -762,7 +762,7 @@ dados %>%
            `Novos` = fmt(total_n),
            `Baixados` = fmt(total_b),
            `Pendentes 2014` = fmt(total_p_t1)) %>% 
-  knitr::knit_print(align = 'llllrrrr',
+  knitr::knit_print(align = 'llllrrrrr',
                caption = 'IADN de 2015 para processos de primeiro grau não criminais nos Tribunais considerados na pesquisa.')
 ```
 
@@ -834,7 +834,7 @@ Dessa forma, se $\lambda = 1$, temos o IADN e, se $\lambda = 0$, temos o IAD. O 
 
 A Figura \@ref(fig:iadn3) mostra o IADR calculado para os tribunais escolhidos na pesquisa, considerando diferentes valores de $\lambda$. É interessante notar que a posição relativa de alguns tribunais, como o TJBA muda ao considerar diferentes valores de $\lambda$.
 
-```{r fig:iadn3, fig.cap='IADR calculado para os tribunais da pesquisa considerando diferentes valores de $\lambda$'}
+```{r fig:iadn3, fig.cap='IADR calculado para os tribunais da pesquisa considerando diferentes valores de $\\lambda$'}
 data(cadmun, package = 'abjData')
 cadmun <- distinct(cadmun, uf, regiao)
 dados_base <- dados %>% 
