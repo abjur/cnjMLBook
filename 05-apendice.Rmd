@@ -1,36 +1,31 @@
 # Apêndice
 
-\section{Códigos utilizados para análise das bases de dados}
+## Códigos utilizados para análise das bases de dados
 
-\subsection{Produto 2}
+### Produto 2
 
-\begin{enumerate}
-\item \href{https://github.com/abjur/cnjML}{Scripts de análise de dados feitos em R}.
-\item \href{https://github.com/abjur/tidyML}{Scripts para arrumar dados dos tribunais}.
-\item \href{https://github.com/abjur/tidyPJ}{Scripts para arrumar nomes das empresas}.
-\item \href{https://github.com/abjur/tpur}{Pacote em R utilizado para armazenas as TPUs do CNJ}.
-\item \href{https://github.com/abjur/tpur}{Pacote em R utilizado para criar a \textit{whitelist} do TJSP e estimar volumes processuais}.
-\item \href{https://github.com/courtsbr/esaj}{Scripts de web scraping de tribunais do sistema SAJ}.
-\item \href{https://github.com/courtsbr/tjsp}{Scripts de web scraping de diversas páginas do TJSP}.
-\item \href{https://github.com/decryptr/}{Modelos para quebrar CAPTCHAs}.
-\end{enumerate}
+1. [Scripts de análise de dados feitos em R](https://github.com/abjur/cnjML).
+1. [Scripts para arrumar dados dos tribunais](https://github.com/abjur/tidyML).
+1. [Scripts para arrumar nomes das empresas](https://github.com/abjur/tidyPJ).
+1. [Pacote em R utilizado para armazenas as TPUs do CNJ](https://github.com/abjur/tpur).
+1. [Pacote em R utilizado para criar a *whitelist* do TJSP e estimar volumes processuais](https://github.com/abjur/tpur).
+1. [Scripts de web scraping de tribunais do sistema SAJ](https://github.com/courtsbr/esaj).
+1. [Scripts de web scraping de diversas páginas do TJSP](https://github.com/courtsbr/tjsp).
+1. [Modelos para quebrar CAPTCHAs](https://github.com/decryptr/).
 
-\subsection{Estudo sobre teses da USP}
+### Estudo sobre teses da USP
 
-\begin{enumerate}
-\item \href{https://github.com/abjur/esaj}{Pacote em R utilizado para download dos acórdãos}.
-\item \href{https://www.dropbox.com/s/kkqlghd5cv10u99/d\_ementas\_2014.rda?dl=0}{Base de dados sobre acórdãos utilizada}.
-\item \href{https://github.com/abjur/teses.usp}{Pacote em R utilizado para download das teses da USP}.
-\item \href{https://github.com/jtrecenti/teses.usp/raw/master/data/teses\_usp.rda}{Base de dados de teses da USP}.
-\end{enumerate}
+1. [Pacote em R utilizado para download dos acórdãos](https://github.com/abjur/esaj).
+1. [Base de dados sobre acórdãos utilizada](https://www.dropbox.com/s/kkqlghd5cv10u99/d_ementas_2014.rda?dl=0).
+1. [Pacote em R utilizado para download das teses da USP](https://github.com/abjur/teses.usp).
+1. [Base de dados de teses da USP](https://github.com/jtrecenti/teses.usp/raw/master/data/teses_usp.rda).
 
 
-\section{Eixos de investigação cortados no decorrer da pesquisa}\label{eixos-not}
+## Eixos de investigação cortados no decorrer da pesquisa
 
 Os seguintes eixos de investigação foram deixados de lado no decorrer da pesquisa por serem muito complexos de executar e/ou por apresentarem pouco potencial de resolver problemas de administração judiciária. Ainda assim, optamos por manter os eixos, pois outros pesquisadores podem enxergar oportunidades não identificadas pela ABJ durante a execução do projeto.
 
-\subsection{}{Incidentes de demandas
-repetitivas}\label{incidentes-de-demandas-repetitivas}
+### Incidentes de demandas repetitivas
 
 Outra importante ferramenta instituída pelo novo CPC para redução dos
 processos em trâmite no Poder Judiciário é o Incidente de Resolução de
@@ -59,14 +54,13 @@ da jurisprudência. Admitido o incidente pelo relator, os processos
 classificados no grupo correspondente são suspensos. Uma vez julgado o
 incidente, a tese jurídica será aplicada conforme o art. 985, I e II:
 
-\begin{quote}
-``I - a todos os processos individuais ou coletivos que versem sobre
-idêntica questão de direito e que tramitem na área de jurisdição do
-respectivo tribunal, inclusive àqueles que tramitem nos juizados
-especiais do respectivo Estado ou região; II - aos casos futuros que
-versem idêntica questão de direito e que venham a tramitar no território
-de competência do tribunal, salvo revisão na forma do art. 986''.
-\end{quote}
+
+> "I - a todos os processos individuais ou coletivos que versem sobre
+> idêntica questão de direito e que tramitem na área de jurisdição do
+> respectivo tribunal, inclusive àqueles que tramitem nos juizados
+> especiais do respectivo Estado ou região; II - aos casos futuros que
+> versem idêntica questão de direito e que venham a tramitar no território
+> de competência do tribunal, salvo revisão na forma do art. 986".
 
 Do julgamento do mérito do incidente caberá recurso extraordinário ou
 especial. O recurso tem efeito suspensivo e a repercussão geral do
@@ -77,7 +71,7 @@ individuais ou coletivos que versem sobre idêntica questão de direito.
 
 Por se tratar de um instituto inédito e com pouco tempo de vigência, o
 IRDR tem sido pouco utilizado. Pela dificuldade em se identificar o que
-deve ser considerado como ``questão unicamente de direito'', é incerto o
+deve ser considerado como "questão unicamente de direito", é incerto o
 efeito de tais medidas.
 
 A única hipótese em relação ao IRDR é que, pelo fato deste tratar de
@@ -103,8 +97,7 @@ Concluímos que o IRDR precisa de tempo para maturar e tornar-se passivo
 de análise quantitativa. Por isso, o eixo de investigação foi descartado
 na presente pesquisa.
 
-\subsection{Otimização da fila de
-trabalho}\label{otimizacao-da-fila-de-trabalho}
+### Otimização da fila de trabalho
 
 A redação original do art. 12 do novo CPC previa, de maneira sucinta,
 que os juízes e os tribunais deveriam observar a ordem cronológica de
@@ -118,13 +111,13 @@ funcionamento das varas judiciais e tribunais, o legislador editou a Lei
 n.º 13.256/2016, que acrescentou a palavra ``preferencialmente'' aos
 artigos 12, Caput, e 153 do CPC:
 
-\begin{quote}
-``Art. 12. Os juízes e os tribunais atenderão, preferencialmente, à
-ordem cronológica de conclusão para proferir sentença ou acórdão.''
-``Art. 153. O escrivão ou o chefe de secretaria atenderá,
-preferencialmente, à ordem cronológica de recebimento para publicação e
-efetivação dos pronunciamentos judiciais.''
-\end{quote}
+
+> "Art. 12. Os juízes e os tribunais atenderão, preferencialmente, à
+> ordem cronológica de conclusão para proferir sentença ou acórdão."
+> 
+> "Art. 153. O escrivão ou o chefe de secretaria atenderá,
+> preferencialmente, à ordem cronológica de recebimento para publicação e
+> efetivação dos pronunciamentos judiciais."
 
 A partir das modificações perpetradas pela Lei n.º 13.256/2016, os
 magistrados, escrivães ou chefes de secretaria não mais estão obrigados
@@ -134,16 +127,11 @@ dispositivo.
 
 Dessa forma, tem-se o seguinte:
 
-\begin{itemize}
-
-\item
-  O magistrado não está obrigado a seguir a ordem cronológica dos
+- O magistrado não está obrigado a seguir a ordem cronológica dos
   processos para proferir sentença ou acórdão, devendo segui-la
   preferencialmente, desde que possível.
-\item
-  Há exceções legais que determinam que um processo seja julgado antes
+- Há exceções legais que determinam que um processo seja julgado antes
   de outros, independentemente de sua ordem cronológica.
-\end{itemize}
 
 A liberdade na forma de atuação do juiz nesse sentido pode ser vista
 como positiva, pois dessa forma é possível delimitar a ordem que melhor
@@ -156,8 +144,7 @@ sensação de caos na administração da justiça.
 Uma forma possível de solucionar esse problema seria através da
 otimização da fila de trabalho dentro do cartório. Isso seria realizado
 através de um modelo que ordenaria os trabalhos a serem realizados em
-cada dia, considerando todos os agentes do cartório, de forma a
-maximizar a
+cada dia, considerando todos os agentes do cartório.
 
 A hipótese para esse tema é a de que existem formas de ordenar as
 tarefas dentro de um cartório capaz de i) minimizar o número de ações a
@@ -167,7 +154,7 @@ constante ou reduzir a taxa de recorribilidade.
 
 Os resultados para esse tema são simulações,
 baseadas em dados reais de movimentações processuais e utilização de
-modelos similares aos descritos em \citep{Fossaluza2015}. A mensuração da
+modelos similares aos descritos em @Fossaluza2015. A mensuração da
 importância envolve, entre outras características, a complexidade
 processual. Portanto, a implementação deve levar em conta métodos para
 mensuração de complexidade.
@@ -186,19 +173,19 @@ volume processual. A solução também apresenta dificuldades de
 implementação, pois precisa ser integrado aos sistemas existentes e
 poderiam exigir treinamento.
 
-\subsection{Incentivos para litigar}\label{incentivos-para-litigar}
+### Incentivos para litigar
 
-Segundo \citep{CNJ2015}, os processos mais recorrentes do direito do
+Segundo @CNJ2015, os processos mais recorrentes do direito do
 consumidor são os processos que envolvem danos morais, sendo este um
 assunto processual que tem a intuição de estar associado a uma
-``indústria''. Por um lado, isso poderia ser explicado pela existência
-de juízes ``justiceiros'', que arbitram valores de indenização altos o
+"indústria". Por um lado, isso poderia ser explicado pela existência
+de juízes "justiceiros", que arbitram valores de indenização altos o
 suficiente para convencer pessoas a litigar. Em outras ocasiões, é
 possível ajuizar litígios que desfavorecem a requerida em prol da
 requerente, além do simples intuito de indenizar um dano sofrido.
 
 Esse é argumento particularmente plausível no caso dos JECs, por conta
-da inexistência das custas processuais e sucumbência (\citep{Athos2015}).
+da inexistência das custas processuais e sucumbência [@Athos2015].
 Se desconsiderarmos o custo de litigar por conta do tempo dispendido
 para iniciar e acompanhar a ação, mesmo quando a probabilidade de
 sucesso é baixa, litigar é um ato vantajoso para o autor, mesmo que este
@@ -236,7 +223,7 @@ O momento de concessão da gratuidade da justiça, que pode ocorrer em
 relação a algum ou a todos os atos processuais, e que pode consistir na
 redução percentual dos valores é regulado pelo art. 99 do novo CPC.
 
-O dispositivo supramencionado prevê, em seu \emph{Caput}, que a
+O dispositivo supramencionado prevê, em seu *Caput*, que a
 gratuidade pode ser pedida na petição inicial, na contestação, na
 petição para ingresso do terceiro ou em recurso. Mas também pode ser
 requerida em momento ulterior, por simples petição, desde que a condição
@@ -248,8 +235,8 @@ A possibilidade de o magistrado indeferir o pedido de justiça gratuita,
 tema que é o cerne deste tópico, também é tratada no art. 99 do novo
 CPC. Trata-se de questão sensível.
 
-O § 3º do art. 99 determina que ``presume-se verdadeira a alegação de
-insuficiência deduzida exclusivamente por pessoa natural''. Por sua vez,
+O § 3º do art. 99 determina que "presume-se verdadeira a alegação de
+insuficiência deduzida exclusivamente por pessoa natural". Por sua vez,
 o art. 99, §2º, prevê que o magistrado somente poderá indeferir o pedido
 se houver nos autos elementos que evidenciem a falta dos pressupostos
 para a concessão de gratuidade. E antes de indeferir o pedido, o
@@ -286,36 +273,24 @@ incentivos diferentes para entrar com ações judiciais.
 Portanto, o fenômeno da litigiosidade em ações consumeristas por parte
 do consumidor pode ser estudado a partir de um modelo econométrico que
 busca maximizar a eficiência do judiciário. Esse tópico é amplamente
-estudado por uma área da jurimetria denominada ``viés de seleção em
-decisões judiciais'' \citep{priest1984selection}.
+estudado por uma área da jurimetria denominada "viés de seleção em
+decisões judiciais" [@priest1984selection].
 
 As hipóteses sobre esse tema são:
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-
-\item
-  A inexistência de custas processuais e sucumbência na primeira
+1. A inexistência de custas processuais e sucumbência na primeira
   instância dos JECs impacta positivamente na entrada de ações
   consumeristas.
-\item
-  A legislação atual sobre gratuidade judiciária impacta positivamente
+1. A legislação atual sobre gratuidade judiciária impacta positivamente
   na entrada de ações consumeristas.
-\end{enumerate}
 
 Os resultados dessa pesquisa podem influenciar proposições tais como:
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-
-\item
-  Metodologias concretas de mensuração do acesso à justiça, com base em
+1. Metodologias concretas de mensuração do acesso à justiça, com base em
   suposições e critérios bem definidos.
-\item
-  Alterações na legislação para inclusão de valores ótimos de
+1. Alterações na legislação para inclusão de valores ótimos de
   sucumbência e/ou custas processuais, buscando balancear o acesso à
   justiça e a prestação jurisdicional eficiente.
-\end{enumerate}
 
 Juízes e empresários têm diferentes hipóteses sobre o valor da taxa de conversão de conflitos em litígios relacionados ao consumidor, o que leva a
 diferentes percepções sobre a influência de fenômenos como a gratuidade
@@ -323,8 +298,7 @@ judiciária, as custas processuais nos JECs e a indústria do dano moral
 no volume de ações.
 
 
-\subsection{Motivações para o cometimento de
-ilícitos}\label{motivacoes-para-o-cometimento-de-ilicitos}
+### Motivações para o cometimento de ilícitos
 
 Neste eixo de investigação temos interesse em estudar as causas de
 litigar associadas às empresas. Em particular, desejamos compreender as
@@ -334,17 +308,11 @@ A motivação por trás da elaboração deste eixo reside na suposição de que
 uma empresa funciona como agente racional e maximizador de lucro. Dessa
 suposição seguem as hipóteses:
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-
-\item
-  Se, para uma determinada empresa, o custo associado a administração de
+1. Se, para uma determinada empresa, o custo associado a administração de
   um litígio for menor que o custo empregado para evitar um ato ilícito,
   então a decisão escolhida pela empresa será cometer o ilícito.
-\item
-  Uma redução no número de atos ilícitos cometidos acarreta uma
+1. Uma redução no número de atos ilícitos cometidos acarreta uma
   diminuição do número de litígios.
-\end{enumerate}
 
 Utilizando as duas hipóteses, concluímos que se for economicamente
 viável pra uma empresa cometer um ato ilícito, então o número de
@@ -378,8 +346,7 @@ finais poderiam ser aplicadas no mundo real somente após a coleta de
 novos dados. Por isso, resolvemos deixar as análises em segundo plano,
 possivelmente em pesquisas futuras.
 
-\subsection{Estratégias de composição
-amigável}\label{estrategias-de-composicao-amigavel}
+### Estratégias de composição amigável
 
 As duas maiores inovações do novo CPC são i) a ênfase atribuída ao dever
 de cooperação entre as partes e ii) as aberturas para atuação dos
@@ -392,17 +359,15 @@ número de processos que estão em trâmite perante o Poder Judiciário: a
 obrigatoriedade da conciliação ou mediação e as semanas nacionais de
 conciliação.
 
-\textbf{Obrigatoriedade do procedimento arbitral}. Tendo por objetivo
+**Obrigatoriedade do procedimento arbitral**. Tendo por objetivo
 fomentar a composição amigável, o novo CPC inovou e estabeleceu que os
 Tribunais deverão criar centros judiciários de solução consensual de
 conflitos através do art. 165:
 
-\begin{quote}
-``Art. 165. Os tribunais criarão centros judiciários de solução
-consensual de conflitos, responsáveis pela realização de sessões e
-audiências de conciliação e mediação e pelo desenvolvimento de programas
-destinados a auxiliar, orientar e estimular a autocomposição''.
-\end{quote}
+> "Art. 165. Os tribunais criarão centros judiciários de solução
+> consensual de conflitos, responsáveis pela realização de sessões e
+> audiências de conciliação e mediação e pelo desenvolvimento de programas
+> destinados a auxiliar, orientar e estimular a autocomposição".
 
 Dessa forma foi instituída a figura do conciliador, que atuará
 preferencialmente em casos em que não houver vínculo anterior entre as
@@ -418,13 +383,11 @@ mediação. Em outras palavras, a designação da audiência é obrigatória e
 deverá ser designada com no mínimo 30 dias de antecedência, devendo o
 réu ser citado com 20 dias de antecedência, como estabelece o art. 334:
 
-\begin{quote}
-``Art. 334. Se a petição inicial preencher os requisitos essenciais e
-não for o caso de improcedência liminar do pedido, o juiz designará
-audiência de conciliação ou de mediação com antecedência mínima de 30
-(trinta) dias, devendo ser citado o réu com pelo menos 20 (vinte) dias
-de antecedência''.
-\end{quote}
+> "Art. 334. Se a petição inicial preencher os requisitos essenciais e
+> não for o caso de improcedência liminar do pedido, o juiz designará
+> audiência de conciliação ou de mediação com antecedência mínima de 30
+> (trinta) dias, devendo ser citado o réu com pelo menos 20 (vinte) dias
+> de antecedência."
 
 Em apenas duas hipóteses a audiência de conciliação ou mediação não é
 obrigatória. A primeira é quando as partes manifestam expressamente seu
@@ -437,7 +400,7 @@ previu: i) meios para facilitar sua realização (que poderá ser feita por
 meio eletrônico); ii) meios para aumentar sua celeridade (realização de
 segunda audiência, desde que necessária à composição, em não mais do que
 2 meses após a primeira); e iii) imposição de multa para a ausência
-injustificada das partes (de até 2\% sobre o valor da vantagem econômica
+injustificada das partes (de até 2% sobre o valor da vantagem econômica
 almejada ou sobre o valor da causa).
 
 Não obstante a preocupação do legislador em fomentar a autocomposição e
@@ -452,7 +415,7 @@ de composição, o aumento do seu número poderá levar a uma ampliação das
 composições amigáveis, sem que isso implique em uma maior quantidade de
 trabalho para os magistrados.
 
-\textbf{Semana de Conciliação}. O CNJ promove anualmente a Semana
+**Semana de Conciliação**. O CNJ promove anualmente a Semana
 Nacional da Conciliação. Trata-se de uma campanha de mobilização na qual
 todos os Tribunais Brasileiros concentram seus esforços, durante uma
 semana, na obtenção do maior número possível de composições amigáveis.
@@ -465,8 +428,8 @@ também queira resolvê-lo durante o mutirão, ela pode procurar o Tribunal
 em que o caso estiver tramitando, desde que com antecedência.
 
 A Semana Nacional de Conciliação é orientada pela Resolução nº 125 do
-CNJ, que dispõe sobre a ``Política Judiciária Nacional de tratamento
-adequado dos conflitos de interesses no âmbito do Poder Judiciário'' e
+CNJ, que dispõe sobre a "Política Judiciária Nacional de tratamento
+adequado dos conflitos de interesses no âmbito do Poder Judiciário" e
 traz entre os seus princípios fundamentais: informalidade, simplicidade,
 economia processual, celeridade, oralidade e flexibilidade processual.
 Inspirada na Semana Nacional de Conciliação promovida pelo CNJ, diversos
@@ -475,36 +438,25 @@ Tribunais estaduais têm promovido semanas estaduais de conciliação.
 Diante do exposto, temos as seguintes hipóteses sobre o fenômeno da
 conciliação:
 
-\begin{itemize}
-
-\item
-  A obrigatoriedade da audiência de conciliação não aumenta a
+- A obrigatoriedade da audiência de conciliação não aumenta a
   probabilidade de acordo de um processo em relação à probabilidade de
   acordo de processos do mesmo tipo com audiência não obrigatória.
-\item
-  Processos escolhidos para a semana de conciliação possuem
+- Processos escolhidos para a semana de conciliação possuem
   probabilidade maior de acordo do que processos do mesmo tipo que não
   foram escolhidos.
-\end{itemize}
 
 O resultado dessa análise poderá implicar em propostas como:
 
-\begin{itemize}
-
-\item
-  Modificar o art. 165 do CPC para sinalizar a audiência de conciliação
+- Modificar o art. 165 do CPC para sinalizar a audiência de conciliação
   somente em processos pré-classificados como mais suscetíveis à
   realização de acordo. A suscetibilidade ao acordo pode ser definida
   através de um modelo preditivo da probabilidade de acordo de
   processos.
-\item
-  Planejar a realização de semanas de conciliação de forma mais
+- Planejar a realização de semanas de conciliação de forma mais
   sistemática, para funcionarem como experimentos controlados, o que
   permitirá mensurações mais precisas do efeito da conciliação.
-\item
-  Promover eventos de conciliação para processos envolvendo relações de
+- Promover eventos de conciliação para processos envolvendo relações de
   consumo de determinados tipos, épocas do ano e regiões.
-\end{itemize}
 
 A conciliação é um tema amplamente discutido no judiciário e aparece
 como prioridade na pesquisa. No entanto, nas reuniões, vimos que o
@@ -518,447 +470,231 @@ No final, acabamos não utilizando dados para realizar análises sobre concilia�
 
 A única proposta levantada sobre esse eixo foi a realização de experimentos controlados com a utilização da semana de conciliação. A condução de estudos desse tipo trará maior conhecimento sobre o que explica o fenômeno do acordo e quais os meios fazê-lo acontecer com maior frequência.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Questionário}\label{questionario}
+## Questionário
 
 As entrevistas partiram de um conjunto bem definido de perguntas, mas
 não tem um limite para os tipos de discussão realizadas, desde que não
 fujam do tema da pesquisa. As perguntas levantadas foram listadas
 abaixo.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  Gasto Jurídico.
-  \begin{enumerate}
-  \def\labelenumii{\arabic{enumii}.}
-  \item
-    Qual a proporção entre os gastos jurídicos consumeristas e os demais
+1. Gasto Jurídico.
+    1. Qual a proporção entre os gastos jurídicos consumeristas e os demais
     gastos jurídicos? Esta proporção é comparável à existente no resto
     do mundo?
-  \item
-    Qual a proporção entre os gastos jurídicos consumeristas e os demais
+    1. Qual a proporção entre os gastos jurídicos consumeristas e os demais
     gastos da empresa? Esta proporção é comparável à existente no resto
     do mundo?
-  \item
-    Quanto o preço de um produto é aumentado, em média, devido a gastos
+    1. Quanto o preço de um produto é aumentado, em média, devido a gastos
     jurídicos?
-  \end{enumerate}
-\item
-  Tipo de litígio.
-
-  \begin{enumerate}
-  \def\labelenumii{\arabic{enumii}.}
-
-  \item
-    Quais os principais litígios ajuizados contra a empresa em relação
-    a: i) matéria e ii) tipo processual.
-  \item
-    Qual a duração média dos litígios?
-  \item
-    Efeito de sites como ``Reclame Aqui'' sobre a litigiosidade?
-  \item
-    Quão frequentes são litisconsórcios passivos e ações coletivas?
-    Poderiam ser usados mais vezes?
-  \end{enumerate}
-\item
-  Estratégia processual.
-
-  \begin{enumerate}
-  \def\labelenumii{\arabic{enumii}.}
-
-  \item
-    Como os processos são divididos entre escritórios? (Supondo haver
+1. Tipo de litígio.
+    1. Quais os principais litígios ajuizados contra a empresa em relação a: i) matéria e ii) tipo processual.
+    1. Qual a duração média dos litígios?
+    1. Efeito de sites como "Reclame Aqui" sobre a litigiosidade?
+    1. Quão frequentes são litisconsórcios passivos e ações coletivas? Poderiam ser usados mais vezes?
+1. Estratégia processual.
+    1. Como os processos são divididos entre escritórios? (Supondo haver
     mais de um), como os advogados que lidam com a causa lidam com o
     elevado número de casos? (recursos computacionais? bancos de dados?
     terceirização de serviços? outros?)
-  \item
-    Adotam estratégias para chegar a acordos/mediação? Sob quais
+    1. Adotam estratégias para chegar a acordos/mediação? Sob quais
     circunstâncias? Quais? Sob quais circunstâncias tenta-se negociar
     com o consumidor para evitar a ação judiciária? Algum dos
     profissionais responsáveis pelo atendimento ao cliente tem
     especialização em mediação? Ela é incentivada pela empresa? Em
     geral, consumidores buscam uma solução pacífica antes de buscar o
     judiciário?
-  \item
-    Comportamento da empresa mudou em função de decisões no judiciário?
+    1. Comportamento da empresa mudou em função de decisões no judiciário?
     Existem decisões do judiciário que a empresa acredita serem
     prejudiciais à Sociedade?
-  \item
-    Comportamento da empresa mudou em função das agências reguladoras? A
+    1. Comportamento da empresa mudou em função das agências reguladoras? A
     empresa vê que elas cumprem bem sua finalidade?
-  \item
-    Sob quais circunstâncias a empresa recorre de uma decisão? (1a e 2a
+    1. Sob quais circunstâncias a empresa recorre de uma decisão? (1a e 2a
     instância?)
-  \item
-    De que forma danos morais são tratados na justiça consumerista?
-  \end{enumerate}
-\item
-  Legislação consumerista.
-
-  \begin{enumerate}
-  \def\labelenumii{\arabic{enumii}.}
-
-  \item
-    Qual a opinião da entidade/profissional sobre a legislação
+    1. De que forma danos morais são tratados na justiça consumerista?
+1. Legislação consumerista.
+    1. Qual a opinião da entidade/profissional sobre a legislação
     consumerista?
-  \item
-    Há pontos que incentivam demasiadamente a litigiosidade?
-  \item
-    Há pontos que trazem custos demasiados à empresa?
-  \item
-    Há pontos da legislação que poderiam ser melhorados?
-  \item
-    Existem leis que são propositadamente infringidas pelas empresas por
-    serem economicamente inviáveis? (ou respeitá-las seria
-    economicamente ineficiente).
-  \end{enumerate}
-\item
-  Agências reguladoras
+    1. Há pontos que incentivam demasiadamente a litigiosidade?
+    1. Há pontos que trazem custos demasiados à empresa?
+    1. Há pontos da legislação que poderiam ser melhorados?
+    1. Existem leis que são propositadamente infringidas pelas empresas por
+    serem economicamente inviáveis? (ou respeitá-las seria economicamente ineficiente).
+1. Agências reguladoras
+    1. Qual a relação da empresa com as agências reguladoras?
 
-  \begin{enumerate}
-  \def\labelenumii{\arabic{enumii}.}
-
-  \item
-    Qual a relação da empresa com as agências reguladoras?
-  \end{enumerate}
-\end{enumerate}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Anotações das reuniões}\label{reunioes}
+## Anotações das reuniões
 
 As anotações abaixo foram realizadas informalmente e sem instrumentos apropriados para coleta. As anotações não refletem nem a opinião da ABJ nem a opinião dos entrevistados sobre o tema, e não devem ser utilizados para inferências sobre opiniões das empresas, de advogados ou dos Tribunais de Justiça.
+
+As anotações não refletem diretamente a opinião dos especialistas e sim as anotações da ABJ.
 
 A primeira reunião contou com a presença dos advogados Rodrigo Araújo e
 João Braz e teve como principais resultados as anotações abaixo.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-
-\item
-  A obrigatoriedade da realização de audiências de conciliação prévias
-  (CPC/2015, art. 334, Caput) pode influenciar de forma negativa no
-  andamento dos processos.
-\item
-  O novo CPC estabeleceu que os Tribunais deverão criar centros
+1. A obrigatoriedade da realização de audiências de conciliação prévias
+   (CPC/2015, art. 334, Caput) pode influenciar de forma negativa no
+   andamento dos processos.
+1. O novo CPC estabeleceu que os Tribunais deverão criar centros
   judiciários de solução consensual de conflitos (CPC/2015, art. 165,
   Caput), o que pode ter efeito positivo sobre o volume de ações do
   consumidor.
-\item
-  Os IRDR só terão efeito sobre matérias de direito e não em matérias de
+1. Os IRDR só terão efeito sobre matérias de direito e não em matérias de
   fato. Além disso, supõe-se que a maior parte dos processos envolvendo
   direito do consumidor envolvem prioritariamente questões de fato.
   Assim, espera-se que o IRDR não tenha efeito positivo para resolução
   de demandas do consumidor.
-\end{enumerate}
 
-A segunda reunião contou com a presença de Armando Rovai, presidente da
-SENACON.
+A segunda reunião contou com a presença de Armando Rovai, presidente da SENACON.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-
-\item
-  O superendividamento é um problema corrente nos canais do portal
+1. O superendividamento é um problema corrente nos canais do portal
   Consumidor.gov. É possível afirmar que o consumidor pode não é o único
   responsável pelo endividamento, uma vez que este pode ser mitigado por
   bancos e fornecedores de cartões de crédito que possuam informações
   aprofundadas do consumidor.
-\item
-  Planos de saúde. Considerando o maior acesso a planos de saúde pela
+1. Planos de saúde. Considerando o maior acesso a planos de saúde pela
   população em geral e o aumento recente de ações de erro médico, uma
   possível hipótese é que as seguradoras não estão preparadas para
   atender de forma adequada a demanda dos novos clientes. Isso indica a
   necessidade de criação de programas para reunir essas instituições e
   debater sobre as causas raiz dos processos judiciais.
-\item
-  A SENACON tem o interesse de medir o impacto das políticas da própria
+1. A SENACON tem o interesse de medir o impacto das políticas da própria
   entidade. A metodologia usada para mensuração desses impactos poderiam
   ser extrapoladas para outras entidades.
-\end{enumerate}
 
 A terceira grupo focal contou com a presença de Maria Rita Rebello e Ana
 Rita Nery, ambas juízas assessoras da corregedoria.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-
-\item
-  Sobre ações coletivas
-
-  \begin{itemize}
-
-  \item
-    Ações coletivas são uma solução melhor que IRDR, pois o IRDR ainda
+1. Sobre ações coletivas
+  - Ações coletivas são uma solução melhor que IRDR, pois o IRDR ainda
     mantém a necessidade de sentenças individuais.
-  \item
-    Como implementar ações coletivas de forma mais sistemática: criar um
+  - Como implementar ações coletivas de forma mais sistemática: criar um
     dashboard para o Ministério Público (MP) que monitore dados dos
     canais Procon, Reclame Aqui, Consumidor.gov e Judiciário e
     identifique movimentações anômalas de grupos de processos em
     determinados lugares ou tempos, para indicar a necessidade de criar
     ações coletivas.
-  \item
-    Precisamos entrevistar o MP para falar sobre ações coletivas! Eles
-    têm um núcleo do consumidor lá.
-  \end{itemize}
-\item
-  Sobre conciliação
-
-  \begin{itemize}
-
-  \item
-    A conciliação não é uma forma de melhorar o judiciário em ações
+  - Faz sentido entrevistar o MP para falar sobre ações coletivas.
+1. Sobre conciliação
+    - A conciliação não é uma forma de melhorar o judiciário em ações
     consumeristas.
-  \item
-    A conciliação faz mais sentido quando a relação é entre
+    - A conciliação faz mais sentido quando a relação é entre
     pessoa/pessoa. Quando a relação é entre pessoa/empresa, a pessoa só
     entra com a ação se realmente não tem mais como resolver a situação
     de outra forma. A probabilidade de aceite de acordo dado que o
     processo envolve relação de consumo é baixa.
-  \item
-    A obrigatoriedade da conciliação é inconstitucional.
-  \item
-    Incentivar fortemente a conciliação pode ser visto como mais uma
+  - A obrigatoriedade da conciliação é inconstitucional.
+  - Incentivar fortemente a conciliação pode ser visto como mais uma
     forma de incentivar a empresa a cometer ilícitos.
-  \end{itemize}
-\item
-  Sobre fila de trabalho nos processos
-
-  \begin{itemize}
-
-  \item
-    Não aumenta a velocidade dos processos no TJSP, pois o tribunal já
+1. Sobre fila de trabalho nos processos
+  - Não aumenta a velocidade dos processos no TJSP, pois o tribunal já
     possui diversos modelos de documentos e ritos bem definidos. O novo
     CPC também ajuda nesse sentido.
-  \item
-    O foco deve ser em métodos para identificação de boas práticas na
+  - O foco deve ser em métodos para identificação de boas práticas na
     administração de varas e bases de conhecimento internas para
     facilitar comunicação (e.g.\textasciitilde{}informar sobre um
     advogado que frauda documentos, criar fluxos de atuação do juiz em
     certos tipos de casos etc.)
-  \item
-    Em comarcas menores e tribunais com sistemas mais precários, faz
+  - Em comarcas menores e tribunais com sistemas mais precários, faz
     sentido implementar técnicas de filas de trabalho, pois os juízes
     desses lugares não administram a vara de forma eficaz.
-  \end{itemize}
-\item
-  Sobre incentivos para litigar
-
-  \begin{itemize}
-
-  \item
-    Não existem tantos incentivos para litigar por parte das pessoas.
-  \item
-    É pequeno número de pessoas que entra com ações, comparado com o
+1.  Sobre incentivos para litigar
+    - Não existem tantos incentivos para litigar por parte das pessoas.
+    - É pequeno número de pessoas que entra com ações, comparado com o
     volume de conflitos que não são resolvidos extrajudicialmente.
-  \item
-    Uma taxa baixa de conversão de conflitos em litígios é benéfica para
+    - Uma taxa baixa de conversão de conflitos em litígios é benéfica para
     a empresa.
-  \end{itemize}
-\item
-  Sobre incentivos das empresas para cometerem ilícitos
-
-  \begin{itemize}
-
-  \item
-    É o grande gargalo na questão dos incentivos para litigar.
-  \item
-    Uma possível solução é a implementação de \emph{punitive damages}.
-  \item
-    As sanções e multas de agências reguladoras podem funcinar como
+1. Sobre incentivos das empresas para cometerem ilícitos
+  - É o grande gargalo na questão dos incentivos para litigar.
+  - Uma possível solução é a implementação de \emph{punitive damages}.
+  - As sanções e multas de agências reguladoras podem funcinar como
     substitutas para \emph{punitive damages}, mas as agências não têm
     interesse em aplicá-las.
-  \item
-    O ideal seria vincular uma estratégia de sanções ao Procon.
-  \end{itemize}
-\item
-  Mecanismos de composição extrajudicial
-
-  \begin{itemize}
-
-  \item
-    Ferramentas como Reclame Aqui e Consumidor.gov são indispensáveis.
-  \item
-    O SAC não é um bom mecanismo pois as empresas não têm interesse que
+  - O ideal seria vincular uma estratégia de sanções ao Procon.
+1. Mecanismos de composição extrajudicial
+  - Ferramentas como Reclame Aqui e Consumidor.gov são indispensáveis.
+  - O SAC não é um bom mecanismo pois as empresas não têm interesse que
     elas sejam eficazes.
-  \end{itemize}
-\end{enumerate}
 
-A quarta reunião contou com a presença da diretoria de contencioso cível
-do Itaú-Unibanco.
+A quarta reunião contou com a presença da diretoria de contencioso cível do Itaú-Unibanco.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-
-\item
-  Sobre ações coletivas e IRDR
-
-  \begin{itemize}
-
-  \item
-    O IRDR não vai funcionar pois os juízes simplesmente vão aplicar o
-    que querem e não seguir as ``regras'' de demandas repetitivas.
-  \item
-    Não houve comentários sobre ações coletivas
-  \end{itemize}
-\item
-  Sobre conciliação
-
-  \begin{itemize}
-
-  \item
-    Composição extrajudicial é mais eficiente do que acordo dentro do
+1. Sobre ações coletivas e IRDR
+  - O IRDR não funciona pois os juízes não seguirão as regras de demandas repetitivas.
+  - Não houve comentários sobre ações coletivas
+1. Sobre conciliação
+  - Composição extrajudicial é mais eficiente do que acordo dentro do
     processo.
-  \item
-    Aumentar incentivos para o acordo dentro do judiciário não aumenta a
+  - Aumentar incentivos para o acordo dentro do judiciário não aumenta a
     proporção de acordos.
-  \end{itemize}
-\item
-  Sobre incentivos para litigar
-
-  \begin{itemize}
-
-  \item
-    Existe incentivo para litigar. Quando a pessoa se sente injustiçada,
+1. Sobre incentivos para litigar
+  - Existe incentivo para litigar. Quando a pessoa se sente injustiçada,
     entra no judiciário mesmo com propostas de composição extrajudicial.
-  \item
-    Existem incentivos macroeconômicos para litigar. Crise gera
+  - Existem incentivos macroeconômicos para litigar. Crise gera
     inadimplência, que gera aversão a cobranças, que gera ações para
     negar relação contratual (e.g.~tarifas bancárias).
-  \item
-    Existe indústria do dano moral, mas só em alguns lugares e para
+  - Existe indústria do dano moral, mas só em alguns lugares e para
     alguns juízes. O efeito é pontual.
-  \item
-    Gratuidade judiciária deveria ser baseada em critérios objetivos.
-  \item
-    JEC também tem o mesmo problema. As pessoas têm incentivo a litigar
+  - Gratuidade judiciária deveria ser baseada em critérios objetivos.
+  - JEC também tem o mesmo problema. As pessoas têm incentivo a litigar
     e com os maiores valores possíveis.
-  \end{itemize}
-\item
-  Incentivos das empresas para cometerem ilícitos
-
-  \begin{itemize}
-
-  \item
-    Existem empresas que maximizam lucro colocando na conta a perda
+1. Incentivos das empresas para cometerem ilícitos
+    - Existem empresas que maximizam lucro colocando na conta a perda
     esperada por indenização.
-  \item
-    Esse tipo de atitude é mais comum em empresas menores, que ainda não
+  - Esse tipo de atitude é mais comum em empresas menores, que ainda não
     implantaram governança corporativa.
-  \item
-    Atualmente os grandes bancos não fazem isso e tentam evitar os
+  - Atualmente os grandes bancos não fazem isso e tentam evitar os
     conflitos ao máximo.
-  \end{itemize}
-\item
-  Mecanismos de composição extrajudicial
-
-  \begin{itemize}
-
-  \item
-    Extremamente importante e subutilizado.
-  \item
-    Há necessidade de incentivar as pessoas a procurarem mais esses
+1. Mecanismos de composição extrajudicial
+  - Extremamente importante e subutilizado.
+  - Há necessidade de incentivar as pessoas a procurarem mais esses
     meios.
-  \item
-    Na maioria dos casos as pessoas não procuram meios extrajudiciais
+  - Na maioria dos casos as pessoas não procuram meios extrajudiciais
     para solução de conflitos
-  \item
-    Isso também está ligado à cultura do litígio na advocacia. Advogados
+  - Isso também está ligado à cultura do litígio na advocacia. Advogados
     (ruins) têm de tudo para cooptarem clientes e entrarem com ações de
     consumo. A concentração de ações esteja em escritórios pequenos ou
     advogados que atuam sozinhos. Isso é influência de i) excesso de
     advogados no país e ii) faculdades ruins.
-  \item
-    A OAB não tem interesse em reduzir litigiosidade, por isso ela foca
+  - A OAB não tem interesse em reduzir litigiosidade, por isso ela foca
     em temas como conciliação e IRDR e acesso à justiça, e fogem de
     alternativas extrajudiciais ou de mudança de cultura dos advogados.
-  \item
-    Existe uma associação entre taxa de estudantes de direito de um
+  - Existe uma associação entre taxa de estudantes de direito de um
     determinado município (por habitante) e a taxa de ações envolvendo
     direito do consumidor (por habitante).
-  \item
-    Proposta de criação de regra de conduta para juízes: se uma pessoa
+  - Proposta de criação de regra de conduta para juízes: se uma pessoa
     entra com processo sem ter procurado mecanismos como SAC,
     consumidor.gov e reclame aqui, o juíz não dá indenização por dano
     moral. Isso incentiva o consumidor a passar por todos os passos ao
     invés de ir direto ao judiciário.
-  \end{itemize}
-\end{enumerate}
 
 A quinta reunião contou com a presença da diretoria de contencioso cível
 do Grupo Pão de Açúcar.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-
-\item
-  Sobre ações coletivas e IRDR
-
-  \begin{itemize}
-
-  \item
-    Provavelmente não funciona pois a maioria dos processos estão nos
+1. Sobre ações coletivas e IRDR
+  - Provavelmente não funciona pois a maioria dos processos estão nos
     JECs.
-  \end{itemize}
-\item
-  Sobre conciliação
-
-  \begin{itemize}
-
-  \item
-    A conciliação faz sentido e precisa ser incentivada.
-  \item
-    A taxa de aceite a proposta de acordos é maior nos JECs.
-  \end{itemize}
-\item
-  Sobre incentivos para litigar
-
-  \begin{itemize}
-
-  \item
-    Problemas de vicio de produto e entrega (logística) são as
+1. Sobre conciliação
+  - A conciliação faz sentido e precisa ser incentivada.
+  - A taxa de aceite a proposta de acordos é maior nos JECs.
+1. Sobre incentivos para litigar
+  - Problemas de vicio de produto e entrega (logística) são as
     principais causas de pedir.
-  \item
-    Juízes que incentivam ações judiciais através da aplicação de
+  - Juízes que incentivam ações judiciais através da aplicação de
     valores altos de indenização.
-  \item
-    Existe banalização do dano moral.
-  \item
-    Está ligado com os problemas da gratuidade
-  \end{itemize}
-\item
-  Sobre incentivos das empresas para cometerem ilícitos
-
-  \begin{itemize}
-
-  \item
-    O problema está geralmente com as fabricantes que não tomam
+  - Existe banalização do dano moral.
+  - Está ligado com os problemas da gratuidade
+1. Sobre incentivos das empresas para cometerem ilícitos
+  - O problema está geralmente com as fabricantes que não tomam
     responsabilidade e deixam a empresa no meio de campo.
-  \item
-    As empresas enfrentam dificuldades no atendimento para devolver
+  - As empresas enfrentam dificuldades no atendimento para devolver
     produtos e trocar itens com defeito.
-  \item
-    Outra fonte externa aos esforços da empresa são problemas
+  - Outra fonte externa aos esforços da empresa são problemas
     relacionados a cartões.
-  \end{itemize}
-\item
-  Sobre mecanismos de composição extrajudicial
-
-  \begin{itemize}
-
-  \item
-    É importante incentivar o contato direto com a companhia.
-  \item
-    No entanto, os canais de atendimento atuais são ruins e não resolvem
+1. Sobre mecanismos de composição extrajudicial
+  - É importante incentivar o contato direto com a companhia.
+  - No entanto, os canais de atendimento atuais são ruins e não resolvem
     os problemas dos consumidores.
-  \end{itemize}
-\end{enumerate}
-
-
-\section{Códigos para lidar com incorporações}\label{codpj}
+    
+# Códigos para lidar com incorporações{#codpj}
 
 \footnotesize
 
@@ -968,11 +704,11 @@ do Grupo Pão de Açúcar.
 #efetivamente analisadas no relatório
 arruma_sa <- function(string_vec){
   regex_sa_geral <- stringr::regex(
-  "([^d][^e]) s *[\\./]?a *\\.?( [(].+[)])?$")
+  "([^d][^e]) s *[\\./]?a *\\.?( [(].+[)])?@@@")
   string_vec_phase1 <- stringr::str_replace(
   string_vec, regex_sa_geral,"\\1 @s@a@\\2")
   regex_sa_particular <- regex("s/ *a|s\\.
-  *a\\.?|( )sa$|( )+s ?a($| )")
+  *a\\.?|( )sa@@@|( )+s ?a(@@@| )")
   string_vec_phase2 <- stringr::str_replace(
   string_vec_phase1, regex_sa_particular," @s@a@\\2")
   regex_estacio_de_sa <- regex('estacio de sa')
@@ -993,7 +729,7 @@ arruma_ltda <- function(string_vec){
 }
 arruma_me <- function(string_vec){
   regex_me_geral <- stringr::regex(
-  "([^de]) m *[\\./]?e *\\.?( [(].+[)])?$")
+  "([^de]) m *[\\./]?e *\\.?( [(].+[)])?@@@")
   string_vec_phase1 <- stringr::str_replace(
   string_vec, regex_me_geral,"\\1 @m@e@\\2")
   regex_me_particular <- regex("m/e")
@@ -1021,7 +757,7 @@ fix_nomes <- function(names_column){
     arruma_ltda() %>%
     arruma_me() %>%
     abjutils::rm_accent() %>%
-    stringr::str_replace_all("[!#$%&'()*+,-./:;<=>?^_`{|}~.]",
+    stringr::str_replace_all("[!#@@@%&'()*+,-./:;<=>?^_`{|}~.]",
     "")
 }
 vec2regex <- function(...){
@@ -1045,7 +781,7 @@ aggregate_major_companies <- function(names_column){
     regex_rio_claro = vec2regex("rio claro"),
     regex_nextel = vec2regex("nextel"),
     #a telemar foi comprada pela oi em algum momento.
-    regex_oi = vec2regex("telemar","( |^)oi( |$)", "tnl",
+    regex_oi = vec2regex("telemar","( |^)oi( |@@@)", "tnl",
     "(brasil|br) ?teleco[mn]"),
     regex_itau = vec2regex("unibanco", "itau", "citicard"),
     regex_renner = vec2regex("banco a ?j renner"),
@@ -1072,7 +808,7 @@ aggregate_major_companies <- function(names_column){
     "telesp", 'gvt', 'global village teleco[mn]'),
     regex_ricardoeletro = vec2regex("ricardo ?eletro",
     "rn comercio"),
-    regex_net = vec2regex("^net$", "^net ", " net ", " net$"),
+    regex_net = vec2regex("^net@@@", "^net ", " net ", " net@@@"),
     regex_panamericano = vec2regex("banco pan"),
     regex_cedae = vec2regex("cedae",
     "(cia[.]?|companhia) estadual de aguas"),
@@ -1240,7 +976,7 @@ market_segments <- function(names_column){
     energia_gas_agua_esgoto = vec2regex("corsan",
     "rio( |_)grande( |_)energia","ceee","aes( |_)sul",
     "sanecap","cab( |_)cuiaba","furnas","cedae",
-    "energisa","light","cpfl","(^| )rge( |$)",
+    "energisa","light","cpfl","(^| )rge( |@@@)",
     "copel","comgas","cagece",
     "coelce","ampla","fenosa","saae"),
     fabricantes_linha_branca = vec2regex("brastemp","consul",
@@ -1270,9 +1006,9 @@ market_segments <- function(names_column){
 \end{verbatim}
 
 
-\section{Códigos para filtrar pessoas físicas e jurídicas}\label{codpfpj}
+# Códigos para filtrar pessoas físicas e jurídicas {#codpfpj}
 
-O código abaixo é utilizado para filtrar as empresas. Esse é apenas o exemplo do TJRS. Outros códigos podem ser encontrados no pacote tidyML
+O código abaixo é utilizado para filtrar as empresas. Esse é apenas o exemplo do TJRS. Outros códigos podem ser encontrados no pacote tidyML.
 
 \begin{verbatim}
 #' Filter only consumer lawsuits
@@ -1320,9 +1056,9 @@ filter_tjrs <- function(loaded_tjrs){
   control_table <- tpur::control_table
   assuntos_consumeristas_tpu <- build_tpu_consumerista() %>%
     dplyr::filter(codigo != "")
-  codigos_consumeristas <- unique(c(assuntos_consumeristas_estatiticos$leaf,
-                                    assuntos_consumeristas_tpu$codigo))
-  codigos_consumeristas_puros <- assuntos_consumeristas_tpu$codigo
+  codigos_consumeristas <- unique(c(assuntos_consumeristas_estatiticos@@@leaf,
+                                    assuntos_consumeristas_tpu@@@codigo))
+  codigos_consumeristas_puros <- assuntos_consumeristas_tpu@@@codigo
   tpu <- tpur::download_table("assunto","estadual","1 grau") %>%
     tpur::build_table() %>%
     dplyr::filter(codigo != "") %>%
@@ -1351,3 +1087,4 @@ filter_tjrs <- function(loaded_tjrs){
 }
 
 \end{verbatim}
+
