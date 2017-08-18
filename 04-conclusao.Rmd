@@ -48,13 +48,13 @@ todos_maiores_nn %>%
   group_by(Tribunal) %>% 
   slice(1:5) %>% 
   ungroup() %>% 
-  knitr::knit_print(caption = "Maiores litigantes em ações consumeristas",
+  knitr::knit_print(caption = "Maiores litigantes em ações consumeristas. Fonte: Elboração própria.",
                     align = 'llrrrr')
 ```
 
 A Figura \@ref(fig:acu) mostra a proporção acumulada de processos dos 30 maiores litigantes relativa à totalidade de processos consumeristas. O gráfico verifica a hipótese inicial da pesquisa de que os trinta maiores litigantes concentram pelo menos 50% dos processos. De fato, quatro dos sete tribunais analisados apresentam proporções acumuladas maiores que 70%, e cinco tribunais concentram aproximadamente 50% dos processos apenas com os 10 maiores litigantes. O tribunal com menor concentração dos maiores litigantes é o 
 
-```{r fig:acu, fig.cap="Proporção acumulada de processos consumeristas dos 30 maiores litigantes em cada estado."}
+```{r fig:acu, fig.cap="Proporção acumulada de processos consumeristas dos 30 maiores litigantes em cada estado. Fonte: Elboração própria."}
 p1 <- todos_maiores_nn %>% 
   group_by(Tribunal) %>% 
   mutate(pp = parse_number(p, locale = locale(decimal_mark = ',')) / 100,
@@ -90,7 +90,7 @@ todos_maiores_setores_nn %>%
   group_by(Tribunal) %>% 
   slice(1:3) %>% 
   ungroup() %>% 
-  knitr::knit_print(caption = "Setores dos litigantes em ações consumeristas.",
+  knitr::knit_print(caption = "Setores dos litigantes em ações consumeristas. Fonte: Elboração própria.",
                     align = 'llrrrr')
 
 ```
@@ -289,7 +289,7 @@ Em 2013 a ABJ organizou seu terceiro Seminário de Jurimetria, onde foi discutid
 
 A litigiosidade pode ser definida como o número de casos novos por cem mil habitantes. Já o desenvolvimento pode ser representado por diversas variáveis, dentre elas o Índice de Desenvolvimento Humano (IDH). A Figura \@ref(fig:litig) mostra um gráfico de dispersão entre essas duas quantidades, baseando-se nos dados do PNUD (Programa das Nações Unidas para o Desenvolvimento) para o IDH em 2010 e o RJN para o número de casos novos por cem mil habitantes em 2015. A correlação observada nesse caso é de 77%.
 
-```{r litig, echo=FALSE, warning=FALSE, message=FALSE, fig.cap='Gráfico de dispersão do IDH-Médio estadual e quantidade de casos novos por cem mil habitantes.', fig.height=4, fig.width=7}
+```{r litig, echo=FALSE, warning=FALSE, message=FALSE, fig.cap='Gráfico de dispersão do IDH-Médio estadual e quantidade de casos novos por cem mil habitantes. Fonte: Justiça em Números e PNUD.', fig.height=4, fig.width=7}
 library(tidyverse)
 data('pnud_uf', package = "abjData")
 data('cadmun', package = "abjData")
