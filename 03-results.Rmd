@@ -2100,7 +2100,7 @@ Similar ao realizado nas subseções anteriores, primeiro investigamos os padrõ
 
 A proporção de casos resolvidos varia mais de acordo com a empresa demandada do que em função da unidade da federação. Comparando as taxas de resolução das reclamações por empresa, percebe-se, por exemplo, que as empresas de telecomunicações têm uma vantagem significativa sobre as instituições financeiras: a proporção de reclamações resolvidas por empresas de telecomunicação fica entre 70% e 80%, enquanto a mesma taxa para instituições financeiras fica em torno de 50%. As empresas com menor taxa de conversão são as concessionárias de serviços básicos, que conseguem apenas 25% satisfação na avaliação dos usuários.
 
-```{r, fig.cap = "Distribuição da proporção de casos resolvidos, separados por setor econômico."}
+```{r, fig.cap = "Distribuição da proporção de casos resolvidos, separados por setor econômico.", fig.height=5}
 d %>% 
   filter(avaliacao_reclamacao != "Não Avaliada") %>%
   group_by(area, nome_fantasia_2) %>% 
@@ -2192,11 +2192,11 @@ uniao_tjrs_senacon %>%
   mutate(ganho_pior_cenario = (1-p)*ef*0.1,
          ganho_cenario_medio = (1-p)*ef*0.5,
          ganho_melhor_cenario = (1-p)*ef) %>% 
-  select(nome2, n.x, ef, p, ganho_pior_cenario, ganho_cenario_medio, ganho_melhor_cenario) %>% 
-  set_names("Empresa", "Número de processos", "Proporção de casos resolvidos", "% que consultou o site", "Redução % (pior cenário)",
-            "Redução % (cenário médio)",
-            "Redução % (melhor cenário)") %>%
-    knitr::knit_print(caption = "Proporção de casos resolvidos e percentual máximo de litigantes que consultarma o consumidor.gov para 6 empresas, com estimativas de ganho no cenário contrafactual.")
+  select(nome2, ef, p, ganho_pior_cenario, ganho_cenario_medio, ganho_melhor_cenario) %>% 
+  set_names("Empresa", "% de satisfação", "% que consultou o site", "% Pior cenário",
+            "% Cenário médio",
+            "% Melhor cenário") %>%
+    knitr::knit_print(caption = "Proporção de casos resolvidos e percentual máximo de litigantes que consultaram o consumidor.gov para 6 empresas, com estimativas de ganho no cenário em que as litigantes tentam conciliação antes de entrar com o processo.")
 
 ```
 
