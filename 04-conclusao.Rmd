@@ -289,7 +289,38 @@ Em 2013 a ABJ organizou seu terceiro Seminário de Jurimetria, onde foi discutid
 
 A litigiosidade pode ser definida como o número de casos novos por cem mil habitantes. Já o desenvolvimento pode ser representado por diversas variáveis, dentre elas o Índice de Desenvolvimento Humano (IDH). A Figura \@ref(fig:litig) mostra um gráfico de dispersão entre essas duas quantidades, baseando-se nos dados do PNUD (Programa das Nações Unidas para o Desenvolvimento) para o IDH em 2010 e o RJN para o número de casos novos por cem mil habitantes em 2015. A correlação observada nesse caso é de 77%.
 
-![Gráfico de dispersão do IDH-Médio estadual e quantidade de casos novos por cem mil habitantes.'](imgs/litig-1.pdf){#fig:litig}
+```{r litig, echo=FALSE, warning=FALSE, message=FALSE, fig.cap='Gráfico de dispersão do IDH-Médio estadual e quantidade de casos novos por cem mil habitantes.', fig.height=4, fig.width=7}
+library(tidyverse)
+data('pnud_uf', package = "abjData")
+data('cadmun', package = "abjData")
+cadmun <- cadmun %>% 
+  distinct(cod, uf, regiao) %>% 
+  select(cod, uf_sigla = uf, regiao)
+pnud_uf <- pnud_uf %>% 
+  select(ano, uf, ufn, popt, starts_with('idh'), rdpc) %>% 
+  filter(ano == 2010) %>% 
+  inner_join(cadmun, c('uf' = 'cod')) %>% 
+  select(ano, uf, ufn, uf_sigla, everything()) %>% 
+  select(-ano, -uf)
+corr <- rcnj::d_jn$dados$`JN_18-Out-2016.csv` %>% 
+  filter(ano == 2015, justica == 'Estadual', sigla != 'TJ') %>% 
+  inner_join(pnud_uf, c('uf_sede' = 'uf_sigla')) %>% 
+  mutate_at(vars(ch), parse_number, locale = locale(decimal_mark = ',')) %>% 
+  select(idhm, ch) %>% 
+  with(cor(idhm, ch))
+rcnj::d_jn$dados$`JN_18-Out-2016.csv` %>% 
+  filter(ano == 2015, justica == 'Estadual', sigla != 'TJ') %>% 
+  inner_join(pnud_uf, c('uf_sede' = 'uf_sigla')) %>% 
+  mutate_at(vars(ch), parse_number, locale = locale(decimal_mark = ',')) %>% 
+  ggplot(aes(x = idhm, y = ch)) +
+  geom_text(aes(label = uf_sede, size = popt / 1e6, colour = regiao)) +
+  scale_size_continuous(range = c(3, 8)) +
+  geom_smooth(method = 'lm', se = FALSE) +
+  scale_y_continuous(breaks = 0:10 * 3000) +
+  theme_minimal(14) +
+  labs(x = 'IDH-Médio', y = 'Casos novos por\n100 mil habitantes',
+       size = 'População\n(milhões)', colour = 'Região')
+```
 
 No entanto, sabemos que correlação não implica em causalidade. Existem várias explicações possíveis para essas duas variáveis estarem associadas. Assim, pode ser que um estado receba um incremento na sua renda per capita sem necessariamente aumentar a litigiosidade.
 
@@ -297,4 +328,3 @@ Nesse contexto, seria interessante realizar uma investigação mais aprofundada 
 
 Se verificada, a relação causal entre desenvolvimento e litigiosidade seria útil não só para predizer a demanda futura de processos, mas também a definir estratégias direcionadas para redução de litígios.
 
-## 
