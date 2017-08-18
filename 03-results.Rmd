@@ -1637,7 +1637,7 @@ As 4 maiores empresas de telefonia brasileiras concentram mais do que 90% dos pr
 ```{r}
 maiores_litigantes_telecom %>%
   head(4) %>%
-  knitr::knit_print(caption = "")
+  knitr::knit_print(caption = "4 maiores litigantes do seor das telecomunicações do estado da Bahia.")
 ```
 
 As três primeiras causas de pedir, com `r telecomunicacoes$p_acum[3]` do total dos processos, estão mais próximas do identificado nos outro tribunais. Ao contrário do que observou-se nas instituições bancarias deste estado, as matérias mais frequentes versam sobre inclusões indevidas em cadastro de inadimplentes e indenizações por danos morais ou materiais.
@@ -1847,7 +1847,6 @@ d_tjam_2 %>%
   coord_flip() +
   labs(x = "Número de processos", y = "Causa de pedir (Assunto)")
 ```
-
 
 ## SENACON {#results-senacon}
 
@@ -2196,7 +2195,9 @@ uniao_tjrs_senacon %>%
   select(nome2, n.x, ef, p, ganho_pior_cenario, ganho_cenario_medio, ganho_melhor_cenario) %>% 
   set_names("Empresa", "Número de processos", "Proporção de casos resolvidos", "Percentual máximo\n de litigantes que consultaram\no consumidor.gov", "Redução no número\nde processos (pior cenário)",
             "Redução no número\nde processos (cenário médio)",
-            "Redução no número\nde processos (melhor cenário)")
+            "Redução no número\nde processos (melhor cenário)") %>%
+    knitr::knit_print(caption = "Proporção de casos resolvidos e percentual máximo de litigantes que consultarma o consumidor.gov para 6 empresas, com estimativas de ganho no cenário contrafactual.")
+
 ```
 
 ### Tempos
