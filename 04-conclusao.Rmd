@@ -302,13 +302,13 @@ pnud_uf <- pnud_uf %>%
   inner_join(cadmun, c('uf' = 'cod')) %>% 
   select(ano, uf, ufn, uf_sigla, everything()) %>% 
   select(-ano, -uf)
-corr <- rcnj::d_jn$dados$`JN_18-Out-2016.csv` %>% 
+corr <- rjn::d_jn$dados$`JN_18-Out-2016.csv` %>% 
   filter(ano == 2015, justica == 'Estadual', sigla != 'TJ') %>% 
   inner_join(pnud_uf, c('uf_sede' = 'uf_sigla')) %>% 
   mutate_at(vars(ch), parse_number, locale = locale(decimal_mark = ',')) %>% 
   select(idhm, ch) %>% 
   with(cor(idhm, ch))
-rcnj::d_jn$dados$`JN_18-Out-2016.csv` %>% 
+rjn::d_jn$dados$`JN_18-Out-2016.csv` %>% 
   filter(ano == 2015, justica == 'Estadual', sigla != 'TJ') %>% 
   inner_join(pnud_uf, c('uf_sede' = 'uf_sigla')) %>% 
   mutate_at(vars(ch), parse_number, locale = locale(decimal_mark = ',')) %>% 
