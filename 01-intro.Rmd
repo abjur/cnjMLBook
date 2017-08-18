@@ -89,4 +89,4 @@ Os resultados esperados dessa pesquisa são:
 
 ## Organização do trabalho
 
-O produto final da pesquisa está organizado em três capítulos, além dessa introdução. O capítulo [metodologia][metodologia] descreve a metodologia empregada na pesquisa. O capítulo [resultados][resultados] mostra os principais resultados. O capítulo [sugestoes-para-aprimoramento-do-sistema][sugestoes-para-aprimoramento-do-sistema] lista sugestões para o aprimoramento do sistema.
+O produto final da pesquisa está organizado em três capítulos, além dessa introdução. O capítulo [metodologia][metodologia] descreve a metodologia empregada na pesquisa. O capítulo [resultados][resultados] mostra os principais resultados. O capítulo [sugestoes-para-aprimoramento-do-sistema][sugestoes-para-aprimoramento-do-sistema] lista conclusões gerais da pesquisa e sugestões para o aprimoramento do sistema.
