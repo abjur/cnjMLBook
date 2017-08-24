@@ -762,7 +762,7 @@ assuntos_bancos %>%
 
 O assunto mais frequente, com `r assuntos_bancos$p[1]` dos processos, diz respeito à indenizações por danos morais. Em seguida, tem-se a classificação genérica "Responsabilidade do Fornecedor", com `r assuntos_bancos$p[2]` dos processos, que é uma classificação genérica que pode particularizar-se em  "Indenização por Dano Moral".
 
-Apenas a partir do terceiro assunto mais frequente passam a aparecer questões relativas especificamente a prestação de serviços bancários. A classificação genérica "Bancários", que aparece em `r assuntos_bancos$p[3]` dos processos, segundo a TPU é uma classificação relacionada a empréstimos consignados, expurgos inflacionários e tarifas. Logo em seguida, o quarto assunto mais frequente mantém-se no mesmo sentido: "Contratos de Consumo" é uma classificação acima de "Bancários" e que abarca outros serviços prestados por instituições financeiras, como financiamentos, cartões de crédito e consórcios.
+Apenas a partir do terceiro assunto mais frequente passaram a aparecer questões relativas especificamente a prestação de serviços bancários. A classificação genérica "Bancários", que aparece em `r assuntos_bancos$p[3]` dos processos, segundo a TPU é uma classificação relacionada a empréstimos consignados, expurgos inflacionários e tarifas. Logo em seguida, o quarto assunto mais frequente se manteve no mesmo sentido: "Contratos de Consumo" é uma classificação acima de "Bancários" e que abarca outros serviços prestados por instituições financeiras, como financiamentos, cartões de crédito e consórcios.
 
 #### Telecomunicações
 
