@@ -60,7 +60,7 @@ Já a parte propositiva utilizou tanto métodos quantitativos não-experimentais
 
 A convergência das duas partes da pesquisa se deu a partir do confrontamento dos resultados levantados (@creswell2013research, p.118). Os resultados da parte exploratória são utilizados como *inputs* para tomadas de decisão na parte propositiva, com o intuito de i) descartar parte das proposições ou ii) indicar formas de execução das propostas focadas em grupos estratégicos identificados na parte exploratória (e.g. regiões ou tipos empresariais).
 
-A seguir, descrevemos a metodologia em maior detalhe. A Seção \@ref(parte-exploratoria) contempla os métodos de obtenção e análise dos dados. A Seção \ref(@parte-propositiva) descreve as atividades realizadas da parte propositiva.
+A seguir, descrevemos a metodologia em maior detalhe. A Seção \@ref(parte-exploratoria) contempla os métodos de obtenção e análise dos dados. A Seção \@ref(parte-propositiva) descreve as atividades realizadas da parte propositiva.
 
 ## Parte exploratória {#parte-exploratoria}
 
@@ -87,7 +87,7 @@ Não há interesse em estudar a quantidade de casos novos por magistrado ou serv
 
 O índice de conciliação, por sua vez, está correlacionado a outros índices de interesse. Na pesquisa, não foi possível obter evidências para afirmar se há interesse em aumentar, reduzir ou manter os valores atuais dessa métrica.
 
-As ações estratégicas focaram nos maiores litigantes em casos consumeristas pois soluções para essa subpopulação implicam em efeitos significativos para toda a Justiça Brasiliera. Essa afirmação foi feita inicialmente sob a hipótese de que casos consumeristas representam uma quantidade relevante do total de casos. Essa hipótese foi validada após extração e levantamento dos dados.
+As ações estratégicas focaram nos maiores litigantes em casos consumeristas pois soluções para essa subpopulação implicam em efeitos significativos para toda a Justiça Brasileira. Essa afirmação foi feita inicialmente sob a hipótese de que casos consumeristas representam uma quantidade relevante do total de casos. Essa hipótese foi validada após extração e levantamento dos dados.
 
 ### Resumo da situação atual {#resumo-da-situacao-atual}
 
@@ -122,7 +122,7 @@ dados %>%
     `Casos Novos` = sprintf("%s (%s)", fmt(total_n), fmt_p(prop_n)),
     `Casos Pendentes` = sprintf("%s (%s)", fmt(total_p), fmt_p(prop_p))
   ) %>%
-  knitr::knit_print(align = 'llrr', caption = "Casos novos e casos pendentes por Justiça.")
+  knitr::knit_print(align = 'llrr', caption = "Casos novos e casos pendentes por Justiça. Fonte: Justiça em Números.")
 ```
 
 A Tabela \@ref(tab:inst) mostra o volume de casos novos e pendentes dentro da Justiça Estadual, por instância. Observe que o volume de casos pendentes no primeiro grau, somado ao volume nos Juizados Especiais, representam mais de 96% do total. Logo, um segundo filtro adequado é o da instância.
@@ -161,7 +161,7 @@ dados %>%
     `Casos Novos` = sprintf("%s (%s)", fmt(total_n), fmt_p(prop_n)),
     `Casos Pendentes` = sprintf("%s (%s)", fmt(total_p), fmt_p(prop_p))
   ) %>%
-  knitr::knit_print(align = 'llrr', caption = "Casos novos e casos pendentes por grau. TJAM não enviou dados da segunda instância no ano de 2015. Nesse caso, consideramos esse valor como zero.")
+  knitr::knit_print(align = 'llrr', caption = "Casos novos e casos pendentes por grau. TJAM não enviou dados da segunda instância no ano de 2015. Nesse caso, consideramos esse valor como zero. Fonte: Justiça em Números.")
 ```
 
 O terceiro filtro aplicado relaciona-se com as áreas processuais criminal e não criminal. A Tabela \@ref(tab:crim) mostra a quantidade de casos novos e pendentes no primeiro grau e nos Juizados especiais, comparando as duas áreas. A área não criminal é responsável por 88% dos casos pendentes. Mesmo com todos os filtros aplicados, ainda estamos com uma subpopulação de mais de 50 milhões de casos pendentes.
@@ -225,7 +225,7 @@ dados %>%
     `Casos Novos` = sprintf("%s (%s)", fmt(total_n), fmt_p(prop_n)),
     `Casos Pendentes` = sprintf("%s (%s)", fmt(total_p), fmt_p(prop_p))
   ) %>%
-  knitr::knit_print(align = 'llrr', caption = "Casos novos e casos pendentes por área, dentro do primeiro grau ou Juizado Especial. TJPI não enviou alguns dados de Juizados Especiais no ano de 2015. Nesse caso, consideramos esse valor como zero.")
+  knitr::knit_print(align = 'llrr', caption = "Casos novos e casos pendentes por área, dentro do primeiro grau ou Juizado Especial. TJPI não enviou alguns dados de Juizados Especiais no ano de 2015. Nesse caso, consideramos esse valor como zero. Fonte: Justiça em Números.")
 ```
 
 O próximo filtro é baseado no problema da execução fiscal. A Tabela \@ref(tab:fiscal) mostra a quantidade de casos novos e pendentes não criminais no primeiro grau e nos Juizados especiais, comparando execuções fiscais com todo o resto. Metade dos casos pendentes são de execução fiscal, enquanto que somente 16\% dos casos novos são de execução fiscal. Isso indica que, além de volumosos, os casos de execução fiscal apresentam alta taxa de congestionamento. Uma análise mais aprofundada do tema foi descrita no RJN.
@@ -289,7 +289,7 @@ dados %>%
     `Casos Novos` = sprintf("%s (%s)", fmt(total_n), fmt_p(prop_n)),
     `Casos Pendentes` = sprintf("%s (%s)", fmt(total_p), fmt_p(prop_p))
   ) %>%
-  knitr::knit_print(align = 'llrr', caption = "Casos novos e casos pendentes não criminais por tipo de processo, dentro do primeiro grau ou Juizado Especial. TJPI não enviou alguns dados de Juizados Especiais no ano de 2015. Nesse caso, consideramos esse valor como zero.")
+  knitr::knit_print(align = 'llrr', caption = "Casos novos e casos pendentes não criminais por tipo de processo, dentro do primeiro grau ou Juizado Especial. TJPI não enviou alguns dados de Juizados Especiais no ano de 2015. Nesse caso, consideramos esse valor como zero. Fonte: Justiça em Números.")
 ```
 
 Nesse cenário, algumas perguntas aparecem em destaque:
@@ -306,7 +306,7 @@ Para investigar as dúvidas de forma efetiva, seria necessário estudar os assun
 
 O próximo filtro aplicado considerou algumas UFs de interesse. O filtro não está relacionado com a população-alvo da pesquisa, pois as conclusões e propostas devem ser aplicáveis a todos os tribunais estaduais. No entanto, um corte no escopo foi feito para garantir que a pesquisa seria exequível de acordo com as restrições de orçamento e prazo.
 
-O corte regional não foi pensado unicamente pelo volume processual. Nesse caso, também consideramos a necessidade de incluir pelo menos uma UF por região brasilera, além de considerar tribunais de todos os portes.
+O corte regional não foi pensado unicamente pelo volume processual. Nesse caso, também consideramos a necessidade de incluir pelo menos uma UF por região brasileira, além de considerar tribunais de todos os portes.
 
 A escolha dos Tribunais Estaduais foi baseada em três critérios: i) a abrangência geográfica; ii) a necessidade de escolha de dois Tribunais de cada porte; e iii) a possibilidade de contemplar UFs responsáveis por considerável proporção dos litígios em cada região.
 
@@ -369,10 +369,10 @@ dados %>%
     `Casos Novos` = sprintf("%s (%s)", fmt(total_n), fmt_p(prop_n)),
     `Casos Pendentes` = sprintf("%s (%s)", fmt(total_p), fmt_p(prop_p))
   ) %>%
-  knitr::knit_print(align = 'llllrr', caption = "Casos novos e casos pendentes não criminais por tribunal. Os porcentuais foram calculados em relação ao total de casos considerando todos os Tribunais.")
+  knitr::knit_print(align = 'llllrr', caption = "Casos novos e casos pendentes não criminais por tribunal. Os porcentuais foram calculados em relação ao total de casos considerando todos os Tribunais. Fonte: Justiça em Números.")
 ```
 
-```{r tempo, fig.height=5, fig.cap="Volume de casos novos e pendentes ao longo do tempo nos tribunais de interesse."}
+```{r tempo, fig.height=5, fig.cap="Volume de casos novos e pendentes ao longo do tempo nos tribunais de interesse. Fonte: Justiça em Números."}
 data(cadmun, package = 'abjData')
 cadmun <- distinct(cadmun, uf, regiao)
 dados %>%
@@ -444,7 +444,7 @@ A extração de dados dos tribunais escolhidos passou por duas atividades. A pri
 O fluxo para leitura, limpeza e arrumação dos dados brutos foi descrito na Figura \@ref(fig:arrumacao)
 
 
-![Fluxo de leitura, limpeza e arrumação dos dados.](imgs/classificacao.png){#fig:arrumacao}
+![Fluxo de leitura, limpeza e arrumação dos dados. Fonte: Elaboração própria.](imgs/classificacao.png){#fig:arrumacao}
 
 Em seguida, descrevemos as atividades realizadas para extração dos dados em cada tribunal.
 
@@ -489,7 +489,7 @@ tibble::tribble(
   'TJSP', 'Ofício', 'Prospectivo', '1.005.485', 'Não', 'Consumerista', 'Populacional'
 ) %>% 
   knitr::knit_print(longtable = TRUE, align = 'llllrlll',
-                    caption = 'Resumo dos dados dos tribunais utilizados para análise, após aplicação dos filtros de assuntos.')
+                    caption = 'Resumo dos dados dos tribunais utilizados para análise, após aplicação dos filtros de assuntos. Fonte: Justiça em Números.')
 ```
 
 ### Arrumação {#arrumacao}
@@ -577,7 +577,7 @@ $N_1, N_2, \dots, N_6$, em que $N_1$ é o nível mais genérico (e.g. Direito do
 
 A rede da Figura \@ref(fig:rb) representa a hierarquia dos níveis das TPUs. Trata-se de uma rede bastante simples, que pode ser utilizada diretamente para o cálculo dos volumes processuais.
 
-![Rede Bayesiana representando a hierarquia dos níveis das TPUs.](imgs/08-metodologia_files/figure-latex/rb-1.pdf){#fig:rb}
+![Rede Bayesiana representando a hierarquia dos níveis das TPUs. Fonte: Elaboração própria.](imgs/08-metodologia_files/figure-latex/rb-1.pdf){#fig:rb}
 
 No caso MAR, podemos utilizar todos os dados disponíveis dos processos para predizer o assunto real do processo. Para isso, qualquer técnica de modelagem preditiva poderia ser utilizada.
 
@@ -619,8 +619,6 @@ No entanto, pode ser que algumas incorporações não tenham sido consideradas. 
 
 Um avanço metodológico da presente pesquisa está no fato desses códigos de classificação serem replicáveis. Isso significa que o mesmo código pode ser utilizado para reclassificar empresas em pesquisas futuras. O algoritmo utilizado para classificação dos nomes das empresas foi escrito com a linguagem de programação R e está descrito no Apêndice \@ref(codpj). Convidamos o leitor a criticar os critérios utilizados e propor sugestões de mudanças.
 
---------------------------------------------------------------------------------
-
 ### Métricas de avaliação {#metricas-de-avaliacao}
 
 Como descrito nas Seções anteriores, um dos resultados da pesquisa é a elaboração de propostas de solução que impactam nos principais indicadores de gestão do judiciário. Monitorar o efeito de políticas públicas em indicadores de litigiosidade é essencial para avaliar se a política atingiu seus objetivos.
@@ -653,7 +651,7 @@ onde $t$ é o ano base considerado para o cálculo do volume processual. O valor
 
 De fato, observando as variáveis do RJN, é possível estudar a distribuição da razão entre $N_P^t$ e $N_P^{t-1} + N_N^{t}-N_B^{t}$. A Figura \@ref(fig:comparacao) mostra, a título de exemplo, a comparação entre o número de casos pendentes observados e o número de casos pendentes calculado com base no número de casos pendentes do ano anterior e dos casos novos e baixados no ano corrente. O levantamento considera como base os dados relativos aos casos de conhecimento em primeiro grau na Justiça Estadual. Observa-se que na maior parte dos casos (162 casos no total, por considerar 27 UFs por 6 anos) a quantidade calculada subestima a quantidade observada. Em 26 casos as duas quantidades são exatamente iguais, e a razão entre as quantidades fica concentrada no ponto 1. Ainda nesse exemplo, se fizermos a razão entre o total de casos pendentes observados e o total de casos pendentes calculados, encontramos o valor de 103,5%.
 
-```{r comparacao, fig.cap="Comparação da quantidade de casos pendentes observada e calculada pela fórmula aproximada, considerando apenas casos de conhecimento de primeiro grau."}
+```{r comparacao, fig.cap="Comparação da quantidade de casos pendentes observada e calculada pela fórmula aproximada, considerando apenas casos de conhecimento de primeiro grau. Fonte: Justiça em Números."}
 data(cadmun, package = 'abjData')
 cadmun <- distinct(cadmun, uf, regiao)
 dados %>% 
@@ -705,7 +703,7 @@ O IADN tem as mesmas vantagens do IAD (diretamente proporcional aos baixados, in
 
 [^cnjlink]: É possível verificar a definição em https://goo.gl/LBaJQZ. Último acesso em 15/08/2017.
 
-A Tabela \@ref(tab:iadn) e a Figura \@ref(fig:iadn2) mostram o IADN calculado para o ano de 2015 e o IADN ao longo dos anos, respectivamente, considerando somente processos de primeiro grau não criminais e não fiscais, nos Tribunais escolhidos na pesquisa. Nos tribunais de médio e grande porte, com exceção do TJDFT, o IADN é estável e encontra-se entre de 35% e 40%. Já no TJDFT essa métrica encontra-se muito acima dos demais, com 68%, possivelmente por conta da baixa quantidade de casos pendentes no Tribunal, relativa à quantidade de casos novos. No TJAM, a taxa varia muito e já alcançou o valor máximo dentre todos os Tribunais analisadoe, mas atualmente tem o valor mínimo do IADN. Isso indica que a taxa no TJAM não é confiável.
+A Tabela \@ref(tab:iadn) e a Figura \@ref(fig:iadn2) mostram o IADN calculado para o ano de 2015 e o IADN ao longo dos anos, respectivamente, considerando somente processos de primeiro grau não criminais e não fiscais, nos Tribunais escolhidos na pesquisa. Nos tribunais de médio e grande porte, com exceção do TJDFT, o IADN é estável e encontra-se entre de 35% e 40%. Já no TJDFT essa métrica encontra-se muito acima dos demais, com 68%, possivelmente por conta da baixa quantidade de casos pendentes no Tribunal, relativa à quantidade de casos novos. No TJAM, a taxa varia muito e já alcançou o valor máximo dentre todos os Tribunais analisados, mas atualmente tem o valor mínimo do IADN. Isso indica que a taxa no TJAM não é confiável.
 
 ```{r iadn, results='asis'}
 data(cadmun, package = 'abjData')
@@ -762,12 +760,12 @@ dados %>%
            `Novos` = fmt(total_n),
            `Baixados` = fmt(total_b),
            `Pendentes 2014` = fmt(total_p_t1)) %>% 
-  knitr::knit_print(align = 'llllrrrr',
-               caption = 'IADN de 2015 para processos de primeiro grau não criminais nos Tribunais considerados na pesquisa.')
+  knitr::knit_print(align = 'llllrrrrr',
+               caption = 'IADN de 2015 para processos de primeiro grau não criminais nos Tribunais considerados na pesquisa. Fonte: Justiça em Números.')
 ```
 
 
-```{r iadn2, fig.cap="IADN ao longo dos anos para os tipos processuais e tribunais de interesse."}
+```{r iadn2, fig.cap="IADN ao longo dos anos para os tipos processuais e tribunais de interesse. Fonte: Justiça em Números."}
 data(cadmun, package = 'abjData')
 cadmun <- distinct(cadmun, uf, regiao)
 dados %>% 
@@ -834,7 +832,7 @@ Dessa forma, se $\lambda = 1$, temos o IADN e, se $\lambda = 0$, temos o IAD. O 
 
 A Figura \@ref(fig:iadn3) mostra o IADR calculado para os tribunais escolhidos na pesquisa, considerando diferentes valores de $\lambda$. É interessante notar que a posição relativa de alguns tribunais, como o TJBA muda ao considerar diferentes valores de $\lambda$.
 
-```{r fig:iadn3, fig.cap='IADR calculado para os tribunais da pesquisa considerando diferentes valores de $\lambda$'}
+```{r fig:iadn3, fig.cap='IADR calculado para os tribunais da pesquisa considerando diferentes valores de $\\lambda$. Fonte: Justiça em Números.'}
 data(cadmun, package = 'abjData')
 cadmun <- distinct(cadmun, uf, regiao)
 dados_base <- dados %>% 
@@ -947,7 +945,7 @@ Uma alternativa à litigância no caso da justiça consumerista é a resolução
 
 Os canais de comunicação extrajudicial são importantes ferramentas de composição pré-processual. Dentre eles, destacamos os canais fornecidos pelas próprias empresas fornecedoras de serviços e/ou produtos (SACs) e os canais disponibilizados por terceiros, como a Fundação Procon e o site Consumidor.gov.
 
-O Decreto n.º 6.523/2008 determina que as ligações para os SAC's são gratuitas e não importam em qualquer ônus para o consumidor. O serviço deve funcionar 24 horas por dia, 7 dias por semana e deve disponibilizar opções de contato com o atendente, reclamação e cancelamento de contratos e serviços.
+O Decreto n.º 6.523/2008 determina que as ligações para os SACs são gratuitas e não importam em qualquer ônus para o consumidor. O serviço deve funcionar 24 horas por dia, 7 dias por semana e deve disponibilizar opções de contato com o atendente, reclamação e cancelamento de contratos e serviços.
 
 As informações solicitadas pelo consumidor devem ser prestadas imediatamente e as reclamações devem ser resolvidas no prazo máximo de 5 dias, a contar do registro. A resposta do fornecedor de serviços deve ser clara e objetiva, além de abarcar todos os pontos da solicitação do consumidor.
 
@@ -970,6 +968,6 @@ Considerando essas opções, os objetivos deste eixo de investigação concentra
 1. A procura por mecanismos de conciliação extrajudiciais por parte dos requerentes é pequena com relação ao volume de litígios?
 1. Nos casos de negociação extrajudicial observados, a maior parte dos litígios são evitados?
 
-Esse tema foi também o mais discutido nas reuniões com especialisas. Identificamos um consenso de que a melhor forma de reduzir o estoque dos tribunais é fazer com que menos litígios apareçam no futuro, e a melhor forma de fazer isso é através da composição extrajudicial. 
+Esse tema foi também o mais discutido nas reuniões com especialistas. Identificamos um consenso de que a melhor forma de reduzir o estoque dos tribunais é fazer com que menos litígios apareçam no futuro, e a melhor forma de fazer isso é através da composição extrajudicial. 
 
 Nos resultados, apresentamos uma análise utilizando a base de dados do canal de conciliação consumidor.gov.br. Esses resultados foram utilizados como insumo para uma das propostas principais no capítulo de sugestões.
