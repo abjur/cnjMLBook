@@ -12,7 +12,7 @@ As análises do capítulo de resultados seguiram um roteiro de perguntas, consid
 
 O roteiro limitou-se às cifras mencionadas acima (5 setores, 10 assuntos processuais e 30 litigantes) apenas para tornar a exposição mais clara. Conforme verificado a seguir, esses números foram capazes de descrever o comportamento de grande quantidade dos processos. Mesmo assim, para os casos não comentados nesse capítulo, o apêndice contém versões menos resumidas das tabelas.
 
-  Em alguns tribunais, os mecanismos de seleção impossibilitam análises temporais. Isso acontece porque os dados utilizados na premiação do Selo Justiça em Números não representam adequadamente os processos distribuídos em um ano. Os dados obtidos na ocasião desse prêmio representam adequadamente os processos que receberam carga e aqueles processos que estavam em aberto no momento da coleta. Por conta disso, fizemos análises temporais apenas conduzimos estudos prospectivos, nos estados de São Paulo, Rio Grande do Sul, Amazonas e Bahia.
+  Em alguns tribunais, os mecanismos de seleção impossibilitam análises temporais. Isso acontece porque os dados utilizados na premiação do Selo Justiça em Números não representam adequadamente os processos distribuídos em um ano. Os dados obtidos na ocasião desse prêmio representam adequadamente os processos que receberam carga e aqueles processos que estavam em aberto no momento da coleta. Por conta disso, fizemos análises temporais e conduzimos estudos prospectivos nos estados de São Paulo, Rio Grande do Sul, Amazonas e Bahia.
 
 ```{r}
 if("data-raw" %in% dir(getwd())){
@@ -159,7 +159,7 @@ head(maiores_litigantes_tjrs, 30) %>%
 
 A lista dos maiores litigantes é composta apenas por bancos, empresas de telefonia e administradores de cadastro de inadimplentes até a posição de número 12. Nessas categorias, os maiores litigantes são os bancos Itaú, Banco do Brasil, Bradesco, Santander, Votorantim e Banrisul, as empresas de telefonia são a Tim, Vivo, Claro e Oi e as administradoras de cadastro são a Boa Vista e a Serasa.
 
-A partir da décima segunda posição, destacaram-se novos setores da economia. Na décima terceira posição vêm a seguradora Líder, administradora do seguro DPVAT, com `r maiores_litigantes_tjrs$p[3]` dos processos, e a partir dessa marca começam a aparecer empresas de energia, luz e água, como a Rio Grande Energia, AES Sul, CEEE e Corsan. Além dessas empresas, novos bancos, como o Banco PAN (antes chamado Banco PanAmericano), BOSCH, BMG e FINASA^[Incorporado ao Banco Bradesco Financiamentos em 2002].
+A partir da décima segunda posição, destacam-se novos setores da economia. Na décima terceira posição vê-se a seguradora Líder, administradora do seguro DPVAT, com `r maiores_litigantes_tjrs$p[3]` dos processos, e a partir dessa marca começam a aparecer empresas de energia, luz e água, como a Rio Grande Energia, AES Sul, CEEE e Corsan. Além dessas empresas, novos bancos, como o Banco PAN (antes chamado Banco PanAmericano), BOSCH, BMG e FINASA^[Incorporado ao Banco Bradesco Financiamentos em 2002].
 
 ```{r}
 maiores_setores_tjrs <- d_tjrs_2 %>%
@@ -169,15 +169,15 @@ maiores_setores_tjrs <- d_tjrs_2 %>%
     p_acum = scales::percent(cumsum(n)/sum(n)))
 ```
 
-Os 30 maiores litigantes acumulam `r maiores_litigantes_tjrs$p_acum[30]`, mas podemos compreender melhor a origem dos demais litígios se agruparmos os processos por setor da economia das demandadas. Analisando dessa forma, concluímos que `r maiores_setores_tjrs$p_acum[3]` dos processos concentram-se no setores financeiro, telecomunicações e administradoras de cadastro de inadimplentes. Os três primeiros setores possuem proporções acima de 10% dos processos e caracterizam um ponto de corte na distribuição de processos por empresa: a partir delas, a fatia consumida por cada instituição orbita em 1%. Nas esferas restantes, cujas demandadas concentram menos de 10% do total, destacaram-se as concessionárias de serviços básicos, como energia, gás, água e esgoto, e empresas de seguros, com 4,5% e 3,9% dos processos, respectivamente.
+Os 30 maiores litigantes acumulam `r maiores_litigantes_tjrs$p_acum[30]`, mas podemos compreender melhor a origem dos demais litígios se agruparmos os processos por setor da economia das demandadas. Analisando dessa forma, concluímos que `r maiores_setores_tjrs$p_acum[3]` dos processos concentram-se no setores financeiro, telecomunicações e administradoras de cadastro de inadimplentes. Os três primeiros setores possuem proporções acima de 10% dos processos e caracterizam um ponto de corte na distribuição de processos por empresa: a partir delas, a fatia consumida por cada instituição orbita em 1%. Nas esferas restantes, cujas demandadas concentram menos de 10% do total, destacam-se as concessionárias de serviços básicos, como energia, gás, água e esgoto, e empresas de seguros, com 4,5% e 3,9% dos processos, respectivamente.
 
 ```{r, results = 'asis'}
 maiores_setores_tjrs %>%
   head(5) %>%
-  knitr::knit_print(caption = "5 maiores passivos consumeristas na justiça estadual do Rio Grande do Sul. Fonte: Tribunal de Justiça de Rio Grande do Sul.")
+  knitr::knit_print(caption = "5 maiores passivos consumeristas na Justiça Estadual do Rio Grande do Sul. Fonte: Tribunal de Justiça de Rio Grande do Sul.")
 ```
 
-Considerando o interesse em qualificar certas instituições como demandadas em massa pelos litigantes, partimos para uma análise que buscou averiguar a existência de padrões temporais que expliquem o volume de casos de um certo grande litigante levantado nas tabelas anteriores. Analisando o volume mensal de distribuições de cada tipo de processo, foi possível identificar padrões temporais.
+Considerando o interesse em qualificar certas instituições como demandadas em massa pelos litigantes, partimos para uma análise que buscou averiguar a existência de padrões temporais que expliquem o volume de casos de um certo grande litigante levantado nas tabelas anteriores. Analisando o volume mensal de distribuições de cada tipo de processo, foi possível identificar padrões.
 
 ```{r f1, fig.cap = "Volume processual consumerista no Rio Grande do Sul ao longo do tempo e separado por setor econômico. Fonte: Tribunal de Justiça de Rio Grande do Sul."}
 d_tjrs_2 %>%
@@ -207,7 +207,7 @@ processos_em_2013 <- total_anual %>%
   with(mean(n))
 ```
 
-O padrão mais claro e gritante revelou-se nos processos relacionados à empresas administradoras de banco de dados. No ano de 2013 essas empresas experienciaram uma litigância em massa nunca antes identificada. Enquanto a média de processos por ano, desconsiderando 2013, foi de `r format(media_sem_2013, digits = '2')` processos, em 2013 foram distribuídos `r format(processos_em_2013, digits = '2')` processos. Nessa época, algumas instituições associaram esse aumento repentino à litigância incentivada pelos escritórios de advocacia, contudo é um fato que a quantidade de processos diminuiu com o tempo, indicando que a massa de questões foi causada por alguma característica particular da época.
+O padrão mais claro revelou-se nos processos relacionados à empresas administradoras de banco de dados. No ano de 2013 essas empresas experienciaram uma litigância em massa nunca antes identificada. Enquanto a média de processos por ano, desconsiderando 2013, foi de `r format(media_sem_2013, digits = '2')` processos, em 2013 foram distribuídos `r format(processos_em_2013, digits = '2')` processos. Nessa época, algumas instituições associaram esse aumento repentino à litigância incentivada pelos escritórios de advocacia, contudo é um fato que a quantidade de processos diminuiu com o tempo, indicando que a massa de questões foi causada por alguma característica particular da época.
 
 ```{r f3, fig.cap = "Volume processual ao longo do tempo no Rio Grande do Sul contra empresas administradoras de cadastro de inadimplentes. Fonte: Tribunal de Justiça de Rio Grande do Sul."}
 d_tjrs_2 %>%
@@ -224,9 +224,9 @@ d_tjrs_2 %>%
   scale_color_hue(name = 'Empresa')
 ```
 
-Outros padrões temporais se destacaram, mas, diferentemente do observado nas administradoras de cadastro de inadimplentes, nenhuma série sugere que as questões tratadas nos processos contra a instituição em questão já foi superada. No caso dos fabricantes de produtos eletrônicos e transporte aéreo, por exemplo, o que ocorre é exatamente o contrário: os processos contra essas empresas estão em ascensão. Em relação às empresas aéreas, o aumento deve-se principalmente à Gol, cujo número de litígios vêm numa tendência de subida desde 2012, mas também é influenciada pelo aumento de processos da TAM de 2010 para 2012.
+Outros padrões temporais se destacaram, mas, diferentemente do observado nas administradoras de cadastro de inadimplentes, nenhuma série sugere que as questões tratadas nos processos contra a instituição em questão já foram superadas. No caso dos fabricantes de produtos eletrônicos e transporte aéreo, por exemplo, o que ocorre é exatamente o contrário: os processos contra essas empresas estão em ascensão. Em relação às empresas aéreas, o aumento deve-se principalmente à Gol, cujo número de litígios vêm numa tendência de subida desde 2012, mas também é influenciada pelo aumento de processos da TAM de 2010 para 2012.
 
-```{r f4, fig.cap = "Volume processual ao longo do tempo no Rio Grande do Sul contra companhias aéreas. Fonte: Tribunal de Justiça de Rio Grande do Sul."}
+```{r f4, fig.cap = "Volume processual ao longo do tempo no Rio Grande do Sul contra fabricantes de produtos eletrônicos e companhias aéreas. Fonte: Tribunal de Justiça de Rio Grande do Sul."}
 totais <- d_tjrs_2 %>%
   filter(area %in% c("Transporte Aéreo","Fabricantes Eletrônicos")) %>%
   count(mes, area) %>%
@@ -269,7 +269,7 @@ fabricantes_eletronicos <- d_tjrs_2 %>%
 gridExtra::grid.arrange(totais, gridExtra::arrangeGrob(transporte_aereo, fabricantes_eletronicos, ncol = 2))
 ```
 
-Um outro padrão detectado nos gráficos de volume processual contra o tempo diz respeito aos setores com uma quantidade aproximadamente constante de processos por mês. Isso acontece com os processos contra administradoras de planos de Saúde, concessionárias de Energia, Gás e Esgoto, empresas de Telecomunicação e empresas de Seguros. Essas quatro esferas, embora tenham experienciado crescimentos desde 2010, apresentam séries estáveis de processos por mês, pelo menos a partir de algum ponto. Dentre os aumentos identificados, destacou-se o patamar atingido pelas empresas de telecomunicação: são registrados aproximadamente 5.500 novos casos por mês.
+Um outro padrão detectado nos gráficos de volume processual contra o tempo diz respeito aos setores com uma quantidade aproximadamente constante de processos por mês.f Isso acontece com os processos contra administradoras de planos de Saúde, concessionárias de Energia, Gás e Esgoto, empresas de Telecomunicação e empresas de Seguros. Essas quatro esferas, embora tenham experienciado crescimentos desde 2010, apresentam séries estáveis de processos por mês, pelo menos a partir de algum ponto. Dentre os aumentos identificados, destacou-se o patamar atingido pelas empresas de telecomunicação: são registrados aproximadamente 5.500 novos casos por mês.
 
 ```{r f5, fig.cap = "Volume processual ao longo do tempo no Rio Grande do Sul das áreas em que identificou-se um aumento (telecomunicações, concessionárias de serviços básicos, planos de saúde e seguros). Fonte: Tribunal de Justiça de Rio Grande do Sul."}
  d_tjrs_2 %>%
@@ -327,11 +327,11 @@ A segunda causa mais frequente dos processos contra instituições bancárias é
 
 A terceira causa mais frequente dos processos contra instituições bancárias é a classificação geral "Indenização por Dano Moral", com `r assuntos_bancos$p[3]` dos pleitos. Essa é uma classificação geral e, segundo a TPU, admite duas ramificações: "Inclusão Indevida em Cadastro de Inadimplentes" e "Protesto Indevido de Título". Novamente é razoável observar que o erro de classificação pode ou não considerar a hierarquia da Tabela para ocorrer, mas é possível imaginar que processos por danos morais à uma instituição bancária na justiça civil estejam relacionados a cadastros indevidos em bases de inadimplentes.
 
-A quarta causa mais frequente de ações contra instituições bancárias é "Reparação de Danos", com `r assuntos_bancos$p[4]` dos processos. Essa é uma classificação que não consta nas TPU's do primeiro grau da justiça estadual. Conforme constatado durante essa pesquisa, a classificação está presente apenas no Tribunal do Rio Grande do Sul, mas nesse caso é bastante frequente. Por esse motivo, concluiu-se que "Reparação de Danos" é uma classificação alternativa para processos cíveis de danos morais ou materiais.
+A quarta causa mais frequente de ações contra instituições bancárias é "Reparação de Danos", com `r assuntos_bancos$p[4]` dos processos. Essa é uma classificação que não consta nas TPU's do primeiro grau da Justiça Estadual. Conforme constatado durante essa pesquisa, a classificação está presente apenas no Tribunal do Rio Grande do Sul, mas nesse caso é bastante frequente. Por esse motivo, concluiu-se que "Reparação de Danos" é uma classificação alternativa para processos cíveis de danos morais ou materiais.
 
 A quinta causa mais frequente dos processos contra instituições financeiras são litígios por "Expurgos Inflacionários/ Planos Econômicos", com `r assuntos_bancos$p[5]` dos processos. Essa é uma classificação específica, derivada da classificação "Bancários". Processos desse tipo pedem indenizações pela atuação de instituições bancárias na ocasião dos planos econômicos brasileiros: Bresser, Verão, Real e os dois planos Collor.
 
-A sexta causa mais frequente dos processos contra instituições financeiras se dão por "Contratos de Consumo", com `r assuntos_bancos$p[6]` dos processos. Essa é uma classificação geral do segundo nível de altura da TPU do primeiro grau da justiça estadual. Sob esse nível, estão vários tópicos irrelevantes para instituições financeiras, como "Serviços Hospitalares","Turismo" e "Transporte Aéreo", porém alguns tópicos sugerem sobre o que se tratam os processos classificados dessa forma. Além da classificação "Bancários", já mencionada acima, abaixo de "Contatos de Consumo" aninham-se as classificações "Cartões de Crédito","Consórcio","Plano de Saúde","Seguro" e "Financiamento de Produto", que são plausíveis no contexto financeiro, pois as principais instituições bancárias do Brasil costumeiramente oferecem estes serviços aos seus clientes.
+A sexta causa mais frequente dos processos contra instituições financeiras se dão por "Contratos de Consumo", com `r assuntos_bancos$p[6]` dos processos. Essa é uma classificação geral do segundo nível de altura da TPU do primeiro grau da Justiça Estadual. Sob esse nível, estão vários tópicos irrelevantes para instituições financeiras, como "Serviços Hospitalares","Turismo" e "Transporte Aéreo", porém alguns tópicos sugerem sobre o que se tratam os processos classificados dessa forma. Além da classificação "Bancários", já mencionada acima, abaixo de "Contatos de Consumo" aninham-se as classificações "Cartões de Crédito","Consórcio","Plano de Saúde","Seguro" e "Financiamento de Produto", que são plausíveis no contexto financeiro, pois as principais instituições bancárias do Brasil costumeiramente oferecem estes serviços aos seus clientes.
 
 A sétima causa mais frequente dos processos contra instituições financeiras são aqueles por "Financiamento de Produto", com `r assuntos_bancos$p[7]` dos casos. Essa é uma classificação específica, aninhada sobre a classificação anterior, "Contratos de Consumo". Esses processos estão relacionados aos contratos de financiamento de produtos diversos.
 
@@ -428,7 +428,7 @@ O segundo assunto processual mais frequente nos processos consumeristas é o já
 
 Após os processos derivados de danos causados aos consumidores, o próximo tópico mais frequente nos tribunais é a cobrança indevida de tarifas, com `r telecomunicaoes$p[4]` dos casos. Não sem relação com esse assunto, o próximo tópico mais procurado pelos consumidores relaciona-se à interpretação e revisão de contrato, com `r telecomunicaoes$p[5]` dos casos, também relacionado com a sétima posição, rescisão do contrato.
 
-Considerando que os assuntos mencionados nessa seção, conduzimos uma análise das diferenças nas distribuições de assuntos de cada demandada. Assim como no caso dos bancos, verificamos uma diferença relevante nas distribuições de assuntos: processos sobre interpretações ou revisões de contrato aparecem apenas no grupo empresarial Tim e empresas relacionadas ao grupo Oi são mais demandadas em processos do assunto geral "Telefonia". Embora esse último assunto seja uma classificação não específica, possivelmente ela está relacionada a processos decorrentes de falhas no serviço, pois "Cobrança Indevida de Serviços" também é um assunto que se destaca em empresas do grupo Oi. No geral, as demais empresas apresentam proporções similares de processos de Telefonia, Indenização por Dano Moral e Reparação de Danos, que são as outras formas de classificar danos morais e materiais na justiça estadual gaúcha.
+Considerando os assuntos mencionados nessa seção, conduzimos uma análise das diferenças nas distribuições de assuntos de cada demandada. Assim como no caso dos bancos, verificamos uma diferença relevante nas distribuições de assuntos: processos sobre interpretações ou revisões de contrato aparecem apenas no grupo empresarial Tim e empresas relacionadas ao grupo Oi são mais demandadas em processos do assunto geral "Telefonia". Embora esse último assunto seja uma classificação não específica, possivelmente ela está relacionada a processos decorrentes de falhas no serviço, pois "Cobrança Indevida de Serviços" também é um assunto que se destaca em empresas do grupo Oi. No geral, as demais empresas apresentam proporções similares de processos de Telefonia, Indenização por Dano Moral e Reparação de Danos, que são as outras formas de classificar danos morais e materiais na justiça estadual gaúcha.
 
 ```{r f10, fig.cap = "Distribuições das causas de pedir dos processos contra empresas de telefonia no Rio Grande do Sul, separadas por empresa. Fonte: Tribunal de Justiça de Rio Grande do Sul."}
 d_tjrs_2 %>%
@@ -445,7 +445,7 @@ d_tjrs_2 %>%
 
 Assim como existem diferenças no volume de cada assunto processual, também identificamos padrões temporais distintos em cada uma das maiores litigantes de telefonia. O volume processual associado ao grupo Oi é muito maior do que os demais, com exceção de processos relacionados à Inclusão Indevida em Cadastro de Inadimplentes e Interpretação ou Revisão de Contratos, e, em geral, o volume processual da Oi está em ascensão, exceto pelos casos relacionados à Telefonia e Reparação de Danos. Nesse último caso vale a pena notar que o número total de casos está diminuindo, possivelmente por tratar-se de uma classificação antiga que está caindo em desuso, dando lugar às classificações "Indenização por Dano Moral" e "Inclusão Indevida em Cadastro de Inadimplentes".
 
-Ainda sobre os padrões temporais, destacou-se também a diferença dos processos relacionados à TIM. Das empresas de telefonia com maior número de litígios na justiça estadual do Rio Grande do Sul ela é a única cujo volume processual relacionado à Inclusão Indevida em Cadastro de Inadimplentes não está subindo, mas pudemos notar uma concentração de processos relacionados à Interpretação e Revisão de Contratos.
+Ainda sobre os padrões temporais, destacou-se também a diferença dos processos relacionados à TIM. Das empresas de telefonia com maior número de litígios na Justiça Estadual do Rio Grande do Sul ela é a única cujo volume processual relacionado à Inclusão Indevida em Cadastro de Inadimplentes não está subindo, mas pudemos notar uma concentração de processos relacionados à Interpretação e Revisão de Contratos.
 
 ```{r f11, fig.cap = "Número de processos contra empresas de telecomunicações ao longo do tempo separado por empresa. Fonte: Tribunal de Justiça de Rio Grande do Sul."}
 d_tjrs_2 %>%
@@ -485,7 +485,7 @@ A menos de empresas não contabilizadas neste estudo, todos os processos contra 
 
 Do mesmo modo, apenas quatro assuntos processuais acumularam mais de 90% dos casos, sendo todos eles relacionados direta ou indiretamente com o cadastro indevido nas bases de inadimplentes. `r maiores_assuntos_banco_de_dados$p[1]` são processos por "Indenização de Danos Morais" e os próximos três assuntos, "Cadastro de Análise de Crédito", "Inclusão Indevida em Cadastro de Inadimplentes" e "Registro em Cadastro de Análise de Crédito" versam sobre a mesma matéria e juntos concentraram 55% dos processos.
 
-Ao contrário do identificado nos assuntos adiante, os padrões temporais existentes nas empresas administradoras de banco de dados limitam-se ao já identificado: os processos concentram-se em 2013, para todas as demandadas. Um desvio a esse padrão apareceu nos processos classificados como "Inclusão Indevida em Cadastro de Inadimplentes", que experienciaram um aumento gradual no número de processos até 2013, quando houve um aumento intenso no número de processos.
+Ao contrário do identificado nos assuntos adiante, os padrões temporais existentes nas empresas administradoras de banco de dados limitam-se ao já identificado: os processos concentram-se em 2013, para todas as demandadas. Um desvio a esse padrão apareceu nos processos classificados como "Inclusão Indevida em Cadastro de Inadimplentes", que experienciaram um aumento gradual no número de processos até 2013, quando esse número atingiu seu máximo.
 
 ```{r f12, fig.cap = "Número de processos contra empresas administradoras de cadastro de inadimplentes ao longo do tempo e separado por tipo de processo. Fonte: Tribunal de Justiça de Rio Grande do Sul."}
 d_tjrs_2 %>%
@@ -529,7 +529,7 @@ litigantes_energia_gas %>%
   knitr::knit_print(caption = "4 Maiores Litigantes concessionárias de serviços básicos no estado do Rio Grande do Sul. Fonte: Tribunal de Justiça de Rio Grande do Sul.")
 ```
 
-A distribuição de assuntos é similar às identificadas anteriormente, mas a separação por empresa faz mais sentido. Certos processos, como "Fornecimento de Energia Elétrica", só apareceram vinculadas à certas empresas. Nesse aspecto, pudemos dividir as empresas deste segmento econômico em dois grupos: as empresas de energia e a CORSAN, a empresa Rio Grandense de Saneamento. Indenizações por Dano Moral são frequentes em todas empresas, mas Fornecimento de Energia Elétrica não apareceu vinculada à CORSAN, evidentemente, assim como processos discutindo a Metodologia de Reajuste das Tarifas e Indenizações por Danos Materiais.
+A distribuição de assuntos é similar às identificadas anteriormente, mas a separação por empresa faz mais sentido. Certos processos, como "Fornecimento de Energia Elétrica", só apareceram vinculadas à certas empresas. Nesse aspecto, pudemos dividir as empresas deste segmento econômico em dois grupos: as empresas de energia e a CORSAN, empresa Rio Grandense de Saneamento. Indenizações por Dano Moral são frequentes em todas empresas, mas Fornecimento de Energia Elétrica não apareceu vinculada à CORSAN, evidentemente, assim como processos discutindo a Metodologia de Reajuste das Tarifas e Indenizações por Danos Materiais.
 
 ```{r f13, fig.cap = 'Distribuições das causas de pedir contra concessionárias de serviços básicos separadas por empresa.'}
 d_tjrs_2 %>%
@@ -657,13 +657,13 @@ assuntos_consumeristas_puros <- l_tpu %>%
 
 ## TJRJ
 
-Conforme mencionado na seção de metodologia, os processos enviados pelo Tribunal de Justiça do Rio de Janeiro foram utilizados originalmente para a premiação do Selo Justiça em Números. Por conta disso, as análises desse tribunal serão separadas de acordo com os mecanismos de seleção dos processos enviados ao CNJ.
+Conforme mencionado na seção de metodologia, os processos enviados pelo Tribunal de Justiça do Rio de Janeiro foram utilizados originalmente para a premiação do Selo Justiça em Números. Por conta disso, as análises desse tribunal foram separadas de acordo com os mecanismos de seleção dos processos enviados ao CNJ.
 
 A qualidade da administração dos dados do TJRJ foi mensurada utilizando três tipos de processos, que estão discriminados na base enviada pelo CNJ:
 
-1. processos baixados entre 01/01/2015 e 31/07/2016.
-2. processos em tramitação no dia 31/07/2016.
-3. processos com alguma movimentação ou utilização no mês de agosto de 2016.
+1. Processos baixados entre 01/01/2015 e 31/07/2016.
+2. Processos em tramitação no dia 31/07/2016.
+3. Processos com alguma movimentação ou utilização no mês de agosto de 2016.
 
 ```{r}
 library(tidyverse)
@@ -1018,7 +1018,7 @@ maiores_telecomunicacoes <- d_tjsp_2 %>%
          p = scales::percent(p))
 ```
 
-`r telecomunicaoes$p[1]` de todos os processos contra empresas de telecomunicações têm como assunto "Telefonia", e esse é o assunto mais frequente. Segundo a TPU, essa é uma classificação geral que pode possuir três ramificações: processos relacionados à assinatura básica mensal, cobrança indevida de ligações e pulsos excedentes.
+De todos os processos contra empresas de telecomunicações, `r telecomunicaoes$p[1]` têm como assunto "Telefonia", e esse é o assunto mais frequente. Segundo a TPU, essa é uma classificação geral que pode possuir três ramificações: processos relacionados à assinatura básica mensal, cobrança indevida de ligações e pulsos excedentes.
 
 O segundo assunto mais comum contra processos de telefonia no TJSP são processos por inclusão indevida em cadastro de inadimplentes, com  `r telecomunicaoes$p[2]` dos processos. Não sem relação, o terceiro tipo de processos mais demandado contra empresas de telefonia são processos de indenização por Dano Moral, com `r telecomunicaoes$p[3]` dos litígios.
 
@@ -1380,7 +1380,7 @@ maiores_bancos <- d_tjdft_2 %>%
          p = scales::percent(p))
 ```
 
-Com relação às causas de pedir, a maior parte dos processos contra instituições financeiras trata de indenizações por danos morais, com `r assuntos_bancos$p[1]` dos processos.  Essa é uma classificação geral e, segundo a TPU, ela admite duas ramificações: "Inclusão Indevida em Cadastro de Inadimplentes" e "Protesto Indevido de Título". É razoável observar que o erro de classificação pode ou não considerar a hierarquia da Tabela para ocorrer, mas também é razoável imaginar que muitos processos por danos morais contra uma instituição bancária estejam relacionados a cadastros indevidos em bases de inadimplentes.
+Com relação às causas de pedir, a maior parte dos processos contra instituições financeiras trata de indenizações por danos morais, com `r assuntos_bancos$p[1]` dos processos.  Essa é uma classificação geral e, segundo a TPU, ela admite duas ramificações: "Inclusão Indevida em Cadastro de Inadimplentes" e "Protesto Indevido de Título". É razoável observar que o erro de classificação pode ou não considerar a hierarquia da Tabela, mas também é razoável imaginar que muitos processos por danos morais contra uma instituição bancária estejam relacionados a cadastros indevidos em bases de inadimplentes.
 
 De fato, os processo referentes a inclusões indevidas no cadastro de inadimplentes aparecem como a terceira causa mais frequente dos processos contra instituições bancárias, com `r assuntos_bancos$p[3]` dos processos. Essa classificação é precedida pela classificação geral "Bancários", com `r assuntos_bancos$p[2]` dos casos. Segundo a Tabela Processual Unificada, esse vértice deriva três outros assuntos possíveis "Empréstimo Consignado","Expurgos Inflacionários ou Planos Econômicos" e "Tarifas", mas o erro de classificação pode ou não considerar essa estrutura.
 
@@ -2008,8 +2008,6 @@ p_mulher_maior_que_homem <- d %>%
 ```
 
 As informações sobre os usuários que são disponibilizadas publicamente pela Senacon são a faixa etária e o sexo e verificam-se padrões nesses dados. Sobre o sexo pode-se afirmar que o número de mulheres reclamantes é `r "18,5%"` maior do que o de homens. Já sobre as idades, verifica-se que a faixa com mais reclamantes corresponde às idades de 21 a 40 anos, sendo essa observação independente do sexo. Para pessoas com idade superior a 40 anos, a proporção de reclamantes cai conforme a idade avança.
-
-Sobre o sexo, observou-se que o número de mulheres reclamantes é `r p_mulher_maior_que_homem` maior do que o de homens. Essa diferença expressiva sugere que  
 
 Com relação às idades, verifica-se que a faixa com mais reclamantes corresponde às idades de 21 a 40 anos, e essa observação vale para os dois sexos. Para pessoas com idade superior a 40 anos, a proporção de reclamantes cai conforme a idade avança.
 
