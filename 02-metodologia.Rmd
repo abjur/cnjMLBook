@@ -41,7 +41,7 @@ A pesquisa também buscou atender o *princípio da reprodutibilidade* [@gelman20
 
 A metodologia do estudo considerou um desenho misto (@hanson2005mixed, p. 116). Especificamente, utilizamos a técnica de métodos convergentes em paralelo (*convergent parallel methods design*). Nessa abordagem, coletamos e analisamos dados qualitativos e quantitativos em paralelo, confrontando os resultados para gerar interpretações e conclusões. A Figura \@ref(fig:desenho) mostra esquematicamente o desenho utilizado.
 
-<!-- ```{r desenho, fig.cap="Método misto em paralelo convergente (adaptado de [@creswell2013research], p. 270)."} -->
+<!-- ```{r desenho, fig.cap="Método misto em paralelo convergente. Adaptado de [@creswell2013research], p. 270."} -->
 <!-- knitr::include_graphics('imgs/creswell.png') -->
 <!-- ``` -->
 
@@ -91,7 +91,7 @@ As ações estratégicas focaram nos maiores litigantes em casos consumeristas p
 
 ### Resumo da situação atual {#resumo-da-situacao-atual}
 
-Começamos o estudo com um levantamento baseado no Relatório Justiça em Números 2016 (RJN), que utiliza dados enviados pelos tribunais referentes ao ano de 2015. A presente análise tem como objetivo dar uma visão geral do que estamos enfrentando e quais são os passos.
+Começamos o estudo com um levantamento baseado no Relatório Justiça em Números 2015 (RJN), que utiliza dados enviados pelos tribunais referentes ao ano de 2015. A presente análise tem como objetivo dar uma visão geral do que estamos enfrentando e quais são os passos.
 
 O estudo preliminar considerou somente as métricas de litigiosidade do RJN: os casos novos, os casos pendentes e a quantidade de processos baixados. Os casos pendentes refletem a situação atual do judiciário; os casos novos relacionam-se com a demanda futura e os processos baixados referem-se à eficácia.
 
@@ -448,7 +448,7 @@ O fluxo para leitura, limpeza e arrumação dos dados brutos foi descrito na Fig
 
 Em seguida, descrevemos as atividades realizadas para extração dos dados em cada tribunal.
 
-#### Contatos com os tribunais}{#contatos-tribunais}
+#### Contatos com os tribunais {#contatos-tribunais}
 
 O procedimento de realização de contatos com tribunais para extrair processos judiciais é usualmente burocrático. A vantagem de burocratizar extrações de dados é a prevenção de pedidos incoerentes, redução de custos e o atendimento de demandas coerentes de forma correta e completa. A desvantagem é que muitas vezes a extração pode demorar muito e tornar algumas pesquisas inviáveis.
 
@@ -528,7 +528,7 @@ Sugerimos que o critério *estatístico* seja investigado em detalhe para i) rep
 
 [^whitelist]: Acessível pelo link: https://github.com/abjur/whitelistTJSP.
 
-#### Assuntos - cifra oculta}{#assuntos2}
+#### Assuntos - cifra oculta{#assuntos2}
 
 Atualmente, a forma mais direta de identificar tipos de processos judiciais é utilizando os chamados *assuntos processuais*. Os assuntos relacionam-se com as matérias discutidas em cada caso. Por exemplo, um caso cível de indenização por dano moral poderia ter um assunto "Indenização por dano moral", enquanto um processo falimentar de uma empresa em Recuperação Judicial poderia ser classificado como "Convolação de Recuperação Judicial em Falência".
 
@@ -933,7 +933,7 @@ Após as reuniões, decidimos que os eixos de investigação mais importantes s�
 
 Notamos que pode existir um distanciamento de opiniões entre as empresas e o tribunal. Para as empresas entrevistadas, o consumidor é parte do problema de um fenômeno de hiperlitigiosidade, entrando com ações em excesso por conta de incentivos de advogados oportunistas, de leis ou da atuação do judiciário. Para os juízes entrevistados, o volume de ações é baixo frente ao volume de conflitos gerados pelas empresas.
 
-Apesar dessa discordância, foi possível identificar alguns consensos. Nas conversas, todos afirmaram que que aumentar o incentivo à conciliação dentro do processo não surtiria efeitos positivos. Também mencionaram que a melhor solução para o problema seria aprimorar os meios de composição extrajudicial e alinhar incentivos para que os processos não cheguem ao judiciário.
+Apesar dessa discordância, foi possível identificar alguns consensos. Nas conversas, todos afirmaram que aumentar o incentivo à conciliação dentro do processo não surtiria efeitos positivos. Também mencionaram que a melhor solução para o problema seria aprimorar os meios de composição extrajudicial e alinhar incentivos para que os processos não cheguem ao judiciário.
 
 Os eixos de investigação foram montados para dividir as conclusões de pesquisa em subtópicos diretamente relacionados à elaboração de alguma política pública.
 

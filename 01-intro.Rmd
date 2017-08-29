@@ -73,9 +73,9 @@ Com o intuito de sistematizar o nosso estudo e deixá-lo mais próximo da elabor
     1. É possível tornar o trabalho de uma vara mais eficiente utilizando alguma estratégia de ordenação da sua fila de processos?
 
 1. O que pode diminuir o número de processos consumeristas que entram no judiciário?
-    1. O brasileiro costuma buscar meios alternativos para a solução de conflitos antes de entrar com ações judiciais? Estes meios são efetivos?
-    1. Existem fatores que incentivam o cometimento de ilícitos por parte das empresas? (Vantagem monetária no cometimento de ilícitos, falta de regulamentação etc.)
-    1. Existem fatores que incentivam a litigância excessiva dos consumidores? (indústria do Dano Moral, gratuidade judiciária etc.)
+    1. O brasileiro costuma buscar meios alternativos para a solução de conflitos antes de entrar com ações judiciais? Tais meios são efetivos?
+    1. Existem fatores que incentivam o cometimento de ilícitos por parte das empresas? (Vantagem monetária, falta de regulamentação etc.)
+    1. Existem fatores que incentivam a litigância excessiva dos consumidores? (indústria do dano moral, gratuidade judiciária etc.)
 
 Cada questão norteadora descrita acima deu origem a um eixo de investigação, subtópicos do tema principal da pesquisa relacionados à tramitação dos processos dos maiores litigantes da justiça consumerista. Os eixos de investigação foram discutidos em detalhe no capítulo [metodologia][Metodologia] e nos Apêndices.
 
@@ -89,4 +89,4 @@ Os resultados esperados dessa pesquisa foram:
 
 ## Organização do trabalho
 
-O produto final da pesquisa está organizado em três capítulos, além dessa introdução. O capítulo [metodologia][metodologia] descreve a metodologia empregada na pesquisa. O capítulo [resultados][resultados] mostra os principais resultados. O capítulo [sugestoes-para-aprimoramento-do-sistema][sugestoes-para-aprimoramento-do-sistema] lista conclusões gerais da pesquisa e sugestões para o aprimoramento do sistema.
+O produto final da pesquisa está organizado em três capítulos, além dessa introdução. O capítulo [metodologia][Metodologia] descreve a metodologia empregada na pesquisa. O capítulo [resultados][Resultados] mostra os principais resultados. O capítulo [sugestoes-para-aprimoramento-do-sistema][Sugestões para aprimoramento do sistema] lista sugestões para o aprimoramento do sistema.

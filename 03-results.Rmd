@@ -725,7 +725,7 @@ maiores_setores_tjrj %>%
 <!--          p = scales::percent(p), -->
 <!--          p_acum = scales::percent(p_acum)) %>%  -->
 <!--   head(10) %>%  -->
-<!--   knit_print(caption = "10 causas de pedir consumeristas mais frequentes no estado do Rio de Janeiro.") -->
+<!--   knit_print(caption = "8 causas de pedir consumeristas mais frequentes no estado do Rio de Janeiro.") -->
 <!-- ``` -->
 
 Nesta seção estudamos as causas de pedir mais frequentes com aos maiores litigantes separando-os de acordo com a área em que atuam.
@@ -757,7 +757,7 @@ No TJRJ, 3 assuntos da TPU contemplam `r assuntos_bancos$p_acum[3]` do total de 
 ```{r}
 assuntos_bancos %>%
   head(10) %>%
-  knitr::knit_print(caption = "10 causas de pedir consumeristas mais frequentes conta instituições financeiras no estado do Rio de Janeiro. Fonte: Selo Justiça em Números.")
+  knitr::knit_print(caption = "9 causas de pedir consumeristas mais frequentes conta instituições financeiras no estado do Rio de Janeiro. Fonte: Selo Justiça em Números.")
 ```
 
 O assunto mais frequente, com `r assuntos_bancos$p[1]` dos processos, diz respeito à indenizações por danos morais. Em seguida, tem-se a classificação genérica "Responsabilidade do Fornecedor", com `r assuntos_bancos$p[2]` dos processos, que é uma classificação genérica que pode particularizar-se em  "Indenização por Dano Moral".
@@ -1239,7 +1239,7 @@ maiores_seguros <- d_tjmt_2 %>%
          p = scales::percent(p))
 ```
 
-Os processos contra empresas de seguros são polarizados, as duas maiores demandadas são a Porto Seguro e a seguradora Líder, com 48,7% e 30,8% dos litígios, respectivamente. Desconsiderando essas instituições, observa-se uma pulverização dos processos detre as demais seguradoras.
+Os processos contra empresas de seguros são polarizados, as duas maiores demandadas são a Porto Seguro e a seguradora Líder, com 48,7% e 30,8% dos litígios, respectivamente. Desconsiderando essas instituições, observa-se uma pulverização dos processos dentre as demais seguradoras.
 
 ```{r}
 maiores_seguros %>%
@@ -1386,7 +1386,7 @@ De fato, os processo referentes a inclusões indevidas no cadastro de inadimplen
 
 A quarta causa de pedir mais comum contra instituições bancárias envolve Indenizações por Danos Materiais, com `r assuntos_bancos$p[4]` dos litígios. Com aproximadamente a mesma proporção do total de processos, segue a classificação "Cartão de Crédito, com `r assuntos_bancos$p[5]`. Essa é uma das classificações ambíguas da TPU e que aparece duas vezes, uma no Direito do Consumidor e outra no Direito Civil. Em ambos os casos os dispositivos legais às classificações processuais incluem o Código de Defesa do Consumidor.
 
-A sexta causa mais frequente dos processos contra instituições bancárias é a classificação "Abatimento proporcional do preço", com `r assuntos_bancos$p[6]` dos casos. Essa posição do ranking delimita uma mudança na distribuição dos processos: a partir deste assunto, as próximas causas de pedir não passam de de 3%.
+A sexta causa mais frequente dos processos contra instituições bancárias é a classificação "Abatimento proporcional do preço", com `r assuntos_bancos$p[6]` dos casos. Essa posição do ranking delimita uma mudança na distribuição dos processos: a partir deste assunto, as próximas causas de pedir não passam de 3%.
 
 As próximas 4 causas mais frequentes discutem eventuais ilícitos relativos aos serviços prestados pelas instituições financeiras: empréstimos consignados, consórcios, contratos e seguros.
 
@@ -1605,11 +1605,11 @@ maiores_litigantes_seguros %>%
   knitr::knit_print(caption = "5 companhias de seguros com maior quantidade de processos consumeristas no estado da Bahia. Fonte: Elaboração própria.")
 ```
 
-Seguindo essa concentração, aproximadamente 90% dos processos contra companhias de seguros tem assunto processual "Seguro". Todos os demais assuntos concentram abarcam no máximo 5,4% dos processos, sendo esse máximo atingido pelos processos com assunto "Planos de Saúde".
+Seguindo essa concentração, aproximadamente 90% dos processos contra companhias de seguros tem assunto processual "Seguro". Todos os demais assuntos concentram no máximo 5,4% dos processos, sendo esse máximo atingido pelos processos com assunto "Planos de Saúde".
 
 ```{r}
 assuntos_seguros %>%
-  knitr::knit_print(caption = "5 causas de pedir consumeristas mais comuns no estado da Bahia. Fonte: Elaboração própria.")
+  knitr::knit_print(caption = "12 causas de pedir consumeristas mais comuns no estado da Bahia. Fonte: Elaboração própria.")
 ```
 
 #### Companhias de telecomunicação
@@ -1637,10 +1637,10 @@ As 4 maiores empresas de telefonia brasileiras concentram mais do que 90% dos pr
 ```{r}
 maiores_litigantes_telecom %>%
   head(4) %>%
-  knitr::knit_print(caption = "4 maiores litigantes do seor das telecomunicações do estado da Bahia. Fonte: Elaboração própria.")
+  knitr::knit_print(caption = "4 maiores litigantes do setor das telecomunicações do estado da Bahia. Fonte: Elaboração própria.")
 ```
 
-As três primeiras causas de pedir, com `r telecomunicacoes$p_acum[3]` do total dos processos, estão mais próximas do identificado nos outro tribunais. Ao contrário do que observou-se nas instituições bancarias deste estado, as matérias mais frequentes versam sobre inclusões indevidas em cadastro de inadimplentes e indenizações por danos morais ou materiais.
+As três primeiras causas de pedir, com `r telecomunicacoes$p_acum[3]` do total dos processos, estão mais próximas do identificado nos outros tribunais. Ao contrário do que observou-se nas instituições bancarias deste estado, as matérias mais frequentes versam sobre inclusões indevidas em cadastro de inadimplentes e indenizações por danos morais ou materiais.
 
 ## TJAM
 
@@ -2098,7 +2098,7 @@ Similar ao realizado nas subseções anteriores, primeiro investigamos os padrõ
 ```
 ![Proporção de casos resolvidos, dentre os avaliados pelo usuários, separados por unidade da federação. Fonte: SENACON.](imgs/senacon_p_uf.pdf)
 
-A proporção de casos resolvidos varia mais de acordo com a empresa demandada do que em função da unidade da federação. Comparando as taxas de resolução das reclamações por empresa, percebe-se, por exemplo, que as empresas de telecomunicações têm uma vantagem significativa sobre as instituições financeiras: a proporção de reclamações resolvidas por empresas de telecomunicação fica entre 70% e 80%, enquanto a mesma taxa para instituições financeiras fica em torno de 50%. As empresas com menor taxa de conversão são as concessionárias de serviços básicos, que conseguem apenas 25% satisfação na avaliação dos usuários.
+A proporção de casos resolvidos varia mais de acordo com a empresa demandada do que em função da unidade da federação. Comparando as taxas de resolução das reclamações por empresa, percebe-se, por exemplo, que as empresas de telecomunicações têm uma vantagem significativa sobre as instituições financeiras: a proporção de reclamações resolvidas por empresas de telecomunicação fica entre 70% e 80%, enquanto a mesma taxa para instituições financeiras fica em torno de 50%. As empresas com menor taxa de conversão são as concessionárias de serviços básicos, que conseguem apenas 25% de satisfação na avaliação dos usuários.
 
 ```{r, fig.cap = "Distribuição da proporção de casos resolvidos, separados por setor econômico. Fonte: SENACON.", fig.height=5}
 d %>% 
@@ -2178,7 +2178,7 @@ As premissas são:
 1. Construímos a cota superior para o percentual de consumidores que consultam o consumidor.gov atualmente assumindo que todos os casos do consumidor.gov se tornaram processos, independente se o usuário declarou-se satisfeito. 
 2. Se todos os litigantes tentassem a composição extrajudicial antes de litigar, a taxa de satisfação seria a mesma e, nos casos em que o litigante estivesse satisfeito, os litígios seriam evitados.
 
-Tomando como exemplo os processo contra a Oi, tem-se que no máximo 18% dos demandantes procuraram a SENACON para tentar composições extrajudiciais, ao passo que 60% dos reclamantes do site declaram-se satisfeitos. Pensando nisso, pode-se argumentar que, se num cenário hipotético todos os litigantes passassem a procurar vias de composição extrajudicial antes de entrar com os litígios, então os volume processual consumerista sobre a Oi diminuiria em 82% $\times$ 60% = 49,2%, assumindo que as taxas de conversão se mantivessem.
+Tomando como exemplo os processos contra a empresa Oi, tem-se que no máximo 18% dos demandantes procuraram a SENACON para tentar composições extrajudiciais, ao passo que 60% dos reclamantes do site declaram-se satisfeitos. Pensando nisso, pode-se argumentar que, se num cenário hipotético todos os litigantes passassem a procurar vias de composição extrajudicial antes de entrar com os litígios, então o volume processual consumerista sobre a Oi diminuiria em 82% $\times$ 60% = 49,2%, assumindo que as taxas de conversão se mantivessem.
 
 Aplicando o mesmo raciocínio aos dados da tabela \@ref{contrafactual_senacon}, obtém-se os resultados da tabela \@ref{resultados_finais}. O raciocínio para estimar cada ganho foi o mesmo utilizado no exemplo da Oi, mas aqui ainda consideramos três cenários
 
