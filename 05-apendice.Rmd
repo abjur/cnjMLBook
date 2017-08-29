@@ -29,7 +29,7 @@ Os seguintes eixos de investigação foram deixados de lado no decorrer da pesqu
 
 Outra importante ferramenta instituída pelo novo CPC para redução dos
 processos em trâmite no Poder Judiciário é o Incidente de Resolução de
-Demandas Repetitivas (IRDR), cujo procedimento é regulado pelos artigo
+Demandas Repetitivas (IRDR), cujo procedimento é regulado pelo artigo
 976 e seguintes do novo diploma processual.
 
 O IRDR é cabível quando houver, simultaneamente, duas condições: i)
@@ -83,7 +83,7 @@ definidas e um modelo de simulação.
 O IRDR era um tema potencialmente interessante no início da pesquisa.
 Estudar sua aplicação é uma forma de avaliar os impactos do novo CPC no
 direito do consumidor. Soluções envolvendo o IRDR também poderiam ajudar
-a decidir processos em bloco sem reduzir a segurança jurídica, o aumenta
+a decidir processos em bloco sem reduzir a segurança jurídica, aumentando
 significativamente a eficiência dos tribunais.
 
 Infelizmente, em todas as entrevistas o tema ficou em segundo plano. É
@@ -161,7 +161,7 @@ mensuração de complexidade.
 
 A ideia de otimizar filas de trabalho já nasceu problemática. O tema
 surgiu de dentro do Laboratório de Jurimetria e baseia-se na suposição
-de que o a ordenação de tarefas dentro de uma vara é ineficiente. Um
+de que a ordenação de tarefas dentro de uma vara é ineficiente. Um
 algoritmo de otimização poderia ser usado para agrupar processos
 similares ou tarefas repetidas dentro de processos distintos, eliminando
 retrabalho da vara.
@@ -176,13 +176,9 @@ poderiam exigir treinamento.
 ### Incentivos para litigar
 
 Segundo @CNJ2015, os processos mais recorrentes do direito do
-consumidor são os processos que envolvem danos morais, sendo este um
+consumidor são os que envolvem danos morais, sendo este um
 assunto processual que tem a intuição de estar associado a uma
-"indústria". Por um lado, isso poderia ser explicado pela existência
-de juízes "justiceiros", que arbitram valores de indenização altos o
-suficiente para convencer pessoas a litigar. Em outras ocasiões, é
-possível ajuizar litígios que desfavorecem a requerida em prol da
-requerente, além do simples intuito de indenizar um dano sofrido.
+"indústria". Esse fato poderia ser explicado por conta de juízes que arbitram valores de indenização altos o suficiente, instigando pessoas a litigar. Em outras ocasiões, é possível ajuizar litígios que desfavorecem a requerida em prol da requerente, além do simples intuito de indenizar um dano sofrido.
 
 Esse é argumento particularmente plausível no caso dos JECs, por conta
 da inexistência das custas processuais e sucumbência [@Athos2015].
@@ -205,7 +201,7 @@ testemunha pelo dia não trabalhado; v) despesas com realizações de
 exames de DNA e outros considerados essenciais; vi) honorários de
 advogados, peritos, remuneração do intérprete ou tradutor; vii) custas
 para elaboração de memórias de cálculo, quando exigidas; viii) depósitos
-para interposição de recursos, propositura de ação e pratica de outros
+para interposição de recursos, propositura de ação e prática de outros
 atos inerentes ao exercício do contraditório e da ampla defesa; ix)
 emolumentos devidos a notários ou registradores necessários para
 efetivação de decisão judicial ou regular processamento da demanda
@@ -350,7 +346,7 @@ possivelmente em pesquisas futuras.
 
 As duas maiores inovações do novo CPC são i) a ênfase atribuída ao dever
 de cooperação entre as partes e ii) as aberturas para atuação dos
-chamados meios alternativos de solução litígios.
+chamados meios alternativos de solução de litígios.
 
 Dentro do âmbito desta última, encontram-se as estratégias de
 conciliação e mediação. Dois pontos são relevantes para compreender como
@@ -468,7 +464,7 @@ criar mais formas de incentivar o acordo não têm resultado prático.
 
 No final, acabamos não utilizando dados para realizar análises sobre conciliação. Essa parte da pesquisa foi transferida para pesquisas futuras, especialmente nas pesquisas locais.
 
-A única proposta levantada sobre esse eixo foi a realização de experimentos controlados com a utilização da semana de conciliação. A condução de estudos desse tipo trará maior conhecimento sobre o que explica o fenômeno do acordo e quais os meios fazê-lo acontecer com maior frequência.
+A única proposta levantada sobre esse eixo foi a realização de experimentos controlados com a utilização da semana de conciliação. A condução de estudos desse tipo trará maior conhecimento sobre o que explica o fenômeno do acordo e quais os meios de fazê-lo acontecer com maior frequência.
 
 ## Questionário
 
@@ -547,7 +543,7 @@ João Braz e teve como principais resultados as anotações abaixo.
 A segunda reunião contou com a presença de Armando Rovai, presidente da SENACON.
 
 1. O superendividamento é um problema corrente nos canais do portal
-  Consumidor.gov. É possível afirmar que o consumidor pode não é o único
+  Consumidor.gov. É possível afirmar que o consumidor não é o único
   responsável pelo endividamento, uma vez que este pode ser mitigado por
   bancos e fornecedores de cartões de crédito que possuam informações
   aprofundadas do consumidor.
@@ -561,7 +557,7 @@ A segunda reunião contou com a presença de Armando Rovai, presidente da SENACO
   entidade. A metodologia usada para mensuração desses impactos poderiam
   ser extrapoladas para outras entidades.
 
-A terceira grupo focal contou com a presença de Maria Rita Rebello e Ana
+O terceiro grupo focal contou com a presença de Maria Rita Rebello e Ana
 Rita Nery, ambas juízas assessoras da corregedoria.
 
 1. Sobre ações coletivas
@@ -606,7 +602,7 @@ Rita Nery, ambas juízas assessoras da corregedoria.
 1. Sobre incentivos das empresas para cometerem ilícitos
   - É o grande gargalo na questão dos incentivos para litigar.
   - Uma possível solução é a implementação de \emph{punitive damages}.
-  - As sanções e multas de agências reguladoras podem funcinar como
+  - As sanções e multas de agências reguladoras podem funcionar como
     substitutas para \emph{punitive damages}, mas as agências não têm
     interesse em aplicá-las.
   - O ideal seria vincular uma estratégia de sanções ao Procon.
@@ -662,7 +658,7 @@ A quarta reunião contou com a presença da diretoria de contencioso cível do I
     direito do consumidor (por habitante).
   - Proposta de criação de regra de conduta para juízes: se uma pessoa
     entra com processo sem ter procurado mecanismos como SAC,
-    consumidor.gov e reclame aqui, o juíz não dá indenização por dano
+    Consumidor.gov e reclame aqui, o juíz não dá indenização por dano
     moral. Isso incentiva o consumidor a passar por todos os passos ao
     invés de ir direto ao judiciário.
 
@@ -674,9 +670,9 @@ do Grupo Pão de Açúcar.
     JECs.
 1. Sobre conciliação
   - A conciliação faz sentido e precisa ser incentivada.
-  - A taxa de aceite a proposta de acordos é maior nos JECs.
+  - A taxa de aceite à proposta de acordos é maior nos JECs.
 1. Sobre incentivos para litigar
-  - Problemas de vicio de produto e entrega (logística) são as
+  - Problemas de vício de produto e entrega (logística) são as
     principais causas de pedir.
   - Juízes que incentivam ações judiciais através da aplicação de
     valores altos de indenização.
