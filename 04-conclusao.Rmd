@@ -52,7 +52,7 @@ todos_maiores_nn %>%
                     align = 'llrrrr')
 ```
 
-A Figura \@ref(fig:acu) mostra a proporção acumulada de processos dos 30 maiores litigantes relativa à totalidade de processos consumeristas. O gráfico verifica a hipótese inicial da pesquisa de que os trinta maiores litigantes concentram pelo menos 50% dos processos. De fato, quatro dos sete tribunais analisados apresentam proporções acumuladas maiores que 70%, e cinco tribunais concentram aproximadamente 50% dos processos apenas com os 10 maiores litigantes. O tribunal com menor concentração dos maiores litigantes é o 
+A Figura \@ref(fig:acu) mostra a proporção acumulada de processos dos 30 maiores litigantes relativa à totalidade de processos consumeristas. O gráfico verifica a hipótese inicial da pesquisa de que os trinta maiores litigantes concentram pelo menos 50% dos processos. De fato, quatro dos sete tribunais analisados apresentam proporções acumuladas maiores que 70%, e cinco tribunais concentram aproximadamente 50% dos processos apenas com os 10 maiores litigantes. O tribunal com menor concentração dos maiores litigantes é o Tribunal de Justiça do Distrito Federal e dos Territórios (TJDFT), que permanece sua proporção abaixo dos demais tribunais para todas as quantidades de empresas pontuadas.
 
 ```{r fig:acu, fig.cap="Proporção acumulada de processos consumeristas dos 30 maiores litigantes em cada estado. Fonte: Elboração própria."}
 p1 <- todos_maiores_nn %>% 
@@ -114,14 +114,14 @@ As análises da base de dados do consumidor.gov.br revelaram que as reclamaçõe
 
 Nossa proposta para desafogar os tribunais e evitar novos pleitos é criar um fluxo para direcionar as demandas ao consumidor.gov.br antes de levar o problema a juízo. Seguindo esse trânsito, garantimos que houve uma tentativa de comunicação entre as partes através do consumidor.gov.br, sem gerar demandas adicionais ao judiciário e ao consumidor.
 
-A Figura \@ref(fig:senacon) mostra o fluxo simplificado de como funciona a solução. Dado um conflito, o consumidor pode, entre outras alternativas, entrar com uma reclamação no consumidor.gov.br ou iniciar uma petição inicial eletrônica. No formulário de cadastro da petição inicial, será adicionado um campo para inserir o código identificador de reclamações prévias do mesmo tema no consumidor.gov.br. Se o autor da ação deixar esse campo em branco, uma reclamação é gerada paralelamente a fim de viabilizar uma tentativa de conciliação extrajudicial. Se o conflito for resolvido pelo consumidor.gov.br, o processo é encerrado. Em caso de o conflito não ser resolvido em um prazo fixo, a o procedimento no consumidor.gov.br é encerrado e o processo judicial corre normalmente.
+A Figura \@ref(fig:senacon) mostra o fluxo simplificado de como funciona a solução. Dado um conflito, o consumidor pode, entre outras alternativas, entrar com uma reclamação no consumidor.gov.br ou iniciar uma petição inicial eletrônica. No formulário de cadastro da petição inicial, será adicionado um campo para inserir o código identificador de reclamações prévias do mesmo tema no consumidor.gov.br. Se o autor da ação deixar esse campo em branco, uma reclamação é gerada paralelamente a fim de viabilizar uma tentativa de conciliação extrajudicial. Se o conflito for resolvido pelo consumidor.gov.br, o processo é encerrado. Em caso de o conflito não ser resolvido em um prazo fixo, o procedimento no consumidor.gov.br é encerrado e o processo judicial corre normalmente.
 
 ![Fluxo de integração genérico.](imgs/senacon2.png){#senacon}
 
 Essa solução possui as seguintes vantagens:
 
 1. Obriga a empresa a atender o reclamante rapidamente.
-1. Provavelmente não atrasa andamento o processo, visto que i) os procedimentos correm em paralelo, ii) o prazo de atendimento no consumidor.gov.br é curto e iii) os diálogos realizados através da plataforma auxiliam na tomada de decisão no processo judicial.
+1. Provavelmente não atrasa o andamento do processo, visto que i) os procedimentos correm em paralelo, ii) o prazo de atendimento no consumidor.gov.br é curto e iii) os diálogos realizados através da plataforma auxiliam na tomada de decisão no processo judicial.
 1. Evita a entrada de ações desnecessárias, ou seja, que podem ser resolvidas extrajudicialmente.
 1. Desincentiva a entrada de litigantes e advogados oportunistas, uma vez que o consumidor.gov.br terá registro das discussões travadas entre reclamante e empresa.
 1. Auxilia na documentação das reclamações, em razão do consumidor.gov.br possuir modelos de dados mais adequados para registrar informações sobre as queixas do que os sistemas dos tribunais.
@@ -155,7 +155,7 @@ A sugestão para o CNJ sobre esse tema é entrar em contato com a equipe respons
 
 Compreender o perfil das demandas é indispensável para a gestão eficiente dos Tribunais. Uma forma natural de identificar esses perfis é classificando os casos em tipos, que são grupos de processos com características comuns.
 
-Atualmente, a forma mais direta de identificar tipos de processos judiciais é utilizando os chamados *assuntos processuais*. Os assuntos relacionam-se com as matérias discutidas em cada caso. Por exemplo, um caso cível de indenização por dano moral poderia ter um assunto "Indenização por dano moral", enquanto um processo falimentar de uma empresa em Recuperação Judicial poderia ser classificado como "Convolação de Recuperação Judicial em Falência".
+Atualmente, a forma mais direta de identificar tipos de processos judiciais é utilizando os chamados *assuntos processuais*. Os assuntos relacionam-se com as matérias discutidas em cada caso. Por exemplo, um caso cível de indenização por dano moral poderia ter um assunto "Indenização por dano moral", enquanto um processo falimentar de uma empresa em Recuperação Judicial poderia ser classificado como "Convocação de Recuperação Judicial em Falência".
 
 Nesse contexto, um importante passo foi dado com a Resolução 46/2007 do CNJ[^cnjtpu2], que criou as TPUs. As TPUs são uma documentação oficial de todas as classes, assuntos e movimentações dos processos. As TPUs foram implantadas em todas as Justiças, o que facilita a realização de análises que comparam diferentes tribunais.
 
@@ -246,11 +246,11 @@ Contudo, são raros os profissionais que dominam esse conhecimento. A ABJ dispon
 
 Há muitos exemplos em que simplesmente não é possível obter as informações que necessitamos. Em muitos casos a única forma de acessar os dados é a partir da Lei de Acesso à Informação. Apesar da LAI ser um grande avanço, utilizá-la para todas as demandas é ineficiente pois congestiona os setores administrativos e técnicos dos Tribunais.
 
-A solução mais eficaz para o problema de acesso aos dados envolve modificar os sites dos Tribunais, permitindo extrações de dados e disponibilizar APIs que permitam o pesquisadores de buscar as informações públicas de maneira segura e organizada.
+A solução mais eficaz para o problema de acesso aos dados envolve modificar os sites dos Tribunais, permitindo extrações de dados e disponibilizar APIs que permitam os pesquisadores de buscar as informações públicas de maneira segura e organizada.
 
 Essas ferramentas são simples de construir para entidades como os Tribunais, que geralmente têm equipes de Tecnologia da Informação de altíssima qualidade. A solução não causaria impactos negativos nos sistemas; pelo contrário: ao permitir que os dados sejam baixados de forma programática, é possível controlar o volume de dados transferido por unidade de tempo, evitando que os servidores fiquem sobrecarregados.
 
-A ABJ tem atuado em campanhas de abertura de dados do judiciário, construindo ferramentas, organizando eventos, ministrando cursos e fazendo contatos políticos. A Associação se coloca disponível auxiliar na definição de modelos de dados e formas de utilização das APIs. Acreditamos que num futuro próximo o Brasil será referência mundial na abertura de dados do Judiciário.
+A ABJ tem atuado em campanhas de abertura de dados do judiciário, construindo ferramentas, organizando eventos, ministrando cursos e fazendo contatos políticos. A Associação se coloca disponível para auxiliar na definição de modelos de dados e formas de utilização das APIs. Acreditamos que num futuro próximo o Brasil será referência mundial na abertura de dados do Judiciário.
 
 ## Sugestões de novas pesquisas {#sugestoes-de-novas-pesquisas}
 
@@ -268,7 +268,15 @@ Reduzir a cobertura nacional da pesquisa, e aumentar a quantidade de observaçõ
 
 ## Pesquisas envolvendo gratuidade judiciária {#pesquisas-envolvendo-gratuidade-judiciaria}
 
-Como observamos na presente pesquisa, um dos processos mais recorrentes do direito do consumidor são os casos que envolvem danos morais. Esse assunto processual tem a intuição de estar associado a uma indústria. Isso poderia ser explicado pela suposição de que existem magistrados com tendência a favorecer o autor da ação, arbitrando valores de indenização altos a ponto de incentivar as pessoas a litigar.
+Como observamos na presente pesquisa, um dos processos mais recorrentes
+do direito do consumidor são os casos que envolvem danos morais, um
+assunto processual que tem a intuição de estar associado a uma
+indústria. Por um lado, isso poderia ser explicado pela existência 
+de magistrados com tendência a favorecer o autor da ação, ou seja, 
+que arbitram valores de indenização altos o suficiente para convencer 
+pessoas a litigar. Em outras ocasiões, é possível ajuizar litígios 
+que desfavorecem a requerida em prol da requerente, além do simples 
+intuito de indenizar um dano sofrido.
 
 Um tópico relevante nesse contexto é a gratuidade judiciária, que tem fundamento no princípio constitucional da inafastabilidade do poder judiciário (CF, art. 5º, XXXV). A gratuidade também se encontra guarida na oferta constitucional de assistência judiciária integral e gratuita àqueles que comprovarem insuficiência de recursos (CF, art. 5º, LXXIV).
 

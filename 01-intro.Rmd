@@ -44,9 +44,9 @@ Uma forma mais abstrata de investigar o tema envolve modificações na lei que v
 
 De perspectiva diferente, também pode-se estudar empresas como agentes maximizadores de lucro. Sob essa ótica, uma empresa escolheria desrespeitar a lei, quando essa escolha traz maiores prospectos de lucro. Esse tipo de análise traz à tona quais normas poderiam ser criadas pelo Estado ou agências reguladoras de tal forma a tornar a solução economicamente vantajosa para as empresas sem desrespeitar os direitos do consumidor.
 
-Os estudos evidenciam a existência de dois grandes focos de investigação. No primeiro, propomos mudanças administrativas e legislativas para redução eficaz do estoque atual de processos. Já no segundo, procuramos realizar ações preventivas e modificar incentivos para litigar, buscando reduzir o volume de casos novos.
+Os estudos evidenciaram a existência de dois grandes focos de investigação. No primeiro, propomos mudanças administrativas e legislativas para redução eficaz do estoque atual de processos. Já no segundo, procuramos realizar ações preventivas e modificar incentivos para litigar, buscando reduzir o volume de casos novos.
 
-Dentro do primeiro foco, o tema mais discutido trata da composição amigável no processo através do incentivo à conciliação. O segundo tema mais desenvolvido é a litigância repetitiva, principalmente relacionando o tema com o novo CPC. Um terceiro tema que consideramos importante, mas que é pouco discutido, são propostas de modificação na fila de trabalho dos cartórios, assunto que será mais desenvolvido nas próximas Seções.
+Dentro do primeiro foco, o tema mais discutido tratou da composição amigável no processo através do incentivo à conciliação. O segundo tema mais desenvolvido foi a litigância repetitiva, principalmente relacionando o tema com o novo CPC. Um terceiro tema que consideramos importante, mas que é pouco discutido, foram as propostas de modificação na fila de trabalho dos cartórios, assunto que será mais desenvolvido nas próximas Seções.
 
 No segundo foco, as ideias são esparsas e é difícil elencar uma que se sobressai perante as demais. Podemos elencar como eixos mais importantes: i) o estudo dos incentivos para litigar, tanto do ponto de vista do consumidor quanto da empresa; ii) mecanismos de composição extrajudicial de conflitos, como mediação e ferramentas de comunicação entre as partes (Reclame Aqui e Consumidor.gov.br, entre outros); e iii) meios de agrupamento de conflitos em ações coletivas e litisconsórcios.
 
@@ -63,7 +63,7 @@ Os objetivos da presente pesquisa são:
 
 ## Hipóteses
 
-As hipóteses de pesquisa definem o conjunto mínimo de investigações a serem  realizadas para atendimento dos objetivos específicos. Nesse projeto, a principal hipótese a ser avaliada (e que será trabalhada no capítulo [metodologia][metodologia]) é a de que os trinta maiores litigantes, em âmbito global, concentram uma proporção elevada do total de ações consumeristas na Justiça Estadual. Chamamos essa parte da pesquisa de *exploratória*. A partir dela, emergem outras hipóteses e investigações.
+As hipóteses de pesquisa definem o conjunto mínimo de investigações a serem  realizadas para atendimento dos objetivos específicos. Nesse projeto, a principal hipótese avaliada (e trabalhada no capítulo [metodologia][Metodologia]) é a de que os trinta maiores litigantes, em âmbito global, concentram uma proporção elevada do total de ações consumeristas na Justiça Estadual. Chamamos essa parte da pesquisa de *exploratória*. A partir dela, emergiram outras hipóteses e investigações.
 
 Com o intuito de sistematizar o nosso estudo e deixá-lo mais próximo da elaboração de políticas públicas, também trabalhamos com hipóteses relacionadas ao que chamamos de parte *propositiva* da pesquisa:
 
@@ -73,20 +73,20 @@ Com o intuito de sistematizar o nosso estudo e deixá-lo mais próximo da elabor
     1. É possível tornar o trabalho de uma vara mais eficiente utilizando alguma estratégia de ordenação da sua fila de processos?
 
 1. O que pode diminuir o número de processos consumeristas que entram no judiciário?
-    1. O brasileiro costuma buscar meios alternativos para a solução de conflitos antes de entrar com ações judiciais? Estes meios são efetivos?
-    1. Existem fatores que incentivam o cometimento de ilícitos por parte das empresas? (Vantagem monetária no cometimento de ilícitos, falta de regulamentação etc.)
-    1. Existem fatores que incentivam a litigância excessiva dos consumidores? (indústria do Dano Moral, gratuidade judiciária etc.)
+    1. O brasileiro costuma buscar meios alternativos para a solução de conflitos antes de entrar com ações judiciais? Tais meios são efetivos?
+    1. Existem fatores que incentivam o cometimento de ilícitos por parte das empresas? (Vantagem monetária, falta de regulamentação etc.)
+    1. Existem fatores que incentivam a litigância excessiva dos consumidores? (indústria do dano moral, gratuidade judiciária etc.)
 
-Cada questão norteadora descrita acima dá origem a um eixo de investigação, subtópicos do tema principal da pesquisa relacionados à tramitação dos processos dos maiores litigantes da justiça consumerista. Os eixos de investigação foram discutidos em detalhe no capítulo [metodologia][metodologia] e nos Apêndices.
+Cada questão norteadora descrita acima deu origem a um eixo de investigação, subtópicos do tema principal da pesquisa relacionados à tramitação dos processos dos maiores litigantes da justiça consumerista. Os eixos de investigação foram discutidos em detalhe no capítulo [metodologia][Metodologia] e nos Apêndices.
 
 ## Resultados Esperados
 
-Os resultados esperados dessa pesquisa são:
+Os resultados esperados dessa pesquisa foram:
 
 1. Tabelas e gráficos envolvendo os trinta maiores litigantes na Justiça Consumerista em sete Unidades Federativas (UFs).
 1. Avanços metodológicos quantitativos, reprodutíveis e de código aberto, para tratamento de assuntos processuais e nomes de empresas.
-1. Apresentação de uma lista sugestões para aprimoramento da administração do judiciário.
+1. Apresentação de uma lista de sugestões para aprimoramento da administração do judiciário.
 
 ## Organização do trabalho
 
-O produto final da pesquisa está organizado em três capítulos, além dessa introdução. O capítulo [metodologia][metodologia] descreve a metodologia empregada na pesquisa. O capítulo [resultados][resultados] mostra os principais resultados. O capítulo [sugestoes-para-aprimoramento-do-sistema][sugestoes-para-aprimoramento-do-sistema] lista conclusões gerais da pesquisa e sugestões para o aprimoramento do sistema.
+O produto final da pesquisa está organizado em três capítulos, além dessa introdução. O capítulo [metodologia][Metodologia] descreve a metodologia empregada na pesquisa. O capítulo [resultados][Resultados] mostra os principais resultados. O capítulo [sugestoes-para-aprimoramento-do-sistema][Sugestões para aprimoramento do sistema] lista sugestões para o aprimoramento do sistema.
