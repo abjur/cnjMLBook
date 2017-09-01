@@ -116,7 +116,7 @@ Nossa proposta para desafogar os tribunais e evitar novos pleitos é criar um fl
 
 A Figura \@ref(fig:senacon) mostra o fluxo simplificado de como funciona a solução. Dado um conflito, o consumidor pode, entre outras alternativas, entrar com uma reclamação no consumidor.gov.br ou iniciar uma petição inicial eletrônica. No formulário de cadastro da petição inicial, será adicionado um campo para inserir o código identificador de reclamações prévias do mesmo tema no consumidor.gov.br. Se o autor da ação deixar esse campo em branco, uma reclamação é gerada paralelamente a fim de viabilizar uma tentativa de conciliação extrajudicial. Se o conflito for resolvido pelo consumidor.gov.br, o processo é encerrado. Em caso de o conflito não ser resolvido em um prazo fixo, o procedimento no consumidor.gov.br é encerrado e o processo judicial corre normalmente.
 
-![Fluxo de integração genérico.](imgs/senacon2.png){#senacon}
+![Fluxo de integração genérico.](imgs/senacon.png){#senacon}
 
 Essa solução possui as seguintes vantagens:
 
