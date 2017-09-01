@@ -1161,7 +1161,7 @@ assuntos_bancos %>%
   knitr::knit_print(caption = "10 causas de pedir consumeristas mais comuns contra instituições financeiras no estado do Mato Grosso. Fonte: Selo Justiça em Números.")
 ```
 
-Os processos referentes a inclusões indevidas no cadastro de inadimplentes aparecem como a terceira causa mais frequente dos processos contra instituições bancárias, representando `r assuntos_bancos$p[3]`. É razoável assumir que o assunto 'inclusões indevidas no cadastro de inadimplentes' esteja sub-representando a classificação, pois a frequência desse sugere que muitas indenizações por danos morais estejam classificadas incorretamente.
+Os processos referentes a inclusões indevidas no cadastro de inadimplentes aparecem como a terceira causa mais frequente dos processos contra instituições bancárias, representando `r assuntos_bancos$p[3]`. É razoável assumir que o assunto 'inclusões indevidas no cadastro de inadimplentes' esteja sub-representado nessa classificação, pois a frequência desse assunto sugere que muitas indenizações por danos morais estejam classificadas incorretamente.
 
 Com relação aos serviços prestados pelos bancos, o segundo assunto mais frequente é "Interpretação/ Revisão de Contrato", com `r assuntos_bancos$p[2]` dos litígios.
 
