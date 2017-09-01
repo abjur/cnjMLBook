@@ -302,7 +302,7 @@ O último grupo de padrões temporais identificados diz respeito aos processos q
 
 ### Causas de pedir
 
-Nesta seção estudamos as causas de pedir mais frequentes aos maiores litigantes separando-os de acordo com a área em que atuam.
+Nesta seção estudamos as causas de pedir mais frequentes contra os maiores litigantes, separando-os de acordo com a área em que atuam.
 
 #### Bancos e Instituições Financeiras
 
@@ -703,7 +703,7 @@ maiores_litigantes_tjrj %>%
 
 A principal particularidade do estado do Rio encontra-se na quinta posição: a Light, distribuidora de energia, concentra `r maiores_litigantes_tjrj$p[5]` dos processos consumeristas do estado, abaixo apenas das maiores instituições bancárias e empresas de telefonia. Além disso, também destaca-se o fato do grupo Via Varejo, uma empresa varejista, aparecer na lista das 10 maiores litigantes consumeristas, episódio não identificado em nenhum outro estado.
 
-Os 30 maiores litigantes acumulam aproximadamente `r maiores_litigantes_tjrj$p_acum[30]`, mas pudemos compreender melhor a origem dos demais litígios ao agruparmos os processos por setor da economia das demandadas. Analisando dessa forma, concluímos que que `r maiores_setores_tjrj$p_acum[5]` dos processos concentram-se no setores financeiro, fornecimento de energia e água, telecomunicações, seguros e varejo. As quatro primeiras classes possuem proporções acima de 5% dos processos e caracterizam um ponto de corte na distribuição de processos por empresa: abaixo dos 5%, a fatia consumida por cada instituição orbita os 1%. Nessa nova classe de processos, cujas demandadas concentram menos de 5% do total, destacam-se as empresas de varejo e seguros, com `r maiores_setores_tjrj$p[4]` e `r maiores_setores_tjrj$p[5]` do total de processos, respectivamente.
+Os 30 maiores litigantes acumulam aproximadamente `r maiores_litigantes_tjrj$p_acum[30]`, mas pudemos compreender melhor a origem dos demais litígios ao agruparmos os processos por setor da economia das demandadas. Analisando dessa forma, concluímos que `r maiores_setores_tjrj$p_acum[5]` dos processos concentram-se no setores financeiro, fornecimento de energia e água, telecomunicações, seguros e varejo. As quatro primeiras classes possuem proporções acima de 5% dos processos e caracterizam um ponto de corte na distribuição de processos por empresa: abaixo dos 5%, a fatia consumida por cada instituição orbita os 1%. Nessa nova classe de processos, cujas demandadas concentram menos de 5% do total, destacam-se as empresas de varejo e seguros, com `r maiores_setores_tjrj$p[4]` e `r maiores_setores_tjrj$p[5]` do total de processos, respectivamente.
 
 ```{r}
 maiores_setores_tjrj %>%
@@ -886,7 +886,7 @@ maiores_setores_tjsp <- d_tjsp_2 %>%
     p_acum = scales::percent(cumsum(n)/sum(n)))
 ```
 
-Os 30 maiores litigantes acumulam `r maiores_litigantes_tjsp$p_acum[30]`, mas pudemos compreender melhor a origem dos demais litígios ao agruparmos os processos por setor da economia das demandadas. Analisando dessa forma, concluímos que que `r maiores_setores_tjsp$p_acum[5]` dos processos estão concentrados nos setores financeiro, telecomunicações, seguros, planos de saúde e concessionárias de serviços básicos. As três primeiras classes possuem proporções acima de 10,0% dos processos e caracterizam um ponto de corte na distribuição de processos por empresa: a partir delas, a fatia consumida por cada instituição orbita os 1,0%. Nessa nova classe de processos, cujas demandadas concentram menos de 10,0% do total, destacam-se as concessionárias de serviços básicos, como energia, gás, água e esgoto, empresas de varejo e transporte aéreo, com 1,7%, 1,7% e 1,6% dos processos, respectivamente.
+Os 30 maiores litigantes acumulam `r maiores_litigantes_tjsp$p_acum[30]`, mas pudemos compreender melhor a origem dos demais litígios ao agruparmos os processos por setor da economia das demandadas. Analisando dessa forma, concluímos que `r maiores_setores_tjsp$p_acum[5]` dos processos estão concentrados nos setores financeiro, telecomunicações, seguros, planos de saúde e concessionárias de serviços básicos. As três primeiras classes possuem proporções acima de 10,0% dos processos e caracterizam um ponto de corte na distribuição de processos por empresa: a partir delas, a fatia consumida por cada instituição orbita os 1,0%. Nessa nova classe de processos, cujas demandadas concentram menos de 10,0% do total, destacam-se as concessionárias de serviços básicos, como energia, gás, água e esgoto, empresas de varejo e transporte aéreo, com 1,7%, 1,7% e 1,6% dos processos, respectivamente.
 
 ```{r}
 maiores_setores_tjsp %>%
@@ -952,7 +952,7 @@ d_tjsp_2 %>%
 
 ### Causas de pedir
 
-Nesta seção estudamos as causas de pedir mais frequentes dentre os maiores litigantes, separando-os de acordo com a área em que atuam.
+Nesta seção estudamos as causas de pedir mais frequentes contra os maiores litigantes, separando-os de acordo com a área em que atuam.
 
 #### Bancos e Instituições Financeiras
 
@@ -1102,7 +1102,7 @@ head(maiores_litigantes_tjmt, 30) %>%
   knitr::knit_print(caption = "30 maiores litigantes da justiça consumerista do estado do Mato Grosso. Fonte: Selo Justiça em Números.")
 ```
 
-Os 30 maiores litigantes acumulam `r maiores_litigantes_tjmt$p_acum[30]`, mas pudemos compreender melhor a origem dos demais litígios ao agruparmos os processos por setor da economia das demandadas. Analisando dessa forma, concluímos que que `r maiores_setores_tjmt$p_acum[5]` dos processos estão aglomerados nos setores financeiro, telecomunicações, seguros, concessionárias de serviços básicos e transporte aéreo. As duas primeiras classes possuem proporções acima de 20,0% dos processos e caracterizam um ponto de corte na distribuição de processos por empresa: a partir delas, a fatia consumida por cada instituição orbita os 1,0%. Nessa nova classe de processos, cujas demandadas concentram menos de 20,0% do total, se destacam as concessionárias de serviços básicos, como energia, gás, água e esgoto, transporte aéreo e seguros, com 7,7%, 1,8% e 9,2% dos processos, respectivamente.
+Os 30 maiores litigantes acumulam `r maiores_litigantes_tjmt$p_acum[30]`, mas pudemos compreender melhor a origem dos demais litígios ao agruparmos os processos por setor da economia das demandadas. Analisando dessa forma, concluímos que `r maiores_setores_tjmt$p_acum[5]` dos processos estão aglomerados nos setores financeiro, telecomunicações, seguros, concessionárias de serviços básicos e transporte aéreo. As duas primeiras classes possuem proporções acima de 20,0% dos processos e caracterizam um ponto de corte na distribuição de processos por empresa: a partir delas, a fatia consumida por cada instituição orbita os 1,0%. Nessa nova classe de processos, cujas demandadas concentram menos de 20,0% do total, se destacam as concessionárias de serviços básicos, como energia, gás, água e esgoto, transporte aéreo e seguros, com 7,7%, 1,8% e 9,2% dos processos, respectivamente.
 
 ```{r}
 maiores_setores_tjmt %>%
@@ -1127,7 +1127,7 @@ maiores_setores_tjmt %>%
 
 ### Causas de pedir
 
-Nesta seção estudamos as causas de pedir mais frequentes dos maiores litigantes do TJMT, separando-os de acordo com a área em que atuam.
+Nesta seção estudamos as causas de pedir mais frequentes contra os maiores litigantes do TJMT, separando-os de acordo com a área em que atuam.
 
 #### Bancos e Instituições Financeiras
 
@@ -1327,7 +1327,7 @@ head(maiores_litigantes_tjdft, 30) %>%
   knitr::knit_print(caption = "30 maiores litigantes da justiça consumerista do Distrito Federal. Fonte: Selo Justiça em Números.")
 ```
 
-Os 30 maiores litigantes acumulam `r maiores_litigantes_tjdft$p_acum[30]`, mas pudemos compreender melhor a origem dos demais litígios ao agruparmos os processos por setor da economia das demandadas. Analisando dessa forma, concluímos que que `r maiores_setores_tjdft$p_acum[5]` dos processos concentram-se no setores financeiro, telecomunicações, seguros, transportes aéreos e planos de saúde. As cinco primeiras classes possuem proporções acima de 3,0% dos processos e caracterizam um ponto de corte na distribuição de processos por empresa: a partir delas, a fatia consumida por cada instituição orbita os 1,0%.
+Os 30 maiores litigantes acumulam `r maiores_litigantes_tjdft$p_acum[30]`, mas pudemos compreender melhor a origem dos demais litígios ao agruparmos os processos por setor da economia das demandadas. Analisando dessa forma, concluímos que `r maiores_setores_tjdft$p_acum[5]` dos processos concentram-se no setores financeiro, telecomunicações, seguros, transportes aéreos e planos de saúde. As cinco primeiras classes possuem proporções acima de 3,0% dos processos e caracterizam um ponto de corte na distribuição de processos por empresa: a partir delas, a fatia consumida por cada instituição orbita os 1,0%.
 
 ```{r}
 maiores_setores_tjdft %>%
@@ -1352,7 +1352,7 @@ maiores_setores_tjdft %>%
 
 ### Causas de pedir
 
-Nesta seção estudamos as causas de pedir mais frequentes dos maiores litigantes do TJDFT, separando-os de acordo com a área em que atuam.
+Nesta seção estudamos as causas de pedir mais frequentes contra os maiores litigantes do TJDFT, separando-os de acordo com a área em que atuam.
 
 #### Bancos e Instituições Financeiras
 
@@ -1486,7 +1486,7 @@ d_tjba_2 <- readRDS('data-raw/d_tjba_2.rds') %>%
   filter(!is.na(area))
 ```
 
-Conforme mencionado na seção de metodologia, não foi possível obter dados do Tribunal de Justiça da Bahia entrando em contato direto com o Tribunal. Por isso, os dados desta seção foram obtidos utilizando ferramentas de extração automática de informações do site do tribunal.
+Conforme mencionado na seção de metodologia, não foi possível obter dados do Tribunal de Justiça da Bahia entrando em contato direto com o Tribunal. Portanto, os dados desta seção foram obtidos utilizando ferramentas de extração automática de informações do site do tribunal.
 
 ### Os maiores litigantes do tribunal da Bahia
 
@@ -1504,7 +1504,7 @@ maiores_setores_tjba <- d_tjba_2 %>%
     p_acum = scales::percent(cumsum(n)/sum(n)))
 ```
 
-Destoando do que foi identificado nos demais estados, nenhuma empresa de telefonia figura na lista dos 10 maiores litigantes da justiça consumerista baiana. Por outro lado, como é comum, as instituições financeiras compõem a maior parte dessa parte do ranking: o primeiro lugar é do grupo empresarial do Banco Bradesco, com `r maiores_litigantes_tjba$p[1]` dos processos, e o segundo maior litigante é o grupo de empresas ligadas ao Banco Itaú, com `r maiores_litigantes_tjba$p[1]` dos litígios.
+Destoando do que foi identificado nos demais estados, nenhuma empresa de telefonia figura na lista dos 10 maiores litigantes da justiça consumerista baiana. Por outro lado, como é comum, as instituições financeiras compõem a maior parte dentre as 10 posições no ranking: o primeiro lugar é do grupo empresarial do Banco Bradesco, com `r maiores_litigantes_tjba$p[1]` dos processos, e o segundo maior litigante é o grupo de empresas ligadas ao Banco Itaú, compondo `r maiores_litigantes_tjba$p[1]` dos litígios.
 
 ```{r}
 maiores_litigantes_tjba %>%
@@ -1512,7 +1512,7 @@ maiores_litigantes_tjba %>%
   knitr::knit_print(caption = "30 maiores litigantes consumeristas do estado da Bahia. Fonte: Elaboração própria.")
 ```
 
-No Tribunal de Justiça da Bahia, os 30 maiores litigantes acumulam `r maiores_litigantes_tjba$p_acum[30]`, mas pudemos compreender melhor a origem dos demais litígios ao agruparmos os processos por setor da economia das demandadas. Analisando dessa forma, concluímos que que `r maiores_setores_tjba$p_acum[5]` dos processos concentram-se no setores financeiro, seguros, telecomunicações, fornecimento de energia e água, e, em quinto lugar, o governo do estado da Bahia. Os dois primeiros setores econômicos dominam os demais, tomando 67,0% do total dos casos, mas o que efetivamente chama a atenção são os casos contra o governo do estado.
+No Tribunal de Justiça da Bahia, os 30 maiores litigantes acumulam `r maiores_litigantes_tjba$p_acum[30]`, mas pudemos compreender melhor a origem dos demais litígios ao agruparmos os processos por setor da economia das demandadas. Analisando dessa forma, concluímos que `r maiores_setores_tjba$p_acum[5]` dos processos concentram-se no setores financeiro, seguros, telecomunicações, fornecimento de energia e água, e, em quinto lugar, o governo do estado da Bahia. Os dois primeiros setores econômicos dominam os demais, tomando 67,0% do total dos casos, mas o que efetivamente chama a atenção são os casos contra o governo do estado.
 
 ```{r}
 maiores_setores_tjba %>%
@@ -1520,11 +1520,11 @@ maiores_setores_tjba %>%
   knitr::knit_print(caption = "5 setores econômicos com maior quantidade de processos consumeristas no estado da Bahia. Fonte: Elaboração própria.")
 ```
 
-Investigando esse caso específico, conclui-se que os processos contra o governo do estado não aconteceram isolados em um certo período, mas sim com regularidade ao longo dos anos.
+Ao investigar esse caso específico, observamos que os processos contra o governo do estado não aconteceram isolados em um certo período, mas sim com regularidade ao longo dos anos.
 
-Realizando a mesma análise para os demais setores, conclui-se que a estabilidade é um traço comum das curvas de volumes processuais dos maiores litigantes da Bahia. A única exceção à regra está nos processos contra bancos e demais instituições financeiras, que apresentam um declínio na quantidade semestral de processos entre 2013 e 2015.
+Realizando a mesma análise para os demais setores, notou-se que a estabilidade é um traço comum das curvas de volumes processuais dos maiores litigantes da Bahia. A única exceção à regra está nos processos contra bancos e demais instituições financeiras, pois apresentam um declínio na quantidade semestral de processos entre 2013 e 2015.
 
-```{r, fig.cap = "Volume processual dos processos consumeristas nos quatro maiores setores econômicos. Fonte: Elaboração própria."}
+```{r, fig.cap = "Volume processual dos processos consumeristas nos quatro maiores setores econômicos do estado da Bahia. Fonte: Elaboração própria."}
 d_tjba_2 %>%
     mutate(semestre = lubridate::floor_date(dt_dist, 'half-year')) %>%
     count(semestre, area) %>%
@@ -1540,7 +1540,7 @@ d_tjba_2 %>%
 
 ### Causas de pedir
 
-Nesta seção vamos estudar as causas de pedir mais frequentes com aos maiores litigantes separando-os de acordo com a área em que atuam.
+Nesta seção estudamos as causas de pedir mais frequentes contra os maiores litigantes do TJBA, separando-os de acordo com a área em que atuam.
 
 #### Bancos e Instituições Financeiras
 
@@ -1570,7 +1570,7 @@ As compensações por danos morais e materiais propriamente ditas aparecem apena
 
 ```{r}
 head(assuntos_bancos, 10) %>%
-  knitr::knit_print(caption = "10 assuntos mais comuns. Fonte: Elaboração própria.")
+  knitr::knit_print(caption = "10 causas de pedir consumeristas recorrentes contra o setor bancário e financeiro no estado da Bahia. Fonte: Elaboração própria.")
 ```
 
 #### Companhias de seguros
@@ -1608,7 +1608,7 @@ assuntos_seguros %>%
   knitr::knit_print(caption = "12 causas de pedir consumeristas mais comuns no estado da Bahia. Fonte: Elaboração própria.")
 ```
 
-#### Companhias de telecomunicação
+#### Companhias de telecomunicações
 
 ```{r}
 telecomunicacoes <- d_tjba_2 %>%
@@ -1636,7 +1636,7 @@ maiores_litigantes_telecom %>%
   knitr::knit_print(caption = "4 maiores litigantes do setor das telecomunicações do estado da Bahia. Fonte: Elaboração própria.")
 ```
 
-As três primeiras causas de pedir, com `r telecomunicacoes$p_acum[3]` do total dos processos, estão mais próximas do identificado nos outros tribunais. Ao contrário do que observou-se nas instituições bancarias deste estado, as matérias mais frequentes versam sobre inclusões indevidas em cadastro de inadimplentes e indenizações por danos morais ou materiais.
+As três primeiras causas de pedir, com `r telecomunicacoes$p_acum[3]` do total dos processos, estão mais próximas do identificado nos outros tribunais. Ao contrário do que observou-se nas instituições bancárias desse estado, as matérias mais frequentes versam sobre inclusões indevidas em cadastro de inadimplentes e indenizações por danos morais ou materiais.
 
 ## TJAM
 
@@ -1659,7 +1659,7 @@ d_tjam_2 <- readRDS("data-raw/d_tjam_2.rds")
 ```
 
 
-Conforme mencionado na seção de metodologia, não foi possível obter dados do Tribunal de Justiça do Amazonas entrando em contato direto com o Tribunal. Por isso, os dados desta seção foram obtidos utilizando ferramentas de extração automática de informações do site do tribunal.
+Conforme mencionado na seção de metodologia, não foi possível obter dados do Tribunal de Justiça do Amazonas entrando em contato direto com o Tribunal. Portanto, os dados desta seção foram obtidos utilizando ferramentas de extração automática de informações do site do tribunal.
 
 ### Os maiores litigantes do tribunal do Amazonas
 
@@ -1677,16 +1677,16 @@ maiores_setores_tjam <- d_tjam_2 %>%
     p_acum = scales::percent(cumsum(n)/sum(n)))
 ```
 
-Ao contrário de todos os tribunais deste estudo, a empresa com maior quantidade de processos consumeristas no estado do Amazonas foi uma empresa de fornecimento de água, a Manaus Ambiental, com `r maiores_litigantes_tjam$p[1]` dos processos. As posições seguintes são mais condizentes com o identificado nos outros tribunais, sendo duas delas instituições bancárias que contemplam 14,7% dos casos e uma delas a seguradora líder, administradora do seguro DPVAT, com `r maiores_litigantes_tjam$p[3]` dos litígios.
+Ao contrário de todos os tribunais deste estudo, a empresa com maior quantidade de processos consumeristas no estado do Amazonas foi uma empresa de fornecimento de água, a Manaus Ambiental, com `r maiores_litigantes_tjam$p[1]` dos processos. As posições seguintes são mais condizentes com o identificado nos outros tribunais, sendo duas delas instituições bancárias, que contemplam 14,7% dos casos, e uma delas a seguradora Líder, administradora do seguro DPVAT, com `r maiores_litigantes_tjam$p[3]` dos litígios.
 
 ```{r}
 head(maiores_litigantes_tjam, 30) %>%
   knitr::knit_print(caption = "30 maiores litigantes da justiça consumerista do estado do Amazonas. Fonte: Elaboração própria.")
 ```
 
-A quinta posição também surpreendeu, pois trata-se de uma empresa de fornecimento de energia subsidiária da Eletrobras, a Amazonas Energia, com `r maiores_litigantes_tjam$p[5]` dos processos. As demandadas mais usuais do direito consumerista brasileiro, as empresas de telefonia, só começam a aparecer da sexta posição em diante. O grupo empresarial da Oi concentra `r maiores_litigantes_tjam$p[6]` dos processos, na sexta posição, o grupo empresarial da Vivo concentra `r maiores_litigantes_tjam$p[7]` dos processos, na sétima posição, e o grupo de empresas da Claro concentra `r maiores_litigantes_tjam$p[8]` dos processos.
+A quinta posição também surpreendeu, pois trata-se de uma empresa de fornecimento de energia subsidiária da Eletrobras, a Amazonas Energia, com `r maiores_litigantes_tjam$p[5]` dos processos. As demandadas mais usuais do direito consumerista brasileiro, as empresas de telefonia, só começam a aparecer da sexta posição em diante. O grupo empresarial da Oi concentra `r maiores_litigantes_tjam$p[6]` dos processos na sexta posição, o grupo empresarial da Vivo concentra `r maiores_litigantes_tjam$p[7]` dos processos na sétima posição, e o grupo de empresas da Claro concentra `r maiores_litigantes_tjam$p[8]` dos processos na nona posição.
 
-Os 30 maiores litigantes acumulam `r maiores_litigantes_tjam$p_acum[30]`, mas pudemos compreender melhor a origem dos demais litígios ao agruparmos os processos por setor da economia das demandadas. Analisando dessa forma, concluímos que que `r maiores_setores_tjam$p_acum[5]` dos processos concentram-se no setores financeiro, fornecimento de energia e água, telecomunicações, seguros e transporte aéreo. Os três primeiros setores abarcam proporções acima de 8,0% dos processos e caracterizam um ponto de corte na distribuição de processos por empresa: a partir delas, a fatia consumida por cada instituição orbita os 1,0%. Nesses setores, aqueles em que as demandadas concentram menos de 8,0% do total, destaca-se o fundo Itapeva, que realiza cobranças de crédito.
+Os 30 maiores litigantes acumulam `r maiores_litigantes_tjam$p_acum[30]`, mas pudemos compreender melhor a origem dos demais litígios ao agruparmos os processos por setor da economia das demandadas. Analisando dessa forma, concluímos que `r maiores_setores_tjam$p_acum[5]` dos processos pertencem o setores financeiro, fornecimento de energia e água, telecomunicações, seguros e transporte aéreo. Os três primeiros setores abarcam proporções acima de 8,0% dos processos e caracterizam um ponto de corte na distribuição de processos por empresa: a partir delas, a fatia consumida por cada instituição orbita os 1,0%. Nesses setores, aqueles em que as demandadas concentram menos de 8,0% do total, destaca-se o fundo Itapeva, que realiza cobranças de crédito.
 
 ```{r}
 maiores_setores_tjam %>%
@@ -1712,7 +1712,7 @@ d_tjam_2 %>%
 
 ### Causas de pedir
 
-Nesta seção vamos estudar as causas de pedir mais frequentes com aos maiores litigantes separando-os de acordo com a área em que atuam.
+Nesta seção estudamos as causas de pedir mais frequentes contra os maiores litigantes, separando-os de acordo com a área em que atuam.
 
 #### Bancos e Instituições Financeiras
 
