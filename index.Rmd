@@ -1,5 +1,5 @@
 ---
-title: "Os Maiores Litigantes da Justiça Consumerista: Mapemanto e Proposições"
+title: "Os Maiores Litigantes da Justiça Consumerista: Mapeamento e Proposições"
 author: "Associação Brasileira de Jurimetria"
 date: "`r format(Sys.Date(), '%d de %B de %Y')`"
 documentclass: report
