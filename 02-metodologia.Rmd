@@ -37,7 +37,7 @@ Na introdução vimos que a pesquisa apresenta uma parte *exploratória* e uma p
 
 A pesquisa foi conduzida com base filosófica pragmática [@hanson2005mixed]. Isso significa que o foco principal são resultados aplicáveis à sociedade. O rigor metodológico reside principalmente na parte exploratória, especificamente nos métodos estatísticos de análise e inferência.
 
-A pesquisa também buscou atender o *princípio da reprodutibilidade* [@gelman2014bayesian]. Com isso será possível utilizar o material desenvolvido em outros trabalhos, produzindo um efeito maior do que apenas a documentação de resultados.
+A pesquisa também buscou atender o *princípio da reprodutibilidade* [@gelman2014bayesian]. Com isso, será possível utilizar o material desenvolvido em outros trabalhos, produzindo um efeito maior do que apenas a documentação de resultados.
 
 A metodologia do estudo considerou um desenho misto (@hanson2005mixed, p. 116). Especificamente, utilizamos a técnica de métodos convergentes em paralelo (*convergent parallel methods design*). Nessa abordagem, coletamos e analisamos dados qualitativos e quantitativos em paralelo, confrontando os resultados para gerar interpretações e conclusões. A Figura \@ref(fig:desenho) mostra esquematicamente o desenho utilizado.
 
@@ -69,7 +69,7 @@ Nessa parte da metodologia, utilizamos dados e informações de outras pesquisas
 Os resultados dessas investigações foram resumidos abaixo. Em seguida, apresentamos uma subseção de detalhamento para cada item.
 
 1. A direção da pesquisa é a busca de soluções para melhorar índices de litigiosidade.
-1. a) Identificamos que processos não-criminais e não-fiscais do primeiro grau na Justiça Estadual e as execuções fiscais são os maiores responsáveis pelo volume processual do país; b) não é possível avançar na identificação dos maiores responsáveis pela litigiosidade sem realizar extrações de processos dos tribunais.
+1. a) Identificamos que processos não-criminais e não-fiscais do primeiro grau da Justiça Estadual e as execuções fiscais são os maiores responsáveis pelo volume processual do país; b) não é possível avançar na identificação dos maiores responsáveis pela litigiosidade sem realizar extrações de processos dos tribunais.
 1. a) Definição do recorte da pesquisa; b) extração de dados dos tribunais; c) criação de método para contagem de processos consumeristas; d) desenvolvimento de códigos para arrumar os nomes das partes dos processos.
 1. Utilização do IADN - Índice de Atendimento à Demanda Normalizado para avaliar o efeito de soluções estratégicas.
 
@@ -83,11 +83,11 @@ O tema de interesse da pesquisa é a **administração judiciária**. Especifica
 1. Monitorar a recorribilidade externa do primeiro grau.
 1. Monitorar o índice de conciliação.
 
-Não há interesse em estudar a quantidade de casos novos por magistrado ou servidor. As contagens de magistrados e servidores foram fixadas para simplificar a análise. Também por simplicidade não monitoramos recorribilidade interna.
+Não há interesse em estudar a quantidade de casos novos por magistrado ou servidor. As contagens de magistrados e servidores foram fixadas para simplificar a análise. Também por simplicidade não monitoramos a recorribilidade interna.
 
 O índice de conciliação, por sua vez, está correlacionado a outros índices de interesse. Na pesquisa, não foi possível obter evidências para afirmar se há interesse em aumentar, reduzir ou manter os valores atuais dessa métrica.
 
-As ações estratégicas focaram nos maiores litigantes em casos consumeristas pois soluções para essa subpopulação implicam em efeitos significativos para toda a Justiça Brasileira. Essa afirmação foi feita inicialmente sob a hipótese de que casos consumeristas representam uma quantidade relevante do total de casos. Essa hipótese foi validada após extração e levantamento dos dados.
+As ações estratégicas focaram nos maiores litigantes em casos consumeristas pois soluções para essa subpopulação implicam em efeitos significativos para toda a Justiça brasileira. Essa afirmação foi feita inicialmente sob a hipótese de que casos consumeristas representam uma quantidade relevante do total de casos. Essa hipótese foi validada após a extração e levantamento dos dados.
 
 ### Resumo da situação atual {#resumo-da-situacao-atual}
 
@@ -161,10 +161,10 @@ dados %>%
     `Casos Novos` = sprintf("%s (%s)", fmt(total_n), fmt_p(prop_n)),
     `Casos Pendentes` = sprintf("%s (%s)", fmt(total_p), fmt_p(prop_p))
   ) %>%
-  knitr::knit_print(align = 'llrr', caption = "Casos novos e casos pendentes por grau. TJAM não enviou dados da segunda instância no ano de 2015. Nesse caso, consideramos esse valor como zero. Fonte: Justiça em Números.")
+  knitr::knit_print(align = 'llrr', caption = "Casos novos e casos pendentes por grau. O TJAM não enviou dados da segunda instância no ano de 2015. Nesse caso, consideramos esse valor como zero. Fonte: Justiça em Números.")
 ```
 
-O terceiro filtro aplicado relaciona-se com as áreas processuais criminal e não criminal. A Tabela \@ref(tab:crim) mostra a quantidade de casos novos e pendentes no primeiro grau e nos Juizados especiais, comparando as duas áreas. A área não criminal é responsável por 88% dos casos pendentes. Mesmo com todos os filtros aplicados, ainda estamos com uma subpopulação de mais de 50 milhões de casos pendentes.
+O terceiro filtro aplicado relaciona-se com as áreas processuais criminal e não criminal. A Tabela \@ref(tab:crim) mostra a quantidade de casos novos e pendentes no primeiro grau e nos Juizados e Especiais, comparando as duas áreas. A área não criminal é responsável por 88% dos casos pendentes. Mesmo com todos os filtros aplicados, ainda estamos com uma subpopulação de mais de 50 milhões de casos pendentes.
 
 ```{r tab:crim, results='asis'}
 dados %>%
@@ -225,10 +225,10 @@ dados %>%
     `Casos Novos` = sprintf("%s (%s)", fmt(total_n), fmt_p(prop_n)),
     `Casos Pendentes` = sprintf("%s (%s)", fmt(total_p), fmt_p(prop_p))
   ) %>%
-  knitr::knit_print(align = 'llrr', caption = "Casos novos e casos pendentes por área, dentro do primeiro grau ou Juizado Especial. TJPI não enviou alguns dados de Juizados Especiais no ano de 2015. Nesse caso, consideramos esse valor como zero. Fonte: Justiça em Números.")
+  knitr::knit_print(align = 'llrr', caption = "Casos novos e casos pendentes por área, dentro do primeiro grau e Juizado Especial. O TJPI não enviou alguns dados de Juizados Especiais no ano de 2015. Nesse caso, consideramos esse valor como zero. Fonte: Justiça em Números.")
 ```
 
-O próximo filtro é baseado no problema da execução fiscal. A Tabela \@ref(tab:fiscal) mostra a quantidade de casos novos e pendentes não criminais no primeiro grau e nos Juizados especiais, comparando execuções fiscais com todo o resto. Metade dos casos pendentes são de execução fiscal, enquanto que somente 16\% dos casos novos são de execução fiscal. Isso indica que, além de volumosos, os casos de execução fiscal apresentam alta taxa de congestionamento. Uma análise mais aprofundada do tema foi descrita no RJN.
+O próximo filtro é baseado no problema da execução fiscal. A Tabela \@ref(tab:fiscal) mostra a quantidade de casos novos e pendentes não criminais no primeiro grau e nos Juizados Especiais, comparando execuções fiscais com todo o resto. Metade dos casos pendentes são de execução fiscal, enquanto que somente 16\% dos casos novos são de execução fiscal. Isso indica que, além de volumosos, os casos de execução fiscal apresentam alta taxa de congestionamento. Uma análise mais aprofundada do tema foi descrita no RJN.
 
 Nesse momento foi feita uma importante decisão de escopo: estudar apenas os casos não criminais e não relacionados à execução fiscal. Agora, a população de casos pendentes é de aproximadamente 25 milhões de processos.
 
@@ -289,7 +289,7 @@ dados %>%
     `Casos Novos` = sprintf("%s (%s)", fmt(total_n), fmt_p(prop_n)),
     `Casos Pendentes` = sprintf("%s (%s)", fmt(total_p), fmt_p(prop_p))
   ) %>%
-  knitr::knit_print(align = 'llrr', caption = "Casos novos e casos pendentes não criminais por tipo de processo, dentro do primeiro grau ou Juizado Especial. TJPI não enviou alguns dados de Juizados Especiais no ano de 2015. Nesse caso, consideramos esse valor como zero. Fonte: Justiça em Números.")
+  knitr::knit_print(align = 'llrr', caption = "Casos novos e casos pendentes não criminais por tipo de processo, dentro do primeiro grau ou Juizado Especial. O TJPI não enviou alguns dados de Juizados Especiais no ano de 2015. Nesse caso, consideramos esse valor como zero. Fonte: Justiça em Números.")
 ```
 
 Nesse cenário, algumas perguntas aparecem em destaque:
@@ -298,7 +298,7 @@ Nesse cenário, algumas perguntas aparecem em destaque:
 1. Que estratégias podem ser adotadas para encerrar esses casos?
 1. Como evitar a entrada de casos desnecessários dentro dos quase 10 milhões anuais?
 
-Para investigar as dúvidas de forma efetiva, seria necessário estudar os assuntos dos processos e as partes envolvidas. Infelizmente, até hoje não existem bases públicas com todos esses dados e, por isso, consideramos novos filtros[^sisjud]. Como tais filtros envolvem extração e arrumação de dados, é necessário definir uma estratégia adequada para sua obtenção. Em seguida, descrevemos em detalhes a estratégia adotada na presente pesquisa.
+Para investigar as dúvidas de forma efetiva, seria necessário estudar os assuntos dos processos e as partes envolvidas. Infelizmente até hoje não existem bases públicas com todos esses dados e, por isso, consideramos novos filtros[^sisjud]. Como tais filtros envolvem extração e arrumação de dados, é necessário definir uma estratégia adequada para sua obtenção. Em seguida, descrevemos em detalhes a estratégia adotada na presente pesquisa.
 
 [^sisjud]: O [módulo de produtividade mensal](http://paineis.cnj.jus.br/QvAJAXZfc/opendoc.htm?document=qvw_l\painelcnj.qvw&host=QVS%40neodimio03&anonymous=true), elaborado pelo DPJ-CNJ permite o acesso ao volume de processos por classe e assunto em cada vara.
 
@@ -456,7 +456,7 @@ Especificamente sobre o presente projeto, as extrações eram complexas pois env
 
 Nos próximos parágrafos explicamos brevemente o histórico de contatos com os tribunais e os resultados dos pedidos.
 
-**TJAM**. Após os contatos com áreas de estatística, Tecnologia da Informação e presidência do TJAM, ficamos inseguros com relação ao tempo necessário para realizar a extração dos dados dentro do Tribunal. Por isso, decidimos adotar uma estratégia de baixar os dados via *web scraping* (raspagem de dados) e amostragem.
+**TJAM**. Após os contatos com áreas de estatística, tecnologia da informação e presidência do TJAM, ficamos inseguros com relação ao tempo necessário para realizar a extração dos dados dentro do Tribunal. Por isso, decidimos adotar uma estratégia de baixar os dados via *web scraping* (raspagem de dados) e amostragem.
 
 **TJBA**. Os contatos com o TJBA não foram profícuos e por isso não fomos capazes de obter extrações dos dados dos tribunais. No final, também decidimos utilizar *web scraping* e amostragem para acessar os dados.
 
@@ -504,7 +504,7 @@ A forma clássica utiliza como base as Tabelas Processuais Unificadas (TPUs) do 
 
 A forma estatística lista os assuntos processuais associados ao tema "direito do consumidor" usando como base os processos judiciais disponíveis na ferramenta de pesquisa *Consulta de Julgados de Primeiro Grau* do TJSP.
 
-Para isso, fizemos o levantamento de listas de sentenças do TJSP por assunto e por ano, com base em todos assuntos descritos na TPUs. Em cada uma dessas listas, detectamos a presença de um conjunto de palavras-chave que estão associadas à justiça consumerista. Quando a busca de termos retornou algum conteúdo, utilizamos o resultado para classificar um assunto como "potencialmente consumerista".
+Para isso, fizemos o levantamento de listas de sentenças do TJSP por assunto e por ano, com base em todos assuntos descritos nas TPUs. Em cada uma dessas listas, detectamos a presença de um conjunto de palavras-chave que estão associadas à justiça consumerista. Quando a busca de termos retornou algum conteúdo, utilizamos o resultado para classificar um assunto como "potencialmente consumerista".
 
 O primeiro passo do estudo foi levantar a lista de assuntos na página do TJSP. Em seguida, retiramos da lista aqueles assuntos da TPU que provavelmente não estão associados à justiça consumerista. Esse filtro foi feito retirando todos os assuntos que decorrem dos seguintes assuntos gerais:
 
@@ -520,7 +520,7 @@ O terceiro passo da metodologia foi detectar as amostras em que aparece um conju
 
 Para avaliar a qualidade da classificação obtida de maneira puramente jurimétrica, comparamos a tabela de assuntos obtida com uma lista de assuntos classificada manualmente por pesquisadores da ABJ. A lista obtida de forma automática foi chamada de **lista estatística**, enquanto a lista obtida manualmente foi chamada de **lista clássica**.
 
-A lista clássica possui 73 assuntos processuais, enquanto a lista estatística possui 208. Apenas 4 assuntos aparecem na lista clássica, mas não aparecem na estatística. Dentre eles, chama a atenção a presença de um assunto do ramo "DIREITO DO CONSUMIDOR". O assuntos faltante, "Clausulas Abusivas", não foi contabilizado pois a busca por processos desse assunto não retornou nenhum caso.
+A lista clássica possui 73 assuntos processuais, enquanto a lista estatística possui 208. Apenas 4 assuntos aparecem na lista clássica, mas não aparecem na estatística. Dentre eles, chama a atenção a presença de um assunto do ramo "DIREITO DO CONSUMIDOR". O assunto faltante "Cláusulas Abusivas" não foi contabilizado pois a busca por processos desse assunto não retornou nenhum caso.
 
 Para o relatório final, utilizamos somente o critério clássico para filtrar os tipos processuais. A escolha foi feita para manter a estabilidade nos resultados. A lista estatística foi utilizada para obtenção dos dados do TJSP na fase de extração. 
 
@@ -560,7 +560,7 @@ onde
 
 Nesse cálculo, assumimos que o fato de um processo ser classificado de forma genérica não tem relação alguma com o fato desse processo tratar de análise de crédito. Esse é um conceito estatístico denominado **independência** [@degroot2005optimal] e pode ou não ser válido nos casos concretos.
 
-O problema da cifra oculta é, essencialmente um caso de omissão de dados [@rubin2004multiple]. Quando um estudo envolve omissão, a primeira preocupação é com a existência de mecanismos para a geração dos dados e se esse mecanismo estaria relacionado com os dados observados ou não observados. Ignorar esse mecanismo pode gerar viés nos resultados.
+O problema da cifra oculta é essencialmente um caso de omissão de dados [@rubin2004multiple]. Quando um estudo envolve omissão, a primeira preocupação é com a existência de mecanismos para a geração dos dados e se esse mecanismo estaria relacionado com os dados observados ou não observados. Ignorar esse mecanismo pode gerar viés nos resultados.
 
 É possível classificar os dados omissos em três tipos principais:
 
@@ -568,7 +568,7 @@ O problema da cifra oculta é, essencialmente um caso de omissão de dados [@rub
 - **Missing aleatório (MAR)**. A probabilidade de omissão depende somente das informações observadas.
 - **Missing não aleatório (MNAR)**. Outros casos.
 
-Nas pesquisas da ABJ, até o momento, lidamos apenas com MCAR e MAR. Nesses casos, podemos tratar os dados omissos como parâmetros a serem estimados no modelo. Para trabalhar o caso MNAR é necessário utilizar informações a priori sobre o problema específico ou plugar informações de levantamentos anteriores (e.g.~uma amostra de processos com assuntos classificados manualmente).
+Nas pesquisas da ABJ, até o momento, lidamos apenas com MCAR e MAR. Nesses casos, podemos tratar os dados omissos como parâmetros a serem estimados no modelo. Para trabalhar o caso MNAR é necessário utilizar informações a priori sobre o problema específico ou plugar informações de levantamentos anteriores (e.g. uma amostra de processos com assuntos classificados manualmente).
 
 O caso MCAR é equivalente à aplicação da regra de proporcionalidade definida acima. A única complicação é que o cálculo precisa ser realizado para cada nível de generalização do assunto. Felizmente, é possível estruturar as contas utilizando uma classe de modelos estatísticos denominada *rede Bayesiana* [@cozman2000credal].
 
@@ -581,12 +581,12 @@ A rede da Figura \@ref(fig:rb) representa a hierarquia dos níveis das TPUs. Tra
 
 No caso MAR, podemos utilizar todos os dados disponíveis dos processos para predizer o assunto real do processo. Para isso, qualquer técnica de modelagem preditiva poderia ser utilizada.
 
-Uma forma natural de realizar montar esses modelos é estendendo a rede Bayesiana da Figura \@ref(fig:rb). Por exemplo, a rede da Figura \@ref(fig:rb2) considera que a classificação específica ou genérica de determinado assunto processual depende da vara em que o processo é distribuído. Outras variáveis poderiam ser consideradas para construir um modelo mais completo.
+Uma forma natural de montar esses modelos é estendendo a rede Bayesiana da Figura \@ref(fig:rb). Por exemplo, a rede da Figura \@ref(fig:rb2) considera que a classificação específica ou genérica de determinado assunto processual depende da vara em que o processo é distribuído. Outras variáveis poderiam ser consideradas para construir um modelo mais completo.
 
 ![Rede Bayesiana representando a hierarquia dos níveis
 das TPUs, considerando também a vara.](imgs/08-metodologia_files/figure-latex/rb2-1.pdf){#fig:rb2}
 
-O pacote escrito usando o software estatístico R chamado [tpur](https://github.com/abjur/tpur), desenvolvido pela ABJ, pode ser utilizado para executar duas tarefas:
+O pacote escrito utilizando o software estatístico R, o [tpur](https://github.com/abjur/tpur), foi desenvolvido pela ABJ e pode ser utilizado para executar duas tarefas:
 
 - Baixar e estruturar as TPUs diretamente da fonte oficial do CNJ.[^tpucnj]
 - A partir de uma base de dados de processos, estimar o volume processual de um conjunto de assuntos com base em um modelo de redes Bayesianas.
@@ -611,7 +611,7 @@ O algoritmo utilizado para filtragem dos processos pelas partes foi escrito com 
 
 #### Empresas - limpeza e incorporações {#empresas2}
 
-O segundo problema relativo ao levantamento de maiores litigantes é a necessidade de lidar com vários nomes de empresas que se referem à mesma empresa. As diferenças nos nomes podem aparecer por i) erros de escrita ou ii) incorporações de empresas. Por exemplo, Telefonica hoje deve ser considerada como Vivo ou Brasil Telecom, que é considerada Oi.
+O segundo problema relativo ao levantamento de maiores litigantes é a necessidade de lidar com vários nomes de empresas que se referem à mesma empresa. As diferenças nos nomes podem aparecer por i) erros de escrita ou ii) incorporações de empresas. Por exemplo, a empresa Telefônica hoje deve ser considerada como Vivo ou Brasil Telecom, que é a atual Oi.
 
 Ao todo, criamos mais de cem regras, considerando expressões regulares utilizadas para identificar empresas e regras do tipo *de-para* para realizar as reclassificações relativas às incorporações. As regras foram criadas a partir de pesquisas de notícias na internet para encontrar atualizações sobre incorporações das empresas. Essas regras foram importantes para identificar os maiores litigantes de forma acurada.
 
@@ -699,11 +699,11 @@ Chamamos essa taxa de **IADN - Índice de Atendimento da Demanda Normalizado**. 
 
 O IADN tem as mesmas vantagens do IAD (diretamente proporcional aos baixados, inversamente proporcional aos entrados), mas varia aproximadamente entre zero e um. No entanto, o IADN também considera os casos pendentes e, portanto, falha em medir a produtividade instantânea dos tribunais.
 
-É interessante notar que o IADN corresponde exatamente ao complemento da taxa de congestionamento utilizada antes de 2015 pelo CNJ.[^cnjlink] A fórmula atual foi adaptada, pois o CNJ passou a coletar o quantitativo de casos pendentes no final do período, ao invés do inicio. Essa alteração tem a vantagem de considerar os processos reativados no estoque. 
+É interessante notar que o IADN corresponde exatamente ao complemento da taxa de congestionamento utilizada antes de 2015 pelo CNJ.[^cnjlink] A fórmula atual foi adaptada, pois o CNJ passou a coletar o quantitativo de casos pendentes no final do período, ao invés do início. Essa alteração tem a vantagem de considerar os processos reativados no estoque. 
 
 [^cnjlink]: É possível verificar a definição em https://goo.gl/LBaJQZ. Último acesso em 15/08/2017.
 
-A Tabela \@ref(tab:iadn) e a Figura \@ref(fig:iadn2) mostram o IADN calculado para o ano de 2015 e o IADN ao longo dos anos, respectivamente, considerando somente processos de primeiro grau não criminais e não fiscais, nos Tribunais escolhidos na pesquisa. Nos tribunais de médio e grande porte, com exceção do TJDFT, o IADN é estável e encontra-se entre de 35% e 40%. Já no TJDFT essa métrica encontra-se muito acima dos demais, com 68%, possivelmente por conta da baixa quantidade de casos pendentes no Tribunal, relativa à quantidade de casos novos. No TJAM, a taxa varia muito e já alcançou o valor máximo dentre todos os Tribunais analisados, mas atualmente tem o valor mínimo do IADN. Isso indica que a taxa no TJAM não é confiável.
+A Tabela \@ref(tab:iadn) e a Figura \@ref(fig:iadn2) mostram o IADN calculado para o ano de 2015 e o IADN ao longo dos anos, respectivamente, considerando somente processos de primeiro grau não criminais e não fiscais nos Tribunais escolhidos na pesquisa. Nos tribunais de médio e grande porte, com exceção do TJDFT, o IADN é estável e encontra-se entre 35% e 40%. Já no TJDFT essa métrica encontra-se muito acima dos demais, com 68%, possivelmente por conta da baixa quantidade de casos pendentes no Tribunal, relativo à quantidade de casos novos. No TJAM, a taxa varia muito e já alcançou o valor máximo dentre todos os Tribunais analisados, mas atualmente tem o valor mínimo do IADN. Isso indica que a taxa no TJAM não é confiável.
 
 ```{r iadn, results='asis'}
 data(cadmun, package = 'abjData')
@@ -761,7 +761,7 @@ dados %>%
            `Baixados` = fmt(total_b),
            `Pendentes 2014` = fmt(total_p_t1)) %>% 
   knitr::knit_print(align = 'llllrrrrr',
-               caption = 'IADN de 2015 para processos de primeiro grau não criminais nos Tribunais considerados na pesquisa. Fonte: Justiça em Números.')
+               caption = 'IADN de 2015 para processos de primeiro grau não criminais e não fiscais nos Tribunais considerados na pesquisa. Fonte: Justiça em Números.')
 ```
 
 
@@ -822,7 +822,7 @@ dados %>%
 ```
 
 
-Uma forma de generalizar o IAD e o IADN (taxa de congestionamento antiga) é considerar um fator de multiplicação $\lambda \in [0,1]$, e chamaremos a taxa resultante de **IAD relativo** (IADR):
+Uma forma de generalizar o IAD e o IADN (taxa de congestionamento antiga) é considerar um fator de multiplicação $\lambda \in [0,1]$. Chamaremos a taxa resultante de **IAD relativo** (IADR):
 
 $$
 T_{IAD}^t(\lambda) = \frac{N_B^t}{N_N^t + \lambda N_P^{t-1}}.
@@ -900,7 +900,7 @@ dados_iadr_calculados %>%
 
 O IADR ainda não foi trabalhado com dados reais e pode precisar de estudos aprofundados para a escolha do valor de $\lambda$. No entanto, uma vez que este generaliza os conceitos do IAD e da taxa de congestionamento, pode ser sempre considerado em estudos de produtividade dos tribunais.
 
-Assim, temos a informação de qual a população de casos que podem ser alvo de soluções estratégicas. São 25 milhões de casos pendentes, sendo que aproximadamente metade desses casos estão nos tribunais considerados na análise. Temos também o indicador IADR para avaliar o impacto de possíveis ações.
+Assim, temos a informação de qual é a população de casos que pode ser alvo de soluções estratégicas. São 25 milhões de casos pendentes, sendo que aproximadamente metade desses casos estão nos tribunais considerados na análise. Temos também o indicador IADR para avaliar o impacto de possíveis ações.
 
 ## Parte propositiva {#parte-propositiva}
 
@@ -943,7 +943,7 @@ Ao final da primeira fase do projeto, os eixos de investigação foram ordenados
 
 Uma alternativa à litigância no caso da justiça consumerista é a resolução de conflitos diretamente entre as partes, especialmente por muitas empresas já contarem com canais de comunicação direta com seus clientes. É importante considerar políticas públicas que utilizem essa alternativa pois ela possui um baixo custo de implementação para o judiciário.
 
-Os canais de comunicação extrajudicial são importantes ferramentas de composição pré-processual. Dentre eles, destacamos os canais fornecidos pelas próprias empresas fornecedoras de serviços e/ou produtos (SACs) e os canais disponibilizados por terceiros, como a Fundação Procon e o site Consumidor.gov.
+Os canais de comunicação extrajudicial são importantes ferramentas de composição pré-processual. Dentre eles, destacamos os canais fornecidos pelas próprias empresas fornecedoras de serviços e/ou produtos (SACs) e os canais disponibilizados por terceiros, como a Fundação Procon e o site Consumidor.gov.br.
 
 O Decreto n.º 6.523/2008 determina que as ligações para os SACs são gratuitas e não importam em qualquer ônus para o consumidor. O serviço deve funcionar 24 horas por dia, 7 dias por semana e deve disponibilizar opções de contato com o atendente, reclamação e cancelamento de contratos e serviços.
 
@@ -954,15 +954,15 @@ qual o serviço foi contratado ou comprovar que o valor é efetivamente devido.
 
 A Fundação Procon (Fundação de Proteção e Defesa do Consumidor) também é uma importante ferramenta de comunicação posta ao alcance do consumidor. Os consumidores que se sentirem lesados podem elaborar reclamações fundamentadas para a Fundação Procon, que detém legitimidade para aplicar multa às empresas infratoras.
 
-Os canais extrajudiciais também se apresentem formalmente como boas ferramentas para solução dos conflitos. No entanto, existem obstáculos óbvios no caminho para a negociação extrajudicial: o conflito de interesse intrínseco aos problemas do consumidor pode provocar uma indisposição a negociação oriunda de ambas as partes. Para atenuar este problema, é possível utilizar canais públicos de comunicação entre empresas e consumidores, já que a transparência do canal fornece às partes incentivos à negociação bem sucedida.
+Os canais extrajudiciais também se apresentam formalmente como boas ferramentas para solução dos conflitos. No entanto, existem obstáculos óbvios no caminho para a negociação extrajudicial: o conflito de interesse intrínseco aos problemas do consumidor pode provocar uma indisposição a negociação oriunda de ambas as partes. Para atenuar este problema, é possível utilizar canais públicos de comunicação entre empresas e consumidores, já que a transparência do canal fornece às partes incentivos à negociação bem sucedida.
 
-Nesse sentido, existem algumas iniciativas já implementadas. A SENACON disponibilizou o portal consumidor.gov.br para negociação entre clientes e empresas cadastradas. Além disso, existem portais privados tais como o "Reclame Aqui". Nestes serviços, estatísticas de desempenho nas negociações de todas as empresas são disponibilizados ao público, incentivando as empresas a performarem bem com relação a esses indicadores.
+Nesse sentido, existem algumas iniciativas já implementadas. A SENACON disponibilizou o portal Consumidor.gov.br para negociação entre clientes e empresas cadastradas. Além disso, existem portais privados tais como o "Reclame Aqui". Nestes serviços, estatísticas de desempenho nas negociações de todas as empresas são disponibilizados ao público, incentivando as empresas a performarem bem com relação a esses indicadores.
 
-Uma limitação deste tipo de estratégia encontra-se na voluntariedade na realização de negociações. Mesmo que as taxas de resolução do consumidor.gov.br estejam majoritariamente acima de 60%, os consumidores podem simplesmente não procurar esses meios pelos mais diversos fatores, tais como a desinformação e o descrédito.
+Uma limitação deste tipo de estratégia encontra-se na voluntariedade para a realização de negociações. Mesmo que as taxas de resolução do Consumidor.gov.br estejam majoritariamente acima de 60%, os consumidores podem simplesmente não procurar esses meios pelos mais diversos fatores, tais como a desinformação e o descrédito.
 
-Como outra alternativa, a superação dos obstáculos da negociação extrajudicial pode ser realizada pelos próprios tribunais. O Centros Judiciários de Solução de Conflitos e Cidadania (CEJUSC) instituídos pela Res. 125 do CNJ oferecem aos interessados a oportunidade de negociar um acordo, que se aceito será homologado pelo juiz, antes do ajuizamento da disputa.
+Como outra alternativa, a superação dos obstáculos da negociação extrajudicial pode ser realizada pelos próprios tribunais. Os Centros Judiciários de Solução de Conflitos e Cidadania (CEJUSC), instituídos pela Res. 125 do CNJ, oferecem aos interessados a oportunidade de negociar um acordo, que se aceito será homologado pelo juiz, antes do ajuizamento da disputa.
 
-Considerando essas opções, os objetivos deste eixo de investigação concentram-se em caracterizar as tentativas de solução antes da judicialização da queixa. Em particular, listamos alguns questionamentos:
+Considerando essas opções, os objetivos desse eixo de investigação concentram-se em caracterizar as tentativas de solução antes da judicialização da queixa. Em particular, listamos alguns questionamentos:
 
 1. Os canais de comunicação disponibilizados pelas empresas são pouco utilizados com relação ao volume de litígios?
 1. A procura por mecanismos de conciliação extrajudiciais por parte dos requerentes é pequena com relação ao volume de litígios?
@@ -970,4 +970,4 @@ Considerando essas opções, os objetivos deste eixo de investigação concentra
 
 Esse tema foi também o mais discutido nas reuniões com especialistas. Identificamos um consenso de que a melhor forma de reduzir o estoque dos tribunais é fazer com que menos litígios apareçam no futuro, e a melhor forma de fazer isso é através da composição extrajudicial. 
 
-Nos resultados, apresentamos uma análise utilizando a base de dados do canal de conciliação consumidor.gov.br. Esses resultados foram utilizados como insumo para uma das propostas principais no capítulo de sugestões.
+Nos resultados, apresentamos uma análise utilizando a base de dados do canal de conciliação Consumidor.gov.br. Estes resultados foram utilizados como insumo para uma das propostas principais no capítulo de sugestões.
