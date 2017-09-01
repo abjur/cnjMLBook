@@ -2159,7 +2159,7 @@ uniao_tjrs_senacon <- tjrs %>%
 uniao_tjrs_senacon %>% 
   filter(nome2 %in% c("regex_oi", "regex_vivo", "regex_claro", "regex_tim", "regex_bradesco", "regex_itau")) %>% 
   select(nome2, n.x, ef, p) %>% 
-  set_names("Empresa", "Número de processos", "Proporção de casos resolvidos", "% que consultou o site") %>% 
+  set_names("nome2", "Número de processos", "Proporção de casos resolvidos", "% que consultou o site") %>% 
   knitr::knit_print(caption = "Proporção de casos resolvidos e percentual máximo de litigantes que consultaram o consumidor.gov para 6 empresas. Fonte: SENACON e Tribunal de Justiça do Rio Grande do Sul.")
 ```
 
@@ -2187,7 +2187,7 @@ uniao_tjrs_senacon %>%
          ganho_cenario_medio = (1-p)*ef*0.5,
          ganho_melhor_cenario = (1-p)*ef) %>% 
   select(nome2, ef, p, ganho_pior_cenario, ganho_cenario_medio, ganho_melhor_cenario) %>% 
-  set_names("Empresa", "% de satisfação", "% que consultou o site", "% Pior cenário",
+  set_names("nome2", "% de satisfação", "% que consultou o site", "% Pior cenário",
             "% Cenário médio",
             "% Melhor cenário") %>%
     knitr::knit_print(caption = "Proporção de casos resolvidos e percentual máximo de litigantes que consultaram o consumidor.gov para 6 empresas, com estimativas de ganho no cenário em que as litigantes tentam conciliação antes de entrar com o processo. Fonte: SENACON.")
