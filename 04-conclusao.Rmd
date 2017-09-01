@@ -52,7 +52,7 @@ todos_maiores_nn %>%
                     align = 'llrrrr')
 ```
 
-A Figura \@ref(fig:acu) mostra a proporção acumulada de processos dos 30 maiores litigantes relativa à totalidade de processos consumeristas. O gráfico verifica a hipótese inicial da pesquisa de que os trinta maiores litigantes concentram pelo menos 50% dos processos. De fato, quatro dos sete tribunais analisados apresentam proporções acumuladas maiores que 70%, e cinco tribunais concentram aproximadamente 50% dos processos apenas com os 10 maiores litigantes. O tribunal com menor concentração dos maiores litigantes é o Tribunal de Justiça do Distrito Federal e dos Territórios (TJDFT), que permanece sua proporção abaixo dos demais tribunais para todas as quantidades de empresas pontuadas.
+A Figura \@ref(fig:acu) mostra a proporção acumulada de processos dos 30 maiores litigantes relativa à totalidade de processos consumeristas. O gráfico verifica a hipótese inicial da pesquisa de que os trinta maiores litigantes concentram pelo menos 50% dos processos. De fato, quatro dos sete tribunais analisados apresentam proporções acumuladas maiores que 70%, e cinco tribunais concentram aproximadamente 50% dos processos apenas com os 10 maiores litigantes. O  tribunal com menor concentração dos maiores litigantes é o Tribunal de Justiça do Distrito Federal e dos Territórios (TJDFT), onde para qualquer quantidade de maiores litigantes a proporção acumulada de processos por eles manteve-se abaixo do observado nos outros tribunais.
 
 ```{r fig:acu, fig.cap="Proporção acumulada de processos consumeristas dos 30 maiores litigantes em cada estado. Fonte: Elboração própria."}
 p1 <- todos_maiores_nn %>% 
