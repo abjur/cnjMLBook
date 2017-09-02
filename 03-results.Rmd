@@ -1878,11 +1878,11 @@ d <- readRDS('data-raw/d_senacon.rds')
 library(tidyverse)
 ```
 
-A secretaria Nacional de Atendimento ao Consumidor criou o site consumidor.gov em 2013 e já recebeu mais de `r "679.015"` reclamações nos seus quase 4 anos de duração. Nessa página, os consumidores podem entrar em contato direto com as prestadoras de serviço listadas na plataforma para resolver conflitos consumeristas, sem precisar recorrer às vias legais. Neste capítulo, mapeamos as principais queixas cadastradas e mensuramos o sucesso da plataforma à luz dos resultados obtidos nos tribunais.
+A secretaria Nacional de Atendimento ao Consumidor criou o site consumidor.gov.br em 2013 e já recebeu mais de `r "679.015"` reclamações nos seus quase 4 anos de duração. Nessa página, os consumidores podem entrar em contato direto com as prestadoras de serviço listadas na plataforma para resolver conflitos consumeristas, sem precisar recorrer às vias legais. Neste capítulo, mapeamos as principais queixas cadastradas e mensuramos o sucesso da plataforma à luz dos resultados obtidos nos tribunais.
 
 ### Métricas de acesso à plataforma
 
-Pensando na plataforma como uma ferramenta extrajudicial de resolução de conflitos, o primeiro tópico a ser discutido é o seu acesso. Tratando-se de questões consumeristas, é razoável que a renda impacte a quantidade de acessos ao consumidor.gov. De fato, existem regiões da federação muito sub-representadas no que diz respeito à população, sendo os estados do norte e nordeste do país aqueles com a menor taxa de acessos.
+Pensando na plataforma como uma ferramenta extrajudicial de resolução de conflitos, o primeiro tópico a ser discutido é o seu acesso. Tratando-se de questões consumeristas, é razoável que a renda impacte a quantidade de acessos ao consumidor.gov.br. De fato, existem regiões da federação muito sub-representadas no que diz respeito à população, sendo os estados do norte e nordeste do país aqueles com a menor taxa de acessos.
 
 ```{r senacon_uf}
 # detach('package:tidyverse')
@@ -1938,11 +1938,11 @@ Pode-se argumentar que esse fato não é de grande valia para a mensuração que
 #     } 
 ```
 
-![Taxa de reclamações ao consumidor.gov Unidade da Federação.](imgs/senacon_pib.pdf){#senacon_pib}
+![Taxa de reclamações ao consumidor.gov.br Unidade da Federação.](imgs/senacon_pib.pdf){#senacon_pib}
 
 Refazendo a análise anterior e tomando como referência o Produto Interno Bruto da unidade da federação, os estados do Nordeste apresentam taxas próximas às taxas calculadas no Sul e Sudeste, mas um notável desnível se mantém na região norte do País. Enquanto a maior parte dos estados brasileiros apresenta a razão de uma queixa por cada 100 mil reais do PIB do estado, no Norte essa razão cai pela metade.
 
-Também vale ressaltar que, embora os estados do Norte sistematicamente acessem menos o consumidor.gov, as taxas do Alagoas e Mato Grosso do Sul são comparáveis às taxas da região Norte.
+Também vale ressaltar que, embora os estados do Norte sistematicamente acessem menos o consumidor.gov.br, as taxas do Alagoas e Mato Grosso do Sul são comparáveis às taxas da região Norte.
 
 ```{r, results = 'asis'}
 library(tidyverse)
@@ -1967,7 +1967,7 @@ d %>%
   knitr::knit_print(caption = "Reclamações por 100 mil reais do PIB separadas por unidade da federação. Fonte: SENACON.")
 ```
 
-Além dos fatores geográficos e econômicos, também desejamos identificar se fatores temporais influenciam o número de reclamações encaminhadas à SENACON, a fim de verificar se o uso dessa ferramenta está crescendo, diminuindo ou estabilizando-se. Desconsiderando variações regionais, verificou-se que o número de reclamações ao consumidor.gov estão crescendo.
+Além dos fatores geográficos e econômicos, também desejamos identificar se fatores temporais influenciam o número de reclamações encaminhadas à SENACON, a fim de verificar se o uso dessa ferramenta está crescendo, diminuindo ou estabilizando-se. Desconsiderando variações regionais, verificou-se que o número de reclamações ao consumidor.gov.br estão crescendo.
 
 ```{r fig.cap="Número de reclamações por mês. Fonte: SENACON."}
 d %>% 
@@ -2039,9 +2039,9 @@ gridExtra::grid.arrange(gridExtra::arrangeGrob(sexo, idades, ncol = 2),
                         nrow = 2)
 ```
 
-### Maiores demandados no consumidor.gov
+### Maiores demandados no consumidor.gov.br
 
-Pode-se verificar uma diferença entre o perfil das demandadas no portal consumidor.gov e o perfil das demandadas dos tribunais. Por um lado, similar ao que ocorre nos tribunais, os primeiros da lista de maiores demandadas do consumidor.gov são empresas de telecomunicações e bancos. Entretanto, as administradoras de cadastros de inadimplentes possuem maior representação no portal do que nos tribunais.
+Pode-se verificar uma diferença entre o perfil das demandadas no portal consumidor.gov.br e o perfil das demandadas dos tribunais. Por um lado, similar ao que ocorre nos tribunais, os primeiros da lista de maiores demandadas do consumidor.gov.br são empresas de telecomunicações e bancos. Entretanto, as administradoras de cadastros de inadimplentes possuem maior representação no portal do que nos tribunais.
 
 ```{r, results = 'asis'}
 library(tidyML)
@@ -2132,7 +2132,7 @@ Essa vantagem se mantém inclusive se compararmos os processos pelos diferentes 
 
 ### Composição Extrajudicial e Litígios
 
-Embora não fosse possível verificar diretamente se um litigante utilizou previamente alguma via de composição extrajudicial, pudemos comparar a quantidade de reclamações com a quantidade de litígios e obter uma cota superior para a busca por vias de composição extrajudicial. Os resultados da última subseção sugeriram que, dependendo da magnitude dessas cotas, é razoável acreditar que se mais demandantes procurassem o portal consumidor.gov antes de um litígio, menos processos consumeristas seriam ajuizados.
+Embora não fosse possível verificar diretamente se um litigante utilizou previamente alguma via de composição extrajudicial, pudemos comparar a quantidade de reclamações com a quantidade de litígios e obter uma cota superior para a busca por vias de composição extrajudicial. Os resultados da última subseção sugeriram que, dependendo da magnitude dessas cotas, é razoável acreditar que se mais demandantes procurassem o portal consumidor.gov.br antes de um litígio, menos processos consumeristas seriam ajuizados.
 
 No Tribunal de Justiça do Rio Grande do Sul, por exemplo, os percentuais estimados de reclamantes que procuraram vias de composição extrajudicial são muito pequenos, ao passo que as taxas de eficiência são razoavelmente altas. Se, para fins de comparação, tomarmos apenas os processos contra a Oi, Vivo, Claro, Tim, Bradesco e Itaú, teremos o resultado que segue na tabela abaixo.
 
@@ -2158,7 +2158,7 @@ uniao_tjrs_senacon %>%
   filter(nome2 %in% c("regex_oi", "regex_vivo", "regex_claro", "regex_tim", "regex_bradesco", "regex_itau")) %>% 
   select(nome2, n.x, ef, p) %>% 
   set_names("nome2", "Número de processos", "Proporção de casos resolvidos", "% que consultou o site") %>% 
-  knitr::knit_print(caption = "Proporção de casos resolvidos e percentual máximo de litigantes que consultaram o consumidor.gov para 6 empresas. Fonte: SENACON e Tribunal de Justiça do Rio Grande do Sul.")
+  knitr::knit_print(caption = "Proporção de casos resolvidos e percentual máximo de litigantes que consultaram o consumidor.gov.br para 6 empresas. Fonte: SENACON e Tribunal de Justiça do Rio Grande do Sul.")
 ```
 
 Usando esses números para encenar o que aconteceria se todos os litigantes procurassem o portal da SENACON, os resultados parecem bem promissores. No que segue, simulamos alguns cenários com a finalidade de estimar quantos processos a menos entrariam no judiciário, caso a composição extrajudicial se efetivasse. 
@@ -2167,7 +2167,7 @@ Nas nossas simulações, adotamos algumas premissas. Os pontos abaixo impactam f
 
 As premissas foram:
 
-1. Construímos a cota superior para o percentual de consumidores que consultam o consumidor.gov atualmente assumindo que todos os casos do consumidor.gov se tornaram processos, independente se o usuário declarou-se satisfeito. 
+1. Construímos a cota superior para o percentual de consumidores que consultam o consumidor.gov.br atualmente assumindo que todos os casos do consumidor.gov.br se tornaram processos, independente se o usuário declarou-se satisfeito. 
 2. Se todos os litigantes tentassem a composição extrajudicial antes de litigar, a taxa de satisfação seria a mesma e, nos casos em que o litigante estivesse satisfeito, os litígios seriam evitados.
 
 Tomando como exemplo os processos contra a empresa Oi, tem-se que no máximo 18% dos demandantes procuraram a SENACON para tentar composições extrajudiciais, ao passo que 60% dos reclamantes do site declaram-se satisfeitos. Pensando nisso, pode-se argumentar que, se num cenário hipotético todos os litigantes passassem a procurar vias de composição extrajudicial antes de entrar com os litígios, então o volume processual consumerista sobre a Oi diminuiria em 82% $\times$ 60% = 49,2%, assumindo que as taxas de conversão se mantivessem.
@@ -2185,10 +2185,10 @@ uniao_tjrs_senacon %>%
          ganho_cenario_medio = (1-p)*ef*0.5,
          ganho_melhor_cenario = (1-p)*ef) %>% 
   select(nome2, ef, p, ganho_pior_cenario, ganho_cenario_medio, ganho_melhor_cenario) %>% 
-  set_names("nome2", "% de satisfação", "% que consultou o site", "% Pior cenário",
-            "% Cenário médio",
-            "% Melhor cenário") %>%
-    knitr::knit_print(caption = "Proporção de casos resolvidos e percentual máximo de litigantes que consultaram o consumidor.gov para 6 empresas, com estimativas de ganho no cenário em que as litigantes tentam conciliação antes de entrar com o processo. Fonte: SENACON.")
+  set_names("nome2", "% satisfação", "% consultou site", "% Pior caso",
+            "% caso médio",
+            "% Melhor caso") %>%
+    knitr::knit_print(caption = "Proporção de casos resolvidos e percentual máximo de litigantes que consultaram o consumidor.gov.br para 6 empresas, com estimativas de ganho no cenário em que as litigantes tentam conciliação antes de entrar com o processo. Fonte: SENACON.")
 ```
 
 ### Tempos

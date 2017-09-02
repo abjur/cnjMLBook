@@ -13,17 +13,17 @@ bookdown::pdf_book:
   toc_unnumbered: no
   toc_appendix: yes
   quote_footer: ["\\VA{", "}{}"]
-bookdown::gitbook:
-  css: css/style.css
-  config:
-    toc:
-      collapse: none
-      before: |
-        <li><a href="./">A Book Example</a></li>
-      after: |
-        <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
-    download: [pdf, epub]
-    edit: https://github.com/yihui/bookdown-crc/edit/master/%s
-    sharing:
-      github: yes
-      facebook: no
+#bookdown::gitbook:
+#  css: css/style.css
+#  config:
+#    toc:
+#      collapse: none
+#      before: |
+#        <li><a href="./">A Book Example</a></li>
+#      after: |
+#        <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+#    download: [pdf, epub]
+#    edit: https://github.com/yihui/bookdown-crc/edit/master/%s
+#    sharing:
+#      github: yes
+#      facebook: no

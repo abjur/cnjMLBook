@@ -16,13 +16,14 @@ description: "Template de relatório da ABJ."
 ```{r setup, include = FALSE}
 options(xtable.comment = FALSE)
 
-knitr::opts_chunk$set(echo = F, message = F, comment = F, warning = F)
+knitr::opts_chunk$set(echo = F, message = F, comment = F, warning = F, fig.pos = 'H')
 options(OutDec = ',')
 options(knitr.table.format = 'markdown')
 ```
 
 ```{r include_table, echo = F}
 library(tidyverse)
+library(stringr)
 
 theme_set(theme(text = element_text(family = "sf")))
 
@@ -79,7 +80,12 @@ fix_labels_2 <- function(nome2){
     nome2 == "Liberty Seguros @S@A@" ~ "Liberty Seguros",
     nome2 == "Federal Seguros @S@A@" ~ "Federal Seguros",
     nome2 == "B V Financeira @S@A@ Credito Financiamento E Investimento" ~ "BV Financeira",
-    
+    nome2 == "Nobre Seguradora Do Brasil @S@A@" ~ "Nobre Seguradoda do Brasil",
+    nome2 == "Hdi Seguros @S@A@" ~ "HDI Seguros",
+    nome2 == "Liberty Seguros @S@A@" ~ "Liberty Seguros",
+    nome2 == "Hipercard Banco Multiplo @S@A@" ~ "Hipercard",
+    nome2 == "Federal Seguros @S@A@" ~ "Federal Seguros",
+    nome2 == "B V Financeira @S@A@ Credito Financiamento E Investimento" ~ "Banco Votorantim",
     TRUE ~ regex2coolname(nome2)
   )
 }
@@ -88,6 +94,29 @@ fix_labels <- function(nome2){
   fix_labels_2(nome2) %>% 
   stringr::str_wrap(width = 15)
 }
+
+add_hline_before_rowsum <- function(xtable_lines){
+  
+  new_lines <- character(length(xtable_lines))
+  
+  line_with_totals <- stringr::str_which(xtable_lines, "Total")
+  
+  if(length(line_with_totals) == 0){
+    return(xtable_lines)
+  }
+  
+  new_lines[1:line_with_totals] <- c(xtable_lines[1:(line_with_totals-1)], "\\hline")
+  new_lines[line_with_totals+1] <- xtable_lines[line_with_totals]
+  new_lines[(line_with_totals+2):length(xtable_lines)] <- xtable_lines[(line_with_totals+2):length(xtable_lines)]
+  
+  return(new_lines)
+}
+
+remove_double_hline <- function(xtable_lines){
+  stringr::str_replace_all(xtable_lines, stringr::fixed('\\hline\n\\hline\n'), '\\hline\n')
+}
+
+#bold <- function(x) {paste('{\\textbf{',x,'}}', sep ='')}
 
 knit_print.data.frame = function(x, ...) {
   
@@ -129,10 +158,15 @@ knit_print.data.frame = function(x, ...) {
     res <- capture.output(d %>% 
           xtable::xtable(..., label = knitr::opts_current$get("label")) %>% 
           print(tabular.environment = 'longtable', comment = F,
-          floating = FALSE, include.rownames = F, caption.placement = 'top'))
+          floating = FALSE,
+          #sanitize.colnames.function=bold,
+          include.rownames = F, caption.placement = 'top'))
     
     res %>% 
-      paste0(collapse = '\n') %>% 
+      add_hline_before_rowsum() %>%
+      paste0(collapse = '\n') %>%
+      remove_double_hline() %>% 
       knitr::asis_output()
 }
 ```
+
