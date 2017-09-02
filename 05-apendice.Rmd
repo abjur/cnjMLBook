@@ -7,7 +7,7 @@
 1. [Scripts de análise de dados feitos em R](https://github.com/abjur/cnjML).
 1. [Scripts para arrumar dados dos tribunais](https://github.com/abjur/tidyML).
 1. [Scripts para arrumar nomes das empresas](https://github.com/abjur/tidyPJ).
-1. [Pacote em R utilizado para armazenas as TPUs do CNJ](https://github.com/abjur/tpur).
+1. [Pacote em R utilizado para armazenar as TPUs do CNJ](https://github.com/abjur/tpur).
 1. [Pacote em R utilizado para criar a *whitelist* do TJSP e estimar volumes processuais](https://github.com/abjur/tpur).
 1. [Scripts de web scraping de tribunais do sistema SAJ](https://github.com/courtsbr/esaj).
 1. [Scripts de web scraping de diversas páginas do TJSP](https://github.com/courtsbr/tjsp).
@@ -45,7 +45,7 @@ devolução de valores em razão de planos econômicos instituídos pelo país
 no início dos anos 1990.
 
 A instauração do incidente pode ser pedida pelo juiz ou relator, pelas
-partes da demanda, pela Defensoria Publíca ou Ministério Público. Quando
+partes da demanda, pela Defensoria Pública ou Ministério Público. Quando
 o Ministério Público não pedir a instauração do incidente, deverá
 funcionar como fiscal da Lei.
 
@@ -87,8 +87,8 @@ a decidir processos em bloco sem reduzir a segurança jurídica, aumentando
 significativamente a eficiência dos tribunais.
 
 Infelizmente, em todas as entrevistas o tema ficou em segundo plano. É
-grande a descrença em aplicações práticas do IRDR. E é pequena a fatia
-dos problemas do consumidor que ele ataca. Para ser efetivo, o IRDR
+grande a descrença em aplicações práticas do IRDR e é pequena a fatia
+dos problemas do consumidor que o índice ataca. Para ser efetivo, o IRDR
 precisaria de uma tecnologia de identificação e agrupamento de processos
 que ainda não existe em nenhum tribunal. Além disso, existem poucos
 casos disponíveis para análise.
@@ -108,7 +108,7 @@ e efetivação dos pronunciamentos judiciais.
 
 Sensível aos problemas que essa determinação poderia trazer para o
 funcionamento das varas judiciais e tribunais, o legislador editou a Lei
-n.º 13.256/2016, que acrescentou a palavra ``preferencialmente'' aos
+n.º 13.256/2016 e acrescentou a palavra ``preferencialmente'' aos
 artigos 12, Caput, e 153 do CPC:
 
 
@@ -148,11 +148,11 @@ cada dia, considerando todos os agentes do cartório.
 
 A hipótese para esse tema é a de que existem formas de ordenar as
 tarefas dentro de um cartório capaz de i) minimizar o número de ações a
-serem tomadas, através de ações e blocos de processos, ii) reduzir o
+serem tomadas através de ações e blocos de processos, ii) reduzir o
 tempo médio entre a distribuição e a sentença do processo e iii) manter
 constante ou reduzir a taxa de recorribilidade.
 
-Os resultados para esse tema são simulações,
+Os resultados para esse tema são simulações
 baseadas em dados reais de movimentações processuais e utilização de
 modelos similares aos descritos em @Fossaluza2015. A mensuração da
 importância envolve, entre outras características, a complexidade
@@ -180,11 +180,11 @@ consumidor são os que envolvem danos morais, sendo este um
 assunto processual que tem a intuição de estar associado a uma
 "indústria". Esse fato poderia ser explicado por conta de juízes que arbitram valores de indenização altos o suficiente, instigando pessoas a litigar. Em outras ocasiões, é possível ajuizar litígios que desfavorecem a requerida em prol da requerente, além do simples intuito de indenizar um dano sofrido.
 
-Esse é argumento particularmente plausível no caso dos JECs, por conta
+Esse é um argumento particularmente plausível no caso dos JECs por conta
 da inexistência das custas processuais e sucumbência [@Athos2015].
 Se desconsiderarmos o custo de litigar por conta do tempo dispendido
 para iniciar e acompanhar a ação, mesmo quando a probabilidade de
-sucesso é baixa, litigar é um ato vantajoso para o autor, mesmo que este
+sucesso é baixa, litigar é um ato vantajoso para o autor, mesmo que o mesmo
 não tenha razão.
 
 Outro tópico relevante nesse contexto é a gratuidade judiciária, que tem
@@ -216,8 +216,8 @@ julgado da decisão que as certificou, o credor demonstrar que deixou de
 existir a situação de insuficiência do beneficiário.
 
 O momento de concessão da gratuidade da justiça, que pode ocorrer em
-relação a algum ou a todos os atos processuais, e que pode consistir na
-redução percentual dos valores é regulado pelo art. 99 do novo CPC.
+relação a algum ou a todos os atos processuais e que pode consistir na
+redução percentual dos valores, é regulado pelo art. 99 do novo CPC.
 
 O dispositivo supramencionado prevê, em seu *Caput*, que a
 gratuidade pode ser pedida na petição inicial, na contestação, na
@@ -244,7 +244,7 @@ gratuita para as pessoas naturais, na medida em que: i) há uma presunção
 de insuficiência por mera declaração; ii) essa presunção somente pode
 ser afastada caso o magistrado verifique a existência de elementos que
 demonstrem que o réu não possui insuficiência, o que normalmente ocorre
-apenas naqueles casos extremos; iii) ainda que o magistrado afaste a
+apenas em casos extremos; iii) ainda que o magistrado afaste a
 presunção, deve dar à parte a possibilidade de provar que preenche os
 requisitos de insuficiência.
 
@@ -340,12 +340,12 @@ consumeristas.
 As análises para o tema ficariam apenas no plano teórico e os modelos
 finais poderiam ser aplicadas no mundo real somente após a coleta de
 novos dados. Por isso, resolvemos deixar as análises em segundo plano,
-possivelmente em pesquisas futuras.
+possivelmente para pesquisas futuras.
 
 ### Estratégias de composição amigável
 
-As duas maiores inovações do novo CPC são i) a ênfase atribuída ao dever
-de cooperação entre as partes e ii) as aberturas para atuação dos
+As duas maiores inovações do novo CPC são: i) a ênfase atribuída ao dever
+de cooperação entre as partes; e ii) as aberturas para atuação dos
 chamados meios alternativos de solução de litígios.
 
 Dentro do âmbito desta última, encontram-se as estratégias de
@@ -455,7 +455,7 @@ O resultado dessa análise poderá implicar em propostas como:
   consumo de determinados tipos, épocas do ano e regiões.
 
 A conciliação é um tema amplamente discutido no judiciário e aparece
-como prioridade na pesquisa. No entanto, nas reuniões, vimos que o
+como prioridade na pesquisa. No entanto, nas reuniões vimos que o
 interesse não é tão grande para ações envolvendo direito do consumidor.
 Os especialistas acreditam que a proporção de processos com composições
 amigáveis está próxima do máximo alcançável; nos casos restantes, alguma
@@ -464,7 +464,7 @@ criar mais formas de incentivar o acordo não têm resultado prático.
 
 No final, acabamos não utilizando dados para realizar análises sobre conciliação. Essa parte da pesquisa foi transferida para pesquisas futuras, especialmente nas pesquisas locais.
 
-A única proposta levantada sobre esse eixo foi a realização de experimentos controlados com a utilização da semana de conciliação. A condução de estudos desse tipo trará maior conhecimento sobre o que explica o fenômeno do acordo e quais os meios de fazê-lo acontecer com maior frequência.
+A única proposta levantada sobre esse eixo foi a realização de experimentos controlados com a utilização da semana de conciliação. A condução de estudos desse tipo trará maior conhecimento sobre o que explica o fenômeno do acordo e quais as formas de aumentar a frequencia desses acordos.
 
 ## Questionário
 
@@ -504,7 +504,7 @@ abaixo.
     prejudiciais à Sociedade?
     1. Comportamento da empresa mudou em função das agências reguladoras? A
     empresa vê que elas cumprem bem sua finalidade?
-    1. Sob quais circunstâncias a empresa recorre de uma decisão? (1a e 2a
+    1. Sob quais circunstâncias a empresa recorre de uma decisão? (1ª e 2ª
     instância?)
     1. De que forma danos morais são tratados na justiça consumerista?
 1. Legislação consumerista.
@@ -515,7 +515,7 @@ abaixo.
     1. Há pontos da legislação que poderiam ser melhorados?
     1. Existem leis que são propositadamente infringidas pelas empresas por
     serem economicamente inviáveis? (ou respeitá-las seria economicamente ineficiente).
-1. Agências reguladoras
+1. Agências reguladoras.
     1. Qual a relação da empresa com as agências reguladoras?
 
 ## Anotações das reuniões
@@ -543,7 +543,7 @@ João Braz e teve como principais resultados as anotações abaixo.
 A segunda reunião contou com a presença de Armando Rovai, presidente da SENACON.
 
 1. O superendividamento é um problema corrente nos canais do portal
-  Consumidor.gov. É possível afirmar que o consumidor não é o único
+  Consumidor.gov.br. É possível afirmar que o consumidor não é o único
   responsável pelo endividamento, uma vez que este pode ser mitigado por
   bancos e fornecedores de cartões de crédito que possuam informações
   aprofundadas do consumidor.
@@ -561,15 +561,15 @@ O terceiro grupo focal contou com a presença de Maria Rita Rebello e Ana
 Rita Nery, ambas juízas assessoras da corregedoria.
 
 1. Sobre ações coletivas
-  - Ações coletivas são uma solução melhor que IRDR, pois o IRDR ainda
+    - Ações coletivas são uma solução melhor que IRDR, pois o IRDR ainda
     mantém a necessidade de sentenças individuais.
-  - Como implementar ações coletivas de forma mais sistemática: criar um
+    - Como implementar ações coletivas de forma mais sistemática: criar um
     dashboard para o Ministério Público (MP) que monitore dados dos
-    canais Procon, Reclame Aqui, Consumidor.gov e Judiciário e
+    canais Procon, Reclame Aqui, Consumidor.gov.br e Judiciário e
     identifique movimentações anômalas de grupos de processos em
     determinados lugares ou tempos, para indicar a necessidade de criar
     ações coletivas.
-  - Faz sentido entrevistar o MP para falar sobre ações coletivas.
+    - Faz sentido entrevistar o MP para falar sobre ações coletivas.
 1. Sobre conciliação
     - A conciliação não é uma forma de melhorar o judiciário em ações
     consumeristas.
@@ -578,19 +578,19 @@ Rita Nery, ambas juízas assessoras da corregedoria.
     entra com a ação se realmente não tem mais como resolver a situação
     de outra forma. A probabilidade de aceite de acordo dado que o
     processo envolve relação de consumo é baixa.
-  - A obrigatoriedade da conciliação é inconstitucional.
-  - Incentivar fortemente a conciliação pode ser visto como mais uma
+    - A obrigatoriedade da conciliação é inconstitucional.
+    - Incentivar fortemente a conciliação pode ser visto como mais uma
     forma de incentivar a empresa a cometer ilícitos.
 1. Sobre fila de trabalho nos processos
-  - Não aumenta a velocidade dos processos no TJSP, pois o tribunal já
+    - Não aumenta a velocidade dos processos no TJSP, pois o tribunal já
     possui diversos modelos de documentos e ritos bem definidos. O novo
     CPC também ajuda nesse sentido.
-  - O foco deve ser em métodos para identificação de boas práticas na
+    - O foco deve ser em métodos para identificação de boas práticas na
     administração de varas e bases de conhecimento internas para
-    facilitar comunicação (e.g.\textasciitilde{}informar sobre um
+    facilitar comunicação (e.g.informar sobre um
     advogado que frauda documentos, criar fluxos de atuação do juiz em
-    certos tipos de casos etc.)
-  - Em comarcas menores e tribunais com sistemas mais precários, faz
+    certos tipos de casos etc.).
+    - Em comarcas menores e tribunais com sistemas mais precários, faz
     sentido implementar técnicas de filas de trabalho, pois os juízes
     desses lugares não administram a vara de forma eficaz.
 1.  Sobre incentivos para litigar
@@ -600,65 +600,65 @@ Rita Nery, ambas juízas assessoras da corregedoria.
     - Uma taxa baixa de conversão de conflitos em litígios é benéfica para
     a empresa.
 1. Sobre incentivos das empresas para cometerem ilícitos
-  - É o grande gargalo na questão dos incentivos para litigar.
-  - Uma possível solução é a implementação de \emph{punitive damages}.
-  - As sanções e multas de agências reguladoras podem funcionar como
+    - É o grande gargalo na questão dos incentivos para litigar.
+    - Uma possível solução é a implementação de \emph{punitive damages}.
+    - As sanções e multas de agências reguladoras podem funcionar como
     substitutas para \emph{punitive damages}, mas as agências não têm
     interesse em aplicá-las.
-  - O ideal seria vincular uma estratégia de sanções ao Procon.
+    - O ideal seria vincular uma estratégia de sanções ao Procon.
 1. Mecanismos de composição extrajudicial
-  - Ferramentas como Reclame Aqui e Consumidor.gov são indispensáveis.
-  - O SAC não é um bom mecanismo pois as empresas não têm interesse que
+    - Ferramentas como Reclame Aqui e Consumidor.gov.br são indispensáveis.
+    - O SAC não é um bom mecanismo pois as empresas não têm interesse que
     elas sejam eficazes.
 
 A quarta reunião contou com a presença da diretoria de contencioso cível do Itaú-Unibanco.
 
 1. Sobre ações coletivas e IRDR
-  - O IRDR não funciona pois os juízes não seguirão as regras de demandas repetitivas.
-  - Não houve comentários sobre ações coletivas
+    - O IRDR não funciona pois os juízes não seguirão as regras de demandas repetitivas.
+    - Não houve comentários sobre ações coletivas.
 1. Sobre conciliação
-  - Composição extrajudicial é mais eficiente do que acordo dentro do
+    - Composição extrajudicial é mais eficiente do que acordo dentro do
     processo.
-  - Aumentar incentivos para o acordo dentro do judiciário não aumenta a
+    - Aumentar incentivos para o acordo dentro do judiciário não aumenta a
     proporção de acordos.
 1. Sobre incentivos para litigar
-  - Existe incentivo para litigar. Quando a pessoa se sente injustiçada,
+    - Existe incentivo para litigar. Quando a pessoa se sente injustiçada,
     entra no judiciário mesmo com propostas de composição extrajudicial.
-  - Existem incentivos macroeconômicos para litigar. Crise gera
+    - Existem incentivos macroeconômicos para litigar. Crise gera
     inadimplência, que gera aversão a cobranças, que gera ações para
     negar relação contratual (e.g.~tarifas bancárias).
-  - Existe indústria do dano moral, mas só em alguns lugares e para
+    - Existe indústria do dano moral, mas só em alguns lugares e para
     alguns juízes. O efeito é pontual.
-  - Gratuidade judiciária deveria ser baseada em critérios objetivos.
-  - JEC também tem o mesmo problema. As pessoas têm incentivo a litigar
+    - Gratuidade judiciária deveria ser baseada em critérios objetivos.
+    - JEC também tem o mesmo problema. As pessoas têm incentivo a litigar
     e com os maiores valores possíveis.
 1. Incentivos das empresas para cometerem ilícitos
     - Existem empresas que maximizam lucro colocando na conta a perda
     esperada por indenização.
-  - Esse tipo de atitude é mais comum em empresas menores, que ainda não
+    - Esse tipo de atitude é mais comum em empresas menores, que ainda não
     implantaram governança corporativa.
-  - Atualmente os grandes bancos não fazem isso e tentam evitar os
+    - Atualmente os grandes bancos não fazem isso e tentam evitar os
     conflitos ao máximo.
 1. Mecanismos de composição extrajudicial
-  - Extremamente importante e subutilizado.
-  - Há necessidade de incentivar as pessoas a procurarem mais esses
+    - Extremamente importante e subutilizado.
+    - Há necessidade de incentivar as pessoas a procurarem mais esses
     meios.
-  - Na maioria dos casos as pessoas não procuram meios extrajudiciais
-    para solução de conflitos
-  - Isso também está ligado à cultura do litígio na advocacia. Advogados
+    - Na maioria dos casos as pessoas não procuram meios extrajudiciais
+    para solução de conflitos.
+    - Isso também está ligado à cultura do litígio na advocacia. Advogados
     (ruins) têm de tudo para cooptarem clientes e entrarem com ações de
     consumo. A concentração de ações esteja em escritórios pequenos ou
     advogados que atuam sozinhos. Isso é influência de i) excesso de
     advogados no país e ii) faculdades ruins.
-  - A OAB não tem interesse em reduzir litigiosidade, por isso ela foca
+    - A OAB não tem interesse em reduzir litigiosidade, por isso ela foca
     em temas como conciliação e IRDR e acesso à justiça, e fogem de
     alternativas extrajudiciais ou de mudança de cultura dos advogados.
-  - Existe uma associação entre taxa de estudantes de direito de um
+    - Existe uma associação entre taxa de estudantes de direito de um
     determinado município (por habitante) e a taxa de ações envolvendo
     direito do consumidor (por habitante).
-  - Proposta de criação de regra de conduta para juízes: se uma pessoa
+    - Proposta de criação de regra de conduta para juízes: se uma pessoa
     entra com processo sem ter procurado mecanismos como SAC,
-    Consumidor.gov e reclame aqui, o juíz não dá indenização por dano
+    Consumidor.gov.br e Reclame Aqui, o juíz não dá indenização por dano
     moral. Isso incentiva o consumidor a passar por todos os passos ao
     invés de ir direto ao judiciário.
 
@@ -666,28 +666,28 @@ A quinta reunião contou com a presença da diretoria de contencioso cível
 do Grupo Pão de Açúcar.
 
 1. Sobre ações coletivas e IRDR
-  - Provavelmente não funciona pois a maioria dos processos estão nos
+    - Provavelmente não funciona pois a maioria dos processos estão nos
     JECs.
 1. Sobre conciliação
-  - A conciliação faz sentido e precisa ser incentivada.
-  - A taxa de aceite à proposta de acordos é maior nos JECs.
+    - A conciliação faz sentido e precisa ser incentivada.
+    - A taxa de aceite à proposta de acordos é maior nos JECs.
 1. Sobre incentivos para litigar
-  - Problemas de vício de produto e entrega (logística) são as
+    - Problemas de vício de produto e entrega (logística) são as
     principais causas de pedir.
-  - Juízes que incentivam ações judiciais através da aplicação de
+    - Juízes que incentivam ações judiciais através da aplicação de
     valores altos de indenização.
-  - Existe banalização do dano moral.
-  - Está ligado com os problemas da gratuidade
+    - Existe banalização do dano moral.
+    - Está ligado com os problemas da gratuidade.
 1. Sobre incentivos das empresas para cometerem ilícitos
-  - O problema está geralmente com as fabricantes que não tomam
+    - O problema está geralmente com as fabricantes que não tomam
     responsabilidade e deixam a empresa no meio de campo.
-  - As empresas enfrentam dificuldades no atendimento para devolver
+    - As empresas enfrentam dificuldades no atendimento para devolver
     produtos e trocar itens com defeito.
-  - Outra fonte externa aos esforços da empresa são problemas
+    - Outra fonte externa aos esforços da empresa são problemas
     relacionados a cartões.
 1. Sobre mecanismos de composição extrajudicial
-  - É importante incentivar o contato direto com a companhia.
-  - No entanto, os canais de atendimento atuais são ruins e não resolvem
+    - É importante incentivar o contato direto com a companhia.
+    - No entanto, os canais de atendimento atuais são ruins e não resolvem
     os problemas dos consumidores.
     
 # Códigos para lidar com incorporações{#codpj}
