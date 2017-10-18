@@ -2,7 +2,7 @@
 title: "Os Maiores Litigantes da Justiça Consumerista: Mapeamento e Proposições"
 author: "Associação Brasileira de Jurimetria"
 date: "`r format(Sys.Date(), '%d de %B de %Y')`"
-documentclass: report
+#documentclass: report
 bibliography: bibliography.bib
 biblio-style: apalike
 link-citations: yes
@@ -18,7 +18,6 @@ options(xtable.comment = FALSE)
 
 knitr::opts_chunk$set(echo = F, message = F, comment = F, warning = F, fig.pos = 'H')
 options(OutDec = ',')
-options(knitr.table.format = 'markdown')
 ```
 
 ```{r include_table, echo = F}
@@ -75,17 +74,18 @@ fix_labels_2 <- function(nome2){
     nome2 == "varejo" ~ "Varejo",
     nome2 == "recuperacao_credito" ~ "Companhias de recuperação de crédito",
     nome2 == "fabricantes_linha_branca" ~ "Fabricantes de eletrodomésticos da linha branca",
-    nome2 == "Nobre Seguradora Do Brasil @S@A@" ~ "Nobre Seguradora",
-    nome2 == "Hdi Seguros @S@A@" ~ "HDI Seguros",
-    nome2 == "Liberty Seguros @S@A@" ~ "Liberty Seguros",
-    nome2 == "Federal Seguros @S@A@" ~ "Federal Seguros",
-    nome2 == "B V Financeira @S@A@ Credito Financiamento E Investimento" ~ "BV Financeira",
-    nome2 == "Nobre Seguradora Do Brasil @S@A@" ~ "Nobre Seguradoda do Brasil",
-    nome2 == "Hdi Seguros @S@A@" ~ "HDI Seguros",
-    nome2 == "Liberty Seguros @S@A@" ~ "Liberty Seguros",
-    nome2 == "Hipercard Banco Multiplo @S@A@" ~ "Hipercard",
-    nome2 == "Federal Seguros @S@A@" ~ "Federal Seguros",
-    nome2 == "B V Financeira @S@A@ Credito Financiamento E Investimento" ~ "Banco Votorantim",
+    nome2 == "nobre seguradora do brasil @s@a@" ~ "Nobre Seguradora",
+    nome2 == "hdi seguros @s@a@" ~ "HDI Seguros",
+    nome2 == "liberty seguros @s@a@" ~ "Liberty Seguros",
+    nome2 == "federal seguros @s@a@" ~ "Federal Seguros",
+    nome2 == "b v financeira @s@a@  credito financiamento e investimento" ~ "BV Financeira",
+    nome2 == "nobre seguradora do brasil @s@a@" ~ "Nobre Seguradoda do Brasil",
+    nome2 == "hdi seguros @s@a@" ~ "HDI Seguros",
+    nome2 == "liberty seguros @s@a@" ~ "Liberty Seguros",
+    nome2 == "hipercard banco multiplo @s@a@" ~ "Hipercard",
+    nome2 == "federal seguros @s@a@" ~ "Federal Seguros",
+    nome2 == "b v financeira @s@a@ credito financiamento e investimento" ~ "Banco Votorantim",
+    nome2 == "planserv assistencia a saude dos servidores publicos estaduais" ~ "Planserv",
     TRUE ~ regex2coolname(nome2)
   )
 }
@@ -117,8 +117,8 @@ remove_double_hline <- function(xtable_lines){
 }
 
 #bold <- function(x) {paste('{\\textbf{',x,'}}', sep ='')}
-
-knit_print.data.frame = function(x, ...) {
+if(knitr:::is_latex_output()){
+  knit_print.data.frame = function(x, ...) {
   
     maybe_mutate_at <- purrr::possibly(function(d, coluna, ...){
       mutate_at(d, .vars = coluna, ...)
@@ -155,18 +155,23 @@ knit_print.data.frame = function(x, ...) {
       TRUE ~ stringr::str_to_title(nomes)
     )
   
-    res <- capture.output(d %>% 
+      res <- capture.output(d %>% 
           xtable::xtable(..., label = knitr::opts_current$get("label")) %>% 
           print(tabular.environment = 'longtable', comment = F,
           floating = FALSE,
           #sanitize.colnames.function=bold,
           include.rownames = F, caption.placement = 'top'))
     
-    res %>% 
-      add_hline_before_rowsum() %>%
-      paste0(collapse = '\n') %>%
-      remove_double_hline() %>% 
-      knitr::asis_output()
+      res %>% 
+        add_hline_before_rowsum() %>%
+        paste0(collapse = '\n') %>%
+        remove_double_hline() %>% 
+        knitr::asis_output()
+  }
+  options(knitr.table.format = 'markdown')
+} else {
+  knit_print.data.frame = knitr::kable
+  options(knitr.table.format = 'pandoc')
 }
 ```
 

@@ -1,18 +1,20 @@
-bookdown::pdf_book:
-  includes:
-    in_header: latex/preamble.tex
-    before_body: latex/before_body.tex
+bookdown::word_document2:
+  keep_md: no
+#bookdown::pdf_book:
+#  includes:
+#    in_header: latex/preamble.tex
+#    before_body: latex/before_body.tex
     #after_body: latex/after_body.tex
-  keep_tex: yes
-  dev: "cairo_pdf"
+#  keep_tex: yes
+#  dev: "cairo_pdf"
   #latex_engine: lualatex
-  citation_package: natbib
-  template: null
-  pandoc_args: --chapters
-  toc_depth: 3
-  toc_unnumbered: no
-  toc_appendix: yes
-  quote_footer: ["\\VA{", "}{}"]
+#  citation_package: natbib
+#  template: null
+#  pandoc_args: --chapters
+#  toc_depth: 3
+#  toc_unnumbered: no
+#  toc_appendix: yes
+#  quote_footer: ["\\VA{", "}{}"]
 #bookdown::gitbook:
 #  css: css/style.css
 #  config:

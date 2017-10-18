@@ -41,20 +41,20 @@ A pesquisa também buscou atender o *princípio da reprodutibilidade* [@gelman20
 
 A metodologia do estudo considerou um desenho misto (@hanson2005mixed, p. 116). Especificamente, utilizamos a técnica de métodos convergentes em paralelo (*convergent parallel methods design*). Nessa abordagem, coletamos e analisamos dados qualitativos e quantitativos em paralelo, confrontando os resultados para gerar interpretações e conclusões. A Figura \@ref(fig:desenho) mostra esquematicamente o desenho utilizado.
 
-<!-- ```{r desenho, fig.cap="Método misto em paralelo convergente. Adaptado de [@creswell2013research], p. 270."} -->
-<!-- knitr::include_graphics('imgs/creswell.png') -->
-<!-- ``` -->
+```{r desenho, fig.cap="Método misto em paralelo convergente. Adaptado de [@creswell2013research], p. 270."}
+knitr::include_graphics('imgs/creswell.png')
+```
 
-![Método misto em paralelo convergente (adaptado de [@creswell2013research], p. 270).](imgs/creswell.png){#fig:desenho}
+<!-- ![Método misto em paralelo convergente (adaptado de [@creswell2013research], p. 270).](imgs/creswell.png){#fig:desenho} -->
 
 A parte exploratória utilizou métodos quantitativos baseados em dados
 observacionais para elucidar o fenômeno de interesse (@hanson2005mixed, p. 18). Nesse caso, iniciamos com a obtenção de dados para posterior análise e interpretação de resultados. A Figura \@ref(fig:quanti) mostra essa parte de forma esquemática.
 
-<!-- ```{r quanti, fig.cap="Metodologia quantitativa. Adaptado de @wickham2016r."} -->
-<!-- knitr::include_graphics('imgs/quanti.png') -->
-<!-- ``` -->
+```{r quanti, fig.cap="Metodologia quantitativa. Adaptado de @wickham2016r."}
+knitr::include_graphics('imgs/quanti.png')
+```
 
-![Metodologia quantitativa. Adaptado de @wickham2016r.](imgs/quanti.png){#fig:quanti}
+<!-- ![Metodologia quantitativa. Adaptado de @wickham2016r.](imgs/quanti.png){#fig:quanti} -->
 
 Já a parte propositiva utilizou tanto métodos quantitativos não-experimentais quanto métodos qualitativos para gerar as proposições. Nesse caso, fizemos entrevistas, levantamentos bibliográficos e levantamento de dados para suportar as argumentações.
 
@@ -101,7 +101,7 @@ dados <- rjn::d_jn$dados[["JN_18-Out-2016.csv"]]
 
 A Tabela \@ref(tab:jntot) mostra a quantidade de casos novos e pendentes por ramo da Justiça. É possível observar que a Justiça Estadual foi responsável por quase 70% dos casos novos e quase 80% dos casos pendentes. Isso mostra que, para fins de administração do judiciário, faz sentido considerar a Justiça Estadual como foco principal.
 
-```{r tab:jntot, results='asis'}
+```{r jntot, results='asis'}
 dados %>%
   filter(ano == 2015, str_detect(dsc_tribunal, '^Just|Super')) %>%
   mutate_at(vars(cn, cp), funs(as.numeric)) %>%
@@ -122,12 +122,12 @@ dados %>%
     `Casos Novos` = sprintf("%s (%s)", fmt(total_n), fmt_p(prop_n)),
     `Casos Pendentes` = sprintf("%s (%s)", fmt(total_p), fmt_p(prop_p))
   ) %>%
-  knitr::knit_print(align = 'llrr', caption = "Casos novos e casos pendentes por Justiça. Fonte: Justiça em Números.")
+  knitr::kable(caption = "Casos novos e casos pendentes por Justiça. Fonte: Justiça em Números.")
 ```
 
 A Tabela \@ref(tab:inst) mostra o volume de casos novos e pendentes dentro da Justiça Estadual, por instância. Observe que o volume de casos pendentes no primeiro grau, somado ao volume nos Juizados Especiais, representam mais de 96% do total. Logo, um segundo filtro adequado é o da instância.
 
-```{r tab:inst, results='asis'}
+```{r inst, results='asis'}
 dados %>%
   filter(justica == 'Estadual', sigla != 'TJ') %>%
   select(sigla, ano, cn1, cn2, cp1, cp2, cnje, cntr, cpje, cptr) %>%
@@ -166,7 +166,7 @@ dados %>%
 
 O terceiro filtro aplicado relaciona-se com as áreas processuais criminal e não criminal. A Tabela \@ref(tab:crim) mostra a quantidade de casos novos e pendentes no primeiro grau e nos Juizados e Especiais, comparando as duas áreas. A área não criminal é responsável por 88% dos casos pendentes. Mesmo com todos os filtros aplicados, ainda estamos com uma subpopulação de mais de 50 milhões de casos pendentes.
 
-```{r tab:crim, results='asis'}
+```{r crim, results='asis'}
 dados %>%
   filter(justica == 'Estadual', sigla != 'TJ') %>%
   select(
@@ -232,7 +232,7 @@ O próximo filtro é baseado no problema da execução fiscal. A Tabela \@ref(ta
 
 Nesse momento foi feita uma importante decisão de escopo: estudar apenas os casos não criminais e não relacionados à execução fiscal. Agora, a população de casos pendentes é de aproximadamente 25 milhões de processos.
 
-```{r tab:fiscal, results='asis'}
+```{r fiscal, results='asis'}
 dados %>%
   filter(justica == 'Estadual', sigla != 'TJ') %>%
   select(
@@ -316,7 +316,7 @@ Durante a primeira fase do projeto, produzimos um ofício com pedidos de listage
 
 A Tabela \@ref(tab:tabuf) mostra a quantidade de casos novos e pendentes não criminais de conhecimento no primeiro grau para cada Tribunal escolhido. Já a Figura \@ref(fig:tempo) mostra o volume de casos novos e pendentes ao longo dos anos. Observa-se que as quantidades não são estáveis, mesmo considerando Tribunais de grande porte.
 
-```{r tab:tabuf, results='asis'}
+```{r tabuf, results='asis'}
 data(cadmun, package = 'abjData')
 cadmun <- distinct(cadmun, uf, regiao)
 dados %>%
@@ -372,8 +372,13 @@ dados %>%
   knitr::knit_print(align = 'llllrr', caption = "Casos novos e casos pendentes não criminais por tribunal. Os porcentuais foram calculados em relação ao total de casos considerando todos os Tribunais. Fonte: Justiça em Números.")
 ```
 
-```{r tempo, fig.height=5, fig.cap="Volume de casos novos e pendentes ao longo do tempo nos tribunais de interesse. Fonte: Justiça em Números."}
-data(cadmun, package = 'abjData')
+```{r}
+cadmun <- abjData::cadmun
+```
+
+
+```{r tempo, fig.cap="Volume de casos novos e pendentes ao longo do tempo nos tribunais de interesse. Fonte: Justiça em Números.", eval = TRUE}
+#data(cadmun, package = 'abjData')
 cadmun <- distinct(cadmun, uf, regiao)
 dados %>%
   filter(justica == 'Estadual', sigla != 'TJ') %>%
@@ -443,8 +448,11 @@ A extração de dados dos tribunais escolhidos passou por duas atividades. A pri
 
 O fluxo para leitura, limpeza e arrumação dos dados brutos foi descrito na Figura \@ref(fig:arrumacao)
 
+```{r arrumacao, fig.cap = "Fluxo de leitura, limpeza e arrumação dos dados. Fonte: Elaboração própria."}
+knitr::include_graphics(path = "imgs/classificacao.png")
+```
 
-![Fluxo de leitura, limpeza e arrumação dos dados. Fonte: Elaboração própria.](imgs/classificacao.png){#fig:arrumacao}
+<!-- ![Fluxo de leitura, limpeza e arrumação dos dados. Fonte: Elaboração própria.](imgs/classificacao.png){#fig:arrumacao} -->
 
 Em seguida, descrevemos as atividades realizadas para extração dos dados em cada tribunal.
 
@@ -476,7 +484,7 @@ No final, fomos capazes de obter pelo menos uma base de dados por tribunal. As b
 
 A Tabela \@ref(tab:tribunais) resume as características dos dados de cada tribunal, após aplicação de todos os filtros. As bases prospectivas obtidas via ofício têm escopo temporal de janeiro de 2009 até dezembro 2015, indexados pela data de distribuição. Os processos obtidos via web scraping foram distribuídos a partir do ano de 2013. Os casos retrospectivos do Selo Justiça em Números apresentam o escopo do Selo para o ano de 2016.
 
-```{r tab:tribunais, results='asis'}
+```{r tribunais, results='asis'}
 tibble::tribble(
   ~Tribunal, ~`Método coleta`, ~`Tipo levantamento`, ~N, 
   ~`Cód. assuntos`, ~`Filtro`, ~`Tipo estudo`,
@@ -538,7 +546,11 @@ As TPUs são estruturadas em formato de árvore. Isso significa que temos assunt
 
 A Figura \@ref(fig:tpu) mostra uma parte da árvore de assuntos relativa ao Direito do Consumidor. Os números da imagem são códigos identificadores dos assuntos. Note que, por exemplo, "Inclusão Indevida em Cadastro de Inadimplentes" é um filho de "Indenização por Dano Moral", que por sua vez é filho de "Responsabilidade do Fornecedor".
 
-![Árvore de assuntos relacionada ao Direito do Consumidor (parcial). Último acesso em 27/06/2017.](imgs/tpu.png){#fig:tpu}
+```{r tpu, fig.cap = "Árvore de assuntos relacionada ao Direito do Consumidor (parcial). Último acesso em 27/06/2017."}
+knitr::include_graphics(path = 'imgs/tpu.png')
+```
+
+<!-- ![Árvore de assuntos relacionada ao Direito do Consumidor (parcial). Último acesso em 27/06/2017.](imgs/tpu.png){#fig:tpu} -->
 
 O problema enfrentado atualmente é que, na prática, nem sempre os processos são classificados com assuntos específicos. Assim, é possível encontrar um caso que discute sobre "Análise de Crédito" classificado como "Responsabilidade do Fornecedor", ou ainda "Direito do Consumidor".
 
@@ -577,7 +589,13 @@ $N_1, N_2, \dots, N_6$, em que $N_1$ é o nível mais genérico (e.g. Direito do
 
 A rede da Figura \@ref(fig:rb) representa a hierarquia dos níveis das TPUs. Trata-se de uma rede bastante simples, que pode ser utilizada diretamente para o cálculo dos volumes processuais.
 
-![Rede Bayesiana representando a hierarquia dos níveis das TPUs. Fonte: Elaboração própria.](imgs/08-metodologia_files/figure-latex/rb-1.pdf){#fig:rb}
+```{r rb, fig.cap="Rede Bayesiana representando a hierarquia dos níveis das TPUs. Fonte: Elaboração própria."}
+
+knitr::include_graphics(path = "imgs/08-metodologia_files/figure-latex/rb-1.pdf")
+
+```
+
+<!-- ![Rede Bayesiana representando a hierarquia dos níveis das TPUs. Fonte: Elaboração própria.](imgs/08-metodologia_files/figure-latex/rb-1.pdf){#fig:rb} -->
 
 No caso MAR, podemos utilizar todos os dados disponíveis dos processos para predizer o assunto real do processo. Para isso, qualquer técnica de modelagem preditiva poderia ser utilizada.
 
@@ -651,7 +669,7 @@ onde $t$ é o ano base considerado para o cálculo do volume processual. O valor
 
 De fato, observando as variáveis do RJN, é possível estudar a distribuição da razão entre $N_P^t$ e $N_P^{t-1} + N_N^{t}-N_B^{t}$. A Figura \@ref(fig:comparacao) mostra, a título de exemplo, a comparação entre o número de casos pendentes observados e o número de casos pendentes calculado com base no número de casos pendentes do ano anterior e dos casos novos e baixados no ano corrente. O levantamento considera como base os dados relativos aos casos de conhecimento em primeiro grau na Justiça Estadual. Observa-se que na maior parte dos casos (162 casos no total, por considerar 27 UFs por 6 anos) a quantidade calculada subestima a quantidade observada. Em 26 casos as duas quantidades são exatamente iguais, e a razão entre as quantidades fica concentrada no ponto 1. Ainda nesse exemplo, se fizermos a razão entre o total de casos pendentes observados e o total de casos pendentes calculados, encontramos o valor de 103,5%.
 
-```{r comparacao, fig.cap="Comparação da quantidade de casos pendentes observada e calculada pela fórmula aproximada, considerando apenas casos de conhecimento de primeiro grau. Fonte: Justiça em Números."}
+```{r comparacao, fig.cap="Comparação da quantidade de casos pendentes observada e calculada pela fórmula aproximada, considerando apenas casos de conhecimento de primeiro grau. Fonte: Justiça em Números.", eval = FALSE}
 data(cadmun, package = 'abjData')
 cadmun <- distinct(cadmun, uf, regiao)
 dados %>% 
@@ -765,7 +783,7 @@ dados %>%
 ```
 
 
-```{r iadn2, fig.cap="IADN ao longo dos anos para os tipos processuais e tribunais de interesse. Fonte: Justiça em Números."}
+```{r iadn2, fig.cap="IADN ao longo dos anos para os tipos processuais e tribunais de interesse. Fonte: Justiça em Números.", eval = FALSE}
 data(cadmun, package = 'abjData')
 cadmun <- distinct(cadmun, uf, regiao)
 dados %>% 
@@ -832,7 +850,7 @@ Dessa forma, se $\lambda = 1$, temos o IADN e, se $\lambda = 0$, temos o IAD. O 
 
 A Figura \@ref(fig:iadn3) mostra o IADR calculado para os tribunais escolhidos na pesquisa, considerando diferentes valores de $\lambda$. É interessante notar que a posição relativa de alguns tribunais, como o TJBA muda ao considerar diferentes valores de $\lambda$.
 
-```{r fig:iadn3, fig.cap='IADR calculado para os tribunais da pesquisa considerando diferentes valores de $\\lambda$. Fonte: Justiça em Números.'}
+```{r iadn3, fig.cap='IADR calculado para os tribunais da pesquisa considerando diferentes valores de $\\lambda$. Fonte: Justiça em Números.', eval = FALSE}
 data(cadmun, package = 'abjData')
 cadmun <- distinct(cadmun, uf, regiao)
 dados_base <- dados %>% 
