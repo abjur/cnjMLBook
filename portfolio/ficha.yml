@@ -11,15 +11,31 @@ team:
   - Marcelo Guedes Nunes (ABJ)
   - Julio Trecenti (ABJ)
   - Rafael Stern (ABJ)
-
-pesquisadores:
-  - João Braz (FDUSP)
-  - Maria Rita (TJSP)
-  - Ana Rita (TJSP)
+  - João Braz (FDUSP) - pesquisador
+  - Maria Rita (TJSP) - pesquisador
+  - Ana Rita (TJSP) - pesquisador
 
 link: https://github.com/abjur/cnjMLBook
-description:
+description: Relatório elaborado a pedido do Conselho Nacional de Justiça com a finalidade de levantar quem são os maiores litigantes em ações consumeristas na Justiça Estadual,
+estudar as características desses litigantes e de seus litígios, avaliar os meios alternativos ao litígio e investigar como grandes empresas do setor privado veem o problema das ações consumeristas. Além disso, propor soluções administrativas para lidar com os casos pendentes e reduzir a entrada de novos casos no judiciário.
+
 abstract:
+Estudos recentes indicam que ações envolvendo o direito do consumidor têm grande influência no
+volume de processos no Poder Judiciário. mais de dois milhões de casos novos envolvendo responsabilidade
+do fornecedor ou indenização por dano moral, situando o assunto como o terceiro mais demandado de todos
+os tribunais, compreender o volume e o perfil dos processos que envolvem direito do consumidor é condição
+necessária para uma boa administração da Justiça
+
+No contexto de direito do consumidor, a pesquisa foi criada em torno em duas perguntas principais
+a) o que fazer com o estoque atual de processos? e
+b) como evitar a entrada de tantos processos?.
+Nesse produto final, descrevemos a metodologia para obtenção dos maiores litigantes e
+mostramos os principais resultados da pesquisa. No final, apresentamos um cardápio
+de sugestões para melhoria da administração judiciária.
+
 figures:
 resultados:
+-  Apenas 20 empresas concentram mais do que 50% dos litígios. No estado de São Paulo, 30 empresas concentram mais de 70% dos processos.
+- Existem áreas que consistentemente concentram os problemas causados aos consumidores, em todas as unidades da federação. Esse é o caso das empresas de telefonia e as instituições financeiras, que consistentemente agrupam mais de 40% dos processos em todas as áreas pesquisadas. Entretanto, é possível identificar que as relações de consumo variam de acordo com a localidade em estudo. No Rio de Janeiro e no Amazonas, as empresas concessionárias de serviços básicos, como água, luz e esgoto, causam tantos problemas que concentram, respectivamente 20% e 10% dos casos.
+-  A maior parte dos litígios, em todas as áreas econômicas, discutem indenizações por danos morais, que muitas vezes estão associadas ao cadastro indevido em bancos de dados de inadimplentes.
 references:
